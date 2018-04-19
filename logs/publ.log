@@ -1,0 +1,945 @@
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:publ.index:Scheduling fixup for content/blog/20180418 more useful.md
+INFO:publ.index:Scanned content/blog/catpics/cat pictures.md
+INFO:publ.index:Scanned content/manual/Entry file format.md
+INFO:publ.index:Scanned content/manual/Getting started.md
+INFO:publ.index:Scanned content/manual/Image renditions.md
+INFO:publ.index:Scanned content/manual/Template format.md
+INFO:publ.index:Fixed up content/blog/20180418 more useful.md
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:publ.index:Scanned content/blog/20180418 more useful.md
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:16:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:16:59] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:16:59] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:17:02] "GET /manual/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:17:03] "GET /template-format HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:17:03] "GET /favicon.ico HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:17:04] "GET /template-format HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:17:12] "GET /template-format HTTP/1.1" 400 -
+INFO:publ.index:file modified: content/manual/Template format.md
+INFO:publ.index:file modified: content/manual/Template format.md
+INFO:publ.index:Updated content/manual/Template format.md
+INFO:publ.index:Updated content/manual/Template format.md
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:17:28] "GET /template-format HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:18:12] "GET /template-format HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:18:13] "GET /tests/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:18:14] "GET /api/select_pose HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:18:14] "GET /favicon.ico HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:18:18] "GET /api HTTP/1.1" 400 -
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:19:28] "GET /api HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:19:28] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:19:28] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:publ.index:file modified: content/blog/catpics/cat pictures.md
+INFO:publ.index:Updated content/blog/catpics/cat pictures.md
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:22:57] "GET /api HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:22:57] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:22:57] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/Publ/publ/path_alias.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:23:17] "GET /api HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:23:18] "GET /manual/324-Template-API HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:24:07] "GET /image-renditions HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:24:07] "GET /manual/335-Image-renditions HTTP/1.1" 200 -
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:24:18] "GET /manual/335-Image-renditions HTTP/1.1" 200 -
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:file modified: content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:publ.index:Updated content/manual/Image renditions.md
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:27:20] "GET /manual/335-Image-renditions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:27:20] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:27:20] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:00] "GET /manual/335-Image-renditions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:00] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:00] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:04] "GET /manual/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:06] "GET /blog/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:06] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:06] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_200x147.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:06] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_480x352.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/lightbox/images/next.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/lightbox/images/prev.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/lightbox/images/loading.gif HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:11] "GET /static/lightbox/images/close.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:13] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_2308x1535.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:14] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_2048x1536.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:14] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_2308x1535.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:19] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_2048x1536.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:20] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_2047x1985.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:32:23] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_2047x1654.jpg HTTP/1.1" 304 -
+INFO:publ.index:file created: content/blog/catpics/1377619425569.jpg
+INFO:publ.index:Updated content/blog/catpics/1377619425569.jpg
+INFO:publ.index:file modified: content/blog/catpics
+INFO:publ.index:file created: content/blog/catpics/1377619425569.jpg
+INFO:publ.index:Updated content/blog/catpics/1377619425569.jpg
+INFO:publ.index:file created: content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc
+INFO:publ.index:Updated content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc
+INFO:publ.index:file modified: content/blog/catpics
+INFO:publ.index:file created: content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc
+INFO:publ.index:Updated content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc
+INFO:publ.index:file moved: content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc -> content/blog/catpics/IMG_20130701_223914 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc
+INFO:publ.index:Updated content/blog/catpics/IMG_20130701_223914 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc -> content/blog/catpics/IMG_20130701_223914 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/IMG_20130701_223914 (1).jpg.sb-9fff34b9-N6wpWc
+INFO:publ.index:Updated content/blog/catpics/IMG_20130701_223914 (1).jpg
+INFO:publ.index:file created: content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O
+INFO:publ.index:Updated content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O
+INFO:publ.index:file created: content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O
+INFO:publ.index:Updated content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O
+INFO:publ.index:file moved: content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O -> content/blog/catpics/1373225535557.jpg
+INFO:publ.index:Updated content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O
+INFO:publ.index:Updated content/blog/catpics/1373225535557.jpg
+INFO:publ.index:file moved: content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O -> content/blog/catpics/1373225535557.jpg
+INFO:publ.index:Updated content/blog/catpics/1373225535557.jpg.sb-9fff34b9-0luB3O
+INFO:publ.index:Updated content/blog/catpics/1373225535557.jpg
+INFO:publ.index:file created: content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi
+INFO:publ.index:Updated content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi
+INFO:publ.index:file created: content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi
+INFO:publ.index:Updated content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi
+INFO:publ.index:file moved: content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi -> content/blog/catpics/DSC09705 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi
+INFO:publ.index:Updated content/blog/catpics/DSC09705 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi -> content/blog/catpics/DSC09705 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC09705 (1).jpg.sb-9fff34b9-z2fAGi
+INFO:publ.index:Updated content/blog/catpics/DSC09705 (1).jpg
+INFO:publ.index:file created: content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D
+INFO:publ.index:Updated content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D
+INFO:publ.index:file created: content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D
+INFO:publ.index:Updated content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D
+INFO:publ.index:file created: content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s
+INFO:publ.index:Updated content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s
+INFO:publ.index:file moved: content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D -> content/blog/catpics/DSC00125 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D
+INFO:publ.index:Updated content/blog/catpics/DSC00125 (1).jpg
+INFO:publ.index:file modified: content/blog/catpics
+INFO:publ.index:file created: content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s
+INFO:publ.index:Updated content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s
+INFO:publ.index:file moved: content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D -> content/blog/catpics/DSC00125 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC00125 (1).jpg.sb-9fff34b9-b6p98D
+INFO:publ.index:Updated content/blog/catpics/DSC00125 (1).jpg
+INFO:publ.index:file modified: content/blog/catpics
+INFO:publ.index:file moved: content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s -> content/blog/catpics/DSC08896 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s
+INFO:publ.index:Updated content/blog/catpics/DSC08896 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s -> content/blog/catpics/DSC08896 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC08896 (1).jpg.sb-9fff34b9-kU2n5s
+INFO:publ.index:Updated content/blog/catpics/DSC08896 (1).jpg
+INFO:publ.index:file created: content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9
+INFO:publ.index:Updated content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9
+INFO:publ.index:file created: content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9
+INFO:publ.index:Updated content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9
+INFO:publ.index:file created: content/blog/catpics/1383506654982.jpg.sb-9fff34b9-aPiiLa
+INFO:publ.index:Updated content/blog/catpics/1383506654982.jpg.sb-9fff34b9-aPiiLa
+INFO:publ.index:file moved: content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9 -> content/blog/catpics/IMG_0009.jpg
+INFO:publ.index:Updated content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9
+INFO:publ.index:Updated content/blog/catpics/IMG_0009.jpg
+INFO:publ.index:file moved: content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9 -> content/blog/catpics/IMG_0009.jpg
+INFO:publ.index:Updated content/blog/catpics/IMG_0009.jpg.sb-9fff34b9-hCRxj9
+INFO:publ.index:Updated content/blog/catpics/IMG_0009.jpg
+INFO:publ.index:file moved: content/blog/catpics/1383506654982.jpg.sb-9fff34b9-aPiiLa -> content/blog/catpics/1383506654982.jpg
+INFO:publ.index:Updated content/blog/catpics/1383506654982.jpg.sb-9fff34b9-aPiiLa
+INFO:publ.index:Updated content/blog/catpics/1383506654982.jpg
+INFO:publ.index:file created: content/blog/catpics/1383506654982.jpg
+INFO:publ.index:Updated content/blog/catpics/1383506654982.jpg
+INFO:publ.index:file created: content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz
+INFO:publ.index:Updated content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz
+INFO:publ.index:file created: content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz
+INFO:publ.index:Updated content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz
+INFO:publ.index:file moved: content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz -> content/blog/catpics/DSC00124 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz
+INFO:publ.index:Updated content/blog/catpics/DSC00124 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz -> content/blog/catpics/DSC00124 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC00124 (1).jpg.sb-9fff34b9-vezzjz
+INFO:publ.index:Updated content/blog/catpics/DSC00124 (1).jpg
+INFO:publ.index:file created: content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO
+INFO:publ.index:Updated content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO
+INFO:publ.index:file created: content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO
+INFO:publ.index:Updated content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO
+INFO:publ.index:file created: content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer
+INFO:publ.index:Updated content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer
+INFO:publ.index:file created: content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer
+INFO:publ.index:Updated content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer
+INFO:publ.index:file moved: content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO -> content/blog/catpics/DSC07661 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO
+INFO:publ.index:Updated content/blog/catpics/DSC07661 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO -> content/blog/catpics/DSC07661 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC07661 (1).jpg.sb-9fff34b9-xNiGIO
+INFO:publ.index:Updated content/blog/catpics/DSC07661 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer -> content/blog/catpics/DSC07672 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer
+INFO:publ.index:Updated content/blog/catpics/DSC07672 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer -> content/blog/catpics/DSC07672 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC07672 (1).jpg.sb-9fff34b9-f3bmer
+INFO:publ.index:Updated content/blog/catpics/DSC07672 (1).jpg
+INFO:publ.index:file created: content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl
+INFO:publ.index:Updated content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl
+INFO:publ.index:file created: content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl
+INFO:publ.index:Updated content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl
+INFO:publ.index:file moved: content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl -> content/blog/catpics/DSC07935 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl
+INFO:publ.index:Updated content/blog/catpics/DSC07935 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl -> content/blog/catpics/DSC07935 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/DSC07935 (1).jpg.sb-9fff34b9-3pUrgl
+INFO:publ.index:Updated content/blog/catpics/DSC07935 (1).jpg
+INFO:publ.index:file created: content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ
+INFO:publ.index:Updated content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ
+INFO:publ.index:file created: content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ
+INFO:publ.index:Updated content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ
+INFO:publ.index:file moved: content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ -> content/blog/catpics/IMG_0072 (1).jpg
+INFO:publ.index:file moved: content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ -> content/blog/catpics/IMG_0072 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ
+INFO:publ.index:Updated content/blog/catpics/IMG_0072 (1).jpg.sb-9fff34b9-7NeRDQ
+INFO:publ.index:Updated content/blog/catpics/IMG_0072 (1).jpg
+INFO:publ.index:Updated content/blog/catpics/IMG_0072 (1).jpg
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:publ.index:Scanned content/blog/.DS_Store
+INFO:publ.index:Scanned content/blog/catpics/.DS_Store
+INFO:publ.index:Scanned content/blog/catpics/1373225535557.jpg
+INFO:publ.index:Scanned content/blog/catpics/1377619425569.jpg
+INFO:publ.index:Scanned content/blog/catpics/1383506654982.jpg
+INFO:publ.index:Scanned content/blog/catpics/cat pictures.md
+INFO:publ.index:Scanned content/blog/catpics/DSC00124.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC00125.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC00605.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC01272 - Version 2.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC07661.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC07672.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC07926.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC07929.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC07935.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC08896.jpg
+INFO:publ.index:Scanned content/blog/catpics/DSC09705.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_0072.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_0074.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_0086.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_0118.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_0122.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_0131.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_0133.jpg
+INFO:publ.index:Scanned content/blog/catpics/IMG_20130701_223914.jpg
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/1373225535557.jpg
+INFO:publ.image:Updating image content/blog/catpics/1377619425569.jpg
+INFO:publ.image:Updating image content/blog/catpics/1383506654982.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00605.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC01272 - Version 2.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07926.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07929.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0074.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0086.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0118.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0122.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0131.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0133.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/next.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/prev.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/close.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/loading.gif HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/prev.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/next.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/loading.gif HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:39:22] "GET /static/lightbox/images/close.png HTTP/1.1" 304 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:32] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:33] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:36] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:36] "GET /favicon.ico HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:37] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:37] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:41] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:40:43] "GET /static/lightbox/js/lightbox-plus-jquery.min.map HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/lightbox/images/prev.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/lightbox/images/next.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/lightbox/images/loading.gif HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:10] "GET /static/lightbox/images/close.png HTTP/1.1" 304 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:41:11] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:25] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:26] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:29] "GET /style.css HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:29] "GET /favicon.ico HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:34] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:35] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:36] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:39] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:53] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:54] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/lightbox/images/prev.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/lightbox/images/loading.gif HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/lightbox/images/next.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:42:55] "GET /static/lightbox/images/close.png HTTP/1.1" 304 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:32] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:33] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:35] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:36] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:37] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:41] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:49] "GET /blog/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:49] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_480x352.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:49] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_200x147.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:49] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_480x352.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:49] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_200x147.jpg HTTP/1.1" 304 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:51] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:52] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/pygments.default.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/lightbox/images/prev.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/lightbox/images/next.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/lightbox/images/loading.gif HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:43:54] "GET /static/lightbox/images/close.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:25] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:26] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:27] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/pygments.default.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/lightbox/images/prev.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/lightbox/images/next.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/lightbox/images/loading.gif HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:29] "GET /static/lightbox/images/close.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:44] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/pygments.default.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/lightbox/images/prev.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/lightbox/images/next.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/lightbox/images/loading.gif HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:45] "GET /static/lightbox/images/close.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:44:59] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:01] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:02] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/pygments.default.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/lightbox/images/prev.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/lightbox/images/next.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/lightbox/images/loading.gif HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:04] "GET /static/lightbox/images/close.png HTTP/1.1" 200 -
+INFO:publ.index:file modified: content/blog/catpics/cat pictures.md
+INFO:publ.index:file modified: content/blog/catpics/cat pictures.md
+INFO:publ.index:Updated content/blog/catpics/cat pictures.md
+INFO:publ.index:Updated content/blog/catpics/cat pictures.md
+INFO:publ.index:file modified: content/blog/catpics/cat pictures.md
+INFO:publ.index:file modified: content/blog/catpics/cat pictures.md
+INFO:publ.index:Updated content/blog/catpics/cat pictures.md
+INFO:publ.index:Updated content/blog/catpics/cat pictures.md
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:45] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/pygments.default.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/lightbox/images/prev.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/lightbox/images/next.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/lightbox/images/loading.gif HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:46] "GET /static/lightbox/images/close.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:48] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_2308x1535.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:49] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_2048x1536.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:49] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_2308x1535.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:51] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_2308x1535.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:52] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_2308x1535.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:45:54] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_2047x1654.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:17] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/pygments.default.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/lightbox/images/prev.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/lightbox/images/next.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/lightbox/images/loading.gif HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:19] "GET /static/lightbox/images/close.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:39] "GET /static/style.css HTTP/1.1" 200 -
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/1373225535557_23ecd374bed81636c2c8082eff23293c_324x243.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/1377619425569_55c8831a8e0c39ab7bc2ac42bb7d6b66_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/1383506654982_18cca695f917b80ac5affe9948acc533_339x255.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/pygments.default.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC00605_0b5e296ec8cfa72e5fa2cfa543f2fd4c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC01272-Version-2_2a75625ce959fb77ddbcaacb32225a24_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC07926_b1ce79a0b599d8f546df10be433c9c6c_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC07929_0db28aab2dbea0377d4dc262ae956efb_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:40] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_359x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_470x480.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/IMG-0118_d226df2759723abde414649930d8de81_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/IMG-0122_8676cb166c9a4cbd84008d047854aec4_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/IMG-0131_106474ad74600b0a26c2421fb46111d8_480x358.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/_img/IMG-0133_3eb3e4715afd8405bd300aec296c35af_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/lightbox/images/prev.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/lightbox/images/next.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/lightbox/images/loading.gif HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:46:41] "GET /static/lightbox/images/close.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:47:01] "GET /static/_img/IMG-0074_8923ed833d9d3701a57fe0215035dffe_1536x2056.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:47:02] "GET /static/_img/IMG-0086_d19c484bb04a16398459724380612fc7_1860x1898.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2018 00:47:02] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_2056x1536.jpg HTTP/1.1" 304 -

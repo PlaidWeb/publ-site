@@ -1,0 +1,229 @@
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:publ.image:Updating image content/blog/catpics/IMG_20130701_223914.jpg
+ERROR:publ.markdown:Got error on spec IMG_20130701_223914.jpg "Why are there cat photos here?": module 'publ.config' has no attribute 'image_output_directory'
+Traceback (most recent call last):
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 101, in _render_image
+    return self._local_image(path, composite_args, title, alt_text)
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 150, in _local_image
+    1, self._rendition_args(image_args, {"quality": "quality_ldpi"}))
+  File "/Users/fluffy/projects/Publ/publ/image.py", line 59, in get_rendition
+    config.image_output_directory, out_basename)
+AttributeError: module 'publ.config' has no attribute 'image_output_directory'
+INFO:publ.image:Updating image content/tests/rawr.jpg
+ERROR:publ.markdown:Got error on spec /tests/rawr.jpg "RAWR!!!": module 'publ.config' has no attribute 'image_output_directory'
+Traceback (most recent call last):
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 101, in _render_image
+    return self._local_image(path, composite_args, title, alt_text)
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 150, in _local_image
+    1, self._rendition_args(image_args, {"quality": "quality_ldpi"}))
+  File "/Users/fluffy/projects/Publ/publ/image.py", line 59, in get_rendition
+    config.image_output_directory, out_basename)
+AttributeError: module 'publ.config' has no attribute 'image_output_directory'
+ERROR:publ.markdown:Got error on spec /tests/rawr.jpg{100} "rawr!": module 'publ.config' has no attribute 'image_output_directory'
+Traceback (most recent call last):
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 101, in _render_image
+    return self._local_image(path, composite_args, title, alt_text)
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 150, in _local_image
+    1, self._rendition_args(image_args, {"quality": "quality_ldpi"}))
+  File "/Users/fluffy/projects/Publ/publ/image.py", line 59, in get_rendition
+    config.image_output_directory, out_basename)
+AttributeError: module 'publ.config' has no attribute 'image_output_directory'
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:52:09] "GET /blog/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:52:09] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:52:09] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/Publ/publ/config.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/publ.beesbuzz.biz/main.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/Publ/publ/image.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/Publ/publ/config.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/Publ/publ/image.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/publ.beesbuzz.biz/main.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+ERROR:publ.markdown:Got error on spec IMG_20130701_223914.jpg "Why are there cat photos here?": module 'publ.config' has no attribute 'static_directory'
+Traceback (most recent call last):
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 101, in _render_image
+    return self._local_image(path, composite_args, title, alt_text)
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 150, in _local_image
+    1, self._rendition_args(image_args, {"quality": "quality_ldpi"}))
+  File "/Users/fluffy/projects/Publ/publ/image.py", line 60, in get_rendition
+    out_fullpath = os.path.join(config.static_directory, out_rel_path)
+AttributeError: module 'publ.config' has no attribute 'static_directory'
+ERROR:publ.markdown:Got error on spec /tests/rawr.jpg "RAWR!!!": module 'publ.config' has no attribute 'static_directory'
+Traceback (most recent call last):
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 101, in _render_image
+    return self._local_image(path, composite_args, title, alt_text)
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 150, in _local_image
+    1, self._rendition_args(image_args, {"quality": "quality_ldpi"}))
+  File "/Users/fluffy/projects/Publ/publ/image.py", line 60, in get_rendition
+    out_fullpath = os.path.join(config.static_directory, out_rel_path)
+AttributeError: module 'publ.config' has no attribute 'static_directory'
+ERROR:publ.markdown:Got error on spec /tests/rawr.jpg{100} "rawr!": module 'publ.config' has no attribute 'static_directory'
+Traceback (most recent call last):
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 101, in _render_image
+    return self._local_image(path, composite_args, title, alt_text)
+  File "/Users/fluffy/projects/Publ/publ/markdown.py", line 150, in _local_image
+    1, self._rendition_args(image_args, {"quality": "quality_ldpi"}))
+  File "/Users/fluffy/projects/Publ/publ/image.py", line 60, in get_rendition
+    out_fullpath = os.path.join(config.static_directory, out_rel_path)
+AttributeError: module 'publ.config' has no attribute 'static_directory'
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:33] "GET /blog/ HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/Publ/publ/image.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:52] "GET /blog/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:52] "GET /static/style.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:52] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:52] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_480x352.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:52] "GET /static/_img/rawr_d0287ba2f5cbe197793005221fad6706_200x147.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:52] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:publ.image:Updating image content/blog/catpics/DSC00124.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC00125.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07661.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07672.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC07935.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC08896.jpg
+INFO:publ.image:Updating image content/blog/catpics/DSC09705.jpg
+INFO:publ.image:Updating image content/blog/catpics/IMG_0072.jpg
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC00124_59e7705e3557bb0c9a21e224a82f5ff1_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC07661_a29351abc4d09bc3165b1b7915cf5086_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC00125_2bf1ed5d356c536bab9541d9dae7af7f_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC08896_324ede3b6ac6958f7b9b391eda44c91d_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC07672_f08206acb18ef4886170d754f1198264_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC07935_34bcf339a5a6e3d549927318758a7005_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC09705_664a5f4c31885b67846868e7380212cd_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/IMG-0072_1d4bd262ae3a0a328c2d7fbb4fb649c5_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/lightbox/css/lightbox.min.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_480x465.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_480x388.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/lightbox/js/lightbox-plus-jquery.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_480x360.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_480x319.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_480x359.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/lightbox/images/next.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/lightbox/images/loading.gif HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/lightbox/images/prev.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:53:57] "GET /static/lightbox/images/close.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:54:03] "GET /static/_img/DSC08896_aa317d75305d065c44024bd17a8a326c_2308x1535.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:54:03] "GET /favicon.ico HTTP/1.1" 400 -
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:05] "GET /blog/249-Here-s-some-cat-pictures-for-you HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:09] "GET /static/_img/IMG-20130701-223914_857eee0f74d36b589099086205e47aaa_2048x1536.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:10] "GET /static/_img/DSC00124_14dffe877a15f249bf8db70d44db3ca6_2047x1985.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:12] "GET /static/_img/DSC00125_4756257cada0f249c321d5b2dd2869ae_2047x1654.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:14] "GET /static/_img/DSC07661_753344e9ae64511f52bc07d7d6f0c08a_2308x1535.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:16] "GET /static/_img/DSC07672_f0bfbbe9881215cf93e712f1f003d3dc_2308x1535.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:17] "GET /static/_img/DSC07935_5fb09f1bff1fcbf9151a04412801d759_2048x1536.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:21] "GET /static/_img/DSC09705_9e4cffca061eb04179c80bab75487746_2308x1535.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 21:55:22] "GET /static/_img/IMG-0072_84c752d520112678cf48b147b43c5ab1_2056x1536.jpg HTTP/1.1" 200 -
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 22:01:17] "GET /feed HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 22:02:15] "GET /feed HTTP/1.1" 200 -
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug: * Detected change in '/Users/fluffy/projects/Publ/publ/rendering.py', reloading
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with fsevents reloader
+INFO:root:Setting up
+INFO:publ.model:Current schema version: 5
+INFO:root:Watching content for changes
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-644-369
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 22:34:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 22:34:32] "GET /static/pygments.default.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Apr/2018 22:34:32] "GET /static/style.css HTTP/1.1" 304 -
