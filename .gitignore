@@ -2,7 +2,7 @@
 .DS_Store
 __pycache__
 data
-example_site/static/_img/
+static/_img/
 logs/
 tmp/
 index.db
