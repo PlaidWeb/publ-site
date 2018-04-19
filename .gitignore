@@ -2,3 +2,4 @@ static/_img/
 .DS_Store
 logs/
 index.db
+tmp/
