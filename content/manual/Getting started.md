@@ -42,57 +42,56 @@ Now when you open a new terminal you should have pipenv and python3 on your path
 Python 3.6.5
 ```
 
-The next thing to do is to clone a copy of Publ into your own workspace, e.g.
+
+## Copying this website
+
+The files for this website are in a [separate repository](http://github.com/fluffy-critter/publ.beesbuzz.biz).
+You should be able to clone or fork that repository in order to have your own instance of it, and then
+you can start a local server for experimenting with:
 
 ```bash
-git clone https://github.com/fluffy-critter/Publ
+./setup.sh    # Install Publ and do various setup steps
+./run.sh      # Start running the server locally
 ```
 
-After that you can simply do:
+at which point connecting to `http://localhost:5000` should do what you want. If you
+want to run on a different port you can set the `PORT` environment variable, e.g.:
 
 ```bash
-cd Publ
-cp config.py.dist config.py
-./setup.sh
-./run.sh
+PORT=12345 ./run.sh
 ```
 
-and now you should have the sample site — namely, an instance of this website — running on `[localhost:5000](http://localhost:5000)`.
+## What does what
 
-## Making your own site
+Looking at the example site, here's the key things to look at:
 
-The example site files all live within `example_site/` within the upstream distribution.
-If you want to start making your own site, you can create a new site directory (call it, say, `my_site`)
-with subdirectories of `templates`, `static`, and `content`, and point your `config.py` at those directories.
+* `main.py`: Configures the Publ site
+* `passenger_wsgi.py`: A Passenger wrapper, used for running the site on Dreamhost
+* `templates/`: The site layout files (i.e. how to lay your content out). Some you can look at:
+    * `index.html`: What renders when you view a "directory" (e.g. [`/manual`](/manual))
+    * `entry.html`: What renders when you look at an individual page (like this one)
+    * `feed.xml`: The Atom feed
+    * `error.html`: The error page ([for example](/12345))
+    * `sitemap.xml`: Produces a sitemap for search engines
+* `content/`: The content on this site (for example, this page's content is stored in
+    `content/manual/getting started.md`)
+* `static/`: Things that never change; for example, stylesheets and Javascript libraries. For example, this site has:
+    * `style.css`: the global stylesheet
+    * `lightbox`: A library used for presenting images in a gallery ([example page](/yay-cats-wooooo))
+    * `pygments.default.css`: A stylesheet used by the Markdown engine when formatting code
 
-At the very basic you'll want to have the following files in `templates`:
+For more information about templates, see [the manual on template formats](/template-format).
 
-    * `index.html` - the category rendering page
-    * `feed.xml` - the Atom feed generator
-    * `error.html` - the generic error handler
-    * `entry.html` - the generic entry renderer
+For more information about content, see [that manual page](/entry-format).
 
-You can reference the example files, or you can try making your own. The [Jinja](http://jinja.pocoo.org) documentation
-should be helpful, and for Publ-related extensions look at the [Publ documentation](/manual), particularly the [template format](/template-format) and [entry format](/entry-format).
-
-I do recommend keeping your own content files in a private git repository (separate from Publ itself) as this makes
-separating your content from the CMS itself much easier. Also, keep in mind that Publ itself will modify the content
-files to add persistent headers, so don't forget to push your Publ-originated changes back to your source repository!
-
-## Updating code
-
-To update the site's code you'll want to do a `git pull` (or uncompress the source snapshot that you're using or whatever)
-and then re-run `./setup.sh` to ensure everything is where it needs to be. Then restart any running Publ instance (`setup.sh` does this
-automatically for Dreamhost's Passenger setup) and you're good to go!
-
-## Deploying to a webserver
+## Putting it on the web
 
 Publ is intended to be run on a containerized platform such as [Heroku](http://heroku.com); the free tier should
 be sufficient for at least basic experimentation. Or if you have hosting with a provider that supports Passenger WSGI
-you can try deploying there; I have a very basic guide for [installing on Dreamhost](326).
+you can try deploying there; I have a very basic guide for [installing on Dreamhost](/dreamhost), and information
+on Heroku is coming eventually.
 
-Wherever you end up deploying, you'll need to set your `config.py` values to point to your actual site files and domain name.
+If you're running your own server (Apache or nginx), you should be able to configure this as a WSGI application
+or using a reverse proxy. More information will come on that later, hopefully.
 
 If you do end up using Publ, please let me know so that I can check it out — and maybe add it to a list of featured sites!
-
-[TODO](https://github.com/fluffy-critter/Publ/issues/20): Figure out how to best do a Heroku deployment

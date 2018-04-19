@@ -37,6 +37,9 @@ pre {
     padding: 1ex;
 }
 
+.gallery { text-align: center; }
+.gallery img { vertical-align: middle; border: solid #888 3px; border-radius: 3px; margin: 6px;}
+
 #content {
     margin: 1em;
 }

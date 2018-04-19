@@ -9,8 +9,6 @@ How to configure images and galleries for display
 .....
 
 
-==**Note:** This is a [very rough draft and is not yet implemented](https://github.com/fluffy-critter/Publ/issues/9).==
-
 ## Image rendition support
 
 ### In entries
@@ -51,7 +49,9 @@ TODO: templates may also get an `image()` function that allows image renditions 
 * **`fill_crop_x`**: If `resize="fill"`, where to take the cropping (0=left, 1=right); default=0.5
 * **`fill_crop_y`**: If `resize="fill"`, where to take the cropping (0=top, 1=bottom); default=0.5
 
-==**Note:** Images will never be scaled to larger than their native resolution==
+**Note:** Images will never be scaled to larger than their native resolution. (In the future there may be
+an option to still resize it larger client-side, where the actual rendition will be the native size but the
+`<img>` tag gets the expanded width and height.)
 
 ### File format options
 
@@ -65,10 +65,11 @@ TODO: templates may also get an `image()` function that allows image renditions 
 
 These options drive the behavior of image sets for use with [lightbox.js](http://www.lokeshdhakar.com/projects/lightbox2/).
 
-* **`disable_gallery`**: Set this in the template to disable lightbox (for example, for feeds)
 * **`gallery_id`**: An identifier for the Lightbox image set
     * **Note:** If this is not set, Lightbox will not be enabled, and popup renditions will not be generated
+    * **Note:** If `link` is set, this option has no effect
 * **`limit`**: How many images to allow in the image set (useful for feeds)
+* **`limit_offset`**: If `limit` is set, also skip this number of images at the beginning
 * **`fullsize_width`**: The maximum width for the popup image
 * **`fullsize_height`**: The maximum height for the popup image
 * **`fullsize_quality`**: The JPEG quality level to use for the popup image
@@ -127,9 +128,17 @@ Or if there's one you want to force to a specific size:
 
 ### A photo gallery
 
-`index.html`
+With the below setup, if an entry provides an image set with a `limit_offset` parameter, e.g.
 
-This will show just the first image in the gallery, and then link the user to the full
+```markdown
+![{limit_offset=2}](image1.jpg | image2.jpg | image3.jpg | image4.jpg)
+```
+
+then on the index and feed (where there's a `limit` set) skip the first two images and thus show `image3.jpg` as the first image. This allows you to set a "poster" frame for the image set as a whole.
+
+#### `index.html`
+
+This will show just the first image in the gallery at its original aspect, and then link the user to the full
 gallery page.
 
 ```jinja
@@ -137,25 +146,28 @@ gallery page.
     width=640,
     height=640,
     link=entry.link,
-    limit=1,
-    disable_lightbox=True)
+    limit=1)
     }}
 ```
 
-`entry.html`
+#### `entry.html`
 
-This will show the full gallery, with a reasonable default gallery ID, and the full images at 4K resolution.
+This will show the full gallery with square thumbnails and a reasonable default gallery ID, and the full images at 4K resolution.
 The thumbnails will be wrapped in a `<div class="gallery_thumbs">`.
 
 ```jinja
 {{ entry.body(
     width=640,
     height=640,
-    lightbox_id="gallery-"+entry.id
-    container_class="gallery_thumbs")
+    resize="fill",
+    lightbox_id=entry.uuid,
+    container_class="gallery_thumbs",
+    fullsize_width=3840,
+    fullsize_height=2160)
 }}
+```
 
-`feed.xml`
+#### `feed.xml`
 
 This will show tiny thumbnails of the first three images of the gallery and will link to the full gallery page.
 
@@ -167,3 +179,5 @@ This will show tiny thumbnails of the first three images of the gallery and will
     link=entry.link,
     force_size=True)
 }}
+```
+

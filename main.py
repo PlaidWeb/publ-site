@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """ Main Publ application """
 
 from dateutil import tz

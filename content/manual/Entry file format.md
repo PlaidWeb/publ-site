@@ -192,6 +192,23 @@ generating display-resolution-independent renditions and [Lightbox](http://lokes
     ![{width=640}](image1.jpg | image2.jpg{width=320} "this one is narrower" | image3.jpg)
     ```
 
+You can also specify the width and height as the first one or two unnamed arguments to an argument list;
+for example, these two invocations are equivalent:
+
+```markdown
+![{320,240}](image1.jpg | image2.jpg | image3.jpg)
+
+![{width=320,height=240}](image1.jpg | image2.jpg | image3.jpg)
+```
+
+For the shorthand notation, if you want to specify only height you can use `None` for the width, e.g.:
+
+```markdown
+![{None,240}](image1.jpg | image2.jpg | image3.jpg)
+```
+
+
+
 For a full list of the configurations available, please see the manual entry on [image renditions](/image-renditions).
 
 Image files themselves are resolved in the following order:

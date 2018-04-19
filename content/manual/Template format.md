@@ -15,32 +15,81 @@ see its references for the general syntax of template files.
 
 There are three kinds of page in Publ: entry, category, and error.
 
-## Template mapping
+## How templates work
 
-TODO: explain how templates are chosen in plain English ([issue 10](https://github.com/fluffy-critter/Publ/issues/10))
+### Short version
 
-Expected templates:
+When someone requests a page, Publ finds the most-specific template
+that matches, and uses that to render the page.
 
-* **`index`**: The default view for a category
-* **`feed`**: The Atom feed for a category
-* **`entry`**: The view for a single entry
-* **`error`**: What to render if an error happens
-    * If present, you can also use templates named for the actual error code (404, 403, etc.)
+### Long version
 
-### All pages
+When someone requests a page, Publ looks up whether it's a category view or an entry.
+Category views look something like `http://mysite.com/art/photos/seattle/` or `http://mysite.com/blog/minimal`.
+Entry views look something like `http://mysite.com/art/photos/1529-unwelcome-visitor`.
+
+Every view has a category associated with it; for example, `http://mysite.com/art/photos/1529-unwelcome-visitor`
+is in the `art/photos` category (i.e. all the stuff between the website address and the entry ID, not including
+the `/`s at either end), and `http://mysite.com/blog/minimal` is in the `blog` category; the category is basically everything between the server name and the last `/` (in this case, `minimal` is the view).
+
+When you see an entry, there is only one possible template that it chooses, `entry`. When you see a category,
+if there's a view indicated, it uses that view name; otherwise it uses the `index` view.
+
+(The category can be blank, incidentally; `http://mysite.com/` shows you the `index` view on the empty category.)
+
+Anyway, given the category and view name, Publ looks for the closest matching template, by starting out in the
+template directory that matches the category name, and then going up one level until it finds a matching
+template. And a template will match based on either the exact name, or the name with `.html`, `.htm`, `.xml`, or `.json` added to the end.
+
+So for example, if you ask for `http://mysite.com/music/classical/baroque/feed`, it will look for a template
+file named `feed`, `feed.html`, `feed.htm`, `feed.xml`, or `feed.json`, in the directories `templates/music/classical/baroque`, `templates/music/classical`, `templates/music`, and `templates`, in that order, returning the first one
+that matches. (If no templates match, it shows an error page.)
+
+> Note that because an exact filename can match, you can also use the template system to generate CSS or
+> whatever other format you like! However, this usage isn't recommended.
+
+#### Error templates
+
+A note on error templates: Error pages *generally* get handled by whatever matches the `error` template; however, in the case of a specific
+status code, it will also look for a template named based on that code. For example, a 404 error will try to
+render the `404` template first, before falling back to `error`. (And of course this can be `404.html`, `404.xml`, `404.json`, and so on, although in most cases you'll probably be doing it as HTML.)
+
+Also, if no error template is found (i.e. there's no top-level `error.html`), Publ will provide a built-in template
+instead.
+
+## Required templates
+
+*Technically* no template is actually required, but in order to have a functioning site,
+you should have, at the very least, the following top-level templates:
+
+* `index.html`: the default category view
+* `entry.html`: the entry view
+* `error.html`: Some sort of error page (but this is entirely optional)
+
+## Template API
+
+As mentioned before, templates are rendered using [Jinja2](http://jinja.pocoo.org), and get standard template parameters for both Jinja2 and Flask. Additionally, there will be other things available to you, depending on
+the template type.
+
+Also, note that the templating system uses Python syntax for passing parameters to functions.
+So, for example, `some_function(1,dingle=True,berry="none")` passes a number, a boolean (true/false) named `dingle`,
+and a string named `berry` with the value of `"none"`. When passing strings, quotes are required. When passing
+anything else, the quotes should be left off; `False` and `"False"` mean very different things in Python. (For starters, `"False"` is equivalent to `True` in many contexts. You'll get used to it.)
+
+### All templates
 
 All template types get the default Flask objects; there is more information about
 these on the [Flask templating reference](http://flask.pocoo.org/docs/0.12/templating/).
 
 The following additional things are provided to the request context:
 
-* **`arrow`**: The [Arrow](https://arrow.readthedocs.io/en/latest/) time library
+* **`arrow`**: The [Arrow](https://arrow.readthedocs.io/en/latest/) time and date library
 
 * <a name="fn-get-view"></a>**`get_view`**: Requests a view of entries; it takes the following arguments:
 
     * **`category`**: The top-level category to consider
 
-        **Note:** If this is left unspecified, it will always include entries from the entire site
+        **Note:** If this is left unspecified, it will always include entries from the entire site.
 
     * **`recurse`**: Whether to include subcategories
 
