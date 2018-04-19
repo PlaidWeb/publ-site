@@ -1,0 +1,4 @@
+# This file tells Dreamhost's Passenger setup to fall back to Publ
+# if it tries to look up a .php file that doesn't exist.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*\.php)$ /$1.PUBL_PATHALIAS [L]
