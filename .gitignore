@@ -3,3 +3,5 @@ static/_img/
 logs/
 index.db
 tmp/
+__pycache__
+*.pyc

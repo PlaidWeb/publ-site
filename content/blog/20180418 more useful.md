@@ -1,4 +1,7 @@
 Title: Getting closer to usefulness
+Date: 2018-04-18 22:42:45-07:00
+Entry-ID: 31
+UUID: a4070973-58a5-4af1-83e6-a0004a5f1ca4
 
 I finally separated out Publ-the-library from the main Publ website files, and
 [released v0.1.0 on PyPI](https://pypi.org/project/Publ/), making this the first
