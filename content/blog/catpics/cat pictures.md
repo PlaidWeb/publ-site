@@ -5,7 +5,7 @@ Entry-ID: 249
 UUID: dcb8ca7a-2091-4d1d-aed2-6a1061064ff3
 Path-Alias: /yay-cats-wooooo
 
-![{240,240}](
+![{240,240,limit_offset=7}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
 |1373225535557.jpg
 |1377619425569.jpg

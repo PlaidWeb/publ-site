@@ -7,8 +7,7 @@ name = "pypi"
 
 [packages]
 
-publ = "*"
-"1a11310" = {path = "../Publ", editable = true}
+Publ = "*"
 
 
 [dev-packages]
