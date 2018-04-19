@@ -23,7 +23,7 @@
                 absolute=True,
                 limit=3)}}
             {% if entry.more %}
-            <a href="{{entry.link}}">Read more...</a>
+            <a href="{{entry.link(absolute=True)}}">Read more...</a>
             {% endif %}
 ]]>
         </content>
