@@ -165,8 +165,6 @@ There are also some Publ-specific extensions for things like cuts, image renditi
 
 ### <a name="image-renditions"></a>Images
 
-==**Note:** This is a [draft](http://github.com/fluffy-critter/Publ/issues/9).== Both the API and implementation are subject to change.
-
 Publ extends the standard Markdown image tag (`![](imageFile)`) syntax with some added features for
 generating display-resolution-independent renditions and [Lightbox](http://lokeshdhakar.com/projects/lightbox2/) galleries. The syntax is based on the standard Markdown for an image, which is:
 
@@ -215,29 +213,27 @@ Image files themselves are resolved in the following order:
 
 1. Relative to the entry file
 2. Relative to the entry category in the content directory
-3. Relative to the entry file's path remapped to the image directory
-3. Relative to the entry category in the configured image directory
-3. Absolute path in the configured image directory
+3. Relative to the root of the content folder
+4. Relative to the root of the static folder
 
 So, for example, if content directory is `content/entries` and your entry is in
 `content/entries/photos/my vacation/vacation.md` but indicates a category of `photos`,
-and you have your image directory set to `content/images`,
+and you have your static directory set to `content/static`,
 an image called `DSC_12345.jpg` will be looked up in the following order:
 
 1. `content/entries/photos/my vacation/DSC_12345.jpg`
 2. `content/entries/photos/DSC_12345.jpg`
-3. `content/images/photos/my vacation/DSC_12345.jpg`
-3. `content/images/photos/DSC_12345.jpg`
-4. `content/images/DSC_12345.jpg`
+3. `content/entries/DSC_12345.jpg`
+4. `content/static/DSC_12345.jpg`
 
 Relative paths will also be interpreted; if the filename is `../IMG_4847.jpg` the
 search order will be:
 
 1. `content/entries/photos/IMG_4847.jpg`
 2. `content/entries/IMG_4847.jpg`
-3. `content/images/photos/IMG_4847.jpg`
-3. `content/images/IMG_4847.jpg`
-4. `content/images/IMG_4847.jpg` (path sanitization prevents you from accidentally escaping each directory)
+3. `content/IMG_2827.jpg`
+4. `IMG_4847.jpg` — as in, be careful not to escape the sandbox. (In the future the path normalization logic will be made more robust.)
+
 
 This approach allows for greater flexibility in how you manage your images; the simple
 case is that the files simply live in the same directory as the entry file, and in more complex cases
