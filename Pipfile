@@ -7,8 +7,8 @@ name = "pypi"
 
 [packages]
 
-publ = "*"
 gunicorn = "*"
+publ = "*"
 
 
 [dev-packages]
