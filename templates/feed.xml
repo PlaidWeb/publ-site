@@ -15,6 +15,7 @@
     <link href="{{ view.previous.link(template='feed',absolute=True) }}" rel="prev-archive" />
     {% endif %}
     <link href="{{ category.link(absolute=True) }}" />
+    {% if request.args %}<fh:archive />{% endif %}
     <id>tag:{{request.host}},{{template.last_modified.format('YYYY-MM-DD')}}:{{category.path or "_all"}}</id>
     <updated>{{view(recurse=True).last_modified.isoformat()}}</updated>
 
