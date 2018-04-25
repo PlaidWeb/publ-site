@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+{% set view = view(recurse=True,limit=10) %}
+
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title>Publ</title>
     <subtitle>A personal publishing system for the modern web</subtitle>
-    <link href="{{ category.link(template='feed',absolute=True) }}" rel="self" />
+    <link href="{{ view.link(template='feed',absolute=True) }}" rel="self" />
+    <link href="{{ category.link(template='feed',absolute=True) }}" rel="current" />
+    {% if view.next %}
+    <link href="{{ view.next.link(template='feed',absolute=True) }}" rel="next-archive" />
+    {% endif %}
+    {% if view.previous %}
+    <link href="{{ view.previous.link(template='feed',absolute=True) }}" rel="prev-archive" />
+    {% endif %}
     <link href="{{ category.link(absolute=True) }}" />
     <id>tag:{{request.host}},{{template.last_modified.format('YYYY-MM-DD')}}:{{category.path or "_all"}}</id>
     <updated>{{view(recurse=True).last_modified.isoformat()}}</updated>
 
-    {% for entry in view(recurse=True,limit=50).entries %}
+    {% for entry in view.entries %}
     <entry>
         <title>{{entry.title}}</title>
         <link href="{{ entry.permalink(absolute=True) }}" rel="alternate" type="text/html" />
