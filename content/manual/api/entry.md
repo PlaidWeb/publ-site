@@ -18,9 +18,9 @@ The `entry` object has the following methods/properties:
 
 * **`date`**: The creation date and time of the entry
 
-* **`link`**: A link to the entry's individual page
+* **`permalink`**: A permanent link to the entry
 
-    This can take arguments for different kinds of links; for example:
+    Takes the following arguments:
 
     * **`absolute`**: Whether to format this as an absolute or relative URL
         * **`False`**: Use a relative link (default)
@@ -29,21 +29,29 @@ The `entry` object has the following methods/properties:
         * **`False`**: Use a condensed link
         * **`True`**: Expand the link to the full entry path (default)
 
-    **Note:** If this entry is a redirection, this link refers to the redirect
-    target.
-
-* **`permalink`**: A permanent link to the entry
-
-    This is similar to **`link`** but subtly different; it only accepts the
-    **`absolute`** and **`expand`** arguments, and it never follows a redirection.
-
     Whether to use an expanded link or not depends on how "permanent" you want your
     permalink to be; a condensed link will always cause a redirect to the current
     canonical URL, but an expanded link may go obsolete and still cause a redirection.
     The expanded link is generally better for SEO, however, and thus it is the default
     even if it isn't truly "permanent." (But then again, what *is* permanent, anyway?)
 
-    Unlike **`link`** this will never follow a redirection.
+* **`link`**: A destination link to the entry
+
+    This is the same as **`permalink`** except it will also follow an entry's
+    `Redirect-URL` destination.
+
+* **`archive`**: Get an archive link for rendering this in a category view.
+
+    This takes the following arguments:
+
+    * **`paging`**: The pagination type; one of:
+        * **`"day"`**: Entries for that day
+        * **`"month"`**: Entries for that month
+        * **`"year"`**: Entries for that year
+        * Otherwise, uses the default pagination for the template (default)
+    * **`template`**: Which template to use for the link (defaults to `''`, i.e. the default/index category template)
+    * **`category`**: Which category to link to; defaults to the entry's own category
+    * **`absolute`**: Whether to use an absolute link (defaults to `False`)
 
 * **`last_modified`**: A last-modified time for this entry
 
@@ -76,7 +84,7 @@ The `entry` object has the following methods/properties:
 
 * **`get`**: Get a header from the [entry file](/entry-format)
 
-    Note that if there's more than one of a header, it's undefined which one you retrieve.
+    Note that if there's more than one of a header, it's undefined which one this will retrieve.
     If you want to get more than one, use `get_all` instead.
 
 * **`get_all`**: Get all of a header type from an entry, as a list.
@@ -87,7 +95,7 @@ The `entry` object has the following methods/properties:
 
     ```jinja
     {% if entry.get('Tag') %}
-    <ul>
+    <ul class="tags">
         {% for tag in entry.get_all('Tag') %}
         <li>{{ tag }}</li>
         {% endfor %}

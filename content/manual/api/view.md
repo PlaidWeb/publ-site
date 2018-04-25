@@ -19,9 +19,9 @@ The `view` object has the following things on it:
     This is in the form of the arguments that would be passed to `get_view` to
     obtain this view.
 
-* **`previous`**: The previous page's view
+* **`previous`**: The previous page for this view
 
-* **`next`**: The next page's view
+* **`next`**: The next page for this view
 
 * **`link`**: The link to this view; optionally takes the following arguments:
 
@@ -36,7 +36,7 @@ The `view` object has the following things on it:
 * **`oldest`**: The oldest entry in the view
 
 It also takes arguments to further refine the view, using the same arguments
-as [`get_view()`](/api#fn-get-view); for example, this will print the titles of
+as [`get_view()`](/api#get-view); for example, this will print the titles of
 the first 10 entries in the view, including subcategories:
 
 ```jinja
@@ -47,4 +47,3 @@ the first 10 entries in the view, including subcategories:
 
 Note that if you specify a category this will override the current view's category.
 
-See the [explanation on category pagination](/api#pagination) to see how to use `next` and `previous`.

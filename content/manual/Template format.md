@@ -75,18 +75,19 @@ the template type.
 Also, note that the templating system uses Python syntax for passing parameters to functions.
 So, for example, `some_function(1,dingle=True,berry="none")` passes a number, a boolean (true/false) named `dingle`,
 and a string named `berry` with the value of `"none"`. When passing strings, quotes are required. When passing
-anything else, the quotes should be left off; `False` and `"False"` mean very different things in Python. (For starters, `"False"` is equivalent to `True` in many contexts. You'll get used to it.)
+anything else, the quotes should be left off; `False` and `"False"` mean very different things in Python. (For starters,
+`"False"` is equivalent to `True` in many contexts.)
 
 ### All templates
 
 All template types get the default Flask objects; there is more information about
 these on the [Flask templating reference](http://flask.pocoo.org/docs/0.12/templating/).
 
-The following additional things are provided to the request context:
+The following additional things are provided to all templates:
 
 * **`arrow`**: The [Arrow](https://arrow.readthedocs.io/en/latest/) time and date library
 
-* <a name="fn-get-view"></a>**`get_view`**: Requests a [view](/api/view) of entries; it takes the following arguments:
+* <a name="get-view"></a>**`get_view`**: Requests a [view](/api/view) of entries; it takes the following arguments:
 
     * **`category`**: The top-level category to consider
 
@@ -138,6 +139,8 @@ The following additional things are provided to the request context:
         * `False`: Use a relative link if possible (default)
         * `True`: Use an absolute link
 
+* **`template`**: Information about the current [template](/api/template)
+
 As a note: while `url_for()` is available, it shouldn't ever be necessary, as all
 the other endpoints are accessible via higher-level wrappers (namely **`static`**, **`category`**, and **`entry`**).
 
@@ -155,16 +158,17 @@ Categories are rendered with whatever template is specified, defaulting to `inde
 if none was specified. The template gets the following additional objects:
 
 * **`category`**: Information about the [category](/api/category)
-* **`view`**: The default [view](/api/view) for this category. It is equivalent to calling `get_view`
+* **`view`**: The default [view](/api/view) for this category. It is equivalent to calling [`get_view`](#get-view)
     with the following arguments:
 
     * `category`: This category
     * `recurse`: `False`
     * `date`, `first`, `last`, `before`, `after`: set by the URL query parameters
 
-    <a name="pagination"></a>The intention is that `view` will be used as a basis
-    for another more specific view; for example,
-    the following will give you 10 entries at a time, with appropriate previous/next links:
+    Note that unless any limiting parameters are set, this `view` object will not have any
+    pagination on it. The intention is that `view` will be used as a basis
+    for another more specific view; for example, this example will show 10 entries at a time and
+    get `previous` and `next` as appropriate:
 
     ```jinja
     {% set paged_view = view(count=10) %}
