@@ -12,21 +12,28 @@ body {
     font-family: 'Trebuchet MS', 'Verdana', 'Liberation Sans', 'Helvetica', 'Arial', sans-serif;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Liberation Sans', 'Helvetica', 'Arial', sans-serif;
     border-bottom: solid black 1px;
 }
 
 h1 {
-    text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
     padding-left: 1ex;
 }
 
-h1 a, h2 a, h3 a, h4 a {
+h1 a,
+h2 a,
+h3 a,
+h4 a {
     text-decoration: none;
 }
 
-code, .highlight pre {
+code,
+.highlight pre {
     background: #eee;
     font-family: 'Andale Mono', 'Liberation Mono', 'Monaco', 'Lucida Console', monospace;
 }
@@ -37,8 +44,26 @@ pre {
     padding: 1ex;
 }
 
-.gallery { text-align: center; }
-.gallery img { vertical-align: middle; border: solid #888 3px; border-radius: 3px; margin: 6px;}
+.images {
+    text-align: center;
+}
+
+.images img {
+    vertical-align: middle;
+}
+
+.gallery {
+    text-align: center;
+    padding: 6px;
+    background: black;
+}
+
+.gallery img {
+    vertical-align: middle;
+    margin: 6px;
+    border: solid #777 6px;
+    border-radius: 3px;
+}
 
 #content {
     margin: 1em;
@@ -82,12 +107,29 @@ pre {
     padding: 0 1em;
 }
 
-#nav li.github:before { content: "⎋ "; }
-#nav li.cat-up:before { content: "⬆︎ "; }
-#nav li.cat-down:before { content: "➡︎ "; }
-#nav li.cat-back:before { content: "⬅︎ "; }
-#nav li.entry-prev:before { content: "← "; }
-#nav li.entry-next:before { content: "→ "; }
+#nav li.github:before {
+    content: "⎋ ";
+}
+
+#nav li.cat-up:before {
+    content: "⬆︎ ";
+}
+
+#nav li.cat-down:before {
+    content: "➡︎ ";
+}
+
+#nav li.cat-back:before {
+    content: "⬅︎ ";
+}
+
+#nav li.entry-prev:before {
+    content: "← ";
+}
+
+#nav li.entry-next:before {
+    content: "→ ";
+}
 
 #nav li {
     text-indent: -2em;
@@ -102,8 +144,13 @@ pre {
     border-bottom: solid black 1px;
 }
 
-.nav a.previous:before { content: '« '; }
-.nav a.next:after { content: ' »'; }
+.nav a.previous:before {
+    content: '« ';
+}
+
+.nav a.next:after {
+    content: ' »';
+}
 
 a {
     color: #700;

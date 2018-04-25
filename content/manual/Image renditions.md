@@ -32,6 +32,7 @@ TODO: templates may also get an `image()` function that allows image renditions 
 * **`title`**: The title text (what pops up when you hover over it, and what Lightbox shows underneath the image)
 * **`alt`**: The alternate text that is presented to text-only browsers and screen readers
 * **`link`**: Put a hyperlink on the image pointing to the given URL
+* **`div_class`**: If set, wraps the image(s) in a `<div>` with the specified `class` attribute.
 
 ### Inline image sizing
 
@@ -75,7 +76,6 @@ These options drive the behavior of image sets for use with [lightbox.js](http:/
 * **`fullsize_quality`**: The JPEG quality level to use for the popup image
 * **`fullsize_format`**: What format the popup image should be in (defaults to the original format)
 * **`fullsize_background`**: The background color to use when converting transparent images (such as .png) to non-transparent formats (such as .jpg)
-* **`container_class`**: If set, wraps the gallery in a `<div>` with the specified `class` attribute.
 
 ## Useful template examples
 

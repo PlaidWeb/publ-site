@@ -5,16 +5,16 @@
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
-            "implementation_version": "3.6.4",
+            "implementation_version": "3.6.5",
             "os_name": "posix",
             "platform_machine": "x86_64",
             "platform_python_implementation": "CPython",
-            "platform_release": "3.2.61-grsec-modsign",
-            "platform_system": "Linux",
-            "platform_version": "#1 SMP Tue Aug 12 09:58:26 UTC 2014",
-            "python_full_version": "3.6.4",
+            "platform_release": "17.5.0",
+            "platform_system": "Darwin",
+            "platform_version": "Darwin Kernel Version 17.5.0: Mon Mar  5 22:24:32 PST 2018; root:xnu-4570.51.1~1/RELEASE_X86_64",
+            "python_full_version": "3.6.5",
             "python_version": "3.6",
-            "sys_platform": "linux"
+            "sys_platform": "darwin"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -134,9 +134,9 @@
         },
         "peewee": {
             "hashes": [
-                "sha256:2dc2895d5ef6680e3f27926740e0d1679ca946d8705a5a51f7145c05c2d9556e"
+                "sha256:3f3887e705f8856d73305a8fd400d4bf25839a9560c4c16063ccc026f1f27885"
             ],
-            "version": "==3.2.5"
+            "version": "==3.3.0"
         },
         "pillow": {
             "hashes": [
@@ -188,11 +188,10 @@
         },
         "publ": {
             "hashes": [
-                "sha256:c3ff7f4569e62dbe7a92a17bdbb5d919d3e42d0003a13b8b9a97a83f9c93e197",
-                "sha256:f66de9423c07849fbf83dbb974bbbe18c4a296502b009a32888043dcc0429275",
-                "sha256:682158eaee302f7d00ca2b2d8d8fe4ef6218321e21021826ab8aba2ab4aa5123"
+                "sha256:610cfc8ac09424621f3ad20260f43a0c32d95796b03c81d7e90a451b033a98eb",
+                "sha256:8ed12e133618ed84a6da22757f366fea456da2f99ff45f4f6350947ed31cf61e"
             ],
-            "version": "==0.1.2"
+            "version": "==0.1.3"
         },
         "pycparser": {
             "hashes": [
