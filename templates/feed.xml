@@ -9,10 +9,10 @@
     <link href="{{ view.link(template='feed',absolute=True) }}" rel="self" />
     <link href="{{ category.link(template='feed',absolute=True) }}" rel="current" />
     {% if view.next %}
-    <link href="{{ view.next.link(template='feed',absolute=True) }}" rel="next-archive" />
+    <link href="{{ view.next.link(template='feed',absolute=True) }}" rel="prev-archive" />
     {% endif %}
     {% if view.previous %}
-    <link href="{{ view.previous.link(template='feed',absolute=True) }}" rel="prev-archive" />
+    <link href="{{ view.previous.link(template='feed',absolute=True) }}" rel="next-archive" />
     {% endif %}
     <link href="{{ category.link(absolute=True) }}" />
     {% if request.args %}<fh:archive />{% endif %}

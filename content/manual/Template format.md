@@ -129,6 +129,7 @@ The following additional things are provided to the request context:
     * **`order`**: What order to provide the entries in; one of:
         * **`oldest`**: Oldest-first
         * **`newest`**: Newest-first (default)
+        * **`title`**: Sorted alphabetically by title
 
 * **`static`**: Build a link to a static resource. The first argument is the path within the static
     resources directory; it also takes the following optional named arguments:
@@ -357,6 +358,8 @@ The `view` object has the following things on it:
         * **`False`**: Use a relative URL (default)
         * **`True`**: Use an absolute URL
 
+* **`first`**: The first entry in the view
+* **`last`**: The last entry in the view
 * **`newest`**: The newest entry in the view
 * **`oldest`**: The oldest entry in the view
 
