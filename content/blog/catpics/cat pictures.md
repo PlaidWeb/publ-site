@@ -5,7 +5,7 @@ Entry-ID: 249
 UUID: dcb8ca7a-2091-4d1d-aed2-6a1061064ff3
 Path-Alias: /yay-cats-wooooo
 
-![{240,240,limit_offset=7,div_class="gallery"}](
+![{240,240,count_offset=7,div_class="gallery"}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
 |1373225535557.jpg
 |1377619425569.jpg
@@ -41,7 +41,7 @@ it. Eep/yay!
 Oh, and if you want to see what the Markdown for the gallery looks like, here you go:
 
 ```markdown
-![{240,240,limit_offset=7,div_class="gallery"}](
+![{240,240,count_offset=7,div_class="gallery"}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
 |1373225535557.jpg
 |1377619425569.jpg
@@ -67,7 +67,7 @@ IMG_20130701_223914.jpg "Why are there cat photos here?"
 )
 ```
 
-The `{240,240,limit_offset=7}` in the alt text means "make thumbnails 240x240 and in a view with
+The `{240,240,count_offset=7}` in the alt text means "make thumbnails 240x240 and in a view with
 a limit, skip the first 7 entries" (this is how `DSC01272 - Version 2.jpg` is used as the poster frame
 on the index and feed), and each image is separated by a `|`. Oh, and spaces are allowed in filenames, and
 newlines are allowed in the image specification.

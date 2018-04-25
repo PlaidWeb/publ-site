@@ -6,7 +6,7 @@
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="feed" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 </head>
-<body>
+<body class="index">
 
 <h1>Publ Blog</h1>
 
@@ -29,7 +29,7 @@
 </div>
 
 <div id="content">
-    {% set content = view(entry_type_not='sidebar',limit=10) %}
+    {% set content = view(entry_type_not='sidebar',count=10) %}
 
     <div class="nav">
         {% if content.previous %}
@@ -50,7 +50,7 @@
                 {% if entry.author %}by {{entry.author}}{% endif %}
             </div>
 
-            {{entry.body(limit=1,link=entry.link)}}
+            {{entry.body(count=1,link=entry.link)}}
 
             {% if entry.more %}
             <div class="keep-reading"><a href="{{entry.link}}">Keep reading...</a></div>

@@ -69,8 +69,8 @@ These options drive the behavior of image sets for use with [lightbox.js](http:/
 * **`gallery_id`**: An identifier for the Lightbox image set
     * **Note:** If this is not set, Lightbox will not be enabled, and popup renditions will not be generated
     * **Note:** If `link` is set, this option has no effect
-* **`limit`**: How many images to allow in the image set (useful for feeds)
-* **`limit_offset`**: If `limit` is set, also skip this number of images at the beginning
+* **`count`**: How many images to allow in the image set (useful for feeds)
+* **`count_offset`**: If `count` is set, also skip this number of images at the beginning
 * **`fullsize_width`**: The maximum width for the popup image
 * **`fullsize_height`**: The maximum height for the popup image
 * **`fullsize_quality`**: The JPEG quality level to use for the popup image
@@ -128,13 +128,13 @@ Or if there's one you want to force to a specific size:
 
 ### A photo gallery
 
-With the below setup, if an entry provides an image set with a `limit_offset` parameter, e.g.
+With the below setup, if an entry provides an image set with a `count_offset` parameter, e.g.
 
 ```markdown
-![{limit_offset=2}](image1.jpg | image2.jpg | image3.jpg | image4.jpg)
+![{count_offset=2}](image1.jpg | image2.jpg | image3.jpg | image4.jpg)
 ```
 
-then on the index and feed (where there's a `limit` set) skip the first two images and thus show `image3.jpg` as the first image. This allows you to set a "poster" frame for the image set as a whole.
+then on the index and feed (where there's a `count` set) skip the first two images and thus show `image3.jpg` as the first image. This allows you to set a "poster" frame for the image set as a whole.
 
 #### `index.html`
 
@@ -146,7 +146,7 @@ gallery page.
     width=640,
     height=640,
     link=entry.link,
-    limit=1)
+    count=1)
     }}
 ```
 
@@ -175,7 +175,7 @@ This will show tiny thumbnails of the first three images of the gallery and will
 {{ entry.body(
     max_width=300,
     max_height=300,
-    limit=3,
+    count=3,
     link=entry.link,
     force_size=True)
 }}

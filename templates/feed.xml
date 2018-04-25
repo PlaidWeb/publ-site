@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-{% set view = view(recurse=True,limit=10) %}
+{% set view = view(recurse=True,count=10) %}
 
 <feed xmlns="http://www.w3.org/2005/Atom">
 
@@ -9,10 +9,10 @@
     <link href="{{ view.link(template='feed',absolute=True) }}" rel="self" />
     <link href="{{ category.link(template='feed',absolute=True) }}" rel="current" />
     {% if view.next %}
-    <link href="{{ view.next.link(template='feed',absolute=True) }}" rel="prev-archive" />
+    <link href="{{ view.next.first.archive('month','feed',absolute=True) }}" rel="prev-archive" />
     {% endif %}
     {% if view.previous %}
-    <link href="{{ view.previous.link(template='feed',absolute=True) }}" rel="next-archive" />
+    <link href="{{ view.previous.last.archive('month','feed',absolute=True) }}" rel="next-archive" />
     {% endif %}
     <link href="{{ category.link(absolute=True) }}" />
     {% if request.args %}<fh:archive />{% endif %}
@@ -31,7 +31,7 @@
                 max_height=320,
                 link=entry.link(absolute=True),
                 absolute=True,
-                limit=3)}}
+                count=3)}}
             {% if entry.more %}
             <a href="{{entry.link(absolute=True)}}">Read more...</a>
             {% endif %}
