@@ -7,9 +7,9 @@ Path-Alias: /yay-cats-wooooo
 
 ![{240,240,count_offset=7,div_class="gallery"}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
-|1373225535557.jpg
+|1373225533243.jpg
 |1377619425569.jpg
-|1383506654982.jpg
+|1383506651641.jpg
 |DSC00124.jpg "Well, I thought this would be a cute way to demonstrate..."
 |DSC00125.jpg "Image galleries!"
 |DSC00605.jpg
@@ -43,9 +43,9 @@ Oh, and if you want to see what the Markdown for the gallery looks like, here yo
 ```markdown
 ![{240,240,count_offset=7,div_class="gallery"}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
-|1373225535557.jpg
+|1373225533243.jpg
 |1377619425569.jpg
-|1383506654982.jpg
+|1383506651641.jpg
 |DSC00124.jpg "Well, I thought this would be a cute way to demonstrate..."
 |DSC00125.jpg "Image galleries!"
 |DSC00605.jpg
