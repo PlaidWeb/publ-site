@@ -59,7 +59,16 @@ an option to still resize it larger client-side, where the actual rendition will
 ### File format options
 
 * **`format`**: Select the format to display the image as (defaults to the original format)
-* **`background`**: The background color to use when converting transparent images (such as .png) to non-transparent formats (such as .jpg)
+* **`background`**: The background color to use when converting transparent images (such as .png) to non-transparent formats (such as .jpg).
+
+    This parameter can be in a number of formats:
+
+    * A [plain-text color name](https://github.com/python-pillow/Pillow/blob/5.1.0/src/PIL/ImageColor.py#L143) such as `"black"` or `"white"`
+    * A hex code such as `"#ff7733"` or `"#f73"`
+    * A tuple such as `(0,127,35)`
+
+    If you're daring you can also use any of the other color formats supported by [PIL.ImageColor](https://pillow.readthedocs.io/en/3.1.x/reference/ImageColor.html)
+
 * **`quality`**: The JPEG quality level to use for all renditions
 * **`quality_ldpi`**: The JPEG quality level to use for low-DPI renditions
 * **`quality_hdpi`**: The JPEG quality level to use for high-DPI renditions
