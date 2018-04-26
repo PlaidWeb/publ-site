@@ -26,11 +26,6 @@ TODO: templates may also get an `image()` function that allows image renditions 
 ### General configuration
 
 * **`absolute`**: Whether to produce absolute URLs
-
-### Layout
-
-* **`title`**: The title text (what pops up when you hover over it, and what Lightbox shows underneath the image)
-* **`alt`**: The alternate text that is presented to text-only browsers and screen readers
 * **`link`**: Put a hyperlink on the image pointing to the given URL
 * **`div_class`**: If set, wraps the image(s) in a `<div>` with the specified `class` attribute.
 
@@ -63,7 +58,7 @@ an option to still resize it larger client-side, where the actual rendition will
 
     This parameter can be in a number of formats:
 
-    * A [plain-text color name](https://github.com/python-pillow/Pillow/blob/5.1.0/src/PIL/ImageColor.py#L143) such as `"black"` or `"white"`
+    * A [plain-text color name](https://github.com/python-pillow/Pillow/blob/5.1.0/src/PIL/ImageColor.py#L143m) such as `"black"` or `"white"`
     * A hex code such as `"#ff7733"` or `"#f73"`
     * A tuple such as `(0,127,35)`
 

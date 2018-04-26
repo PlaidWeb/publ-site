@@ -7,23 +7,26 @@ Image rendition tests
 
 .....
 
-External image:
+## External images
 
-![](http://beesbuzz.biz/d/lewi/lewi-51.jpg)
+External image with width set
 
-External image in a link and with width set:
+![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{250} "so smol")
 
-[![](http://beesbuzz.biz/d/lewi/lewi-52.HIDPI.jpg{250} "so smol")](http://beesbuzz.biz/d/)
+External image with height set
 
-External image with width and height set:
-
-![{320,320,div_class="gallery"}](
-http://beesbuzz.biz/d/lewi/lewi-52.jpg "fit"
-| http://beesbuzz.biz/d/lewi/lewi-52.jpg{resize="fill"} "fill"
-| http://beesbuzz.biz/d/lewi/lewi-52.jpg{resize="stretch"} "stretch")
+![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{height=250} "less smol")
 
 
-Local image:
+External image with width and height set, with different scaling modes:
+
+![{320,320,div_class="gallery",gallery_id="sizing"}](
+//publ.beesbuzz.biz/static/images/IMG_0377.jpg "fit"
+| //publ.beesbuzz.biz/static/images/IMG_0377.jpg{resize="fill"} "fill"
+| //publ.beesbuzz.biz/static/images/IMG_0377.jpg{resize="stretch"} "stretch")
+
+
+## Local images
 
 ![alt text](rawr.jpg "test single image")
 
@@ -42,12 +45,15 @@ rawr.jpg "image 3"
 ![broken spec](poiu{100} foo{200})
 
 
+## Mixed-content gallery
+
 ![such gallery{255,gallery_id="rawry"}](rawr.jpg | rawr.jpg{fullscreen_width=50} "Rawr!" | rawr.jpg{100}
-| http://beesbuzz.biz/d/lewi/lewi-52.HIDPI.jpg)
+| //publ.beesbuzz.biz/static/images/IMG_0377.jpg)
 
 
+## PNG transparency
 
-transparent png:
+Base image:
 
 ![](notsmiley.png)
 
@@ -69,9 +75,9 @@ converted to jpeg, white background using hex code:
 
 converted to jpeg, cyan background, multiple qualities on the spectrum:
 
-![](
-notsmiley.png{format="jpg",background='cyan',quality=1} "quality 1"
-| notsmiley.png{format="jpg",background='cyan',quality=50} "quality 50"
-| notsmiley.png{format="jpg",background='cyan',quality=99} "quality 99"
-| notsmiley.png{format="jpg",background='cyan'} "quality default"
+![{256,background='cyan',format='jpg'}](
+notsmiley.png{quality=1} "quality 1"
+| notsmiley.png{quality=50} "quality 50"
+| notsmiley.png{quality=99} "quality 99"
+| notsmiley.png "quality default"
 )
