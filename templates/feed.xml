@@ -2,7 +2,8 @@
 
 {% set view = view(recurse=True,count=10) %}
 
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom"
+    xmlns:fh="http://purl.org/syndication/history/1.0">
 
     <title>Publ</title>
     <subtitle>A personal publishing system for the modern web</subtitle>
@@ -25,6 +26,7 @@
         <link href="{{ entry.permalink(absolute=True) }}" rel="alternate" type="text/html" />
         <updated>{{entry.last_modified.isoformat()}}</updated>
         <id>urn:uuid:{{entry.uuid}}</id>
+        <author><name>{{ entry.author if entry.author else "fluffy" }}</name></author>
         <content type="html">
 <![CDATA[
             {{entry.body(max_width=320,
@@ -37,11 +39,6 @@
             {% endif %}
 ]]>
         </content>
-        {% if entry.author %}
-        <author>
-            <name>{{entry.author}}</name>
-        </author>
-        {% endif %}
     </entry>
     {% endfor %}
 </feed>
