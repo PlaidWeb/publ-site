@@ -32,6 +32,9 @@ The `category` object provides the following:
         * **`False`**: Use a relative link (default)
         * **`True`**: Use an absolute link
 
+* **`first`**: Returns the first entry in this category; optionally takes [view arguments](/api#get-view)
+* **`last`**: Returns the last entry in this category; optionally takes [view arguments](/api#get-view)
+
 Example template code for printing out an entire directory structure (flattened):
 
 ```jinja
