@@ -66,3 +66,12 @@ converted to jpeg, red background using a tuple:
 converted to jpeg, white background using hex code:
 
 ![](notsmiley.png{format="jpg",background='#fff'})
+
+converted to jpeg, cyan background, multiple qualities on the spectrum:
+
+![](
+notsmiley.png{format="jpg",background='cyan',quality=1} "quality 1"
+| notsmiley.png{format="jpg",background='cyan',quality=50} "quality 50"
+| notsmiley.png{format="jpg",background='cyan',quality=99} "quality 99"
+| notsmiley.png{format="jpg",background='cyan'} "quality default"
+)
