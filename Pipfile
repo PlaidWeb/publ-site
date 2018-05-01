@@ -8,7 +8,7 @@ name = "pypi"
 [packages]
 
 gunicorn = "*"
-publ = ">=0.1.5"
+publ = ">=0.1.6"
 
 
 [dev-packages]

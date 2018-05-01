@@ -15,7 +15,7 @@
 
     <ul>
     {% if category.parent %}
-    <li class="cat-up"><a href="{{category.parent.link}}">Up one level</a></li>
+    <li class="cat-up"><a href="{{category.parent.link}}">{{category.parent.basename or "Main page"}}</a></li>
     {% endif %}
 
     {% for subcat in category.subcats %}
