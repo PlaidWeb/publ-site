@@ -15,3 +15,6 @@ So, presumably this means that any Flask app that's using an unpinned version of
 soon as they update their dependencies. Oops.
 
 Word on the street is that Flask-Cache is basically abandoned anyway so for now I've switched to flask_caching.
+
+Oh and investigating this I realized the caching config [wasn't actually being applied anyway](https://github.com/fluffy-critter/Publ/issues/61),
+so caching was disabled. Whoops. Anyway I've fixed that (which will be part of the next version, likely 0.1.8).
