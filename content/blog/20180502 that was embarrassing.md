@@ -3,9 +3,9 @@ Date: 2018-05-02 22:56:59-07:00
 Entry-ID: 216
 UUID: 55415435-a738-488b-b407-d140bb040c2c
 
-So, note to self: library version pinning is a good idea. I should also learn how to properly manage my version dependencies.
+So, note to self: library version pinning is a good idea. I should also learn how to properly manage my library version dependencies.
 
-Thanks to @therealtakeshi for [bringing this to my attention](https://twitter.com/therealtakeshi/status/991908218686377984)!
+Thanks to [@therealtakeshi](https://twitter.com/therealtakeshi) for [bringing this to my attention](https://twitter.com/therealtakeshi/status/991908218686377984)!
 
 .....
 
@@ -14,5 +14,4 @@ update that finally removed a deprecated namespace. Unfortunately, that namespac
 So, presumably this means that any Flask app that's using an unpinned version of Flask-Cache is going to break as
 soon as they update their dependencies. Oops.
 
-Word on the street is that Flask-Cache is basically abandoned anyway so for now I've switched to flask_caching, which
-is being actively maintained.
+Word on the street is that Flask-Cache is basically abandoned anyway so for now I've switched to flask_caching.
