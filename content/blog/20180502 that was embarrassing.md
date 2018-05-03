@@ -5,6 +5,8 @@ UUID: 55415435-a738-488b-b407-d140bb040c2c
 
 So, note to self: library version pinning is a good idea. I should also learn how to properly manage my version dependencies.
 
+Thanks to @therealtakeshi for [bringing this to my attention](https://twitter.com/therealtakeshi/status/991908218686377984)!
+
 .....
 
 The short version of what brought this site down was that, as far as I can tell, Flask-Cache pushed out an
