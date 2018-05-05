@@ -165,21 +165,25 @@ never asking a file how it should be run, but instead it's telling a single prog
 no danger of some random file being executed when it shouldn't be.
 
 Another thing that Flask does is it separates out template content from static file content. Static files aren't executable
-(at least not by Flask; Dreamhost's WSGI setup unfortunately still treats the static files the same as the `mod_cgi`/`mod_php`
-world so files that get uploaded there can still cause problems, but those aren't being run by Flask/Publ). Templates can
+by default. Templates can
 embed arbitrarily-complex code, but there's some language-level safeguarts to prevent that code from getting *too* complex,
 and templates can only run the functions that are provided to them – there's no direct access to the entire Python standard
 library, for example, and so the most dangerous functions aren't included by default. (And Publ does not provide any of
 those functions either, at least not purposefully.)
 
+> Note that when I say static files aren't executable by default, there's a huge caveat on Dreamhost; their WSGI
+> setup still allows `mod_cgi` and `mod_php` to execute on static content files, and this is likely the case for many
+> other shared hosting providers as well. So, you still need to worry about your static content directory being
+> secure from third parties.
+
 Publ itself also further separates page content (namely entries and images) from templates and static files. So if a
 `.php` file somehow ends up in the content directory, it won't matter at all – Publ just ignores it. It will never
 attempt to run code that's embedded in a content file, as it wouldn't even know *how* to (unless there's a security
 flaw in the Markdown processor, anyway, but that is incredibly unlikely). And Publ doesn't handle arbitrary user
-uploads anyway; anything that would be potentially hazardous would have been put there by the site owner.
+uploads anyway (nor is there any plan to ever support this); anything that would be potentially hazardous would have been put there by the site owner.
 
 Publ's design is basically just a fancy way of presenting static files, just like in the early days of the web. It just
-serves up the static files dynamically.
+serves up the static files dynamically. Or, as I keep on saying, Publ is like a static publishing system, only dynamic.
 
 It would of course be foolish of me to claim that Publ is 100% secure and impossible to hack. And at least on Dreamhost
 there's the very real possibility that somehow an arbitrary .php file gets injected into the static files (perhaps by an
