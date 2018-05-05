@@ -23,7 +23,7 @@ files in there (if you didn't override it with an `index.html` or, more often in
 they wanted to look at like `homepage3.html` and it would retrieve this file and whatever flaming skull .gif files it linked to (and maybe play the
 embedded `canyon.mid`) and that would be that. The web server was really just a file server that spoke HTTP.
 
-Then one day, servers started supporting things called SSIs, short for "server-side includes." This let you do some very simple templatization of your
+Then one day, servers started supporting things called SSIs, short for "[server-side includes](https://en.wikipedia.org/wiki/Server_Side_Includes)." This let you do some very simple templatization of your
 site; the server wouldn't just serve up the HTML file directly, but it would scan it for simple SSI tags that told the server to replace this tag
 with another file, so that you could, for example, have a single navigation header that was shared between all your pages, and a common
 footer or whatever.
