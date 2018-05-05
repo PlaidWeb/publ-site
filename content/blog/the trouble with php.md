@@ -28,7 +28,7 @@ site; the server wouldn't just serve up the HTML file directly, but it would sca
 with another file, so that you could, for example, have a single navigation header that was shared between all your pages, and a common
 footer or whatever.
 
-But this mechanism was still pretty limited, and so about two minutes later someone came up with the idea of the Common Gateway Interface, or CGI;
+But this mechanism was still pretty limited, and so about two minutes later someone came up with the idea of the [Common Gateway Interface](https://en.wikipedia.org/wiki/Common_Gateway_Interface), or CGI;
 this would make it so the server would see a special URL like `/cgi-bin/formail.pl` and instead of serving up the content of the file, it would
 run the file as a separate program and serve up its output.
 
@@ -55,7 +55,7 @@ standard guest books (the great-great-grandfather to comment sections) or email 
 a problem and it was already dangerous to put your email address on the public web).
 
 Back in these days people generally didn't have a database – after all, Oracle was expensive – and it didn't really matter anyway,
-if you wanted to have a complex website you'd just run some sort of static site generator (which was often written in `tcsh` or
+if you wanted to have a complex website you'd just run some sort of static site generator (which was often written in tcsh or Perl or
 something) and if you needed scheduled posts you'd do it by having a `cron` job periodically update things. So, it wasn't really
 that much of an impediment to have this setup.
 
@@ -144,10 +144,11 @@ web servers out there.
 So, I'm posting this on the Publ blog, which implies that I'm trying to draw a favorable comparison for Publ. And that's
 a perfectly fine inference to take.
 
-Publ is built on Flask, which uses the WSGI, rather than the CGI, model of execution. This is a bit more complicated
+Publ is built on Flask, which uses the [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) (Web Server Gateway Interface),
+rather than the CGI, model of execution. This is a bit more complicated
 than I want to get into but the short version is that rather than the web server running a program based on the URL,
 Publ stays running as a standalone program that the webserver sends commands to as requests come in. So, it's
-never asking a file how it should be run, instead it's telling a single program to handle a request. So, there's
+never asking a file how it should be run, but instead it's telling a single program to handle a request. So, there's
 no danger of some random file being executed when it shouldn't be.
 
 Another thing that Flask does is it separates out template content from static file content. Static files aren't executable
@@ -156,7 +157,7 @@ world so files that get uploaded there can still cause problems, but those aren'
 embed arbitrarily-complex code, but there's some language-level safeguarts to prevent that code from getting *too* complex,
 and templates can only run the functions that are provided to them – there's no direct access to the entire Python standard
 library, for example, and so the most dangerous functions aren't included by default. (And Publ does not provide any of
-those functions either.)
+those functions either, at least not purposefully.)
 
 Publ itself also further separates page content (namely entries and images) from templates and static files. So if a
 `.php` file somehow ends up in the content directory, it won't matter at all – Publ just ignores it. It will never
