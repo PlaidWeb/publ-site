@@ -18,7 +18,7 @@ So, I want to talk a bit about some of the more fundamental issues with PHP, whi
 Back when the web was first created, it was all based around serving up static files. You'd have an HTML file (usually served up from a `public_html` directory
 inside your user account on some server you
 had access to, which was sometimes named or aliased `www` but more often was just some random machine living on your university's network), and it
-acted much like a simplified version of FTP – someone would go to a URL like `http://example.com/~username/` and you'd see an ugly directory index of the
+acted much like a simplified version of FTP — someone would go to a URL like `http://example.com/~username/` and you'd see an ugly directory index of the
 files in there (if you didn't override it with an `index.html` or, more often in those days, `index.htm`), and then someone would click on the page
 they wanted to look at like `homepage3.html` and it would retrieve this file and whatever flaming skull .gif files it linked to (and maybe play the
 embedded `canyon.mid`) and that would be that. The web server was really just a file server that spoke HTTP.
@@ -46,7 +46,7 @@ Basically, the web server was no longer just a file server, but a primitive comm
 ### Early security
 
 Back when this first started, system administrators knew better than to let just *anyone* run just *any* program from the web server.
-After all, people might do silly things like make it very easy to execute arbitrary commands on the server – and since the web server
+After all, people might do silly things like make it very easy to execute arbitrary commands on the server — and since the web server
 usually ran as the root/administrator user, this would be very bad indeed.
 
 So, the usual approach was to have just a single `/cgi-bin/` directory with *trusted* programs that were vetted and installed by
@@ -54,7 +54,7 @@ the administrator, for things that they felt were important or useful for everyo
 standard guest books (the great-great-grandfather to comment sections) or email contact forms (since spam was starting to become
 a problem and it was already dangerous to put your email address on the public web).
 
-Back in these days people generally didn't have a database – after all, Oracle was expensive – and it didn't really matter anyway,
+Back in these days people generally didn't have a database — after all, Oracle was expensive — and it didn't really matter anyway,
 if you wanted to have a complex website you'd just run some sort of static site generator (which was often written in tcsh or Perl or
 something) and if you needed scheduled posts you'd do it by having a `cron` job periodically update things. So, it wasn't really
 that much of an impediment to have this setup.
@@ -148,7 +148,7 @@ There's also a few other features of PHP that lend itself to arbitrary code exec
 PCRE `e` flag, which indicated that the result of the regular expression should be executed as arbitrary code; and as PCRE
 flags are embedded into the regular expression itself, a carefully-crafted search term (on a less-carefully-crafted search page)
 could run arbitrary code. Fortunately, this has been removed in PHP 7; unfortunately, a lot of web hosts still run PHP 5
-(or older!) and so this option – which never had a single legitimate usage – is still available on the vast majority of
+(or older!) and so this option — which never had a single legitimate usage — is still available on the vast majority of
 web servers out there.
 
 
@@ -167,7 +167,7 @@ no danger of some random file being executed when it shouldn't be.
 Another thing that Flask does is it separates out template content from static file content. Static files aren't executable
 by default. Templates can
 embed arbitrarily-complex code, but there's some language-level safeguarts to prevent that code from getting *too* complex,
-and templates can only run the functions that are provided to them – there's no direct access to the entire Python standard
+and templates can only run the functions that are provided to them — there's no direct access to the entire Python standard
 library, for example, and so the most dangerous functions aren't included by default. (And Publ does not provide any of
 those functions either, at least not purposefully.)
 
@@ -177,7 +177,7 @@ those functions either, at least not purposefully.)
 > secure from third parties.
 
 Publ itself also further separates page content (namely entries and images) from templates and static files. So if a
-`.php` file somehow ends up in the content directory, it won't matter at all – Publ just ignores it. It will never
+`.php` file somehow ends up in the content directory, it won't matter at all — Publ just ignores it. It will never
 attempt to run code that's embedded in a content file, as it wouldn't even know *how* to (unless there's a security
 flaw in the Markdown processor, anyway, but that is incredibly unlikely). And Publ doesn't handle arbitrary user
 uploads anyway (nor is there any plan to ever support this); anything that would be potentially hazardous would have been put there by the site owner.
