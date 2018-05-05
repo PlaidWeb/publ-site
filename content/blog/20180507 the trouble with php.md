@@ -114,23 +114,35 @@ better hosts figured out that they could have each user run their own separate p
 run the PHP programs as the separate users, or whatever) but in general you now had the webserver running what was
 essentially executable code without the usual safeguards that a shared server would have.
 
+This also makes sites potentially vulnerable even if they aren't written in PHP themselves; for example, if your HTML
+directory permissions are set to be too permissive, and another site on the server gets hacked, that hacked site
+can potentially be used to upload a `.php` file into your site, and since `mod_php` doesn't check ownership permissions
+it now runs on your site with whatever permissions PHP would normally run in your account. (And this isn't just a
+theoretical; I've had sites hacked in this way! Now I run a nightly script that ensures that my directory permissions
+are correct.)
+
 So, long story short, one of the biggest problems with PHP isn't with the language itself, but that people can upload
 arbitrary files with a .php extension and, if that upload is visible to the webserver (which it often will be), then a
-request to view that file will execute that file.
+request to view that file will execute that file, regardless of its origin.
 
-Or, in short: the sandbox that ensured that a file was supposed to be executable was long gone.
+Or, in short: the sandbox that ensured that a file was meant to be executable was long gone.
 
 ### Other PHP features of note
 
 Granted, the erroneously-executable upload feature is only responsible for *some* of the security exploits I've
 seen in the wild. I wasn't really intending to get into language-specific issues (after all, I linked to much
 better, more-comprehensive articles about it in the introduction), but it's worth mentioning some of them
-anyway.
+anyway, as I have seen all of these be used to hack websites I've helped to clean up and secure.
 
-For example, for a very long time, the `include()` function
+For example, for a very long time, the [`include()` function](http://php.net/manual/en/function.include.php)
 would happily support any arbitrary URL and would download and run whatever URL it was given. And it was very easy for a
-PHP script to be accidentally written to allow an arbitrary user to provide such an arbitrary URL. (And this "very long time"
-includes the present day.)
+PHP script to be accidentally written to allow an arbitrary user to provide such an arbitrary URL. (And by "a very long time"
+I mean that this was the default configuration until very recently, and many hosts still configure it that way for backwards
+compatibility.)
+
+> Some might be looking at the PHP docs I linked to there and thinking, "wait, but it's not running the PHP code locally."
+> What the docs mean are that if you do like `include('http://example.com/foo.php');` it's the output of `foo.php` that gets
+> included. However, that output could in turn be more PHP code, which would then be executed locally, meaning on your server.
 
 There's also a few other features of PHP that lend itself to arbitrary code execution. One particularly *fun* one was the
 PCRE `e` flag, which indicated that the result of the regular expression should be executed as arbitrary code; and as PCRE
@@ -138,6 +150,7 @@ flags are embedded into the regular expression itself, a carefully-crafted searc
 could run arbitrary code. Fortunately, this has been removed in PHP 7; unfortunately, a lot of web hosts still run PHP 5
 (or older!) and so this option – which never had a single legitimate usage – is still available on the vast majority of
 web servers out there.
+
 
 ### How Flask (and therefore Publ) are different
 
