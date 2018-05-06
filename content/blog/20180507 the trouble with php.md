@@ -1,5 +1,5 @@
 Title: The Trouble with PHP
-Date: 2018-05-07 00:00:00-07:00
+Date: 2018-05-08 00:00:00-07:00
 Entry-ID: 246
 UUID: bed88efa-a822-4a13-acaf-77df79bb0a12
 
@@ -186,13 +186,13 @@ no danger of some random file being executed when it shouldn't be.
 "But wait," you might ask, "isn't that exactly what you were complaining about `mod_php` doing?" Well, that's true, `mod_php` works by
 always having the PHP interpreter running and able to execute whatever arbitrary code it comes across. However, in the Python
 world, simply loading a file won't just outright execute it (unless you've done something really silly); code is kept
-separate from data. Loading a URL in Flask isn't mapping to a script file that gets loaded and run, it's calling an established
-function that handles content as content.
+separate from data. Loading a URL in Flask isn't mapping to a script file that gets loaded and run, it's calling an established,
+fixed function that loads a content file and formats it through a template.
 
 Another thing that Flask does is it separates out template content from static file content. Static files aren't executable
 by default. Templates can
 embed arbitrarily-complex code, but there's some language-level safeguards to prevent that code from getting *too* complex,
-and templates can only run the functions that are provided to them — there's no direct access to the entire Python standard
+and templates can only use functions that are provided to them — there's no direct access to the entire Python standard
 library, for example, and so the most dangerous functions aren't included by default. (And Publ does not provide any of
 those functions either, at least not purposefully.)
 
