@@ -5,9 +5,10 @@ UUID: bed88efa-a822-4a13-acaf-77df79bb0a12
 
 I've had people ask me why I'm not building Publ using PHP. While [much](http://phpsadness.com)
 has been [written](https://www.quaxio.com/wtf/php.html) on this [subject](http://tracks.ranea.org/post/13908062333/php-is-not-an-acceptable-cobol) from
-a standpoint of what's wrong with the language, that isn't, to me, the core of the problem with PHP on the web.
+a standpoint of what's wrong with the language (and with which I agree quite a lot!), that isn't, to me, the core of the problem with PHP on the web.
 
-So, I want to talk a bit about some of the more fundamental issues with PHP, which actually goes back well before PHP even existed.
+So, I want to talk a bit about some of the more fundamental issues with PHP, which actually goes back well before PHP even existed and is intractibly linked with
+the way PHP applications themselves are installed and run.
 
 (I will be glossing over a lot of details here.)
 
@@ -20,8 +21,7 @@ inside your user account on some server you
 had access to, which was sometimes named or aliased `www` but more often was just some random machine living on your university's network), and it
 acted much like a simplified version of FTP — someone would go to a URL like `http://example.com/~username/` and you'd see an ugly directory index of the
 files in there (if you didn't override it with an `index.html` or, more often in those days, `index.htm`), and then someone would click on the page
-they wanted to look at like `homepage3.html` and it would retrieve this file and whatever flaming skull .gif files it linked to (and maybe play the
-embedded `canyon.mid`) and that would be that. The web server was really just a file server that spoke HTTP.
+they wanted to look at like `homepage3.html` and it would retrieve this file and whatever flaming skull .gif files it linked to in an `<img>` tag and the copy of `canyon.mid` you put an `<embed>` around, and that would be that. The web server was really just a file server that happened to speak HTTP.
 
 Then one day, servers started supporting things called SSIs, short for "[server-side includes](https://en.wikipedia.org/wiki/Server_Side_Includes)." This let you do some very simple templatization of your
 site; the server wouldn't just serve up the HTML file directly, but it would scan it for simple SSI tags that told the server to replace this tag
@@ -47,14 +47,16 @@ Basically, the web server was no longer just a file server, but a primitive comm
 
 Back when this first started, system administrators knew better than to let just *anyone* run just *any* program from the web server.
 After all, people might do silly things like make it very easy to execute arbitrary commands on the server — and since the web server
-usually ran as the root/administrator user, this would be very bad indeed.
+often ran as the root/administrator user, this would be very bad indeed. Even the admins who were savvy enough to set up a special
+sandbox user for the HTTP server would still need it to run everything from a common, trusted account that might have had
+access to common areas of the server.
 
 So, the usual approach was to have just a single `/cgi-bin/` directory with *trusted* programs that were vetted and installed by
 the administrator, for things that they felt were important or useful for everyone to have. Usually this would be things like
 standard guest books (the great-great-grandfather to comment sections) or email contact forms (since spam was starting to become
 a problem and it was already dangerous to put your email address on the public web).
 
-Back in these days people generally didn't have a database — after all, Oracle was expensive — and it didn't really matter anyway,
+Back in these days people generally didn't have a database — after all, Oracle was expensive — and it didn't really matter anyway;
 if you wanted to have a complex website you'd just run some sort of static site generator (which was often written in tcsh or Perl or
 something) and if you needed scheduled posts you'd do it by having a `cron` job periodically update things. So, it wasn't really
 that much of an impediment to have this setup.
@@ -89,9 +91,16 @@ So, another compromise happened: the CGI mechanism, which previously was set up 
 few new rules, such as "if the filename ends in `.cgi` (or other common extensions like `.pl` or `.py`)
 run it as a script." It still needed permissions to be set correctly, though,
 and by this point `suexec` was generally set up so that there were even more rigorous checks before it would run the script.
-And there were so many safety checks in place that this was still *generally* okay...
+And there were so many safety checks in place that this was still *generally* okay.
 
-### `mod_php`
+Around this time it also started becoming common to have access to a database such as mySQL or Postgresql, which allowed more flexibility
+and more two-way content. Forums became a thing. So did early blogs. Most of this software started out by having the database just for
+storage and the software would simply write out static files, but this started to have scaling problems and the webserver got busy with
+the software writing these files out *all the time*, so it became more common for the software to simply read from the database directly
+as it ran. This helped somewhat, but it also shifted the load to needing to constantly establish and shut down connections to the database,
+because every time the forum program ran it had to connect.
+
+### Hello PHP
 
 ... but then PHP happened.
 
@@ -101,27 +110,35 @@ consider `.php` as another name for `.cgi` or `.pl` or whatever, and the file ha
 start with `#!/usr/local/bin/php` and it needed to be set executable with the correct permissions and so on.
 
 But this was seen as an impediment. So `mod_php` got pretty popular, and it was very similar to `mod_cgi` except it did a few
-interesting things. The main ones we care about are:
+interesting things. One of the undeniable benefits was that it was now able to maintain the database connection persistently,
+rather than having to re-establish a connection every time a script ran. It was also generally a bit nicer for speed because
+commonly-used PHP scripts could stay in memory and not have to be re-interpreted every time a page was loaded.
 
-* It embedded the PHP interpreter into the web browser itself (rather than running it as an external program)
-* It would always treat a .php file as executable and run it (rather than the file needing to be set executable)
+But there are a couple of other implications this led to. The main ones we care about are:
 
-(It also provided a bunch of advantages like making it possible to pool database connections and so on, which is why it became
-so useful to enable in the first place.)
+* It embedded the PHP interpreter into the web server itself (rather than running it as an external program)
+* Since it was already running as an interpreter, it could always run a .php file regardless of its execution permissions — and so that's what it did
 
 There were a few different variations on this and it didn't always just run PHP from the web server (for example, some of the
 better hosts figured out that they could have each user run their own separate per-user FastCGI server that would
-run the PHP programs as the separate users, or whatever) but in general you now had the webserver running what was
+run the PHP programs as the separate users, or whatever) but regardless of the setup, you now had PHP always running
+and not having to care about the permissions of the file, meaning you now had some persistent process running what was
 essentially executable code without the usual safeguards that a shared server would have.
 
-This also makes sites potentially vulnerable even if they aren't written in PHP themselves; for example, if your HTML
-directory permissions are set to be too permissive, and another site on the server gets hacked, that hacked site
-can potentially be used to upload a `.php` file into your site, and since `mod_php` doesn't check ownership permissions
+This actually seemed like a good thing at the time, but then many, many pieces of software started allowing arbitrary
+people to upload images, and often wouldn't make sure that what was supposedly an image was *actually* an image...
+
+And so that's where we stand today.
+
+This makes sites potentially vulnerable even if they aren't written in PHP themselves; for example, if your HTML
+directory permissions are set to be slightly too permissive, and another site on the server gets hacked, that hacked site
+can potentially be used to place a `.php` file into your site, and since `mod_php` doesn't check ownership permissions
 it now runs on your site with whatever permissions PHP would normally run in your account. (And this isn't just a
 theoretical; I've had sites hacked in this way! Now I run a nightly script that ensures that my directory permissions
-are correct.)
+are correct and tells me about new `.php` files that appeared since the last check, just to be sure.)
 
-So, long story short, one of the biggest problems with PHP isn't with the language itself, but that people can upload
+So, long story short, one of the biggest problems with PHP isn't with the language itself, but with the way that PHP
+gets run; people (or bots) can find ways to upload
 arbitrary files with a .php extension and, if that upload is visible to the webserver (which it often will be), then a
 request to view that file will execute that file, regardless of its origin.
 
@@ -143,6 +160,8 @@ compatibility.)
 > Some might be looking at the PHP docs I linked to there and thinking, "wait, but it's not running the PHP code locally."
 > What the docs mean are that if you do like `include('http://example.com/foo.php');` it's the output of `foo.php` that gets
 > included. However, that output could in turn be more PHP code, which would then be executed locally, meaning on your server.
+> And PHP doesn't even care what the file extension is; doing an `include()` on `asdf.txt` or `pony.jpg` will happily execute whatever `<?php ?>`
+> blocks exist inside of it as well.
 
 There's also a few other features of PHP that lend itself to arbitrary code execution. One particularly *fun* one was the
 PCRE `e` flag, which indicated that the result of the regular expression should be executed as arbitrary code; and as PCRE
@@ -154,7 +173,7 @@ web servers out there.
 
 ### How Flask (and therefore Publ) are different
 
-So, I'm posting this on the Publ blog, which implies that I'm trying to draw a favorable comparison for Publ. And that's
+So, I'm posting this on the Publ blog, which implies that I'm trying to build a favorable comparison for Publ. And that's
 a perfectly fine inference to take.
 
 Publ is built on Flask, which uses the [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) (Web Server Gateway Interface),
@@ -164,9 +183,15 @@ Publ stays running as a standalone program that the webserver sends commands to 
 never asking a file how it should be run, but instead it's telling a single program to handle a request. So, there's
 no danger of some random file being executed when it shouldn't be.
 
+"But wait," you might ask, "isn't that exactly what you were complaining about `mod_php` doing?" Well, that's true, `mod_php` works by
+always having the PHP interpreter running and able to execute whatever arbitrary code it comes across. However, in the Python
+world, simply loading a file won't just outright execute it (unless you've done something really silly); code is kept
+separate from data. Loading a URL in Flask isn't mapping to a script file that gets loaded and run, it's calling an established
+function that handles content as content.
+
 Another thing that Flask does is it separates out template content from static file content. Static files aren't executable
 by default. Templates can
-embed arbitrarily-complex code, but there's some language-level safeguarts to prevent that code from getting *too* complex,
+embed arbitrarily-complex code, but there's some language-level safeguards to prevent that code from getting *too* complex,
 and templates can only run the functions that are provided to them — there's no direct access to the entire Python standard
 library, for example, and so the most dangerous functions aren't included by default. (And Publ does not provide any of
 those functions either, at least not purposefully.)
@@ -178,9 +203,12 @@ those functions either, at least not purposefully.)
 
 Publ itself also further separates page content (namely entries and images) from templates and static files. So if a
 `.php` file somehow ends up in the content directory, it won't matter at all — Publ just ignores it. It will never
-attempt to run code that's embedded in a content file, as it wouldn't even know *how* to (unless there's a security
-flaw in the Markdown processor, anyway, but that is incredibly unlikely). And Publ doesn't handle arbitrary user
-uploads anyway (nor is there any plan to ever support this); anything that would be potentially hazardous would have been put there by the site owner.
+attempt to run code that's embedded in a content file, nor does it even even know *how* to. And Publ doesn't handle
+arbitrary user uploads anyway (nor is there any plan to ever support this); anything that would be potentially hazardous
+would have been put there by some other means.
+
+If your directory permissions are set wrong, someone can still use someone else's exploited PHP-based site to attack
+your account and modify Publ's code.
 
 Publ's design is basically just a fancy way of presenting static files, just like in the early days of the web. It just
 serves up the static files dynamically. Or, as I keep on saying, Publ is like a static publishing system, only dynamic.
@@ -191,4 +219,4 @@ incorrect directory permission or whatever), which isn't a flaw in Publ itself b
 same. So far as I can tell there's no way to entirely disable PHP on a Dreamhost-based Publ instance, and it's really the
 ability to run PHP that makes PHP so dangerous in this world.
 
-So, I'm not going to claim that Publ is 100% secure and unhackable. But it sure has one heck of a head start.
+So, I'm not going to claim that Publ is 100% secure or unhackable. But it sure has one heck of a head start.
