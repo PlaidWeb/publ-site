@@ -142,9 +142,7 @@ are correct and tells me about new `.php` files that appeared since the last che
 So, long story short, one of the biggest problems with PHP isn't with the language itself, but with the way that PHP
 gets run; people (and their bots) can find ways to upload
 arbitrary files with a .php extension and, if that upload is visible to the webserver (which it often will be), then a
-request to view that file will execute that file, regardless of its origin.
-
-The sandbox no longer had any walls.
+request to view that file will execute that file, regardless of its origin, and from there it can do anything that your own site can.
 
 ### Other PHP features of note
 
