@@ -1,0 +1,8 @@
+@import url('../style.css');
+
+body {
+    background-image: url('{{image("/tests/rawr.jpg",width=200)}}');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top right;
+}

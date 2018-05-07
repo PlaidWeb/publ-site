@@ -209,12 +209,10 @@ For the shorthand notation, if you want to specify only height you can use `None
 
 For a full list of the configurations available, please see the manual entry on [image renditions](/image-renditions).
 
-Image files themselves are resolved in the following order:
+If the image path is absolute (i.e. starts with a `/`) it will search for the image within the content directory. Otherwise it will search in the following order:
 
 1. Relative to the entry file
 2. Relative to the entry category in the content directory
-3. Relative to the root of the content folder
-4. Relative to the root of the static folder
 
 So, for example, if content directory is `content/entries` and your entry is in
 `content/entries/photos/my vacation/vacation.md` but indicates a category of `photos`,
@@ -223,8 +221,6 @@ an image called `DSC_12345.jpg` will be looked up in the following order:
 
 1. `content/entries/photos/my vacation/DSC_12345.jpg`
 2. `content/entries/photos/DSC_12345.jpg`
-3. `content/entries/DSC_12345.jpg`
-4. `content/static/DSC_12345.jpg`
 
 Relative paths will also be interpreted; if the filename is `../IMG_4847.jpg` the
 search order will be:

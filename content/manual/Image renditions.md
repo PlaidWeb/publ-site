@@ -17,9 +17,11 @@ See the [entry format article](/entry-format#image-renditions)
 
 ### In templates
 
-Pass these in as parameters to `entry.body` and/or `entry.more`.
+Pass these in as parameters to `entry.body` and/or `entry.more` to configure
+the default values for entry images.
 
-TODO: templates may also get an `image()` function that allows image renditions to be part of the template itself (not just entries); this will likely allow rendering out both the raw URL and an `<img src>` tag as appropriate.
+The template also gets a function, `image()`, that allows the template itself to
+render images.
 
 ## Configuration values
 

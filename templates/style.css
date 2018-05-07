@@ -1,4 +1,4 @@
-@import url('pygments.default.css');
+@import url('{{static("pygments.default.css")}}');
 
 html {
     padding: 0;

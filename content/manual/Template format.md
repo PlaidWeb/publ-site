@@ -46,9 +46,6 @@ file named `feed`, `feed.html`, `feed.htm`, `feed.xml`, or `feed.json`,
 in the directories `templates/music/classical/baroque`, `templates/music/classical`, `templates/music`, and `templates`, in that order, returning the first one
 that matches. (If no templates match, it shows an error page.)
 
-> Note that because an exact filename can match, you can also use the template system to generate CSS or
-> whatever other format you like! However, this usage isn't recommended.
-
 #### Error templates
 
 A note on error templates: Error pages *generally* get handled by whatever matches the `error` template; however, in the case of a specific
@@ -57,6 +54,26 @@ render the `404` template first, before falling back to `error`. (And of course 
 
 Also, if no error template is found (i.e. there's no top-level `error.html`), Publ will provide a built-in template
 instead.
+
+#### Generating CSS files
+
+You can also use the template system to generate CSS, which is useful for having your
+CSS files reference other assets via `static()` or `image()`. This also makes it
+quite simple to create CSS templates that inherit from and override other CSS templates;
+for example, if you have the file `templates/style.css`, you can have `templates/blog/style.css`
+that looks like:
+
+```css
+@import url('../style.css');
+
+body { background: red; }
+```
+
+and then your HTML templates need only refer to the stylesheet using, for example:
+
+```html
+<link rel="stylesheet" href="style.css" />
+```
 
 ## Required templates
 
@@ -140,6 +157,34 @@ The following additional things are provided to all templates:
         * `True`: Use an absolute link
 
 * **`template`**: Information about the current [template](/api/template)
+
+* **`image`**: A function to generate an image rendition.
+
+    In addition to the [standard image rendition arguments](/image-renditions), it also
+    takes the following arguments:
+
+    * **`filename`**: The name of the image to render; this can also be passed as the
+        first positional parameter
+    * **`output_scale`**: The scaling factor for the image rendition (defaults to 1)
+
+
+    Example usage (in a CSS template):
+
+    ```css
+    body {
+        background-image: url('{{image("/background.jpg")}}');
+    }
+    ```
+
+    If the image path is absolute (i.e. starts with a `/`), it will be treated as based on the
+    site's content directory. If it is relative, it will look in the following locations, in the
+    following order:
+
+    1. Relative to the current entry's file (on entry templates)
+    2. Relative to the current entry's category within the content directory (on entry templates)
+    3. Relative to the current category within the content directory
+    4. Relative to the template file, mapped to the content directory (for example, the template
+        `templates/blog/feed.xml` will search in `content/blog`)
 
 As a note: while `url_for()` is available, it shouldn't ever be necessary, as all
 the other endpoints are accessible via higher-level wrappers (namely **`static`**, **`category`**, and **`entry`**).
