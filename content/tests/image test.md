@@ -38,12 +38,6 @@ rawr.jpg "image 3"
 
 ![alt text](rawr.jpg "test single image")
 
-![broken image](alsdkfjaks asdlfkas fsalkfj salfsa)
-
-![broken spec](foo{123[]})
-
-![broken spec](poiu{100} foo{200})
-
 
 ## Mixed-content gallery
 
@@ -81,3 +75,13 @@ notsmiley.png{quality=1} "quality 1"
 | notsmiley.png{quality=99} "quality 99"
 | notsmiley.png "quality default"
 )
+
+## Broken/parse failures
+
+![broken image](missingfile.jpg)
+
+![broken spec](foo{123[]})
+
+![broken spec](poiu{100} foo{200})
+
+![broken imageset](rawr.jpg rawr.jpg)
