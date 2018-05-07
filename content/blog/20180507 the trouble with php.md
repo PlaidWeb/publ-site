@@ -97,27 +97,29 @@ Around this time it also started becoming common to have access to a database su
 and more two-way content. Forums became a thing. So did early blogs. Most of this software started out by having the database just for
 storage and the software would simply write out static files, but this started to have scaling problems and the webserver got busy with
 the software writing these files out *all the time*, so it became more common for the software to simply read from the database directly
-as it ran. This helped somewhat, but it also shifted the load to needing to constantly establish and shut down connections to the database,
+as it ran. This helped somewhat, but it also shifted a significant amount of load over to constantly
+establishing short-lived database connections,
 because every time the forum program ran it had to connect.
 
 ### Hello PHP
 
-... but then PHP happened.
+At some point, PHP started to get popular.
 
 PHP itself was originally intended as another way of adding server-side scripting into HTML files; it was in effect a templating
-system for HTML. In the earliest days it was pretty much just treated as another scripting language. The server would be configured to
-consider `.php` as another name for `.cgi` or `.pl` or whatever, and the file had to be set up like a proper script; it needed to
-start with `#!/usr/local/bin/php` and it needed to be set executable with the correct permissions and so on.
+system for HTML. In the earliest days it was often just treated as another scripting language; the server would be configured to
+consider `.php` as another name for `.cgi` or `.pl` or whatever, and the file would still be run
+as a script. In some cases it even needed to
+start with `#!/usr/local/bin/php` and it needed to be set executable with the correct permissions and so on (although this setup was uncommon).
 
-But this was seen as an impediment. So `mod_php` got pretty popular, and it was very similar to `mod_cgi` except it did a few
+However, most sites used `mod_php`, a server extension that allowed the web server to handle PHP files directly. In many respects it was very similar to `mod_cgi`, except it did a few
 interesting things. One of the undeniable benefits was that it was now able to maintain the database connection persistently,
 rather than having to re-establish a connection every time a script ran. It was also generally a bit nicer for speed because
 commonly-used PHP scripts could stay in memory and not have to be re-interpreted every time a page was loaded.
 
-But there are a couple of other implications this led to. The main ones we care about are:
+But there were a couple of other implications this led to. In particular:
 
 * It embedded the PHP interpreter into the web server itself (rather than running it as an external program)
-* Since it was already running as an interpreter, it could always run a .php file regardless of its execution permissions — and so that's what it did
+* Since it was no longer shelling out to an external program, it could always run a .php file regardless of its execution permissions — and so that's what it did
 
 There were a few different variations on this and it didn't always just run PHP from the web server (for example, some of the
 better hosts figured out that they could have each user run their own separate per-user FastCGI server that would
@@ -138,11 +140,11 @@ theoretical; I've had sites hacked in this way! Now I run a nightly script that 
 are correct and tells me about new `.php` files that appeared since the last check, just to be sure.)
 
 So, long story short, one of the biggest problems with PHP isn't with the language itself, but with the way that PHP
-gets run; people (or bots) can find ways to upload
+gets run; people (and their bots) can find ways to upload
 arbitrary files with a .php extension and, if that upload is visible to the webserver (which it often will be), then a
 request to view that file will execute that file, regardless of its origin.
 
-Or, in short: the sandbox that ensured that a file was meant to be executable was long gone.
+The sandbox no longer had any walls.
 
 ### Other PHP features of note
 
@@ -151,7 +153,7 @@ seen in the wild. I wasn't really intending to get into language-specific issues
 better, more-comprehensive articles about it in the introduction), but it's worth mentioning some of them
 anyway, as I have seen all of these be used to hack websites I've helped to clean up and secure.
 
-For example, for a very long time, the [`include()` function](http://php.net/manual/en/function.include.php)
+The biggest one: For a very long time, the [`include()` function](http://php.net/manual/en/function.include.php)
 would happily support any arbitrary URL and would download and run whatever URL it was given. And it was very easy for a
 PHP script to be accidentally written to allow an arbitrary user to provide such an arbitrary URL. (And by "a very long time"
 I mean that this was the default configuration until very recently, and many hosts still configure it that way for backwards
@@ -185,35 +187,33 @@ no danger of some random file being executed when it shouldn't be.
 
 "But wait," you might ask, "isn't that exactly what you were complaining about `mod_php` doing?" Well, that's true, `mod_php` works by
 always having the PHP interpreter running and able to execute whatever arbitrary code it comes across. However, in the Python
-world, simply loading a file won't just outright execute it (unless you've done something really silly); code is kept
+world, code is kept
 separate from data. Loading a URL in Flask isn't mapping to a script file that gets loaded and run, it's calling an established,
 fixed function that loads a content file and formats it through a template.
 
-Another thing that Flask does is it separates out template content from static file content. Static files aren't executable
+Another thing that Flask does is it separates out template content (which is executable) from static file content. Static files aren't executable
 by default. Templates can
-embed arbitrarily-complex code, but there's some language-level safeguards to prevent that code from getting *too* complex,
-and templates can only use functions that are provided to them — there's no direct access to the entire Python standard
+embed arbitrarily-complex code, but they can only use functions that are provided to them — there's no direct access to the entire Python standard
 library, for example, and so the most dangerous functions aren't included by default. (And Publ does not provide any of
 those functions either, at least not purposefully.)
 
-> Note that when I say static files aren't executable by default, there's a huge caveat on Dreamhost; their WSGI
-> setup still allows `mod_cgi` and `mod_php` to execute on static content files, and this is likely the case for many
-> other shared hosting providers as well. So, you still need to worry about your static content directory being
-> secure from third parties.
+> ==Important note:== When I say static files aren't executable by default, this simply refers to how Publ sees them. If your site is configured to serve up static files where PHP or CGI scripts are executable, then any such scripts that end up in your static files will indeed be executable. This is going to be the case on pretty much any shared hosting provider, for example.
+>
+> Also, regardless of the server setup, Publ can't magically protect your content or template directory from outright misconfigurations with permissions. Even classic static sites need to be secured from third-party/unauthorized access.
 
-Publ itself also further separates page content (namely entries and images) from templates and static files. So if a
+Publ itself also only knows how to handle a handful of content formats — Markdown, HTML, and images — and ignores everything else. So if a
 `.php` file somehow ends up in the content directory, it won't matter at all — Publ just ignores it. It will never
 attempt to run code that's embedded in a content file, nor does it even even know *how* to. And Publ doesn't handle
 arbitrary user uploads anyway (nor is there any plan to ever support this); anything that would be potentially hazardous
 would have been put there by some other means.
 
-If your directory permissions are set wrong, someone can still use someone else's exploited PHP-based site to attack
-your account and modify Publ's code.
-
 Publ's design is basically just a fancy way of presenting static files, just like in the early days of the web. It just
 serves up the static files dynamically. Or, as I keep on saying, Publ is like a static publishing system, only dynamic.
 
-It would of course be foolish of me to claim that Publ is 100% secure and impossible to hack. And at least on Dreamhost
+(Of course, if your directory permissions are set wrong, someone can still use someone else's exploited PHP-based site to attack
+your account and modify Publ's code. But there's nothing that Flask or Publ can do to prevent that, and this is just a general security problem that impacts everyone regardless of what they're running.)
+
+It would of course be foolish of me to claim that Publ itself is 100% secure and impossible to hack. And at least on Dreamhost
 there's the very real possibility that somehow an arbitrary .php file gets injected into the static files (perhaps by an
 incorrect directory permission or whatever), which isn't a flaw in Publ itself but the end result (a hacked site) is the
 same. So far as I can tell there's no way to entirely disable PHP on a Dreamhost-based Publ instance, and it's really the
