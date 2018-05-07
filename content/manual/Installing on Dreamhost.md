@@ -8,6 +8,8 @@ A quick guide to getting Publ running on Dreamhost's Passenger environment
 
 .....
 
+==Huge note:== This really, really needs to be rewritten, now that Publ has been added to PyPI as a library.
+
 Dreamhost is kinda-sorta straightforward, once you have a python3 environment working. However, setting up python3 isn't
 quite obvious, and [Dreamhost's own instructions](https://help.dreamhost.com/hc/en-us/articles/115000702772-Installing-a-custom-version-of-Python-3)
 are incomplete and don't include [`pipenv`](https://docs.pipenv.org) (which, to be fair, is a fairly recent addition to the ecosystem).
@@ -125,13 +127,9 @@ configure static content on its own subdomain. The way to do that would be by se
 * Enable HTTPS, CDN, yadda yadda yadda
 * Web directory: pointed to the `static_directory` value specified in `config.py`
 
-And then in the `config.py` you'd set `static_path` to point to your CDN domain (`static.example.com` in this example).
-
-TODO: Fix this up when image renditions are an actual thing ([issue 9](http://github.com/fluffy-critter/Publ/issues/9))
+And then in the configuration in `main.py` you'd set `static_path` to point to your CDN domain (`static.example.com` in this example).
 
 ## Upgrading the code
 
 When code updates, you can simply do a `git pull && ./setup.sh`, which ensures that all the library dependencies are updated as well.
-Technically library dependencies will update no matter what but that might take a while which might make your app get killed
-on startup until it manages to finish. So it's better to run `./setup.sh` so that the dependencies update before the app tries to restart.
 

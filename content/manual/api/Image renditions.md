@@ -51,8 +51,6 @@ render images.
 an option to still resize it larger client-side, where the actual rendition will be the native size but the
 `<img>` tag gets the expanded width and height.)
 
-**Note:** `fill` and `stretch` modes are [not yet implemented](https://github.com/fluffy-critter/Publ/issues/9).
-
 ### File format options
 
 * **`format`**: Select the format to display the image as (defaults to the original format)
