@@ -1,16 +1,12 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 gunicorn = "*"
 publ = ">=0.1.9"
-
+requests = "*"
 
 [dev-packages]
-
 pylint = "*"
