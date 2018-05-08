@@ -90,7 +90,7 @@ templates; the following headers are what Publ itself uses:
 
     **Default value:** the entry title if not present, or to the entry's filename (minus extension) if there's no title.
 
-* **`Redirect-URL`**: A URL to redirect this entry to
+* **`Redirect-To`**: A URL to redirect this entry to
 
     This is useful if you want to remove an entry and redirect to another entry, or if
     you want an entry to be a placeholder for some external content (e.g. when the entry
