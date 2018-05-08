@@ -238,3 +238,18 @@ things work in a hopefully-intuitive manner.
 Of course, external absolute URLs (e.g. `http://example.com/image.jpg`) are still allowed, although they are
 more limited in what you can do with them (for example, scaling will be done client-side and cropping
 options will not work). Also, keep in mind that URLs that are not under your control may change without notice.
+
+### Static file links
+
+Starting a link target with `@` acts as a shorthand for linking to a static file. For example,
+
+```markdown
+[here is a file](@files/file.txt)
+```
+
+will link to the file `files/file.txt` within the static files for the site. This is more portable than linking
+to the static files directly, e.g. `/static/files/file.txt`.
+
+This also applies to images, although keep in mind that these images will be treated as external images rather
+than as renditions.
+

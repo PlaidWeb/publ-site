@@ -25,6 +25,10 @@ External image with width and height set, with different scaling modes:
 | //publ.beesbuzz.biz/static/images/IMG_0377.jpg{resize="fill"} "fill"
 | //publ.beesbuzz.biz/static/images/IMG_0377.jpg{resize="stretch"} "stretch")
 
+Image using static path
+
+![{640}](@images/IMG_0377.jpg)
+
 
 ## Local images
 
