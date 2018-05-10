@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+{% set content = view(entry_type_not='sidebar',count=10) %}
 <html>
 <head>
-    <title>Publ {{category.basename.title()}}</title>
+    <title>Publ {{category.basename.title()}}
+    {% if view.range %} | {{ content.range }} {% endif %}</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="feed" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
@@ -29,7 +31,6 @@
 </div>
 
 <div id="content">
-    {% set content = view(entry_type_not='sidebar',count=10) %}
 
     <div class="nav">
         {% if content.previous %}
@@ -61,11 +62,11 @@
 
     <div class="nav">
         {% if content.previous %}
-        <a href="{{content.previous.link}}" class="previous">Previous page</a>
+        <a href="{{content.previous.link}}" class="previous">{{content.previous.title or 'Previous page'}}</a>
         {% endif %}
 
         {% if content.next %}
-        <a href="{{content.next.link}}" class="next">Next page</a>
+        <a href="{{content.next.link}}" class="next">{{content.next.title or 'Next page'}}</a>
         {% endif %}
     </div>
 

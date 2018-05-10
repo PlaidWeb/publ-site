@@ -104,50 +104,7 @@ The following additional things are provided to all templates:
 
 * **`arrow`**: The [Arrow](https://arrow.readthedocs.io/en/latest/) time and date library
 
-* <a name="get-view"></a>**`get_view`**: Requests a [view](/api/view) of entries; it takes the following arguments:
-
-    * **`category`**: The top-level category to consider
-
-        **Note:** If this is left unspecified, it will always include entries from the entire site.
-
-    * **`recurse`**: Whether to include subcategories
-
-        * `True`: Include subcategories
-        * `False`: Do not include subcategories (default)
-
-    * **`future`**: Whether to include entries from the future
-
-        * `True`: Include future entries
-        * `False`: Do not include future entries (default)
-
-    * **`date`**: Limit to entries based on a specified date; this can be of the format `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`.
-    * **`count`**: Limit to a maximum number of entries.
-
-        If `date` is set, `count` has no effect.
-
-    * **`entry_type`**: Limit to entries with a specific [`Entry-Type`](/entry-format#entry-type) header
-    * **`entry_type_not`**: Limit to entries which do NOT match a specific entry type
-
-        These can be a single string, or it can be an array of strings. Note that
-        these are case-sensitive (i.e. `"PaGe"` and `"pAgE"` are two different types).
-
-        * `get_view(entry_type='page')` - only get entries of type "page"
-        * `get_view(entry_type_not='page')` - only get entries which AREN'T of type "page"
-        * `get_view(entry_type=['news','comic'])` - get entries which are of type 'news' or 'comic'
-        * `get_view(entry_type_not=['news','comic'])` - get entries of all types except 'news' or 'comic'
-
-        Mixing `entry_type` and `entry_type_not` results in undefined behavior, not that it makes
-        any sense to do that anyway.
-
-    * **`last`**: Limit the view such to none newer than the specified entry (by id or object)
-    * **`first`**: Limit the view such to none older than the specified entry
-    * **`before`**: Limit the view to only entries which came before the specified entry
-    * **`after`**: Limit the view to only entries which came after the specified entry
-
-    * **`order`**: What order to provide the entries in; one of:
-        * **`oldest`**: Oldest-first
-        * **`newest`**: Newest-first (default)
-        * **`title`**: Sorted alphabetically by title
+* **`get_view`**: Requests a [view](/api/view) of entries; see the [view documentation](/api/view#subviews) for the supported arguments.
 
 * **`static`**: Build a link to a static resource. The first argument is the path within the static
     resources directory; it also takes the following optional named arguments:
@@ -203,7 +160,7 @@ Categories are rendered with whatever template is specified, defaulting to `inde
 if none was specified. The template gets the following additional objects:
 
 * **`category`**: Information about the [category](/api/category)
-* **`view`**: The default [view](/api/view) for this category. It is equivalent to calling [`get_view`](#get-view)
+* **`view`**: The default [view](/api/view) for this category. It is equivalent to calling `get_view()`
     with the following arguments:
 
     * `category`: This category
