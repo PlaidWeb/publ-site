@@ -167,3 +167,6 @@ a:hover {
 a:active {
     color: #f77;
 }
+
+.error { color: #f00; background-color: yellow; }
+.error code { color: #900 ; background-color: #ff3; }
