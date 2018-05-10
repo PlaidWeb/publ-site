@@ -69,7 +69,7 @@ Right now there's a [very basic Dreamhost HOWTO](/dreamhost)
 but there's definitely a lot of work to be done in the documentation area. It's also fairly straightforward to
 deploy on [Heroku](http://heroku.com).
 
-The [files for this site](http://github.com/fluffy-critter/publ.beesbuzz.biz) are already configured for
+The [files for this site](https://github.com/fluffy-critter/publ.beesbuzz.biz) are already configured for
 deployment on both Dreamhost and Heroku. So, you can use it as a reference point already.
 
 ## Design
@@ -79,7 +79,7 @@ deployment on both Dreamhost and Heroku. So, you can use it as a reference point
 Publ is written in Python (I'm specifically developing against 3.6, although it should be compatible with
 any version past 3.4, and with some work could probably work with 2.something),
 using the [Flask](http://flask.pocoo.org) framework, and the [Peewee ORM](https://peewee.readthedocs.io). For Markdown
-processing it's using [Misaka](http://misaka.61924.nl).
+processing it's using [Misaka](http://misaka.61924.nl), and for time and date handling it uses [Arrow](https://arrow.readthedocs.io).
 
 #### Why Flask (and not web.py/pyramids/...)?
 
@@ -119,8 +119,9 @@ While I wouldn't go so far as to say that PHP-the-language is irredeemably bad,
 there are some
 [pretty fundamental problems with its security model](246) that make it somewhat
 undesirable. Also, setting up a flexible
-request routing mechanism is way too varied and error-prone with PHP, and I haven't found any
-PHP templating systems I'm happy with.
+request routing mechanism is way too varied and error-prone with the PHP ecosystem
+(`.htaccess` on Apache, fiddly `location` rules on nginx, etc.), and I haven't found any
+MVC-style routing/templating systems I'm happy with.
 
 As far as other languages go, one of my primary concerns was making it deployable
 in as many places as possible, ideally being runnable on Dreamhost shared hosting,
