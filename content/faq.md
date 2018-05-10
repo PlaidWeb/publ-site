@@ -50,7 +50,7 @@ content files, and uses that to present them in a way appropriate to the content
 in question.
 
 When I write a post for this I'm writing it in [my text editor of choice](http://sublimetext.com)
-and checking it into the main software's [GitHub repository](http://github.com/fluffy-critter/Publ) and pushing it to the server. But someone else might want
+and checking it into [the website's GitHub repository](http://github.com/fluffy-critter/publ.beesbuzz.biz) and pushing it to the server. But someone else might want
 to upload the files manually via FTP, and someone else might want to use an online
 file editor like [codeanywhere](https://codeanywhere.com) or map their server's content directory with [sshfs](https://en.wikipedia.org/wiki/SSHFS) or any other number of things that suit their
 particular needs best. And of course a single mechanism might not even be useful
@@ -111,13 +111,13 @@ really found any need for that.
 
 Again, this decision isn't set in stone.
 
-### Why didn't you use PHP/Haskell/Go/Ruby/...?
+### Why didn't you use PHP/Haskell/Go/Ruby/Rust/...?
 
 I tend to dislike PHP for many reasons, both with the language itself and with
 its ecosystem.
 While I wouldn't go so far as to say that PHP-the-language is irredeemably bad,
 there are some
-pretty fundamental problems with its security model that make it somewhat
+[pretty fundamental problems with its security model](246) that make it somewhat
 undesirable. Also, setting up a flexible
 request routing mechanism is way too varied and error-prone with PHP, and I haven't found any
 PHP templating systems I'm happy with.
@@ -170,20 +170,16 @@ and ActivityPub is focused more on doing instant push updates for short-form con
 
 However, I do have plans for supporting private/friends-only content, and
 ActivityPub fits nicely into that world! I had spent a lot of time trying to
-design mechanisms of doing something similar with OAuth/OpenID authentication
+design mechanisms for something similar with OAuth/OpenID authentication
 tied to single-subscriber Atom feeds, but ActivityPub is much more suited to
 that sort of thing, so that might be the direction I go in there. (I still prefer
 the OpenID model I'd worked out in my head, but given that one of my main goals
 is open standards interoperability, and everyone's focusing on ActivityPub these
 days, it seems silly to not at least consider ActivityPub!)
 
-### Okay, so, how can I help?
+## Okay, so, how can I help?
 
 Glad you asked!
-
-Currently my focus is on getting the core functionality in place. The main thing
-left to do at this moment is image renditions, which is incredibly important to
-me and I have a very specific design in mind.
 
 Where I could use the most help right now:
 
