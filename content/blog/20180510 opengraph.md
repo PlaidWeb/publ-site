@@ -7,3 +7,5 @@ I have now implemented the basic [OpenGraph API](http://ogp.me) to Publ, so now 
 So in theory when this entry gets autoposted to Twitter, this first paragraph should appear, as should the below image:
 
 ![](/tests/rawr.jpg)
+
+Anyway that's what's new in v0.1.11 (as well as a bunch of internal refactoring to support this addition).
