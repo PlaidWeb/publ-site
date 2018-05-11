@@ -3,6 +3,11 @@
 <head>
     <title>{{ entry.title }}</title>
     <link rel="stylesheet" href="style.css">
+
+    {{ entry.card(width=480,height=360,count=4,resize="fill") }}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@fluffy">
+
 </head>
 <body>
 <h1><a href="{{category.link}}">Publ: {{ entry.title }}</a></h1>

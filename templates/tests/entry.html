@@ -4,6 +4,11 @@
     <title>{{ entry.title }}</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="{{ static('lightbox/css/lightbox.min.css') }}">
+
+    {{ entry.card(width=480,height=360,count=4,resize="fill") }}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@fluffy" />
+
 </head>
 <body class="entry">
 <h1><a href="{{category.link}}">Publ: {{ entry.title }}</a></h1>

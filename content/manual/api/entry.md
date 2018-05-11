@@ -16,6 +16,25 @@ The `entry` object has the following methods/properties:
     These properties can be used directly, or they can take parameters,
     for example for [image renditions](/image-renditions).
 
+* **`card`**: `<meta>` tags for an OpenGraph card
+
+    Like `body` and `more`, this takes arguments that affect the image renditions;
+    you will almost certainly want to set `width`, `height`, and `count`.
+
+    This will generate an appropriate `og:title`, `og:url`, `og:image`, and `og:description`
+    tags based on the entry's permalink and text. At present, `og:description` is the
+    first paragraph of text and there will be `og:image` tags for up to the first `count` images.
+
+    If you use this, you should also provide your own `og:type` tag, e.g.
+
+    ```html
+    {{ entry.card(width=640,height=350,resize="fill",count=4) }}
+    <meta property="og:type" content="website" />
+    ```
+
+    Please see the [OpenGraph documentation](http://ogp.me/) for more information.
+
+
 * **`date`**: The creation date and time of the entry
 
 * **`permalink`**: A permanent link to the entry

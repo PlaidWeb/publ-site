@@ -250,6 +250,6 @@ Starting a link target with `@` acts as a shorthand for linking to a static file
 will link to the file `files/file.txt` within the static files for the site. This is more portable than linking
 to the static files directly, e.g. `/static/files/file.txt`.
 
-This also applies to images, although keep in mind that these images will be treated as external images rather
-than as renditions.
-
+This also applies to images (e.g. `![](@foo.jpg)` will display the image `/static/foo.jpg`), although it will be
+treated the same way as an external image; if you want the image to be scaled to save bandwidth, it is better to
+put it into your content tree instead.
