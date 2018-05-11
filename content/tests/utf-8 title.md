@@ -1,5 +1,6 @@
-Title: =?utf-8?q?UTF-8_title_rewriting_=F0=9F=98=80?=
-Date: 2018-05-10 19:10:33-07:00
+Title: UTF-8 title rewriting 😀
+UUID: 45ba080d-5063-4787-9f3f-627717862e34
+Date: 2018-05-10 23:36:44-07:00
 Entry-ID: 149
-UUID: 2634a71d-e6c1-48de-9c6c-26ab467f8624
 
+payload goes here
