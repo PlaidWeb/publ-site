@@ -19,11 +19,13 @@ The `view` object has the following things on it:
 * **`spec`**: The view's specification (category, count, date, etc.)
 
     This is in the form of the arguments that would be passed to `get_view` to
-    obtain this view.
+    obtain this view. For example, you can use `'date' in view.spec` to determine
+    whether a view is date-based.
 
-* **`previous`**: The previous page for this view
-
-* **`next`**: The next page for this view
+* **`previous`**: The previous page for this view, based on the current sort order
+* **`next`**: The next page for this view, based on the current sort order
+* **`older`**: The previous page for this view, going back in time
+* **`newer`**: The next page for this view, going forward in time
 
 * **`link`**: The link to this view; optionally takes the following arguments:
 
