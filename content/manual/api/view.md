@@ -12,6 +12,8 @@ The `view` object has the following things on it:
 
 * **`entries`**: A list of all of the entries that are visible in this view
 
+* **`count`**: The number of visible entries in the view
+
 * **`last_modified`**: A last-modified time for this view (useful for feeds)
 
 * **`spec`**: The view's specification (category, count, date, etc.)
