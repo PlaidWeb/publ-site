@@ -2,7 +2,7 @@
 {% set content = view(entry_type_not='sidebar',count=10) %}
 <html>
 <head>
-    <title>Publ {{category.basename.title()}}
+    <title>Publ: {{category.name}}
     {% if view.range %} | {{ content.range }} {% endif %}</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="feed" />
@@ -10,7 +10,7 @@
 </head>
 <body class="index">
 
-<h1>Publ Blog</h1>
+<h1>Publ: {{category.name}}</h1>
 
 <div id="nav" class="sidebar">
 
@@ -18,11 +18,11 @@
 
     <ul>
     {% if category.parent %}
-    <li class="cat-up"><a href="{{category.parent.link}}">{{category.parent.basename or "Main page"}}</a></li>
+    <li class="cat-up"><a href="{{category.parent.link}}">{{category.parent.name or "Main page"}}</a></li>
     {% endif %}
 
     {% for subcat in category.subcats %}
-    <li class="cat-down"><a href="{{subcat.link}}">{{subcat.basename}}</a></li>
+    <li class="cat-down"><a href="{{subcat.link}}">{{subcat.name}}</a></li>
     {% endfor %}
 
     <li class="github"><a href="http://github.com/fluffy-critter/Publ">Github</a></li>

@@ -18,6 +18,7 @@ h3,
 h4 {
     font-family: 'Liberation Sans', 'Helvetica', 'Arial', sans-serif;
     border-bottom: solid black 1px;
+    clear: left;
 }
 
 h1 {
@@ -170,3 +171,18 @@ a:active {
 
 .error { color: #f00; background-color: yellow; }
 .error code { color: #900 ; background-color: #ff3; }
+
+.description {
+    margin-left: 5em;
+    padding: 1ex;
+    font-size: small;
+    font-style: italic;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border: dashed black 1px;
+    background: #eee;
+}
+.description p:first-child {
+    margin: 0; padding: 0;
+}

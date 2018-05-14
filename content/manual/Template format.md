@@ -1,7 +1,6 @@
 Title: Template API
 Path-Alias: /template-format
 Path-Alias: /template-api
-Path-Alias: /api
 Date: 2018-04-02 18:03:58-07:00
 Entry-ID: 324
 UUID: cbb977df-7902-4621-af9b-36ab44401748

@@ -7,7 +7,11 @@
 </head>
 <body>
 
-<h1>Publ: {{category.basename and category.basename.title() or "Yet another site generator"}}</h1>
+<h1>Publ: {{category.name and category.name.title() or "Yet another site generator"}}</h1>
+
+{% if category.description %}
+<div class="description">{{category.description}}</div>
+{% endif %}
 
 <div id="nav" class="sidebar">
 
@@ -15,11 +19,11 @@
 
     <ul>
     {% if category.parent %}
-    <li class="cat-up"><a href="{{category.parent.link}}">{{category.parent.basename or "Main page"}}</a></li>
+    <li class="cat-up"><a href="{{category.parent.link}}">{{category.parent.name or "Main page"}}</a></li>
     {% endif %}
 
     {% for subcat in category.subcats %}
-    <li class="cat-down"><a href="{{subcat.link}}">{{subcat.basename}}</a></li>
+    <li class="cat-down"><a href="{{subcat.link}}">{{subcat.name}}</a></li>
     {% endfor %}
 
     <li class="github"><a href="http://github.com/fluffy-critter/Publ">Github</a></li>

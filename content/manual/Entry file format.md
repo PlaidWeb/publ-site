@@ -117,6 +117,15 @@ templates; the following headers are what Publ itself uses:
     however, it can potentially override any other kind of URL, including URLs for
     category views and non-canonical entry URLs.
 
+    You can also optionally specify a category template to use, by writing it after the aliased path:
+
+    ```
+    Path-Alias: /blog/0012345.php archive
+    ```
+
+    which will cause the legacy URL to remap to showing this view within the category using the `archive` template.
+    If you would like to just go to the category without any specific template, use `index`.
+
 * **`Path-Unalias`**: Remove an old path alias
 
     If you accidentally set a path-alias or want to remove it, rather than just deleting

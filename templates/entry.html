@@ -17,7 +17,7 @@
     <h2>Navigation</h2>
 
     <ul>
-    <li class="cat-back"><a href="{{category.link}}">Back to {{category.basename or "main site"}}</a></li>
+    <li class="cat-back"><a href="{{category.link}}">Back to {{category.name or "main site"}}</a></li>
 
     {% if entry.previous %}
     <li class="entry-prev"><a href="{{entry.previous.link}}">Previous entry: {{entry.previous.title}}</a></li>

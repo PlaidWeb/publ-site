@@ -15,14 +15,14 @@
 
 </head>
 <body class="entry">
-<h1><a href="{{category.link}}">Publ: {{category.basename.title() }}</a></h1>
+<h1><a href="{{category.link}}">Publ: {{category.name }}</a></h1>
 
 <div id="nav" class="sidebar">
 
     <h2>Navigation</h2>
 
     <ul>
-    <li class="cat-back"><a href="{{category.link}}">Back to {{category.basename}}</a></li>
+    <li class="cat-back"><a href="{{category.link}}">Back to {{category.name}}</a></li>
 
     {% if entry.previous %}
     <li class="entry-prev"><a href="{{entry.previous.link}}">Previous entry: {{entry.previous.title}}</a></li>
