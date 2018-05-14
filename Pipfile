@@ -8,7 +8,7 @@ name = "pypi"
 [packages]
 
 gunicorn = "*"
-publ = ">=0.1.12"
+publ = ">=0.1.13"
 requests = "*"
 
 
