@@ -115,23 +115,36 @@ The following additional things are provided to all templates:
 
 * **`template`**: Information about the current [template](/api/template)
 
-* **`image`**: A function to generate an image rendition.
+* **`image`**: Load an image
 
-    In addition to the [standard image rendition arguments](/image-renditions), it also
-    takes the following arguments:
+    The resulting image works as a URL directly, or you can pass in arguments in the format
+    `(output_scale, [arguments])`, which gets a URL rendered with the specified output scaling and
+    [image rendition arguments](/image-renditions).  The default is to use an `output_scale` of 1.
 
-    * **`filename`**: The name of the image to render; this can also be passed as the
-        first positional parameter
-    * **`output_scale`**: The scaling factor for the image rendition (defaults to 1)
+    It also has the following function on it:
 
+    * **`get_img_tag([arguments])`**: Makes an `<img>` tag with the provided [image rendition arguments](/image-renditions)
 
-    Example usage (in a CSS template):
+    Example usage in HTML templates:
+
+    ```jinja
+    <div style="background-color: {{ image('/layout/image.png') }}"> ... </div>
+
+    {{ image('http://example.com/external-image.jpg').get_img_tag(link='http://example.com') }}
+    ```
+
+    and in a CSS template:
 
     ```css
     body {
-        background-image: url('{{image("/background.jpg")}}');
+        background-image: url('{{image("/background.jpg")(width=320,height=320)}}');
     }
     ```
+
+    Like the [entry Markdown tags](/entry-format#image-renditions), you can use a `@` prefix to indicate that the
+    image comes from the static files (rather than from the template's search path), and external URLs work as well.
+
+    Unlike the entry Markdown tags, you have to specify width and height by name.
 
     If the image path is absolute (i.e. starts with a `/`), it will be treated as based on the
     site's content directory. If it is relative, it will look in the following locations, in the
@@ -143,8 +156,19 @@ The following additional things are provided to all templates:
     4. Relative to the template file, mapped to the content directory (for example, the template
         `templates/blog/feed.xml` will search in `content/blog`)
 
-As a note: while `url_for()` is available, it shouldn't ever be necessary, as all
-the other endpoints are accessible via higher-level wrappers (namely **`static`**, **`category`**, and **`entry`**).
+A note to advanced Flask users: while `url_for()` is available, it shouldn't ever be necessary, as all its useful
+functionality is exposed via the available objects. However, if you really want to write directly to an endpoint (or
+have extended the app with your own blueprints or other Flask modules/routes/etc.), here are the endpoints that are
+available:
+
+* **`category`**: Routes to a category page; options are:
+    * `category`: The category's path
+    * `template`: The template to render
+    * The [pagination parameters for `get_view()`](/api/view#subviews)
+* **`entry`**: Routes to an entry page; options are:
+    * `entry_id`: The numeric ID of the entry (this is the only one that's useful to specify in `url_for`)
+    * `slug_text`: The SEO slug text
+    * `category`: The category the entry lives in
 
 ### Entry pages
 

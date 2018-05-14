@@ -109,11 +109,12 @@ arguments are supported:
     Mixing `entry_type` and `entry_type_not` results in undefined behavior, not that it makes
     any sense to do that anyway.
 
+* **`start`**: Limit the view to start with this entry, regardless of sort order
 * **`last`**: Limit the view such to none newer than the specified entry (by id or object)
 * **`first`**: Limit the view such to none older than the specified entry
 * **`before`**: Limit the view to only entries which came before the specified entry
 * **`after`**: Limit the view to only entries which came after the specified entry
-* **`order`**: What order to provide the entries in; one of:
+* **`order`**: What sort order to provide the entries in; one of:
     * **`oldest`**: Oldest-first
     * **`newest`**: Newest-first (default)
     * **`title`**: Sorted alphabetically by title

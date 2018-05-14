@@ -11,11 +11,15 @@ Image rendition tests
 
 External image with width set
 
-![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{250} "so smol") `![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{250} "so smol")`
+![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{250} "so smol")
+
+`![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{250} "so smol")`
 
 External image with height set
 
-![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{height=250} "less smol") `![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{height=250} "less smol")`
+![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{height=250} "less smol")
+
+`![](//publ.beesbuzz.biz/static/images/IMG_0377.jpg{height=250} "less smol")`
 
 External image with width and height set, with different scaling modes:
 
@@ -33,11 +37,15 @@ External image with width and height set, with different scaling modes:
 
 Image using static path
 
-![{640}](@images/IMG_0377.jpg) `![{640}](@images/IMG_0377.jpg)`
+![{640,link='@images/IMG_0377.jpg'}](@images/IMG_0377.jpg)
+
+`![{640,link='@images/IMG_0377.jpg'}](@images/IMG_0377.jpg)`
 
 ## Local images
 
-![alt text](rawr.jpg "test single image") `![alt text](rawr.jpg "test single image")`
+![alt text](rawr.jpg "test single image")
+
+`![alt text](rawr.jpg "test single image")`
 
 ![alt text](
 rawr.jpg{width=240} "test lightbox" |
@@ -53,7 +61,9 @@ rawr.jpg "image 3"
 )
 ```
 
-![alt text](rawr.jpg "test single image") `![alt text](rawr.jpg "test single image")`
+![alt text](rawr.jpg "test single image")
+
+`![alt text](rawr.jpg "test single image")`
 
 ## Mixed-content gallery
 
@@ -120,3 +130,4 @@ notsmiley.png{quality=1} "quality 1"
 
 ![broken imageset](rawr.jpg rawr.jpg) `![broken imageset](rawr.jpg rawr.jpg)`
 
+![broken imageset](rawr.jpg "title rawr" rawr.jpg "title 2") `![broken imageset](rawr.jpg rawr.jpg)`
