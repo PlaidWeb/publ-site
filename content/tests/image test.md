@@ -41,6 +41,14 @@ Image using static path
 
 `![{640,link='@images/IMG_0377.jpg'}](@images/IMG_0377.jpg)`
 
+
+Force absolute URLs
+
+![{640,320,absolute=True}](//publ.beesbuzz.biz/static/images/IMG_0377.jpg | @images/IMG_0377.jpg)
+
+`![{640,320,absolute=True}](//publ.beesbuzz.biz/static/images/IMG_0377.jpg | @images/IMG_0377.jpg)`
+
+
 ## Local images
 
 ![alt text](rawr.jpg "test single image")
