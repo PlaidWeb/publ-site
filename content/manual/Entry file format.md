@@ -231,20 +231,13 @@ an image called `DSC_12345.jpg` will be looked up in the following order:
 1. `content/entries/photos/my vacation/DSC_12345.jpg`
 2. `content/entries/photos/DSC_12345.jpg`
 
-Relative paths will also be interpreted; if the filename is `../IMG_4847.jpg` the
-search order will be:
-
-1. `content/entries/photos/IMG_4847.jpg`
-2. `content/entries/IMG_4847.jpg`
-3. `content/IMG_2827.jpg`
-4. `IMG_4847.jpg` — as in, be careful not to escape the sandbox. (In the future the path normalization logic will be made more robust.)
-
+Relative paths will also be interpreted, including `../` parent directory paths.
 
 This approach allows for greater flexibility in how you manage your images; the simple
 case is that the files simply live in the same directory as the entry file, and in more complex cases
 things work in a hopefully-intuitive manner.
 
-Of course, external absolute URLs (e.g. `http://example.com/image.jpg`) are still allowed, although they are
+Of course, external absolute URLs (e.g. `http://example.com/image.jpg` or `//example.com/protocol-relative.gif`) are still allowed, although they are
 more limited in what you can do with them (for example, scaling will be done client-side and cropping
 options will not work). Also, keep in mind that URLs that are not under your control may change without notice.
 
