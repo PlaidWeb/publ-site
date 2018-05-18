@@ -144,7 +144,7 @@ templates; the following headers are what Publ itself uses:
 
     It is *highly recommended* that this be unique across all entries.
 
-* <a name="entry-type"></a>**`Entry-Type`**: An arbitrary string which you can use to define an entry type
+* <span id="entry-type"></span>**`Entry-Type`**: An arbitrary string which you can use to define an entry type
 
     This exists purely so that you can differentiate entry types however you want;
     with this you can, for example, set up something similar to what WordPress and
@@ -154,6 +154,8 @@ templates; the following headers are what Publ itself uses:
     if you set more than one, only one of them will be used (and which one is undefined).
     In the future there will be a [content tagging system](https://github.com/fluffy-critter/Publ/issues/22)
     which will allow for filtering entries based on content tags.
+
+* <span id="template-override">**`Entry-Template`**</span>: Use this template instead of `entry` when rendering this entry
 
 ## Entry content
 

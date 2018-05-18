@@ -23,44 +23,62 @@ that matches, and uses that to render the page.
 
 ### Long version
 
-When someone requests a page, Publ looks up whether it's a category view or an entry.
-Category views look something like `http://mysite.com/art/photos/seattle/` or `http://mysite.com/blog/minimal`.
-Entry views look something like `http://mysite.com/art/photos/1529-unwelcome-visitor`.
+When someone requests a page, Publ looks up whether it's a category view or an
+entry. Category views look something like
+`http://mysite.com/art/photos/seattle/` or `http://mysite.com/blog/minimal`.
+Entry views look something like `http://mysite.com/art/photos/1529-unwelcome-
+visitor`.
 
-Every view has a category associated with it; for example, `http://mysite.com/art/photos/1529-unwelcome-visitor`
-is in the `art/photos` category (i.e. all the stuff between the website address and the entry ID, not including
-the `/`s at either end), and `http://mysite.com/blog/minimal` is in the `blog` category; the category is basically everything between the server name and the last `/` (in this case, `minimal` is the view).
+Every view has a category associated with it; for example,
+`http://mysite.com/art/photos/1529-unwelcome-visitor` is in the `art/photos`
+category (i.e. all the stuff between the website address and the entry ID, not
+including the `/`s at either end), and `http://mysite.com/blog/minimal` is in
+the `blog` category; the category is basically everything between the server
+name and the last `/` (in this case, `minimal` is the view).
 
-When you see an entry, there is only one possible template that it chooses, `entry`. When you see a category,
-if there's a view indicated, it uses that view name; otherwise it uses the `index` view.
+When you see an entry, there is only one possible template that it chooses,
+`entry`. When you see a category, if there's a view indicated, it uses that view
+name; otherwise it uses the `index` view.
 
-(The category can be blank, incidentally; `http://mysite.com/` shows you the `index` view on the empty category.)
+(The category can be blank, incidentally; `http://mysite.com/` shows you the
+(`index` view on the empty category.)
 
-Anyway, given the category and view name, Publ looks for the closest matching template, by starting out in the
-template directory that matches the category name, and then going up one level until it finds a matching
-template. And a template will match based on either the exact name, or the name with `.html`, `.htm`, `.xml`, or `.json` added to the end.
+Anyway, given the category and view name, Publ looks for the closest matching
+template, by starting out in the template directory that matches the category
+name, and then going up one level until it finds a matching template. And a
+template will match based on either the exact name, or the name with `.html`,
+`.htm`, `.xml`, or `.json` added to the end.
 
-So for example, if you ask for `http://mysite.com/music/classical/baroque/feed`, it will look for a template
-file named `feed`, `feed.html`, `feed.htm`, `feed.xml`, or `feed.json`,
-in the directories `templates/music/classical/baroque`, `templates/music/classical`, `templates/music`, and `templates`, in that order, returning the first one
-that matches. (If no templates match, it shows an error page.)
+So for example, if you ask for `http://mysite.com/music/classical/baroque/feed`,
+it will look for a template file named `feed`, `feed.html`, `feed.htm`,
+`feed.xml`, or `feed.json`, in the directories
+`templates/music/classical/baroque`, `templates/music/classical`,
+`templates/music`, and `templates`, in that order, returning the first one that
+matches. (If no templates match, it shows an error page.)
+
+Note that the default names of `entry` and `index` can be overridden on a [per-
+entry](/entry-format#template-override) or
+[per-category](/category-format#template-override) basis.
 
 #### Error templates
 
-A note on error templates: Error pages *generally* get handled by whatever matches the `error` template; however, in the case of a specific
-status code, it will also look for a template named based on that code. For example, a 404 error will try to
-render the `404` template first, before falling back to `error`. (And of course this can be `404.html`, `404.xml`, `404.json`, and so on, although in most cases you'll probably be doing it as HTML.)
+A note on error templates: Error pages *generally* get handled by whatever
+matches the `error` template; however, in the case of a specific status code, it
+will also look for a template named based on that code. For example, a 404 error
+will try to render the `404` template first, before falling back to `error`.
+(And of course this can be `404.html`, `404.xml`, `404.json`, and so on,
+although in most cases you'll probably be doing it as HTML.)
 
-Also, if no error template is found (i.e. there's no top-level `error.html`), Publ will provide a built-in template
-instead.
+Also, if no error template is found (i.e. there's no top-level `error.html`),
+Publ will provide a built-in template instead.
 
 #### Generating CSS files
 
-You can also use the template system to generate CSS, which is useful for having your
-CSS files reference other assets via `static()` or `image()`. This also makes it
-quite simple to create CSS templates that inherit from and override other CSS templates;
-for example, if you have the file `templates/style.css`, you can have `templates/blog/style.css`
-that looks like:
+You can also use the template system to generate CSS, which is useful for having
+your CSS files reference other assets via `static()` or `image()`. This also
+makes it quite simple to create CSS templates that inherit from and override
+other CSS templates; for example, if you have the file `templates/style.css`,
+you can have `templates/blog/style.css` that looks like:
 
 ```css
 @import url('../style.css');
@@ -68,7 +86,8 @@ that looks like:
 body { background: red; }
 ```
 
-and then your HTML templates need only refer to the stylesheet using, for example:
+and then your HTML templates need only refer to the stylesheet using, for
+example:
 
 ```html
 <link rel="stylesheet" href="style.css" />
@@ -76,28 +95,54 @@ and then your HTML templates need only refer to the stylesheet using, for exampl
 
 ## Required templates
 
-*Technically* no template is actually required, but in order to have a functioning site,
-you should have, at the very least, the following top-level templates:
+*Technically* no template is actually required, but in order to have a
+functioning site, you should have, at the very least, the following top-level
+templates:
 
 * `index.html`: the default category view
 * `entry.html`: the entry view
 * `error.html`: Some sort of error page (but this is entirely optional)
 
+### Private templates
+
+If a template's name begins with `_` the template will be considered "private;"
+that is to say, it will be available internally (such as to `Entry-Template` or
+`Index-Template`) but it will not be available to the world at large. So, for
+example, if you want to override your site's main page you can create a file
+like `/content/mainpage.cat`:
+
+```
+Name: My website
+Index-Template: _main_page
+```
+
+which will cause it to render with the template `templates/_main_page.html`, but
+will not allow other URLs e.g. `/blog/_main_page` to use this template.
+
+Simiarly, it is highly recommended that `Entry-Template` overrides use this
+convention, as it usually does not make sense to render an entry template in a
+category context.
+
 ## Template API
 
-As mentioned before, templates are rendered using [Jinja2](http://jinja.pocoo.org), and get standard template parameters for both Jinja2 and Flask. Additionally, there will be other things available to you, depending on
-the template type.
+As mentioned before, templates are rendered using
+[Jinja2](http://jinja.pocoo.org), and get standard template parameters for both
+Jinja2 and Flask. Additionally, there will be other things available to you,
+depending on the template type.
 
-Also, note that the templating system uses Python syntax for passing parameters to functions.
-So, for example, `some_function(1,dingle=True,berry="none")` passes a number, a boolean (true/false) named `dingle`,
-and a string named `berry` with the value of `"none"`. When passing strings, quotes are required. When passing
-anything else, the quotes should be left off; `False` and `"False"` mean very different things in Python. (For starters,
-`"False"` is equivalent to `True` in many contexts.)
+Also, note that the templating system uses Python syntax for passing parameters
+to functions. So, for example, `some_function(1,dingle=True,berry="none")`
+passes a number, a boolean (true/false) named `dingle`, and a string named
+`berry` with the value of `"none"`. When passing strings, quotes are required.
+When passing anything else, the quotes should be left off; `False` and `"False"`
+mean very different things in Python. (For starters, `"False"` is equivalent to
+`True` in many contexts.)
 
 ### All templates
 
-All template types get the default Flask objects; there is more information about
-these on the [Flask templating reference](http://flask.pocoo.org/docs/0.12/templating/).
+All template types get the default Flask objects; there is more information
+about these on the [Flask templating
+reference](http://flask.pocoo.org/docs/0.12/templating/).
 
 The following additional things are provided to all templates:
 
@@ -116,13 +161,15 @@ The following additional things are provided to all templates:
 
 * **`image`**: Load an image
 
-    The resulting image works as a URL directly, or you can pass in arguments in the format
-    `(output_scale, [arguments])`, which gets a URL rendered with the specified output scaling and
-    [image rendition arguments](/image-renditions).  The default is to use an `output_scale` of 1.
+    The resulting image works as a URL directly, or you can pass in arguments in
+    the format `(output_scale, [arguments])`, which gets a URL rendered with the
+    specified output scaling and [image rendition arguments](/image-renditions).
+    The default is to use an `output_scale` of 1.
 
     It also has the following function on it:
 
-    * **`get_img_tag([arguments])`**: Makes an `<img>` tag with the provided [image rendition arguments](/image-renditions)
+    * **`get_img_tag([arguments])`**: Makes an `<img>` tag with the provided
+        [image rendition arguments](/image-renditions)
 
     Example usage in HTML templates:
 
@@ -140,32 +187,38 @@ The following additional things are provided to all templates:
     }
     ```
 
-    Like the [entry Markdown tags](/entry-format#image-renditions), you can use a `@` prefix to indicate that the
-    image comes from the static files (rather than from the template's search path), and external URLs work as well.
+    Like the [entry Markdown tags](/entry-format#image-renditions), you can use
+    a `@` prefix to indicate that the image comes from the static files (rather
+    than from the template's search path), and external URLs work as well.
 
-    Unlike the entry Markdown tags, you have to specify width and height by name.
+    Unlike the entry Markdown tags, you have to specify width and height by
+    name.
 
-    If the image path is absolute (i.e. starts with a `/`), it will be treated as based on the
-    site's content directory. If it is relative, it will look in the following locations, in the
-    following order:
+    If the image path is absolute (i.e. starts with a `/`), it will be treated
+    as based on the site's content directory. If it is relative, it will look in
+    the following locations, in the following order:
 
     1. Relative to the current entry's file (on entry templates)
-    2. Relative to the current entry's category within the content directory (on entry templates)
+    2. Relative to the current entry's category within the content directory
+        (on entry templates)
     3. Relative to the current category within the content directory
-    4. Relative to the template file, mapped to the content directory (for example, the template
-        `templates/blog/feed.xml` will search in `content/blog`)
+    4. Relative to the template file, mapped to the content directory
+        (for example, the template `templates/blog/feed.xml` will search in
+        `content/blog`)
 
-A note to advanced Flask users: while `url_for()` is available, it shouldn't ever be necessary, as all its useful
-functionality is exposed via the available objects. However, if you really want to write directly to an endpoint (or
-have extended the app with your own blueprints or other Flask modules/routes/etc.), here are the endpoints that are
-available:
+A note to advanced Flask users: while `url_for()` is available, it shouldn't
+ever be necessary, as all its useful functionality is exposed via the available
+objects. However, if you really want to write directly to an endpoint (or have
+extended the app with your own blueprints or other Flask modules/routes/etc.),
+here are the endpoints thatPubl makes available:
 
 * **`category`**: Routes to a category page; options are:
     * `category`: The category's path
     * `template`: The template to render
     * The [pagination parameters for `get_view()`](/api/view#subviews)
 * **`entry`**: Routes to an entry page; options are:
-    * `entry_id`: The numeric ID of the entry (this is the only one that's useful to specify in `url_for`)
+    * `entry_id`: The numeric ID of the entry (this is the only one that's
+        useful to specify in `url_for`)
     * `slug_text`: The SEO slug text
     * `category`: The category the entry lives in
 
@@ -179,21 +232,22 @@ The template gets the following additional objects:
 
 ### Category pages
 
-Categories are rendered with whatever template is specified, defaulting to `index`
-if none was specified. The template gets the following additional objects:
+Categories are rendered with whatever template is specified, defaulting to
+`index` if none was specified. The template gets the following additional
+objects:
 
 * **`category`**: Information about the [category](/api/category)
-* **`view`**: The default [view](/api/view) for this category. It is equivalent to calling `get_view()`
-    with the following arguments:
+* **`view`**: The default [view](/api/view) for this category. It is equivalent
+    to calling `get_view()` with the following arguments:
 
     * `category`: This category
     * `recurse`: `False`
     * `date`, `first`, `last`, `before`, `after`: set by the URL query parameters
 
-    Note that unless any limiting parameters are set, this `view` object will not have any
-    pagination on it. The intention is that `view` will be used as a basis
-    for another more specific view; for example, this example will show 10 entries at a time and
-    get `previous` and `next` as appropriate:
+    Note that unless any limiting parameters are set, this `view` object will
+    not have any pagination on it. The intention is that `view` will be used as
+    a basis for another more specific view; for example, this example will show
+    10 entries at a time and get `previous` and `next` as appropriate:
 
     ```jinja
     {% set paged_view = view(count=10) %}
@@ -216,7 +270,9 @@ properties:
 
 * **`code`**: The associated HTTP error code
 * **`message`**: An explanation of what went wrong
-* **`exception`**: In the case of an internal error, this will be an object with the following properties:
+* **`exception`**: In the case of an internal error, this will be an object
+    with the following properties:
+
     * **`type`**: The human-readable type of exception (`IOError`, `ValueError`, etc.)
     * **`str`**: The human-readable exception string
     * **`args`**: Further information passed to the exception constructor

@@ -76,6 +76,13 @@ Category data can be added using a metadata file, which is simply a file whose n
 in the content directory. Similarly to [entry files](/entry-format), this will default to using its place in the
 content directory for the category to use, but this can also be overridden using a `Category:` header.
 
+The headers supported by Publ itself:
+
+* **`Category`**: Specifies which category this file refers to
+* **`Name`**: Overrides the friendly/display name of the category (i.e. `category.name`)
+* <span id="template-override">**`Index-Template`**</span>: Use this template instead of `index` when rendering this category (useful if you want to override a category or site's index template without overriding its subcategories)
+* **`Entry-Template`**: Use this template instead of `entry` when rendering an entry
+
 For example, given the file `some/category/info.cat`:
 
 ```
