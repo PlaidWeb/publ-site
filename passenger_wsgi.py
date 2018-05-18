@@ -7,6 +7,7 @@ import subprocess
 import logging
 import logging.handlers
 
+# hack to keep click happy
 os.environ['LANG'] = 'C.UTF-8'
 os.environ['LC_ALL'] = 'C.UTF-8'
 
