@@ -7,6 +7,9 @@ import subprocess
 import logging
 import logging.handlers
 
+os.environ['LANG'] = 'C.UTF-8'
+os.environ['LC_ALL'] = 'C.UTF-8'
+
 logging.basicConfig(level=logging.INFO)
 
 # set up logging; see
