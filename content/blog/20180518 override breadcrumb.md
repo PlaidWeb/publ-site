@@ -13,3 +13,8 @@ critter/Publ/issues/91) mentioned [previously](398).
 
 These things are already making my new personal site look way better and easier
 to use! I feel like I'm almost ready to flip the switch.
+
+Oh, and I also improved the [getting started guide](/getting-started), including
+adding basic setup instructions for Linux and Windows. Not that I've gotten Publ
+to *run* on Windows, yet, but documenting how to get the environment set up is
+the first step, right?

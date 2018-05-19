@@ -2,6 +2,7 @@ Title: Getting started
 UUID: 4dea4c3b-c6ec-4dc0-9f40-b27a91128a60
 Date: 2018-04-03 16:24:37-07:00
 Entry-ID: 328
+Path-Alias: /getting-started
 
 A guide to starting with Publ.
 
@@ -72,8 +73,7 @@ with more Windows and Python experience could [help me out](https://github.com/f
 
 ### Copying this one (recommended)
 
-The files for this website are in a
-[separate repository](http://github.com/fluffy-critter/publ.beesbuzz.biz). You
+The files for this website are in a [separate repository](/github-site). You
 should be able to clone or fork that repository in order to have your own
 instance of it, and then you can start a local server for experimenting with:
 
@@ -132,7 +132,11 @@ Next, you'll need a `main.py` file. The absolute minimum for that is simply:
 import os
 import publ
 
-app = publ.publ(__name__, {})
+config = {
+    # Leave this off to do an in-memory database
+    'database': 'sqlite:///index.db'
+}
+app = publ.publ(__name__, config)
 if __name__ == "__main__":
     app.run(port=os.environ.get('PORT', 5000))
 ```
@@ -153,30 +157,14 @@ if you're using `virtualenv`.
 
 Now you have a site running at `http://localhost:5000` that does absolutely nothing! Congratulations!
 
-#### A configuration note
-
-The default database configuration uses an in-memory database; while this gets you up and running very quickly, it means the content will have to be rescanned every time the site comes up, and it will also take somewhat more memory than a file-based database. I *highly* recommend that you at least configure the database to use a simple SQLite file; to that end, in the skeleton `main.py` above, replace:
-
-```python
-app = publ.publ(__name__, {})
-```
-
-with:
-
-```python
-app = publ.publ(__name__, 'database': 'sqlite:///index.db')
-```
-
-This will keep your site index in a file called `index.db` in the same directory as your `main.py`.
-
 ## What does what
 
-Looking at the [example site](/site-github), here's the key things to look at:
+Looking at the [example site](/github-site), here's the key things to look at:
 
 * `Pipfile`: Configures `pipenv`
 * `main.py`: Configures the Publ site
 * `passenger_wsgi.py`: A Passenger wrapper, used for running the site on Dreamhost and other Passenger-WSGI hosting providers
-* `Procfile`: Configures the site to run on Heroku (and probably other providers)
+* `Procfile`: Configures the site to run on Heroku (and possibly other providers)
 * `templates/`: The site layout files (i.e. how to lay your content out). Some you can look at:
     * `index.html`: What renders when you view a "directory" (e.g. [`/manual`](/manual))
     * `entry.html`: What renders when you look at an individual page (like this one)
