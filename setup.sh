@@ -7,7 +7,7 @@ fi
 
 echo "Configuring environment..."
 
-pipenv install
+pipenv --three install
 
 # Restart Passenger (at least per Dreamhost's config)
 mkdir -p tmp

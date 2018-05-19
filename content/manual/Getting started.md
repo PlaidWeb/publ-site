@@ -32,23 +32,27 @@ export PATH=$HOME/Library/Python/3.6/bin:$PATH
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
-python 3.5 or later (ideally 3.6 or later).
+python 3.5 or later (ideally 3.6 or later), and to also install `pip3` (Ubuntu
+keeps this in the `python3-pip` package; other distributions will vary).
 
 Afterwards, you can install `pipenv` with either:
 
 ```bash
-sudo pip install pipenv
+sudo pip3 install pipenv
 ```
 
 or
 
 ```bash
-pip install --user pipenv
+pip3 install --user pipenv
 ```
 
 If you do the latter, make sure your pip user directory is on your PATH; this
 will probably be `$HOME/.local/bin` but it might vary based on your
 distribution.
+
+Also, if `pip3` doesn't work, try running just `pip` instead; not all
+distributions differentiate between Python 2 or 3 anymore.
 
 ### Windows
 
