@@ -9,7 +9,7 @@ A guide to starting with Publ.
 
 ## Installing system requirements
 
-You'll need Python 3 (at least version 3.6) and [`pipenv`](https://docs.pipenv.org) to be installed.
+You'll need Python 3 (at least version 3.6) and [`pipenv`](https://pipenv.org) to be installed.
 
 ### macOS
 
@@ -25,7 +25,7 @@ and then add the following line to your login script (usually `~/.bash_profile`)
 export PATH=$HOME/Library/Python/3.6/bin:$PATH
 ```
 
-### Linux
+### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get python 3.5 or later (ideally 3.6 or later).
 
@@ -42,9 +42,11 @@ pip install --user pipenv
 ```
 
 If you do the latter, make sure your pip user directory is on your PATH; this will
-probably be `$HOME/.local/bin` but it might vary on your distribution.
+probably be `$HOME/.local/bin` but it might vary based on your distribution.
 
 ### Windows
+
+==NOTE== These instructions are not yet verified; proceed at your own risk!
 
 1. Install [Python](http://python.org)
 
