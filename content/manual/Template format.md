@@ -103,13 +103,19 @@ templates:
 * `entry.html`: the entry view
 * `error.html`: Some sort of error page (but this is entirely optional)
 
-### Private templates
+### Template naming and overrides
+
+Publicly-visible templates' names must start with a letter, and should only
+consist of URL-friendly characters (alphanumerics, periods, dashes, and
+underscores).
+
+Numeric error templates are not considered publicly-visible.
 
 If a template's name begins with `_` the template will be considered "private;"
-that is to say, it will be available internally (such as to `Entry-Template` or
-`Index-Template`) but it will not be available to the world at large. So, for
-example, if you want to override your site's main page you can create a file
-like `/content/mainpage.cat`:
+it will be available internally (such as to `Entry-Template` or `Index-
+Template`) but it will not be available to the world at large. So, for example,
+if you want to override your site's main page you can create a file like
+`/content/mainpage.cat`:
 
 ```
 Name: My website
