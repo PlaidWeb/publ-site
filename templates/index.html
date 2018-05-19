@@ -50,6 +50,7 @@
 
         {% for entry in content.entries %}
 
+        {% block entry scoped %}
         <h2>
             {%- if entry.more or entry['redirect-to'] %}<a href="{{entry.link}}">{% endif -%}
             {{entry.title}}
@@ -57,6 +58,7 @@
         </h2>
 
         {{entry.body}}
+        {% endblock %}
 
         {% endfor %}
 

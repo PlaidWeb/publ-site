@@ -1,50 +1,6 @@
-<!DOCTYPE html>
-{% set content = view(entry_type_not='sidebar',count=10) %}
-<html>
-<head>
-    <title>Publ: {{category.name}}
-    {% if view.range %} | {{ content.range }} {% endif %}</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="alternate" type="application/atom+xml" title="Atom feed" href="feed" />
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-</head>
-<body class="index">
+{% extends '/index.html' %}
 
-<h1>Publ: {{category.name}}</h1>
-
-<div id="nav" class="sidebar">
-
-    <h2>Navigation</h2>
-
-    <ul>
-    {% if category.parent %}
-    <li class="cat-up"><a href="{{category.parent.link}}">{{category.parent.name or "Main page"}}</a></li>
-    {% endif %}
-
-    {% for subcat in category.subcats %}
-    <li class="cat-down"><a href="{{subcat.link}}">{{subcat.name}}</a></li>
-    {% endfor %}
-
-    <li class="github"><a href="http://github.com/fluffy-critter/Publ">Github</a></li>
-    </ul>
-
-</div>
-
-<div id="content">
-
-    <div class="nav">
-        {% if content.previous %}
-        <a href="{{content.previous.link}}" class="previous">Previous page</a>
-        {% endif %}
-
-        {% if content.next %}
-        <a href="{{content.next.link}}" class="next">Next page</a>
-        {% endif %}
-    </div>
-
-
-    <div class="entries">
-        {% for entry in content.entries %}
+{% block entry %}
         <div class="entry">
             <h2><a href="{{entry.link}}">{{entry.title}}</a></h2>
             <div class="posted">Posted {{entry.date.format('dddd, MMMM D')}} at {{entry.date.format('h:mm A')}} ({{entry.date.humanize()}})
@@ -57,19 +13,4 @@
             <div class="keep-reading"><a href="{{entry.link}}">Keep reading...</a></div>
             {% endif %}
         </div>
-        {% endfor %}
-    </div>
-
-    <div class="nav">
-        {% if content.previous %}
-        <a href="{{content.previous.link}}" class="previous">{{content.previous.title or 'Previous page'}}</a>
-        {% endif %}
-
-        {% if content.next %}
-        <a href="{{content.next.link}}" class="next">{{content.next.title or 'Next page'}}</a>
-        {% endif %}
-    </div>
-
-</div>
-
-</body></html>
+{% endblock %}

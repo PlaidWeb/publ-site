@@ -9,17 +9,20 @@ A guide to starting with Publ.
 
 ## Installing system requirements
 
-You'll need Python 3 (at least version 3.6) and [`pipenv`](https://pipenv.org) to be installed.
+You'll need Python 3 (at least version 3.5, but 3.6 is recommended) and
+[`pipenv`](https://pipenv.org) to be installed.
 
 ### macOS
 
-On macOS this is pretty straightforward; after installing [Homebrew](https://brew.sh) you can install these things with:
+On macOS this is pretty straightforward; after installing
+[Homebrew](https://brew.sh) you can install these things with:
 
 ```bash
 brew install python pipenv
 ```
 
-and then add the following line to your login script (usually `~/.bash_profile`):
+and then add the following line to your login script (usually
+`~/.bash_profile`):
 
 ```bash
 export PATH=$HOME/Library/Python/3.6/bin:$PATH
@@ -27,7 +30,8 @@ export PATH=$HOME/Library/Python/3.6/bin:$PATH
 
 ### Linux/FreeBSD/etc.
 
-Your distribution probably provides packages for python3; make sure to get python 3.5 or later (ideally 3.6 or later).
+Your distribution probably provides packages for python3; make sure to get
+python 3.5 or later (ideally 3.6 or later).
 
 Afterwards, you can install `pipenv` with either:
 
@@ -41,8 +45,9 @@ or
 pip install --user pipenv
 ```
 
-If you do the latter, make sure your pip user directory is on your PATH; this will
-probably be `$HOME/.local/bin` but it might vary based on your distribution.
+If you do the latter, make sure your pip user directory is on your PATH; this
+will probably be `$HOME/.local/bin` but it might vary based on your
+distribution.
 
 ### Windows
 
@@ -50,11 +55,15 @@ probably be `$HOME/.local/bin` but it might vary based on your distribution.
 
 1. Install [Python](http://python.org)
 
-    When you install, make sure to check the option for "add python to your PATH" and if you customize the installation, make sure it installs pip as well
+    When you install, make sure to check the option for "add python to your
+    PATH" and if you customize the installation, make sure it installs pip as
+    well
 
 2. Install the [Visual Studio Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools)
 
-    This is necessary for some of the libraries Publ depends on. If you already have Visual Studio installed with C++ support you can probably skip this step.
+    This is necessary for some of the libraries Publ depends on. If you already
+    have Visual Studio installed with C++ support you can probably skip this
+    step.
 
 3. From the command prompt, run `pip install pipenv`
 
@@ -62,17 +71,19 @@ probably be `$HOME/.local/bin` but it might vary based on your distribution.
 
 ### Copying this one (recommended)
 
-The files for this website are in a [separate repository](http://github.com/fluffy-critter/publ.beesbuzz.biz).
-You should be able to clone or fork that repository in order to have your own instance of it, and then
-you can start a local server for experimenting with:
+The files for this website are in a
+[separate repository](http://github.com/fluffy-critter/publ.beesbuzz.biz). You
+should be able to clone or fork that repository in order to have your own
+instance of it, and then you can start a local server for experimenting with:
 
 ```bash
 ./setup.sh    # Install Publ and do various setup steps
 ./run.sh      # Start running the server locally
 ```
 
-at which point connecting to `http://localhost:5000` should do what you want. If you
-want to run on a different port you can set the `PORT` environment variable, e.g.:
+at which point connecting to `http://localhost:5000` should do what you want. If
+you want to run on a different port you can set the `PORT` environment variable,
+e.g.:
 
 ```bash
 PORT=12345 ./run.sh
@@ -80,8 +91,8 @@ PORT=12345 ./run.sh
 
 #### Windows users
 
-If you don't have any sort of UNIX commandline (minGW, Linux Subsystem for Windows, Cygwin, etc.), then
-instead of `setup.sh` run:
+If you don't have any sort of UNIX commandline (minGW, Linux Subsystem for
+Windows, Cygwin, etc.), then instead of `setup.sh` run:
 
     pipenv install
 
@@ -93,8 +104,10 @@ You could also put these in `.cmd` files if you like.
 
 ### Setting one up from scratch
 
-To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or `pipenv` to set up a sandbox and install the `Publ`
-package to it; I recommend `pipenv` for a number of reasons but if you're familiar with `virtualenv` or are using a hosting provider that requires it, feel free to do that instead.
+To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or
+`pipenv` to set up a sandbox and install the `Publ` package to it; I recommend
+`pipenv` for a number of reasons but if you're familiar with `virtualenv` or are
+using a hosting provider that requires it, feel free to do that instead.
 
 If you're using `pipenv` the command would be:
 
