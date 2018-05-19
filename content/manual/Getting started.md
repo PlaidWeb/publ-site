@@ -25,9 +25,36 @@ and then add the following line to your login script (usually `~/.bash_profile`)
 export PATH=$HOME/Library/Python/3.6/bin:$PATH
 ```
 
-### Other platforms
+### Linux
 
-This should also be possible to do on Linux and Windows; if anyone would like to share how to do it, please [open an issue](http://github.com/fluffy-critter/Publ/issues/new)!
+Your distribution probably provides packages for python3; make sure to get python 3.5 or later (ideally 3.6 or later).
+
+Afterwards, you can install `pipenv` with either:
+
+```bash
+sudo pip install pipenv
+```
+
+or
+
+```bash
+pip install --user pipenv
+```
+
+If you do the latter, make sure your pip user directory is on your PATH; this will
+probably be `$HOME/.local/bin` but it might vary on your distribution.
+
+### Windows
+
+1. Install [Python](http://python.org)
+
+    When you install, make sure to check the option for "add python to your PATH" and if you customize the installation, make sure it installs pip as well
+
+2. Install the [Visual Studio Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools)
+
+    This is necessary for some of the libraries Publ depends on. If you already have Visual Studio installed with C++ support you can probably skip this step.
+
+3. From the command prompt, run `pip install pipenv`
 
 ## Making a website
 
@@ -49,6 +76,19 @@ want to run on a different port you can set the `PORT` environment variable, e.g
 PORT=12345 ./run.sh
 ```
 
+#### Windows users
+
+If you don't have any sort of UNIX commandline (minGW, Linux Subsystem for Windows, Cygwin, etc.), then
+instead of `setup.sh` run:
+
+    pipenv install
+
+and instead of `run.sh` run:
+
+    pipenv run python3 main.py
+
+You could also put these in `.cmd` files if you like.
+
 ### Setting one up from scratch
 
 To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or `pipenv` to set up a sandbox and install the `Publ`
@@ -67,6 +107,8 @@ virtualenv env
 . env/bin/activate
 pip install Publ
 ```
+
+(Windows users would type `env\scripts\activate` instead of `. env/bin/activate`.)
 
 Next, you'll need a `main.py` file. The absolute minimum for that is simply:
 
@@ -101,12 +143,13 @@ Looking at the [example site](/site-github), here's the key things to look at:
 
 * `Pipfile`: Configures `pipenv`
 * `main.py`: Configures the Publ site
-* `passenger_wsgi.py`: A Passenger wrapper, used for running the site on Dreamhost
+* `passenger_wsgi.py`: A Passenger wrapper, used for running the site on Dreamhost and other Passenger-WSGI hosting providers
+* `Procfile`: Configures the site to run on Heroku (and probably other providers)
 * `templates/`: The site layout files (i.e. how to lay your content out). Some you can look at:
     * `index.html`: What renders when you view a "directory" (e.g. [`/manual`](/manual))
     * `entry.html`: What renders when you look at an individual page (like this one)
     * `feed.xml`: The Atom feed
-    * `error.html`: The error page ([for example](/12345))
+    * `error.html`: The error page ([for example](/_broken_link_))
     * `sitemap.xml`: Produces a sitemap for search engines
 * `content/`: The content on this site (for example, this page's content is stored in
     `content/manual/getting started.md`)
@@ -128,5 +171,7 @@ on Heroku is coming eventually.
 
 If you're running your own server (Apache or nginx), you should be able to configure this as a WSGI application
 or using a reverse proxy. More information will come on that later, hopefully.
+
+## Next steps
 
 If you do end up using Publ, please let me know so that I can check it out — and maybe add it to a list of featured sites!
