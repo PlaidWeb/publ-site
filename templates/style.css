@@ -108,7 +108,7 @@ body.entry .gallery img {
     padding: 0 1em;
 }
 
-#nav li.github:before {
+#nav li.extlink:before {
     content: "⎋ ";
 }
 
@@ -130,6 +130,10 @@ body.entry .gallery img {
 
 #nav li.entry-next:before {
     content: "→ ";
+}
+
+#nav li.sblink:before {
+    content: "✪ ";
 }
 
 #nav li {

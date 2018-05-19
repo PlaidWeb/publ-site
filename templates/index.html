@@ -26,10 +26,8 @@
     <li class="cat-down"><a href="{{subcat.link}}">{{subcat.name}}</a></li>
     {% endfor %}
 
-    <li class="github"><a href="http://github.com/fluffy-critter/Publ">Github</a></li>
-
     {% for entry in view(entry_type='sidebar').entries %}
-    <li class="sblink"><a href="{{entry.link}}">{{entry.title}}</a></li>
+    <li class="{{entry.get('Redirect-To') and 'extlink' or 'sblink'}}"><a href="{{entry.link}}">{{entry.title}}</a></li>
     {% endfor %}
     </ul>
 

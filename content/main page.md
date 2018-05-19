@@ -10,5 +10,3 @@ This software (and this site!) is still in development and there isn't a
 lot to see just yet. But while you're here, maybe you'd like to check out the [documentation](/manual/)
 or the [development blog](/blog/).
 
-Or, of course, feel free to get [the source from GitHub](http://github.com/fluffy-critter/Publ)!
-

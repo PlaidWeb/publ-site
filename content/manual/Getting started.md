@@ -29,21 +29,9 @@ export PATH=$HOME/Library/Python/3.6/bin:$PATH
 
 This should also be possible to do on Linux and Windows; if anyone would like to share how to do it, please [open an issue](http://github.com/fluffy-critter/Publ/issues/new)!
 
-## Obtaining Publ
+## Making a website
 
-Now when you open a new terminal you should have pipenv and python3 on your path:
-
-```bash
-# which pipenv
-/Users/fluffy/Library/Python/3.6/bin/pipenv
-# which python3
-/usr/local/bin/python3
-# python3 --version
-Python 3.6.5
-```
-
-
-## Copying this website
+### Copying this one (recommended)
 
 The files for this website are in a [separate repository](http://github.com/fluffy-critter/publ.beesbuzz.biz).
 You should be able to clone or fork that repository in order to have your own instance of it, and then
@@ -61,10 +49,57 @@ want to run on a different port you can set the `PORT` environment variable, e.g
 PORT=12345 ./run.sh
 ```
 
+### Setting one up from scratch
+
+To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or `pipenv` to set up a sandbox and install the `Publ`
+package to it; I recommend `pipenv` for a number of reasons but if you're familiar with `virtualenv` or are using a hosting provider that requires it, feel free to do that instead.
+
+If you're using `pipenv` the command would be:
+
+```bash
+pipenv install Publ
+```
+
+and if you're doing the `virtualenv` approach it would be:
+
+```bash
+virtualenv env
+. env/bin/activate
+pip install Publ
+```
+
+Next, you'll need a `main.py` file. The absolute minimum for that is simply:
+
+```python
+import os
+import publ
+
+app = publ.publ(__name__, {})
+if __name__ == "__main__":
+    app.run(port=os.environ.get('PORT', 5000))
+```
+
+Then you can launch your (not yet very functional) site with
+
+```bash
+pipenv run python3 main.py
+```
+
+if you're using `pipenv`, or
+
+```bash
+env/bin/python3 main.py
+```
+
+if you're using `virtualenv`.
+
+Now you have a site running at `http://localhost:5000` that does absolutely nothing! Congratulations!
+
 ## What does what
 
-Looking at the example site, here's the key things to look at:
+Looking at the [example site](/site-github), here's the key things to look at:
 
+* `Pipfile`: Configures `pipenv`
 * `main.py`: Configures the Publ site
 * `passenger_wsgi.py`: A Passenger wrapper, used for running the site on Dreamhost
 * `templates/`: The site layout files (i.e. how to lay your content out). Some you can look at:
