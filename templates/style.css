@@ -53,13 +53,13 @@ pre {
     vertical-align: middle;
 }
 
-body.entry .gallery {
+.gallery {
     text-align: center;
     padding: 6px;
     background: black;
 }
 
-body.entry .gallery img {
+.gallery img {
     vertical-align: middle;
     margin: 6px;
     border: solid #777 6px;

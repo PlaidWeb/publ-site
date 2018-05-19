@@ -3,7 +3,11 @@
 
 <head>
     <title>{{ entry.title }}</title>
-    <link rel="stylesheet" href="style.css"> {{ entry.card(width=480,height=360,count=4,resize="fill") }}
+    <link rel="stylesheet" href="{{static('lightbox/css/lightbox.min.css')}}">
+    <link rel="stylesheet" href="{{entry.stylesheet or 'style.css'}}">
+
+
+    {{ entry.card(width=480,height=360,count=4,resize="fill") }}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="@fluffy">
 </head>
@@ -12,6 +16,8 @@
     {% block pagetitle %}
     <h1><a href="{{category.link}}">Publ:</a> {{ entry.title }}</h1>
     {% endblock %}
+
+    {% block sidebar %}
     <div id="nav" class="sidebar">
         <h2>Navigation</h2>
         <ul>
@@ -23,6 +29,8 @@
             {% endif %}
         </ul>
     </div>
+    {% endblock %}
+
     <div id="content">
         <div class="entries">
             {% block entry %}
@@ -38,6 +46,8 @@
     </div>
     </div>
     </div>
+
+<script src="{{ static('lightbox/js/lightbox-plus-jquery.min.js') }}"></script>
 </body>
 
 </html>

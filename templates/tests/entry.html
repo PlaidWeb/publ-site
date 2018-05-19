@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ entry.title }}</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="{{ static('lightbox/css/lightbox.min.css') }}">
+{% extends '/entry.html' %}
 
-    {{ entry.card(width=480,height=360,count=4,resize="fill") }}
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:creator" content="@fluffy" />
-
-</head>
-<body class="entry">
-<h1><a href="{{category.link}}">Publ: {{ entry.title }}</a></h1>
-
+{% block sidebar %}
 <div id="nav" class="sidebar">
 
     <h2>Navigation</h2>
@@ -39,31 +27,5 @@
     <li class="entry-next"><a href="{{next_test.link}}">Next test: {{next_test.title}}</a></li>
     {% endif %}
     </ul>
-
 </div>
-
-<div id="content">
-<div class="entries">
-
-<div class="posted">Last updated:
-    {{entry.last_modified.format('YYYY-MM-DD h:mm A')}}
-    ({{entry.last_modified.humanize()}})
-</div>
-
-        {% if entry.more %}
-        <div class="entry">
-            {{entry.more}}
-        </div>
-        {% else %}
-        Oops, this page has no content...
-        {% endif %}
-
-    </div>
-</div>
-
-</div>
-</div>
-
-<script src="{{ static('lightbox/js/lightbox-plus-jquery.min.js') }}"></script>
-</body>
-</html>
+{% endblock %}

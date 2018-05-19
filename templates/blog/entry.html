@@ -15,13 +15,13 @@
 
 {% if entry.body %}
 <div class="preamble">
-    {{entry.body(gallery_id=entry.uuid,div_class='images')}}
+    {{entry.body(gallery_id=entry.uuid,div_class='gallery')}}
 </div>
 {% endif %}
 
 {% if entry.more %}
 <div class="more" id="more">
-    {{entry.more(gallery_id=entry.uuid,div_class='images')}}
+    {{entry.more(gallery_id=entry.uuid,div_class='gallery')}}
 </div>
 {% endif %}
 

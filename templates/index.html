@@ -17,6 +17,7 @@
 
     <h2>Navigation</h2>
 
+    {% block navigation %}
     <ul>
     {% if category.parent %}
     <li class="cat-up"><a href="{{category.parent.link}}">{{category.parent.name or "Main page"}}</a></li>
@@ -26,10 +27,11 @@
     <li class="cat-down"><a href="{{subcat.link}}">{{subcat.name}}</a></li>
     {% endfor %}
 
-    {% for entry in view(entry_type='sidebar').entries %}
+    {% for entry in view(category='',entry_type='sidebar').entries %}
     <li class="{{entry.get('Redirect-To') and 'extlink' or 'sblink'}}"><a href="{{entry.link}}">{{entry.title}}</a></li>
     {% endfor %}
     </ul>
+    {% endblock %}
 
 </div>
 

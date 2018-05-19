@@ -5,9 +5,7 @@ UUID: 9f6c654e-95df-41dd-8648-e7635061db4c
 
 Today I added two new useful features:
 
-* [template overrides](https://github.com/fluffy-critter/Publ/pull/96)
-    (including private templates)
-
+* [template overrides](https://github.com/fluffy-critter/Publ/pull/96) (including private templates)
 * [hierarchy breadcrumbs](https://github.com/fluffy-critter/Publ/pull/95)
 
 I also implemented the [better date sort](https://github.com/fluffy-
