@@ -22,6 +22,8 @@ else:
 
 logging.info("Setting up")
 
+APP_PATH = os.path.dirname(os.path.abspath(__file__))
+
 config = {
     # The database connection string. NOTE: If this involves credentials
     # (e.g. mysql, postgres, etc.) you should put this into an appropriate
@@ -29,7 +31,7 @@ config = {
     'database': 'sqlite:///index.db',
 
     # Where we keep our content files
-    #'content_folder': os.path.join(APP_PATH, 'content')
+    #'content_folder': os.path.join(APP_PATH, 'content'),
 
     # How often to forcibly rescan the content index (0 or None to disable)
     #'index_rescan_interval': 300

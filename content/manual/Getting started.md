@@ -1,7 +1,7 @@
 Title: Getting started
+UUID: 4dea4c3b-c6ec-4dc0-9f40-b27a91128a60
 Date: 2018-04-03 16:24:37-07:00
 Entry-ID: 328
-UUID: 4dea4c3b-c6ec-4dc0-9f40-b27a91128a60
 
 A guide to starting with Publ.
 
@@ -51,7 +51,8 @@ distribution.
 
 ### Windows
 
-==NOTE== These instructions are not yet verified; proceed at your own risk!
+==Note:== I haven't yet managed to get Publ working from Windows. Perhaps someone
+with more Windows and Python experience could [help me out](https://github.com/fluffy-critter/Publ/issues/97)?
 
 1. Install [Python](http://python.org)
 
@@ -151,6 +152,22 @@ env/bin/python3 main.py
 if you're using `virtualenv`.
 
 Now you have a site running at `http://localhost:5000` that does absolutely nothing! Congratulations!
+
+#### A configuration note
+
+The default database configuration uses an in-memory database; while this gets you up and running very quickly, it means the content will have to be rescanned every time the site comes up, and it will also take somewhat more memory than a file-based database. I *highly* recommend that you at least configure the database to use a simple SQLite file; to that end, in the skeleton `main.py` above, replace:
+
+```python
+app = publ.publ(__name__, {})
+```
+
+with:
+
+```python
+app = publ.publ(__name__, 'database': 'sqlite:///index.db')
+```
+
+This will keep your site index in a file called `index.db` in the same directory as your `main.py`.
 
 ## What does what
 
