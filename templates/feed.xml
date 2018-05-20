@@ -28,14 +28,16 @@
         <id>urn:uuid:{{entry.uuid}}</id>
         <author><name>{{ entry.author if entry.author else "fluffy" }}</name></author>
         <content type="html">
-            {{entry.body(max_width=320,
-                max_height=320,
-                link=entry.link(absolute=True),
-                absolute=True,
-                count=3)|e}}
-            {% if entry.more %}
-            &lt;a href="{{entry.link(absolute=True)}}"&gt;Read more...&lt;/a&gt;
-            {% endif %}
+<![CDATA[
+{{entry.body(max_width=320,
+    max_height=320,
+    link=entry.link(absolute=True),
+    absolute=True,
+    count=3)|e}}
+{% if entry.more %}
+<a href="{{entry.link(absolute=True)}}">Read more...</a>
+{% endif %}
+]]>
         </content>
     </entry>
     {% endfor %}
