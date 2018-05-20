@@ -7,7 +7,12 @@ fi
 
 echo "Configuring environment..."
 
-pipenv --three install
+if ! pipenv --venv ; then
+    # We don't have a VEnv yet, so let's make sure we create one with Python 3
+    pipenv --three install
+else
+    pipenv install
+fi
 
 # Restart Passenger (at least per Dreamhost's config)
 mkdir -p tmp

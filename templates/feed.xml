@@ -5,7 +5,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"
     xmlns:fh="http://purl.org/syndication/history/1.0">
 
-    <title>Publ</title>
+    <title>Publ{{ ': '~category.name if category.name else ''}}</title>
     <subtitle>A personal publishing system for the modern web</subtitle>
     <link href="{{ view.link(template='feed',absolute=True) }}" rel="self" />
     <link href="{{ category.link(template='feed',absolute=True) }}" rel="current" />
