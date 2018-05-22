@@ -175,21 +175,30 @@ The following additional things are provided to all templates:
     It also has the following function on it:
 
     * **`get_img_tag([arguments])`**: Makes an `<img>` tag with the provided
-        [image rendition arguments](/image-renditions)
+        [image rendition arguments](/image-renditions), with the following
+        additions:
+
+        * **`alt_text`**: Provides text for the `img`'s `alt` attribute
+        * **`title`**: Provides text for the `img`'s `title` attribute
+
+    * **`get_css_background([arguments])`**: Makes the appropriate `background-image`
+        CSS attributes with the provided [image rendition arguments](/image-renditions).
+
 
     Example usage in HTML templates:
 
     ```jinja
-    <div style="background-color: {{ image('/layout/image.png') }}"> ... </div>
+    <div style="{{ image('/layout/bg.png').get_css_background(width=320) }}"> ... </div>
 
     {{ image('http://example.com/external-image.jpg').get_img_tag(link='http://example.com') }}
     ```
 
     and in a CSS template:
 
-    ```css
+    ```jinja
     body {
-        background-image: url('{{image("/background.jpg")(width=320,height=320)}}');
+        {{image("/background.jpg").get_css_background(width=320,height=320)}}
+        background-color: white;
     }
     ```
 

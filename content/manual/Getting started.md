@@ -58,6 +58,8 @@ distributions differentiate between Python 2 or 3 anymore.
 
 ==Note:== I haven't yet managed to get Publ working from Windows. Perhaps someone
 with more Windows and Python experience could [help me out](https://github.com/fluffy-critter/Publ/issues/97)?
+In the meantime, the [Windows Subsystem for Linux](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)
+might be a good way to go.
 
 1. Install [Python](http://python.org)
 
