@@ -82,6 +82,7 @@ The headers supported by Publ itself:
 * **`Name`**: Overrides the friendly/display name of the category (i.e. `category.name`)
 * <span id="template-override">**`Index-Template`**</span>: Use this template instead of `index` when rendering this category (useful if you want to override a category or site's index template without overriding its subcategories)
 * **`Entry-Template`**: Use this template instead of `entry` when rendering an entry
+* **`Sort-Name`**: The name to use when sorting this in a subcategory list
 
 For example, given the file `some/category/info.cat`:
 
