@@ -121,3 +121,13 @@ Description: asdf
 
 Here is a description with no real configuration.
 ```
+
+If you want to change the order of subcategories in a subcategory list, that is easy to do with the `Sort-Name` property; for example, if you have categories named `foo`, `bar`, and `baz` which you want to appear in that order, you can do something like:
+
+    Sort-Name: 1-foo
+
+    Sort-Name: 2-bar
+
+    Sort-Name: 3-baz
+
+in their respective categories.
