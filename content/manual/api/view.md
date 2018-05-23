@@ -29,6 +29,7 @@ The `view` object has the following things on it:
 
 * **`link`**: The link to this view; optionally takes the following arguments:
 
+    * **`category`**: Which category to use (defaults to the category this view is queried against)
     * **`template`**: Which template to use (defaults to the index template)
     * **`absolute`**: Whether the URL should be absolute or relative
         * **`False`**: Use a relative URL (default)
