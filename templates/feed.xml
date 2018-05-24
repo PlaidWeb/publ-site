@@ -27,7 +27,7 @@
         <updated>{{entry.last_modified.isoformat()}}</updated>
         <id>urn:uuid:{{entry.uuid}}</id>
         <author><name>{{ entry.author if entry.author else "fluffy" }}</name></author>
-        <content type="html">
+        <content type="text/html">
 <![CDATA[
 {{entry.body(max_width=320,
     max_height=320,

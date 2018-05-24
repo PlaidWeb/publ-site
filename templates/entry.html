@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{ entry.title }}</title>
+    <title>{{ entry.title(markup=False) }}</title>
     <link rel="stylesheet" href="{{static('lightbox/css/lightbox.min.css')}}">
     <link rel="stylesheet" href="{{entry.stylesheet or 'style.css'}}">
 
