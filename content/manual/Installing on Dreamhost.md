@@ -8,11 +8,11 @@ A quick guide to getting Publ running on Dreamhost's Passenger environment
 
 .....
 
-==Huge note:== This really, really needs to be rewritten, now that Publ has been added to PyPI as a library.
-
 Dreamhost is kinda-sorta straightforward, once you have a python3 environment working. However, setting up python3 isn't
 quite obvious, and [Dreamhost's own instructions](https://help.dreamhost.com/hc/en-us/articles/115000702772-Installing-a-custom-version-of-Python-3)
 are incomplete and don't include [`pipenv`](https://docs.pipenv.org) (which, to be fair, is a fairly recent addition to the ecosystem).
+
+==Note:== Dreamhost shared hosting tends to be troublesome for larger sites, and I no longer recommend using it.
 
 ## Building Python3
 
