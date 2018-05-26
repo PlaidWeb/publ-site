@@ -15,7 +15,9 @@ Basically, Dreamhost, being shared hosting, is in the business of overselling ca
 
 I must have just been at the knife's edge of that with publ.beesbuzz.biz, because spinning up a second Publ app was too much for it to handle.
 
-So, for now, I've rolled beesbuzz.biz back to my old MovableType-based site, I have made the Heroku instance of publ.beesbuzz.biz the official one (if you are reading this then great, DNS has propagated!), and I am going to look into deploying Publ on my [LiNode](https://www.linode.com/?r=3387618616c77ee52a3a617c0218697a9c36bc9b) VPS, which it turns out has *way* more capacity than I'm using (thanks to them having given me incremental upgrades over the 6.5 years I've been with them) and which should be just fine for this purpose.
+So, for now, ~~I've rolled beesbuzz.biz back to my old MovableType-based site~~, I have made the Heroku instance of publ.beesbuzz.biz the official one (if you are reading this then great, DNS has propagated!), and I am going to look into deploying Publ on my [LiNode](https://www.linode.com/?r=3387618616c77ee52a3a617c0218697a9c36bc9b) VPS, which it turns out has *way* more capacity than I'm using (thanks to them having given me incremental upgrades over the 6.5 years I've been with them) and which should be just fine for this purpose.
+
+==UPDATE==: I have now deployed the new beesbuzz.biz on my LiNode VPS and it went off without a hitch, although DNS is probably going to take a while to propagate. Configuration is a bit fiddly though, and I'd really like this to be easy for non-server-experts to do!
 
 In the long run I'm going to move my stuff away from Dreamhost, because beesbuzz.biz was my last major site running there and at this point I'm basically paying $7/month for mediocre DNS service.
 
