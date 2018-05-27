@@ -93,6 +93,7 @@ The `entry` object has the following methods/properties:
         * **`"day"`**: Entries for that day
         * **`"month"`**: Entries for that month
         * **`"year"`**: Entries for that year
+        * **`"week"`**: Entries for that week
         * Otherwise, uses the default pagination for the template (default)
     * **`template`**: Which template to use for the link (defaults to `''`, i.e. the default/index category template)
     * **`category`**: Which category to link to; defaults to the entry's own category
