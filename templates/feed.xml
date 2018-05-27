@@ -24,10 +24,11 @@
     <entry>
         <title>{{entry.title(markup=False)}}</title>
         <link href="{{ entry.permalink(absolute=True) }}" rel="alternate" type="text/html" />
+        <published>{{entry.date.isoformat()}}</published>
         <updated>{{entry.last_modified.isoformat()}}</updated>
         <id>urn:uuid:{{entry.uuid}}</id>
         <author><name>{{ entry.author if entry.author else "fluffy" }}</name></author>
-        <content type="text/html">
+        <content type="html">
 <![CDATA[
 {{entry.body(max_width=320,
     max_height=320,
