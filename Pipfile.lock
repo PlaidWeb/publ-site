@@ -193,10 +193,10 @@
         },
         "publ": {
             "hashes": [
-                "sha256:6ab413b45ab9b30318a0c2e19852e74fb3fb8441180f533a11ff625057e3f0ef",
-                "sha256:b240f9b26c438ad97dc65a564cc68d19faacb8bc9fbe86737f7e4f82d7f4e4e0"
+                "sha256:dd6e52dc5827bc3488d39bebc1d595516a7be3977c2d3adb33450adbbd16c572",
+                "sha256:0af7ba1883341fa33aad763dd6ef84363ccf12b0f67aa041413aee99f76cbb71"
             ],
-            "version": "==0.1.18"
+            "version": "==0.1.19"
         },
         "pycparser": {
             "hashes": [
