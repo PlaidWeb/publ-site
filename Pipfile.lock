@@ -139,9 +139,9 @@
         },
         "peewee": {
             "hashes": [
-                "sha256:7344f317cc0cc0e9acf43eb493bf4dc5963a94ccd6867f27795abc85a972e265"
+                "sha256:7bd76cf2f7fdda898ed5235774f6edd8104a712ecad9883ba91dfef8ad85d3e3"
             ],
-            "version": "==3.4.0"
+            "version": "==3.5.0"
         },
         "pillow": {
             "hashes": [
@@ -193,10 +193,10 @@
         },
         "publ": {
             "hashes": [
-                "sha256:dd6e52dc5827bc3488d39bebc1d595516a7be3977c2d3adb33450adbbd16c572",
-                "sha256:0af7ba1883341fa33aad763dd6ef84363ccf12b0f67aa041413aee99f76cbb71"
+                "sha256:be59d46b49b77d5a5b1746938135e31f8a1cf60fda234cfdd30d0b3ff2a64c54",
+                "sha256:09675d814f3808efa63019380b7167b3d6f05f1df491b46e393aa7a84d9dec87"
             ],
-            "version": "==0.1.19"
+            "version": "==0.1.21"
         },
         "pycparser": {
             "hashes": [
