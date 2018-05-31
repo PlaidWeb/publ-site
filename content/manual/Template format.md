@@ -43,11 +43,11 @@ name; otherwise it uses the `index` view.
 (The category can be blank, incidentally; `http://mysite.com/` shows you the
 (`index` view on the empty category.)
 
-Anyway, given the category and view name, Publ looks for the closest matching
-template, by starting out in the template directory that matches the category
-name, and then going up one level until it finds a matching template. And a
-template will match based on either the exact name, or the name with `.html`,
-`.htm`, `.xml`, or `.json` added to the end.
+<p id="template-mapping">Anyway, given the category and view name, Publ looks
+for the closest matching template, by starting out in the template directory
+that matches the category name, and then going up one level until it finds a
+matching template. And a template will match based on either the exact name, or
+the name with `.html`, `.htm`, `.xml`, or `.json` added to the end.</p>
 
 So for example, if you ask for `http://mysite.com/music/classical/baroque/feed`,
 it will look for a template file named `feed`, `feed.html`, `feed.htm`,
@@ -112,8 +112,8 @@ underscores).
 Numeric error templates are not considered publicly-visible.
 
 If a template's name begins with `_` the template will be considered "private;"
-it will be available internally (such as to `Entry-Template` or `Index-
-Template`) but it will not be available to the world at large. So, for example,
+it will be available internally (such as to `Entry-Template`,`Index-
+Template`, or [`get_template()`](#get-template)) but it will not be available to the world at large. So, for example,
 if you want to override your site's main page you can create a file like
 `/content/mainpage.cat`:
 
@@ -162,6 +162,39 @@ The following additional things are provided to all templates:
     * **`absolute`**: Whether to force this link to be absolute
         * `False`: Use a relative link if possible (default)
         * `True`: Use an absolute link
+
+* <span id="get-template">**`get_template`**</span>: A function that finds a template file for a given category or entry. The first argument is the
+    name of the template to find or a list of template names; the second argument is what to find the template relative to.
+
+    Example usage:
+
+    ```jinja
+    {% for entry in view(recurse=True).entries %}
+        {% include get_template('_entry', entry) %}
+    {% endfor %}
+    ```
+
+    This fragment will find all of the entries below the current category, and then
+    render the closest matching `_entry` template for that category, with the filenames
+    mapped as described [above](#template-mapping). This is useful
+    for having content where its appearance within the template changes based on the
+    category it's in; for example, if you want your Atom feed to show full content
+    for only some parts of your site, or if you want image thumbnails to generate
+    differently.
+
+    ==Note:== The included template will only see the variables that are visible
+    at that point in the template. If you need to set a variable that would normally
+    be visible to the template, use the Jinja `{% set %}` command; for example, if
+    the template fragment expects to get a variable named `subcat` and you want it
+    to refer to the category, you'd do something like:
+
+    ```jinja
+    {% for cat in category.subcats(recurse=True) %}
+        {% set subcat = cat %}
+        {% include get_template('_my_fragment', cat) %}
+    {% endfor %}
+    ```
+
 
 * **`template`**: Information about the current [template](/api/template)
 
