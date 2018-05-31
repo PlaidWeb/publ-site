@@ -81,6 +81,8 @@ templates; the following headers are what Publ itself uses:
     * `HIDDEN`: This entry is visible, but will not be shown in entry lists
     * `PUBLISHED`: This entry is visible at all times
     * `SCHEDULED`: Until the publication date, this acts as `HIDDEN`; afterwards, it acts as `PUBLISHED`
+    * `GONE`: The entry has been deleted and will not be coming back
+    * `DELETED`: A synonym for `GONE`
 
     **Default value:** `SCHEDULED`
 

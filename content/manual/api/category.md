@@ -47,6 +47,8 @@ The `category` object provides the following:
 * **`description`**: Get the category description from the [meta file](#meta-files), if it exists. This optionally
     takes arguments for [image renditions](/image-renditions) if so desired.
 
+* **`sort_name`**: The name used for sorting
+
 Example template code for printing out an entire directory structure (flattened):
 
 ```jinja

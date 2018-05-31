@@ -43,9 +43,10 @@ The `view` object has the following things on it:
 * **`range`**: A textual description of the range of entries on this view, if the
     view has any sort of pagination-type constraints. Takes the following optional arguments:
 
-    * **`day`**: The format to use for a time period covering days; defaults to `YYYY-MM-DD`
-    * **`month`**: The format to use for a time period covering months; defaults to `YYYY-MM`
-    * **`year`**: The format to use for a time period covering years; defaults to `YYYY`
+    * **`day`**: The format to use for daily pagination, or a time period within a month; defaults to `YYYY/MM/DD`
+    * **`week`**: The format to use for a weekly pagination; defaults to `YYYY/MM/DD`
+    * **`month`**: The format to use for a monthly pagination, or a time period covering multiple months; defaults to `YYYY/MM`
+    * **`year`**: The format to use for a yearly pagination, or a tim eperiod covering multiple years; defaults to `YYYY/MM`
     * **`span`**: The format to use for a range of entries where the first and last entry dates differ (after formatting);
         defaults to `{oldest} — {newest} ({count})`
     * **`single`**: The format to use for a range of entries where the first and last are within the same time period;
@@ -60,10 +61,10 @@ The `view` object has the following things on it:
     * If they are within the same year (but on different months), it uses `month`
     * Otherwise, it uses `year`
 
-    Both dates are formatted based on the format corresponding to the chosen period.
-    If they are the same, the
-    `single` format is used; otherwise the `span` format is used. Both of these formats
-    get the following template values:
+    Both dates are formatted based on the format corresponding to the chosen
+    period. If they are the same, the `single` format is used; otherwise the
+    `span` format is used. Both of these formats receive the following template
+    values:
 
     * **`oldest`**: The formatted date of the earliest entry
     * **`newest`**: The formatted date of the latest entry

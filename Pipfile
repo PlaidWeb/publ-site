@@ -7,11 +7,9 @@ name = "pypi"
 
 [packages]
 
+publ = "*"
 gunicorn = "*"
-publ = ">=0.1.17"
-requests = "*"
 
 
 [dev-packages]
 
-pylint = "*"

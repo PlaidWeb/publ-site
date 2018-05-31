@@ -22,8 +22,9 @@
 
     {% for entry in view.entries %}
     <entry>
-        <title>{{entry.title}}</title>
+        <title>{{entry.title(markup=False)}}</title>
         <link href="{{ entry.permalink(absolute=True) }}" rel="alternate" type="text/html" />
+        <published>{{entry.date.isoformat()}}</published>
         <updated>{{entry.last_modified.isoformat()}}</updated>
         <id>urn:uuid:{{entry.uuid}}</id>
         <author><name>{{ entry.author if entry.author else "fluffy" }}</name></author>

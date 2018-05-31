@@ -11,10 +11,29 @@ The template API for `entry` objects.
 The `entry` object has the following methods/properties:
 
 * **`id`**: The numerical entry ID
+* **`title`**: The title of the entry
+
+    This property can be used directly, or it can take the following arguments:
+
+    * **`markup`**: Whether to include any markup in the title; defaults to `True`,
+        set this to `False` in things like a `<title>` element where HTML isn't valid.
+
+        For example:
+
+        ```html
+        <html>
+        <head><title>{{ entry.title(markup=False) }}</title></head>
+        <body><h1>{{ entry.title }}</h1></body>
+        </html>
+        ```
+
 * **`body`** and **`more`**: The text above and below the fold, respectively
 
-    These properties can be used directly, or they can take parameters,
-    for example for [image renditions](/image-renditions).
+    These properties can be used directly, or they can take any of the following
+    parameters:
+
+    * The standard [image rendition arguments](/image-renditions)
+    * **`xhtml`**: Set to True to render as XHTML instead of HTML
 
 * **`card`**: `<meta>` tags for an OpenGraph card
 
@@ -34,8 +53,15 @@ The `entry` object has the following methods/properties:
 
     Please see the [OpenGraph documentation](http://ogp.me/) for more information.
 
+* **`category`**: The category that this entry belongs to; this is provided as a
+    [category object](/api/category).
 
-* **`date`**: The creation date and time of the entry
+* **`date`**: The creation date and time of the entry, as an Arrow object
+
+    Since it's an Arrow object you can use it directly to get an incredibly
+    precise time, but you'll probably want to call a method on it such as
+    [`format()`](http://arrow.readthedocs.io/en/latest/#format) or
+    [`humanize()`](http://arrow.readthedocs.io/en/latest/#humanize).
 
 * **`permalink`**: A permanent link to the entry
 
@@ -57,7 +83,7 @@ The `entry` object has the following methods/properties:
 * **`link`**: A destination link to the entry
 
     This is the same as **`permalink`** except it will also follow an entry's
-    `Redirect-URL` destination.
+    `Redirect-To` destination.
 
 * **`archive`**: Get an archive link for rendering this in a category view.
 
@@ -67,6 +93,7 @@ The `entry` object has the following methods/properties:
         * **`"day"`**: Entries for that day
         * **`"month"`**: Entries for that month
         * **`"year"`**: Entries for that year
+        * **`"week"`**: Entries for that week
         * Otherwise, uses the default pagination for the template (default)
     * **`template`**: Which template to use for the link (defaults to `''`, i.e. the default/index category template)
     * **`category`**: Which category to link to; defaults to the entry's own category
