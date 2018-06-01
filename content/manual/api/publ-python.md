@@ -13,14 +13,15 @@ The `publ` library provides the following functions:
 
     `name` is the internal name for the application; this is more or less
     arbitrary although it's useful if you're setting up multiple Publ
-    applications for some reason. (Note: multiple Publ applications are [not
-    currently supported](https://github.com/fluffy-critter/Publ/issues/113).)
-    Generally you just pass in `__name__` for this.
+    applications for some reason (Note: multiple Publ apps are not currently
+    supported). Generally you just pass in `__name__` for this.
 
     `cfg` is the configuration options for Publ; it is a dictionary which holds
     the following values:
 
     * **`database`**: The database connection string for the content index; see the [Peewee documentation](http://peewee.readthedocs.io/en/latest/peewee/playhouse.html#database-url) for its format. You will probably want this to be `'sqlite:///index.db'` or the like. Default: `'sqlite:///:memory:'`.
+
+        ==Note:== If you're configuring multiple Publ applications within the same process, they ***must*** all use the same database.
 
     * **`content_folder`**: The directory which contains the root of your site's content files. Defaults to `content`
 
