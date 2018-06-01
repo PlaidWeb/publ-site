@@ -63,3 +63,66 @@ def redirect_date(match):
 ```
 
 The path alias function takes a [`re.match` object](https://docs.python.org/3.5/library/re.html#match-objects) and returns a tuple of `(url, is_permanent)`. This function can also make use of the various Flask request context things (e.g. `request.args`) and if it doesn't want to redirect after all it can return `(None,None)`.
+
+## Sample `main.py`
+
+This is the `main.py` that configures [beesbuzz.biz](https://beesbuzz.biz). It
+configures basic logging, sets the in-process cache to store up to 500 items for
+up to 60 seconds, and only does a maintenance rescan once per day. It also maps
+the legacy `/d/MMMMDDYY.php` and `/d/MMMMDDYY_w.php` URLs to the respective view
+in the [comics section](https://beesbuzz.biz/comics/).
+
+```python
+""" Main Publ application """
+
+from dateutil import tz
+
+import os
+import logging
+import logging.handlers
+
+import publ
+
+if os.path.isfile('logging.conf'):
+    logging.config.fileConfig('logging.conf')
+else:
+    if not os.path.isdir('logs'):
+        os.makedirs('logs')
+    logging.basicConfig(level=logging.INFO,
+                        handlers=[
+                            logging.handlers.TimedRotatingFileHandler(
+                                'logs/publ.log'),
+                            logging.StreamHandler()
+                        ],
+                        format="%(levelname)s:%(threadName)s:%(name)s:%(message)s")
+
+logging.info("Setting up")
+
+APP_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+config = {
+    'database': 'sqlite:///index.db',
+    'timezone': 'US/Pacific',
+    'cache': {
+        'CACHE_TYPE': 'simple',
+        'CACHE_DEFAULT_TIMEOUT': 60,
+        'CACHE_THRESHOLD': 500
+    } if not os.environ.get('FLASK_DEBUG') else {},
+    'index_rescan_interval': 86400
+}
+
+app = publ.publ(__name__, config)
+
+# Rewrite old comic URLs to date-based views; ideally this should be a feature in
+# Publ itself. See https://github.com/fluffy-critter/Publ/issues/11
+import flask
+
+
+@app.path_alias_regex(r'/d/([0-9]{8}(_w)?)\.php')
+def redirect_date(match):
+    return flask.url_for('category', category='comics', date=match.group(1)), True
+
+if __name__ == "__main__":
+    app.run(port=os.environ.get('PORT', 5000))
+
+```
