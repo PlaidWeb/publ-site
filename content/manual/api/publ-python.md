@@ -1,5 +1,5 @@
 Title: Publ Python API
-Path-Alias: /api/publ
+Path-Alias: /api/python
 
 The Python-side API when creating a Publ application.
 
@@ -55,7 +55,7 @@ values that Publ expects to see.
 This mostly exists to provide the `@path_alias_regex` decorator and its related `add_path_regex` function; here is an example from [my site](https://beesbuzz.biz), used to remap legacy URLs (like `/d/20060606.php`) to newer URLs (like `/comics/?date=20060606`):
 
 ```python
-app = publ.publ(__main__, {})
+app = publ.publ(__name__, {})
 
 @app.path_alias_regex(r'/d/([0-9]{8}(_w)?)\.php')
 def redirect_date(match):
