@@ -1,5 +1,8 @@
 Title: Publ Python API
 Path-Alias: /api/python
+Date: 2018-06-01 13:31:38-07:00
+Entry-ID: 608
+UUID: 5bad1c61-b9e1-4461-9f91-db61931c23d4
 
 The Python-side API when creating a Publ application.
 
