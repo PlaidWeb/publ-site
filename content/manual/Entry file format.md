@@ -69,6 +69,9 @@ templates; the following headers are what Publ itself uses:
     **Default value**: the ctime of the entry file (which will be added to the
     file for later).
 
+    If you set this to a non-date value (e.g. `now`) then it will be replaced with the
+    file modification time when the file is scanned, as if the header were omitted.
+
 * **`Category`**: Which category to put this entry in
 
     **Default value:** the entry file's directory
@@ -158,6 +161,12 @@ templates; the following headers are what Publ itself uses:
     which will allow for filtering entries based on content tags.
 
 * <span id="template-override">**`Entry-Template`**</span>: Use this template instead of `entry` when rendering this entry
+
+* **`Last-Modified`**: The date to use for the last-modified time for this entry.
+
+    Like with `Date`, if you set this to a non-date value (e.g. `now`) then it will be replaced with the
+    file modification time when the file is scanned, as if the header were omitted.
+
 
 ## Entry content
 

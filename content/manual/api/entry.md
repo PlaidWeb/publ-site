@@ -27,13 +27,16 @@ The `entry` object has the following methods/properties:
         </html>
         ```
 
+    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
+
 * **`body`** and **`more`**: The text above and below the fold, respectively
 
     These properties can be used directly, or they can take any of the following
     parameters:
 
     * The standard [image rendition arguments](/image-renditions)
-    * **`xhtml`**: Set to True to render as XHTML instead of HTML
+    * **`xhtml`**: Set to `True` to render as XHTML instead of HTML (default: `False`)
+    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
 
 * **`card`**: `<meta>` tags for an OpenGraph card
 
