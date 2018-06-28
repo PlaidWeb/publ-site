@@ -34,7 +34,13 @@ config = {
     #'content_folder': os.path.join(APP_PATH, 'content'),
 
     # How often to forcibly rescan the content index (0 or None to disable)
-    #'index_rescan_interval': 300
+    #'index_rescan_interval': 7200,
+
+    # How often to clean the rendition cache, in seconds
+    #'image_cache_interval': 3600,
+
+    # Maximum age for image renditions, in seconds
+    #'image_cache_age': 86400 * 7,  # one week
 
     # Where we keep our template files
     #'template_folder': os.path.join(APP_PATH, 'templates'),

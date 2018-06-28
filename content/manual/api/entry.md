@@ -27,7 +27,7 @@ The `entry` object has the following methods/properties:
         </html>
         ```
 
-    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
+    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution; this is mostly useful for Atom feeds. (default: `False`)
 
 * **`body`** and **`more`**: The text above and below the fold, respectively
 
@@ -37,6 +37,7 @@ The `entry` object has the following methods/properties:
     * The standard [image rendition arguments](/image-renditions)
     * **`xhtml`**: Set to `True` to render as XHTML instead of HTML (default: `False`)
     * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
+    * **`absolute`**: Set to True to force all links to be absolute (rather than relative); this includes ones that are written in `'[markdown links](/foo)`.'
 
 * **`card`**: `<meta>` tags for an OpenGraph card
 
