@@ -7,7 +7,7 @@ So, sorry to anyone who was subscribed to the RSS feed for this and got spammed 
 
 Three things come to mind:
 
-1. Figuring out how to always make IDs get assigned in an idempotent manner (hard)
+1. Figuring out how to always make IDs get assigned in an idempotent manner (hard to do correctly)
 2. Don't run on Heroku so the assignments persist between executions (easy)
 3. Add a pre-push hook to the repo that verifies that all entries alread have an assigned ID (???)
 
