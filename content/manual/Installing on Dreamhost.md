@@ -4,27 +4,36 @@ Entry-ID: 326
 UUID: 45e36baf-9c9a-40bf-9af7-1cbacefda9bd
 Path-Alias: /dreamhost
 
-A quick guide to getting Publ running on Dreamhost's Passenger environment
+A quick guide to getting Publ running on Dreamhost's Passenger WSGI environment.
 
 .....
 
-Dreamhost is kinda-sorta straightforward, once you have a python3 environment working. However, setting up python3 isn't
-quite obvious, and [Dreamhost's own instructions](https://help.dreamhost.com/hc/en-us/articles/115000702772-Installing-a-custom-version-of-Python-3)
-are incomplete and don't include [`pipenv`](https://docs.pipenv.org) (which, to be fair, is a fairly recent addition to the ecosystem).
 
-==Note:== Dreamhost shared hosting tends to be troublesome for larger sites, and I no longer recommend using it.
+Deployment to Dreamhost is fairly straightforward, once you have a python3
+environment working. However, setting up python3 isn't quite obvious, and
+[Dreamhost's own instructions](https://help.dreamhost.com/hc/en-
+us/articles/115000702772-Installing-a-custom-version-of-Python-3) are incomplete
+and don't include [`pipenv`](https://docs.pipenv.org) (which, to be fair, is a
+fairly recent addition to the ecosystem).
 
-## Building Python3
+These instructions should be easy to adapt to any other shared-hosting provider
+that provides WSGI. If you have successfully gotten a site running on another
+WSGI-based hosting provider, please feel free to [clone and modify this
+site](https://github.com/fluffy-critter/publ.beesbuzz.biz) and submit a pull
+request.
 
-I `ssh`ed into my Dreamhost shell account and then downloaded the [Python source distribution](https://www.python.org/downloads/source/)
-and then decompressed it:
+## Building Python 3
+
+First you need a Python 3 environment. On Dreamhost you can create one by using
+`ssh` to your Dreamhost shell account and then downloaded the [Python source
+distribution](https://www.python.org/downloads/source/):
 
 ```bash
 wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
 tar xzvf Python-3.6.5.tgz
 ```
 
-Then building it was fairly straightforward:
+Then building it is fairly straightforward:
 
 ```bash
 cd Python-3.6.5
@@ -33,61 +42,65 @@ nice -19 make build_all
 make install
 ```
 
-The `nice -19` is to reduce the chances that Dreamhost's process killer kicks in for the build, and `build_all` builds Python without building unit tests (which Dreamhost's process killer severely dislikes).
+The `nice -19` is to reduce the chances that Dreamhost's process killer kicks in
+for the build, and `build_all` builds Python without building unit tests (which
+Dreamhost's process killer severely dislikes).
 
-Then I had to add Python to my environment; I did so by adding the following lines to my `~/.bash_profile`:
+At this point you'll want to add Python 3 to the environment, by adding the
+following lines to your `~/.bash_profile`:
 
 ```bash
 # python3
 export PATH=$HOME/opt/python-3.6.5/bin:$HOME/.local/bin:$PATH
 ```
 
-and then also ran that line directly to get python3 in my path. Then finally I could install pipenv via:
+Log out and back in (or run the `export` line directly) and you should now have Python 3.6 on your path, you can verify this by typing
+
+```bash
+python3 --version
+pip3 --version
+```
+
+If all worked well, you can now install `pipenv`:
 
 ```bash
 pip3 install --user pipenv
 ```
 
-and then added the following line to my `~/.bash_profile`:
+and, optionally, add this line to your `~/.bash_profile` to get better shell
+tab completion:
 
 ```bash
 eval "$(pipenv --completion)"
 ```
 
-## Configuring Publ on Dreamhost
+## Running Publ on Dreamhost
 
-First I set up my domain `publ.beesbuzz.biz` with the following options:
+This guide simply assumes that you are deploying the files for this site using
+its Git repository. For your own site you will probably be uploading your own
+content directory in some other way.
 
-* Domain to host: `publ.beesbuzz.biz`
+First, clone this site's files into your home directory and deploy its virtual environment:
+
+```bash
+cd
+git clone https://github.com/fluffy-critter/publ.beesbuzz.biz
+cd publ.beesbuzz.biz
+./setup.sh
+```
+
+Next, open up the [Dreamhost panel](https://panel.dreamhost.com) and
+create a new domain, with the following configuration:
+
 * Remove WWW from URL
 * Web directory: `/home/username/publ.beesbuzz.biz/public`
-* Logs directory: `/home/username/logs/publ.beesbuzz.biz` (the default)
 * HTTPS (via LetsEncrypt): Yes
 * Passenger (Ruby/NodeJS/Python apps only): Yes
 
-After clicking "Fully host now!" and waiting a few minutes I then had a directory with some crap in it.
+After Dreamhost's configuration robot does its thing, you should now have a copy of this website running on whatever
+domain you've configured.
 
-Next, I installed Publ by doing a `git clone` from github and then moving its files into the right place:
-
-```bash
-cd publ.beesbuzz.biz
-git clone https://github.com/fluffy-critter/Publ
-mv Publ/* Publ/.git* .
-```
-
-Then I copied `config.py.dist` to `config.py` and changed `server_name` as appropriate (namely set it to `"publ.beesbuzz.biz"`),
-and ran `./setup.sh`.
-
-Finally, to get the static content visible I symlinked it into Dreamhost's `public` directory: (this isn't strictly necessary but it helps with performance)
-
-```bash
-cd public
-ln -sf ../example_site/static .
-```
-
-At this point I had Publ working with the default site!
-
-If you want to run your own site you will of course want to point the `config.py` values to the appropriate places.
+If you would like to make your own site (which you probably do!) I recommend borrowing this site file's `passenger_wsgi.py` and `setup.sh`, which provide the WSGI configuration and environment setup for running Publ on Dreamhost.
 
 ## Migrating a legacy site
 
@@ -100,9 +113,8 @@ Then, as you add content into Publ, you can [add `Path-Alias` headers to your en
 to map legacy URLs to your new URL scheme. (You can also put such redirections into your `.htaccess` in the form
 of `RewriteRule` but this is a lot easier to manage and gives better performance.)
 
-Currently Publ can only map single paths to entries, but there is [planned functionality](https://github.com/fluffy-critter/Publ/issues/11) for more robust path-mapping which will also support category views and the like.
-Using `RewriteRule` from `.htaccess` can also cover this use case, although moving the path mapping into Publ
-means that this will continue to work even after you've moved away from Apache or Dreamhost (as e.g. nginx and Heroku don't support `.htaccess`).
+If you would like to map legacy URLs programmatically you can add such mappings into the `.htaccess` file, or you can
+use the [Python API](/api/python) to add regular expression mapping rules (with `path_alias_regex`) in your `main.py`. Using `path_alias_regex` is recommended as it will work anywhere Publ does and also provides slightly better performance.
 
 ### Using Path-Alias to redirect old PHP URLs
 
@@ -117,19 +129,12 @@ RewriteRule ^(.*\.php)$ /$1.PUBL_PATHALIAS [L]
 This will redirect any request to a non-existent PHP script to a special URL routing rule that
 tells Publ to treat it as a path-alias immediately.
 
-## Things left to set up
-
-Setting up CloudFlare or some other CDN should be straightforward but I haven't done it yet. No point until renditions are there, of course.
-Chances are it's just as simple as checking the box next to "enable Cloudflare CDN," although for best results it's probably better to
-configure static content on its own subdomain. The way to do that would be by setting up hosting like so:
-
-* Domain to host: `static.example.com` (or whatever)
-* Enable HTTPS, CDN, yadda yadda yadda
-* Web directory: pointed to the `static_directory` value specified in `config.py`
-
-And then in the configuration in `main.py` you'd set `static_path` to point to your CDN domain (`static.example.com` in this example).
-
 ## Upgrading the code
 
-When code updates, you can simply do a `git pull && ./setup.sh`, which ensures that all the library dependencies are updated as well.
+To get the latest versions of all library dependencies you can run the following from your site directory:
+
+```bash
+pipenv update
+./setup.sh
+```
 

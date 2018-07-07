@@ -3,10 +3,20 @@ Date: 2018-04-04 18:29:34-07:00
 Entry-ID: 331
 UUID: 1a873494-53fc-49e3-9de7-8e67e211ff29
 
-Welcome to the website for Publ! The short version: Publ is like a static site generator, but dynamic. Want to know more?
+Welcome to the website for Publ, a flexible, lightweight system for website content management.
+
+Publ is like a static site generator, but dynamic. Want to know more?
 See [the FAQ](/faq).
 
-This software (and this site!) is still in development and there isn't a
-lot to see just yet. But while you're here, maybe you'd like to check out the [documentation](/manual/)
-or the [development blog](/blog/).
+This software (and this site!) is still in active development. While you're
+here, maybe you'd like to check out the [documentation](/manual/) or the
+[development blog](/blog/).
+
+### Featured sites
+
+Here are some sites using Publ as their CMS. If you would like your site to be
+featured, please [email me](mailto:fluffy-AT-beesbuzz-DOT-biz?subject=A+Publ+site)
+and I'll take a look.
+
+* [busybee](https://beesbuzz.biz) — Contains very heterogenous content including photo galleries, webcomics, and blog-type content in varying presentations.
 
