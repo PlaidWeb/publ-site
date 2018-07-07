@@ -83,7 +83,6 @@ content directory in some other way.
 First, clone this site's files into your home directory and deploy its virtual environment:
 
 ```bash
-cd
 git clone https://github.com/fluffy-critter/publ.beesbuzz.biz
 cd publ.beesbuzz.biz
 ./setup.sh

@@ -60,11 +60,11 @@ templates; the following headers are what Publ itself uses:
 
 * **`Date`**: The publication date and time
 
-    This can be in any
-    format that [Arrow](http://arrow.readthedocs.io) understands. If no timezone
-    is specified it will use the timezone indicated in `config.py`.
-    ([TODO](https://github.com/fluffy-critter/Publ/issues/41); this
-    is pending an [external fix](https://github.com/crsmithdev/arrow/pull/516))
+    This can be in any format that [Arrow](http://arrow.readthedocs.io)
+    understands. If no timezone is specified it will use the timezone indicated
+    in `config.py`. ([TODO](https://github.com/fluffy-critter/Publ/issues/41);
+    this is pending an [external
+    fix](https://github.com/crsmithdev/arrow/pull/516))
 
     **Default value**: the ctime of the entry file (which will be added to the
     file for later).
@@ -81,10 +81,10 @@ templates; the following headers are what Publ itself uses:
     Allowed values:
 
     * `DRAFT`: This entry is not visible at all
-    * `HIDDEN`: This entry is visible, but will not be shown in entry lists
+    * `HIDDEN`: This entry is visible when accessed directly, but will not be included in entry listings or in previous/next links
     * `PUBLISHED`: This entry is visible at all times
     * `SCHEDULED`: Until the publication date, this acts as `HIDDEN`; afterwards, it acts as `PUBLISHED`
-    * `GONE`: The entry has been deleted and will not be coming back
+    * `GONE`: The entry has been deleted and will not be coming back; attempts to access this entry will result in an HTTP 410 GONE error.
     * `DELETED`: A synonym for `GONE`
 
     **Default value:** `SCHEDULED`
@@ -93,7 +93,7 @@ templates; the following headers are what Publ itself uses:
 
     In some circles this is known as "SEO text."
 
-    **Default value:** the entry title if not present, or to the entry's filename (minus extension) if there's no title.
+    **Default value:** the entry title; if there is no title, the entry's filename (minus extension)
 
 * **`Redirect-To`**: A URL to redirect this entry to
 
@@ -101,13 +101,12 @@ templates; the following headers are what Publ itself uses:
     you want an entry to be a placeholder for some external content (e.g. when the entry
     was syndicated from an external source).
 
-    This will also override the entry's permalink.
-
 * <a name="path-alias"></a>**`Path-Alias`**: An alternate path to this entry
 
-    This is useful for redirecting old, non-Publ URLs to this entry. For example,
-    if you're migrating from a legacy site and you have a URL like `http://example.com/blog/0012345.php`
-    you can set a header like:
+    This is useful for providing easy-to-remember short names for an entry, and
+    for redirecting old, non-Publ URLs to this entry. For example, if you're
+    migrating from a legacy site and you have a URL like
+    `http://example.com/blog/0012345.php` you can set a header like:
 
     ```
     Path-Alias: /blog/0012345.php
@@ -142,6 +141,9 @@ templates; the following headers are what Publ itself uses:
     Path-Unalias: /some/old/url/5-oops
     ```
 
+    Note that if two separate entries define the same alias with `Path-Alias` or
+    `Path-Unalias`, the results will be unspecified.
+
 * **`UUID`**: A globally-unique identifier for the entry
 
     While Publ doesn't use this for itself, having this sort of generated ID is
@@ -151,21 +153,23 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="entry-type"></span>**`Entry-Type`**: An arbitrary string which you can use to define an entry type
 
-    This exists purely so that you can differentiate entry types however you want;
-    with this you can, for example, set up something similar to what WordPress and
-    Tumblr call "page"-type content (to show up in a fixed navigation sidebar or the like).
+    This exists purely so that you can differentiate entry types however you
+    want; with this you can, for example, set up something similar to what
+    WordPress and Tumblr call "page"-type content (to show up in a fixed
+    navigation sidebar or the like).
 
-    Note that this is intended for affecting the layout/structure of the site, and
-    if you set more than one, only one of them will be used (and which one is undefined).
-    In the future there will be a [content tagging system](https://github.com/fluffy-critter/Publ/issues/22)
-    which will allow for filtering entries based on content tags.
+    Note that this is intended for affecting the layout/structure of the site,
+    and if you set more than one, only one of them will be used (and which one
+    is undefined). In the future there will be a [content tagging
+    system](https://github.com/fluffy-critter/Publ/issues/22) which will allow
+    for filtering entries based on content tags.
 
-* <span id="template-override">**`Entry-Template`**</span>: Use this template instead of `entry` when rendering this entry
+* <span id="template-override">**`Entry-Template`**</span>: Use the specified template instead of `entry` when rendering this entry
 
 * **`Last-Modified`**: The date to use for the last-modified time for this entry.
 
-    Like with `Date`, if you set this to a non-date value (e.g. `now`) then it will be replaced with the
-    file modification time when the file is scanned, as if the header were omitted.
+    Like with `Date`, if you set this to a non-date value (e.g. `now`) then it
+    will be replaced with the file modification time when the file is scanned.
 
 
 ## Entry content
