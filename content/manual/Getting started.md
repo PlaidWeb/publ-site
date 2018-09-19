@@ -138,9 +138,14 @@ Next, you'll need a `main.py` file. The absolute minimum for that is simply:
 import os
 import publ
 
+APP_PATH = os.path.dirname(os.path.abspath(__file__))
+
 config = {
     # Leave this off to do an in-memory database
-    'database': 'sqlite:///index.db'
+    'database_config': {
+        'provider': 'sqlite',
+        'filename': os.path.join(APP_PATH, 'index.db')
+    },
 }
 app = publ.publ(__name__, config)
 if __name__ == "__main__":

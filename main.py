@@ -25,9 +25,20 @@ logging.info("Setting up")
 APP_PATH = os.path.dirname(os.path.abspath(__file__))
 
 config = {
-    # The database connection string. NOTE: If this involves credentials
-    # (e.g. mysql, postgres, etc.) you should put this into an appropriate
-    # environment variable in a file that doesn't get checked in.
+    # The database connection configuration. This is a list of parameters
+    # passed to PonyORM's db.bind() method; see
+    # https://docs.ponyorm.com/firststeps.html#database-binding
+    # for more information.
+    #
+    # NOTE: If this involves credentials (e.g. mysql, postgres, etc.) you
+    # should put this into an appropriate environment variable in a file that
+    # doesn't get checked in.
+    'database_config': {
+        'provider': 'sqlite',
+        'filename': os.path.join(APP_PATH, 'index.db')
+    },
+
+    # legacy peewee configuration (this goes away with Publ v0.3.0)
     'database': 'sqlite:///index.db',
 
     # Where we keep our content files

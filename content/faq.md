@@ -81,7 +81,7 @@ deploy to their platform of choice!
 Publ is written in Python (I'm specifically developing against 3.6 and that is
 currently a requirement, although I am happy to accept compatibility patches to
 support earlier versions), using the [Flask](http://flask.pocoo.org) framework,
-and the [Peewee ORM](https://peewee.readthedocs.io). For Markdown processing
+and [PonyORM](https://ponyorm.com). For Markdown processing
 it's using [Misaka](http://misaka.61924.nl), and for time and date handling it
 uses [Arrow](https://arrow.readthedocs.io).
 
@@ -91,14 +91,14 @@ Because it's easy to get started with and it's what I know, and provides some
 pretty decent flexibility while also having a nice ecosystem of modules that I
 might be using in the future.
 
-#### And why Peewee (and not SQLAlchemy/raw SQL/MongoDB/...)?
+#### And why PonyORM (and not SQLAlchemy/raw SQL/MongoDB/...)?
 
 Because it's easy to get started with and handles the actual use cases for the
 site pretty well. The database itself is just a disposable content index (in fact,
 the way Publ currently does a schema upgrade is by dropping
 all its tables and re-scanning the content files). I didn't see any need for
 anything more "proper" when the only requirements are a glorified key-value store
-with some basic indexing; Publ treats the filesystem itself as the ground truth database.
+with some basic indexing; Publ treats the filesystem itself as the source of ground truth.
 
 #### And Misaka?
 
@@ -198,16 +198,9 @@ I do plan on that being part of the system in the long term, but it's not really
 necessary for any of my current requirements. Being able to subscribe to long-
 form content is already well-handled by syndication feeds like Atom and RSS, and
 ActivityPub is focused more on doing instant push updates for short-form
-content.
+content. For most uses of public Internet content, [Atom is fine](http://beesbuzz.biz/blog/2535-ActivityPub-hot-take) -- and this can still handle push via [WebSub](https://github.com/w3c/websub) (which Publ also doesn't yet support but adding that would be fairly simple).
 
-However, I do have plans for supporting private/friends-only content, and
-ActivityPub fits nicely into that world! I had spent a lot of time trying to
-design mechanisms for something similar with OAuth/OpenID authentication tied to
-single-subscriber Atom feeds, but ActivityPub is much more suited to that sort
-of thing, so that might be the direction I go in there. (I still prefer the
-OpenID model I'd worked out in my head, but given that one of my main goals is
-open standards interoperability, and everyone's focusing on ActivityPub these
-days, it seems silly to not at least consider it!)
+I do have plans for supporting friends-only/private content, though, and I could see a future in which ActivityPub providers are used to provide federated authentication. And there's no reason it couldn't also be used to support ActivityPub for push, although it'll take some doing to make it actually work well in that ecosystem.
 
 ## Okay, so, how can I help?
 
