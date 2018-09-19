@@ -1,15 +1,10 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
-publ = "*"
+publ = "==0.3.0rc1"
 gunicorn = "*"
 
-
 [dev-packages]
-

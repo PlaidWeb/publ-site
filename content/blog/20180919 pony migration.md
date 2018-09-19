@@ -12,7 +12,9 @@ PonyORM's API is also significantly more Pythonic, and rather than abusing opera
 There are a few downsides to Pony so far, though:
 
 * While it's possible to adapt arbitrary types into database fields, queries don't actually work on them (so at least for Enums I have to convert at query time, which turns out to not be a huge deal)
+
 * There's no simple way to incrementally build a query with an OR branch in it (which I don't actually use anywhere at present but I did have to rework some query API stuff to do that)
+
 * Not really a downside but Pony treats `''` and `NULL` as equivalent, which has some fun implications for storing empty strings in a table
 
     Of course, SQLite does this too, internally, and my existing code for that case wasn't actually "correct" (but it happened to work with SQLite anyway). So moving to Pony meant I had to make this *actually correct* which, on the plus side, means that Publ is more likely to work with MySQL or Postgres (which I haven't tested yet)
