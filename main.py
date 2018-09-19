@@ -38,9 +38,6 @@ config = {
         'filename': os.path.join(APP_PATH, 'index.db')
     },
 
-    # legacy peewee configuration (this goes away with Publ v0.3.0)
-    'database': 'sqlite:///index.db',
-
     # Where we keep our content files
     #'content_folder': os.path.join(APP_PATH, 'content'),
 
