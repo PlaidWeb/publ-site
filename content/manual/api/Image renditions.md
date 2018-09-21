@@ -29,7 +29,37 @@ render images.
 
 * **`absolute`**: Whether to produce absolute URLs
 * **`link`**: Put a hyperlink on the image pointing to the given URL
-* **`div_class`**: If set, wraps the image(s) in a `<div>` with the specified `class` attribute.
+
+### <span id="style"></span>Style options
+
+* **`img_class`**: If set, sets the `class` attribute on the image tag
+* **`style`**, **`img_style`**: A string or a list of strings, which provide inline CSS rules to the `img` element
+* **`shape`**: Adds the CSS3 `shape-outline` attribute to the image tag's style; can be one of the following:
+    * `True`: Uses the base rendition of the image itself (this is usually what you want)
+    * A string value: uses the specified image's alpha channel as the shape
+
+        This can be any path scheme supported by the [image path scheme](/entry-format#image-renditions) (e.g. `local-file.png`, `/common/absolute-file.png`, `@/images/static-file.png`, `//example.com/remote-file.png`).
+
+    For example, if you have an image `inset-image.jpg` that you want to mask off with `inset-image-mask.png` and float left,
+    you can do:
+
+    ```markdown
+    ![](inset-image.jpg{shape="inset-mask.png",style="float:left"})
+    ```
+
+    It is better to make image insets' float rules part of your stylesheet, however, so that it can be responsive; for example:
+
+    ```markdown
+    ![](inset-image.jpg{shape="inset-mask.png",img_class="inset-left"})
+    ```
+
+    The size of the outline image will be mapped the same as the base image, wherever possible; for example:
+
+    ```markdown
+    ![{320,320}](inset-image.jpg{shape="inset-mask.png"})
+    ```
+
+    will size both the image and its mask to fit within a 320x320 square.
 
 ### Inline image sizing
 

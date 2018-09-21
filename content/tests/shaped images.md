@@ -19,5 +19,7 @@ Etiam eu lacus ligula. Maecenas condimentum ligula ut mauris congue elementum id
 
 Aliquam a egestas nisi. Pellentesque fringilla sodales tortor, a aliquet nisi. Vivamus augue eros, mollis in rutrum id, sodales ac enim. Sed porttitor erat eget bibendum blandit. Maecenas pulvinar porttitor neque, viverra tempus massa porttitor id. Nulla viverra metus quis varius condimentum. Pellentesque fermentum non lectus et accumsan.
 
+![{style="float:right"}](notsmiley.png{height=250,format='jpg',background='#cccccc',shape=True})
+
 Sed rutrum lorem tristique augue dapibus, vel sodales sapien aliquam. Duis at molestie lacus, et dapibus est. Mauris varius, libero et feugiat posuere, metus ipsum tristique justo, vel vehicula eros diam rutrum lectus. Nunc laoreet, tellus mattis faucibus pellentesque, nisi risus interdum enim, ut ornare arcu neque sit amet tortor. Donec suscipit malesuada auctor. Duis sollicitudin laoreet ligula nec gravida. Morbi elementum libero nibh, eu consectetur risus ultrices nec. Nulla volutpat fermentum pellentesque. Praesent ullamcorper posuere ipsum, sit amet ornare odio consectetur vel. Nunc in orci at ex dignissim facilisis feugiat sagittis neque. Vestibulum pellentesque mauris aliquet pellentesque bibendum. Praesent eget venenatis enim. Suspendisse potenti.
 

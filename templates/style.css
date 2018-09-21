@@ -190,3 +190,13 @@ a:active {
 .description p:first-child {
     margin: 0; padding: 0;
 }
+
+.inset-left {
+    float: left;
+    shape-margin: 1ex;
+}
+
+.inset-right {
+    float: right;
+    shape-margin: 1ex;
+}

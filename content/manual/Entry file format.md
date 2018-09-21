@@ -231,8 +231,6 @@ For the shorthand notation, if you want to specify only height you can use `None
 ![{None,240}](image1.jpg | image2.jpg | image3.jpg)
 ```
 
-
-
 For a full list of the configurations available, please see the manual entry on [image renditions](/image-renditions).
 
 If the image path is absolute (i.e. starts with a `/`) it will search for the image within the content directory. Otherwise it will search in the following order:
@@ -257,6 +255,25 @@ things work in a hopefully-intuitive manner.
 Of course, external absolute URLs (e.g. `http://example.com/image.jpg` or `//example.com/protocol-relative.gif`) are still allowed, although they are
 more limited in what you can do with them (for example, scaling will be done client-side and cropping
 options will not work). Also, keep in mind that URLs that are not under your control may change without notice.
+
+#### Image sets
+
+To support image sets, the following options can be added to the `alt text` section to wrap the image(s) in a `<div>`:
+
+* **`div_class`**: Sets the `class` attribute on the containing `<div>`
+* **`div_style`**: A string or list of strings which are added to the containing `<div>`'s `<style>` element
+
+For example, this Markdown fragment:
+
+```markdown
+![{div_class="foo"}(test.jpg | test2.jpg)]
+```
+
+will produce the equivalent of the following HTML:
+
+```html
+<div class="foo"><img src="test.jpg"><img src="test2.jpg"></div>
+```
 
 ### Static file links
 
