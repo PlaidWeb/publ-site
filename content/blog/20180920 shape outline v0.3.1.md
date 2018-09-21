@@ -90,8 +90,8 @@ becomes (roughly):
 
 ```html
 <div class="foo">
-<img src="img-1.png" style="top style;inner img_style">
-<img src="img-2.png" style="inner style;top img_style">
+<img src="img-1.png" style="inner img_style;top style">
+<img src="img-2.png" style="top img_style;inner style">
 </div>
 ```
 

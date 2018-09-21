@@ -33,9 +33,15 @@ render images.
 ### <span id="style"></span>Style options
 
 * **`img_class`**: If set, sets the `class` attribute on the image tag
-* **`style`**, **`img_style`**: A string or a list of strings, which provide inline CSS rules to the `img` element
+
+* **`img_style`**, **`style`**: A string or a list of strings, which provide inline CSS rules to the `img` element
+
+    When the element is written, any attributes in `style` will override those in `img_style`; the intention is that in a Markdown tag, `img_style` comes from the container and `style` comes from the image.
+
 * **`shape`**: Adds the CSS3 `shape-outline` attribute to the image tag's style; can be one of the following:
+
     * `True`: Uses the base rendition of the image itself (this is usually what you want)
+
     * A string value: uses the specified image's alpha channel as the shape
 
         This can be any path scheme supported by the [image path scheme](/entry-format#image-renditions) (e.g. `local-file.png`, `/common/absolute-file.png`, `@/images/static-file.png`, `//example.com/remote-file.png`).
