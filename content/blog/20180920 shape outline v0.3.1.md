@@ -75,7 +75,7 @@ Anyway, if you want to diagnose the shape margins, most modern browsers' DOM/ele
 
 ![](ghost-inspector.png{scale=3} "the ghost's shape")
 
-Anyway, the astute observer of the above might notice two new image format options, `img_class` and `style`. Previously there was only `div_class` which adds a style rule to the image set container, but `img_class` adds a CSS class to the individual `<img>` tags, and `style` adds a CSS rule to the image (but not to the `div`); `img_style` is also an alias for `style`. Note that there currently is no `div_style` thing (for mostly ideological reasons) but I could easily be convinced to add it on if someone asks for it. If both `style` and `img_style` are specified, they will be combined together.
+Anyway, the astute observer of the above might notice two new image format options, `img_class` and `style`. Previously there was only `div_class` which adds a style rule to the image set container, but `img_class` adds a CSS class to the individual `<img>` tags, and `style` adds a CSS rule to the image (but not to the `div`); `img_style` is also an alias for `style`. And, for the sake of symmetry I also added `div_style` even though it probably should never be used. If both `style` and `img_style` are specified, they will be combined together.
 
 Note that the stacking behavior for these attributes can be a little counterintuitive. For an example of how this works:
 
