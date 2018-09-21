@@ -3,6 +3,10 @@ Date: 2018-07-16 22:49:06-07:00
 Entry-ID: 746
 UUID: 39cd78a4-8894-5d1e-9005-0634f39f498a
 
+Tests of MathJax support
+
+.....
+
 single dollar: $inline(math)$    $linebreak \\ linebreak$  $doublebreak \\\\ doublebreak$
 
 double dollar: $$inline(math)$$   $$linebreak \\ linebreak$$ $$doublebreak \\\\ doublebreak$$
