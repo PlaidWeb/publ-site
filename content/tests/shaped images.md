@@ -3,6 +3,10 @@ Date: 2018-09-20 00:31:43-07:00
 Entry-ID: 422
 UUID: 6bd3fa69-efd9-5b96-b39f-e40958588481
 
+Tests of shaped image floats
+
+.....
+
 ![{shape=True,style="float:left",width=200,height=200}](notsmiley.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ornare nec elit sit amet suscipit. Aenean pellentesque ut dui at tincidunt. Sed placerat semper risus nec volutpat. Sed et feugiat ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque imperdiet gravida lectus id viverra. Pellentesque lacinia eros at imperdiet tempor. Duis at aliquet risus, id accumsan ex. Nulla ut magna ante. Vestibulum tellus turpis, consequat sed magna nec, bibendum congue mauris. Aenean dignissim quis neque ornare tempor.

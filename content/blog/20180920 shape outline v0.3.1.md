@@ -105,3 +105,7 @@ Anyway, if you really want to use `img_style` and `style` my general guidance wo
 ... and oh god I'm just realizing how terrible my docs are and how much I'd love to have an end-user of Publ to actually give doc feedback or maybe a proper technical writer to write the docs to make a lick of sense to someone who isn't me. Sigh.
 
 Anyway, tl;dr: Publ now makes it easy to tightly wrap text around floated images.
+
+Oh, and I also fixed a regression in the PonyORM migration that made `DRAFT` and `DELETED`/`GONE` publish statuses not work right. Oops.
+
+
