@@ -5,6 +5,6 @@ name = "pypi"
 
 [packages]
 gunicorn = "*"
-publ = "==0.3.1"
+publ = "==0.3.2"
 
 [dev-packages]
