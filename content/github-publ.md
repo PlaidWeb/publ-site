@@ -1,6 +1,6 @@
 Title: GitHub (library)
 Entry-Type: sidebar
-Redirect-To: http://github.com/fluffy-critter/Publ
+Redirect-To: http://github.com/PlaidWeb/Publ
 Path-Alias: /github-publ
 Date: 2018-05-18 19:09:02-07:00
 Entry-ID: 12
