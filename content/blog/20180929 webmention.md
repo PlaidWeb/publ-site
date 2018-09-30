@@ -9,7 +9,7 @@ As far as I can tell, it works great, but I'm also not going to actually merge t
 
 .....
 
-When I started Publ, it was with the very specific goal of providing the publishing interface for a content store. Given content files and templates, format them into reasonable web-friendly HTML and Atom and whatever else the templates do, in a basically-stateless manner, and do a great job of providing high-quality image renditions and generated CSS and so on.
+When I started Publ, it was with the very specific goal of providing the publishing mechanism for a content store. Given content files and templates, format them into reasonable web-friendly HTML and Atom and whatever else the templates do, in a basically-stateless manner, and do a great job of providing high-quality image renditions and generated CSS and so on, while also supporting things like legacy URL mapping and automatic redirection and so on.
 
 Basically, be like a static publishing system, but dynamic.
 
