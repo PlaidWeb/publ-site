@@ -62,8 +62,7 @@ not even be useful for a single site — republishing content would be best
 handled by other tools, like a [cron job](https://en.wikipedia.org/wiki/Cron)
 that pulls an external RSS feed, for example.
 
-My *intention* is that there will eventually be a built-in content editor with some
-sort of configurable access rules, but that's more of a long-term goal rather
+My *intention* is that there will eventually be an online content editor that integrates with Publ, but that's more of a long-term goal rather
 than a necessity for Publ's initial release.
 
 ### Great, how do I install it?
@@ -82,9 +81,10 @@ deploy to their platform of choice!
 Publ is written in Python (I'm specifically developing against 3.6 and that is
 currently a requirement, although I am happy to accept compatibility patches to
 support earlier versions), using the [Flask](http://flask.pocoo.org) framework,
-and [PonyORM](https://ponyorm.com). For Markdown processing
+and [PonyORM](https://ponyorm.com) for its content indexing. For Markdown processing
 it's using [Misaka](http://misaka.61924.nl), and for time and date handling it
-uses [Arrow](https://arrow.readthedocs.io).
+uses [Arrow](https://arrow.readthedocs.io). It also uses [watchdog](https://github.com/gorakhargosh/watchdog)
+to watch the content store for changes.
 
 #### Why Flask (and not web.py/pyramids/...)?
 
@@ -96,10 +96,10 @@ might be using in the future.
 
 Because it's easy to get started with and handles the actual use cases for the
 site pretty well. The database itself is just a disposable content index (in fact,
-the way Publ currently does a schema upgrade is by dropping
+the way Publ currently does a schema "upgrade" is by dropping
 all its tables and re-scanning the content files). I didn't see any need for
 anything more "proper" when the only requirements are a glorified key-value store
-with some basic indexing; Publ treats the filesystem itself as the source of ground truth.
+with some basic ordered indexing; Publ treats the filesystem itself as the source of ground truth.
 
 #### And Misaka?
 
@@ -109,7 +109,7 @@ flexibility for the extensions I want to add. It supports (most) GitHub-flavor
 markdown and [MathJax](http://mathjax.org) out of the box, and its design allows
 adding further syntax hooks for the supported tokens. The downside is that it's
 not feasible to extend it with custom tokens but so far I haven't really found
-any need for that.
+any need for that anyway.
 
 ### Why didn't you use PHP/Haskell/Go/Ruby/Rust/...?
 
