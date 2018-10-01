@@ -52,7 +52,7 @@ in question.
 
 When I write a post for this I'm writing it in [my text editor of
 choice](http://sublimetext.com) and checking it into [the website's GitHub
-repository](http://github.com/fluffy-critter/publ.beesbuzz.biz) and pushing it
+repository](/github-site) and pushing it
 to the server. But someone else might want to upload the files manually via FTP,
 and someone else might want to use an online file editor like
 [codeanywhere](https://codeanywhere.com) or map their server's content directory
@@ -68,7 +68,7 @@ than a necessity for Publ's initial release.
 ### Great, how do I install it?
 
 Right now there's a [getting started guide](328) which covers the basics of running
-it locally, and [this site's files](https://github.com/fluffy-critter/publ.beesbuzz.biz)
+it locally, and [this site's files](/github-site)
 includes all of the necessary configuration for deploying on both Heroku and Dreamhost.
 There's definitely a lot of work to be done in the documentation area, though;
 I would love if someone could write up a clear and simple way for people to
@@ -220,7 +220,7 @@ This is of course not anything special to Publ.
 
 ### What about having multuple Publ instances on a single running server?
 
-Unfortunately, that is not so straightforward. Currently, the ORM in use does not support segregating data across instances, and as such I also haven't put much effort into containerizing the Publ configuration (which is currently global). However, I haven't found a good use case for multiple Publ sites conmingled in a single app server anyway; if you can think of one, feel free to [open an issue](http://github.com/PlaidWeb/Publ/issues/new) and make your case for it!
+Unfortunately, that is not so straightforward. Currently, the ORM in use does not support segregating data across instances, and as such I also haven't put much effort into containerizing the Publ configuration (which is currently global). However, I haven't found a good use case for multiple Publ sites conmingled in a single app server anyway; if you can think of one, feel free to [open an issue](/newissue) and make your case for it!
 
 ## Okay, so, how can I help?
 
@@ -242,7 +242,7 @@ where the code could be better/cleaner/more Pythonic
 
 * Making the Publ site look nicer in general
 
-I also have a [rather large list of to-do items](http://github.com/fluffy-critter/Publ/issues),
+I also have a [rather large list of to-do items](/issues),
 most of which are low priority for me. But if there's something you want to help
 on, please, by all means, do so!
 
