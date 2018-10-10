@@ -66,7 +66,7 @@ And in the Publ case this also settles the canonical URL issue because it's base
 
 And this also gets along perfectly with another notion I had going into this -- having services to syndicate content into a Publ site by reformatting an external Atom feed into an entry, for example. Want to automatically post all your Flickr items to a gallery on your Publ site? Use their [Atom API](https://www.flickr.com/services/feeds/). And the very same kind of simple tool can, for example, re-post your itch.io devlogs or your Tumblr reblogs or your YouTube videos or *whatever*.
 
-I am entirely a fan of small tools doing simple things, and composing tools together. The world of CMSes already has too many [Swiss army knives](https://novelty-gift-ideas.com/wenger-16999-swiss-army-knife-giant/). Let's keep our tools simple, doing a few things well, and have them work together with other tools.
+I am entirely a fan of small tools doing simple things, and composing tools together. The world of CMSes already has too many [Swiss army knives](https://amzn.to/2pKzIoK). Let's keep our tools simple, doing a few things well, and have them work together with other tools.
 
 I will absolutely have Publ support Webmention and WebSub and so on, in *the best way possible* -- by doing nothing, and not getting in the way of other tools that can do it better.
 
