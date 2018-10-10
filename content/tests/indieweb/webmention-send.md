@@ -1,4 +1,7 @@
 Title: Testing webmention sends
+Date: 2018-10-10 12:30:51-07:00
+Entry-ID: 191
+UUID: 6e90f690-5b9a-515b-8002-492eb50757b9
 
 Testing webmention sending with Pushl
 
