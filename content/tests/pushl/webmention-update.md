@@ -10,6 +10,6 @@ Tests for the webmention update suite
 ### updates
 
 * [update 1 part 1](https://webmention.rocks/update/1)
+* [update 1 part 2](https://webmention.rocks/update/1/part/2)
 * [update 2 part 1](https://webmention.rocks/update/2)
-* [update 2 part 2](https://webmention.rocks/update/2/part/2)
 
