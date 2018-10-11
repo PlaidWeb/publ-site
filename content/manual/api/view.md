@@ -11,6 +11,7 @@ The template API for view objects.
 The `view` object has the following things on it:
 
 * **`entries`**: A list of all of the entries that are visible in this view
+* **`deleted`**: A list of all of the entries that were deleted from this view (with `Status: GONE` or `Status: DELETED`)
 
 * **`count`**: The number of visible entries in the view
 
