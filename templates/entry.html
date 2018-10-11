@@ -37,15 +37,17 @@
 
     <div id="content">
         <div class="entries">
+            <article class="h-entry">
             {% block entry %}
-            <div class="posted">Last updated: {{entry.last_modified.format('YYYY-MM-DD h:mm A')}} ({{entry.last_modified.humanize()}})
+            <div class="posted">Last updated: <time class="dt-posted" datetime="{{entry.date.isoformat()}}">{{entry.last_modified.format('YYYY-MM-DD h:mm A')}} ({{entry.last_modified.humanize()}})</time>
             </div>
             {% if entry.more %}
-            <div class="entry">
+            <div class="entry h-content">
                 {{entry.more}}
             </div>
             {% else %} Oops, this page has no content... {% endif %}
             {% endblock %}
+            </article>
         </div>
     </div>
     </div>
