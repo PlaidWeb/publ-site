@@ -206,13 +206,13 @@ I do have plans for supporting friends-only/private content, though, and I could
 
 Publ is only one piece of a puzzle for a rich [IndieWeb](http://indieweb.org) experience. It is intended to provide the publishing and content management aspects of a site, and allow the use of other, simple tools for other parts of the ecosystem.
 
-To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool that I am building is called (tentatively) [Pushl](http://github.com/PlaidWeb/Pushl) to provide the notification conduit between Publ (or any other CMS, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
+To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool is (tentatively) [Pushl](http://github.com/PlaidWeb/Pushl) to provide the notification conduit between Publ (or any other CMS, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
 
-For that matter, Pushl might end up becoming the mechanism by which ActivityPub support comes to pass.
+For that matter, Pushl can also add basic ActivityPub support to a Publ site via [fed.brid.gy](http://fed.brid.gy).
 
 As far as incoming Webmentions are concerned, most of that comes down to selecting whatever endpoint you want. There is already a rich ecosystem of Webmention endpoints that are available for use now (I use [webmention.io](http://webmention.io), personally), and I haven't seen any compelling reason to integrate one into Publ directly.
 
-### What about other functionality to self-host?
+### What about adding other functionality?
 
 Being built in Flask, it is a simple matter to add additional routes to any Publ instance, by simply registering them with Publ's routing rules. Any Flask-specific plugin should Just Work out of the box, and building API endpoints that wrap existing libraries is quite straightforward.
 

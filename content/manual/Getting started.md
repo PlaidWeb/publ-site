@@ -8,9 +8,11 @@ A guide to starting with Publ.
 
 .....
 
+==Note== This guide is in [horrible need of a rewrite](https://github.com/PlaidWeb/publ-site/issues/3).
+
 ## Installing system requirements
 
-You'll need Python 3 (at least version 3.5, but 3.6 is recommended) and
+You'll need Python 3 (at least version 3.6) and
 [`pipenv`](https://pipenv.org) to be installed.
 
 ### macOS
@@ -26,13 +28,13 @@ and then add the following line to your login script (usually
 `~/.bash_profile`):
 
 ```bash
-export PATH=$HOME/Library/Python/3.6/bin:$PATH
+export PATH=$HOME/Library/Python/3.7/bin:$PATH
 ```
 
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
-python 3.5 or later (ideally 3.6 or later), and to also install `pip3` (Ubuntu
+python 3.6 or later, and to also install `pip3` (Ubuntu
 keeps this in the `python3-pip` package; other distributions will vary).
 
 Afterwards, you can install `pipenv` with either:
@@ -192,6 +194,8 @@ Looking at the [example site](/github-site), here's the key things to look at:
 For more information about templates, see [the manual on template formats](/template-format).
 
 For more information about content, see [that manual page](/entry-format).
+
+I also have made [some of my own website templates](https://github.com/PlaidWeb/Publ-sample-templates) available.
 
 ## Putting it on the web
 
