@@ -3,7 +3,7 @@ Date: 2018-04-03 02:22:07-07:00
 Entry-ID: 326
 UUID: 45e36baf-9c9a-40bf-9af7-1cbacefda9bd
 
-How to run Publ on a Passenger WSGI environment
+How to run Publ on a Passenger WSGI environment (including Dreamhost)
 
 .....
 

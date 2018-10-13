@@ -176,16 +176,24 @@ a:active {
 .error { color: #f00; background-color: yellow; }
 .error code { color: #900 ; background-color: #ff3; }
 
+#banner {
+    border-bottom: solid black 1px;
+    margin-bottom: 1em;
+    padding: 1em 1em 0 1em;
+    background: #ffc;
+}
+#banner h1 {
+    display: inline-block;
+    border-bottom: none;
+    margin: 0;
+    padding: 0;
+}
+
 .description {
-    margin-left: 5em;
-    padding: 1ex;
-    font-size: small;
+    display: inline-block;
     font-style: italic;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    border: dashed black 1px;
-    background: #eee;
+    font-size: small;
+    margin-left: 1em;
 }
 .description p:first-child {
     margin: 0; padding: 0;

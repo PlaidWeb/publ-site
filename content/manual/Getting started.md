@@ -199,13 +199,7 @@ I also have made [some of my own website templates](https://github.com/PlaidWeb/
 
 ## Putting it on the web
 
-Publ is intended to be run on a containerized platform such as [Heroku](http://heroku.com); the free tier should
-be sufficient for at least basic experimentation. Or if you have hosting with a provider that supports Passenger WSGI
-you can try deploying there; I have a very basic guide for [installing on Dreamhost](/dreamhost), and information
-on Heroku is coming eventually.
-
-If you're running your own server (Apache or nginx), you should be able to configure this as a WSGI application
-or using a reverse proxy. More information will come on that later, hopefully.
+Getting a Publ site online depends a lot on how you're going to be hosting it. If you're savvy with Flask apps you probably know what to do; otherwise, check out the [deployment guides](/deployment) to see if there's anything that covers your usage.
 
 ## Next steps
 

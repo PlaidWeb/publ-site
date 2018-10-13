@@ -4,7 +4,7 @@ Entry-ID: 1210
 UUID: 5744383f-5712-5011-9a9d-1b3c9806e090
 Path-Alias: /heroku
 
-How to deploy a Publ website to [Heroku](http://heroku.com).
+How to deploy a Publ website using [Heroku](http://heroku.com)
 
 .....
 
