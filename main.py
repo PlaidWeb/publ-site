@@ -5,6 +5,7 @@ from dateutil import tz
 import os
 import logging
 import logging.handlers
+from urllib.parse import urlparse
 
 import publ
 
@@ -34,6 +35,9 @@ config = {
     # should put this into an appropriate environment variable in a file that
     # doesn't get checked in.
     'database_config': {
+        'provider': urlparse(os.environ['DATABASE_URL']).scheme,
+        'dsn': os.environ['DATABASE_URL']
+    } if 'DATABASE_URL' in os.environ else {
         'provider': 'sqlite',
         'filename': os.path.join(APP_PATH, 'index.db')
     },
