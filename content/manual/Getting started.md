@@ -1,8 +1,8 @@
 Title: Getting started
 UUID: 4dea4c3b-c6ec-4dc0-9f40-b27a91128a60
-Date: 2018-04-03 16:24:37-07:00
 Entry-ID: 328
 Path-Alias: /getting-started
+Date: 2018-10-13 15:59:50-07:00
 
 A guide to starting with Publ.
 

@@ -1,4 +1,4 @@
-Title: Publ Python API
+Title: Python API
 Path-Alias: /api/python
 Date: 2018-06-01 15:48:09-07:00
 Entry-ID: 865

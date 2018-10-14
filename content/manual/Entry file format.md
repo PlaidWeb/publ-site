@@ -64,9 +64,9 @@ templates; the following headers are what Publ itself uses:
     understands. If no timezone is specified it will use the timezone indicated
     in `config.py`. ([TODO](https://github.com/fluffy-critter/Publ/issues/41);
     this is pending an [external
-    fix](https://github.com/crsmithdev/arrow/pull/516))
+    fix](https://github.com/PlaidWeb/Publ/issues/41))
 
-    **Default value**: the ctime of the entry file (which will be added to the
+    **Default value**: the modification time of the entry file (which will be added to the
     file for later).
 
     If you set this to a non-date value (e.g. `now`) then it will be replaced with the
@@ -153,13 +153,13 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="entry-type"></span>**`Entry-Type`**: An arbitrary string which you can use to define an entry type
 
-    This exists purely so that you can differentiate entry types however you
+    This allows you to differentiate entry types however you
     want; with this you can, for example, set up something similar to what
-    WordPress and Tumblr call "page"-type content (to show up in a fixed
-    navigation sidebar or the like).
+    WordPress and Tumblr call "page"-type content, or use this to manage entries
+    within a navigation sidebar or a linkroll or the like.
 
     Note that this is intended for affecting the layout/structure of the site,
-    and if you set more than one, only one of them will be used (and which one
+    and each entry only has a single type. If you set more than one, only one of them will be used (and which one
     is undefined). In the future there will be a [content tagging
     system](https://github.com/fluffy-critter/Publ/issues/22) which will allow
     for filtering entries based on content tags.
@@ -171,6 +171,8 @@ templates; the following headers are what Publ itself uses:
     Like with `Date`, if you set this to a non-date value (e.g. `now`) then it
     will be replaced with the file modification time when the file is scanned.
 
+    **Default value:** the entry's `Date`
+
 
 ## Entry content
 
@@ -178,7 +180,7 @@ After the headers, you can have entry content; if the file has a `.htm` or `.htm
 extension it will just render as plain HTML, but with a `.md` extension it will
 render as [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
-Publ supports [GitHub-flavored markdown](https://guides.github.com/features/mastering-markdown/), specifically via [Misaka](http://misaka.61924.nl) (which in turn uses [Hoedown](https://github.com/hoedown/hoedown) — my, Earth certainly is full of things!).
+Publ supports [GitHub-flavored markdown](https://guides.github.com/features/mastering-markdown/), specifically via [Misaka](http://misaka.61924.nl) (which in turn uses [Hoedown](https://github.com/hoedown/hoedown "My, Earth certainly is full of things!")).
 
 Code highlighting uses the [Pygments](http://pygments.org) library, which supports
 [a rather large list of syntaxes](http://pygments.org/docs/lexers/).
