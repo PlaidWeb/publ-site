@@ -8,8 +8,6 @@ A guide to starting with Publ.
 
 .....
 
-==Note== This guide is in [horrible need of a rewrite](https://github.com/PlaidWeb/publ-site/issues/3).
-
 ## Installing system requirements
 
 You'll need Python 3 (at least version 3.6) and
@@ -21,7 +19,8 @@ On macOS this is pretty straightforward; after installing
 [Homebrew](https://brew.sh) you can install these things with:
 
 ```bash
-brew install python pipenv
+brew install python
+pip3 install --user pipenv
 ```
 
 and then add the following line to your login script (usually
@@ -81,7 +80,7 @@ might be a good way to go.
 
 ### Copying this one (recommended)
 
-The files for this website are in a [separate repository](/github-site). You
+The files for this website are in a [git repository](/github-site). You
 should be able to clone or fork that repository in order to have your own
 instance of it, and then you can start a local server for experimenting with:
 
@@ -98,20 +97,11 @@ e.g.:
 PORT=12345 ./run.sh
 ```
 
-#### Windows users
-
-If you don't have any sort of UNIX commandline (minGW, Linux Subsystem for
-Windows, Cygwin, etc.), then instead of `setup.sh` run:
-
-    pipenv install
-
-and instead of `run.sh` run:
-
-    pipenv run python3 main.py
-
-You could also put these in `.cmd` files if you like.
+will run the site at `http://localhost:12345` instead.
 
 ### Setting one up from scratch
+
+#### Creating the environment
 
 To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or
 `pipenv` to set up a sandbox and install the `Publ` package to it; I recommend
@@ -121,7 +111,7 @@ using a hosting provider that requires it, feel free to do that instead.
 If you're using `pipenv` the command would be:
 
 ```bash
-pipenv install Publ
+pipenv --three install Publ
 ```
 
 and if you're doing the `virtualenv` approach it would be:
@@ -129,10 +119,8 @@ and if you're doing the `virtualenv` approach it would be:
 ```bash
 virtualenv env
 . env/bin/activate
-pip install Publ
+pip3 install Publ
 ```
-
-(Windows users would type `env\scripts\activate` instead of `. env/bin/activate`.)
 
 Next, you'll need a `main.py` file. The absolute minimum for that is simply:
 
@@ -154,6 +142,12 @@ if __name__ == "__main__":
     app.run(port=os.environ.get('PORT', 5000))
 ```
 
+Now, you'll need directories for your site content:
+
+```bash
+mkdir -p content templates static
+```
+
 Then you can launch your (not yet very functional) site with
 
 ```bash
@@ -170,7 +164,75 @@ if you're using `virtualenv`.
 
 Now you have a site running at `http://localhost:5000` that does absolutely nothing! Congratulations!
 
-## What does what
+#### Basic templates
+
+The following template files are available from the [publ site repository](https://github.com/PlaidWeb/publ-site/sample-site).
+
+For a fairly minimal site, create the file `templates/index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ category.name or 'My simple site' }}</title>
+</head>
+
+<body>
+<h1>{{ category.name or 'My simple site'}}</h1>
+{% for entry in view.entries %}
+<article>
+<h2><a href="{{entry.permalink}}">{{ entry.title }}</a></h2>
+{{ entry.body }}
+
+{% if entry.more %}
+<a rel="more" href="{{entry.permalink}}">More...</a>
+{% endif %}
+</article>
+{% endfor %}
+
+</body>
+</html>
+```
+
+and `templates/entry.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ entry.title }}</title>
+</head>
+
+<body>
+<h1><a href="{{category.link}}">{{ category.name or 'My simple site' }}</a></h1>
+<article>
+<h2>{{ entry.title }}</h2>
+
+{{ entry.body }}
+{{ entry.more }}
+</article>
+
+</body>
+</html>
+```
+
+Now you can finally create a content file; for example, create a file called `first-entry.md` in the `content` directory:
+
+```
+Title: My first entry!
+
+This is my first entry on this website.
+
+.....
+
+This is the extended text.
+```
+
+After Publ sees the content file, it should now get some extra stuff in the headers, namely a `Date`, an `Entry-ID`, and a `UUID`. These are how Publ tracks the publishing information for the entry itself. It's a good idea to leave them alone unless you know what you're doing.
+
+Anyway, read on for more information about how to build a bigger site!
+
+### What does what
 
 Looking at the [example site](/github-site), here's the key things to look at:
 
@@ -197,10 +259,10 @@ For more information about content, see [that manual page](/entry-format).
 
 I also have made [some of my own website templates](https://github.com/PlaidWeb/Publ-sample-templates) available.
 
-## Putting it on the web
+### Putting it on the web
 
 Getting a Publ site online depends a lot on how you're going to be hosting it. If you're savvy with Flask apps you probably know what to do; otherwise, check out the [deployment guides](/deployment) to see if there's anything that covers your usage.
 
-## Next steps
+### Next steps
 
 If you do end up using Publ, please let me know so that I can check it out — and maybe add it to a list of featured sites!

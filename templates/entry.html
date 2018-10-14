@@ -18,7 +18,9 @@
 
 <body id="{{template.name}}">
     {% block pagetitle %}
+    <div id="banner">
     <h1><a href="{{category.link}}">Publ:</a> {{ entry.title }}</h1>
+    </div>
     {% endblock %}
 
     {% block sidebar %}
@@ -39,7 +41,6 @@
         <div class="entries">
             <article class="h-entry">
             {% block entry %}
-            <h2 class="p-name"><a class="u-url" href="{{entry.permalink}}">{{entry.title}}</a></h2>
             <div class="posted">Last updated: <time class="dt-posted" datetime="{{entry.date.isoformat()}}">{{entry.last_modified.format('YYYY-MM-DD h:mm A')}} ({{entry.last_modified.humanize()}})</time>
             </div>
             {% if entry.more %}
