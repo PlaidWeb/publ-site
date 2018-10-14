@@ -22,9 +22,7 @@ The `publ` library provides the following functions:
     `cfg` is the configuration options for Publ; it is a dictionary which holds
     the following values:
 
-    * **`database`**: The database connection string for the content index; see the [Peewee documentation](http://peewee.readthedocs.io/en/latest/peewee/playhouse.html#database-url) for its format. You will probably want this to be `'sqlite:///index.db'` or the like. Default: `'sqlite:///:memory:'`.
-
-        ==Note:== If you're configuring multiple Publ applications within the same process, they ***must*** all use the same database.
+    * **`database_config`**: The parameters sent to PonyORM's [`db.bind()`](https://docs.ponyorm.com/api_reference.html#Database.bind) method. Defaults to an in-memory sqlite database.
 
     * **`content_folder`**: The directory which contains the root of your site's content files. Defaults to `content`
 
@@ -41,7 +39,9 @@ The `publ` library provides the following functions:
 
     * **`image_output_subdir`**: The subdirectory of `static_folder` that will be used to store the image rendition cache. Defaults to `_img`.
 
-    * **`index_rescan_interval`**: How frequently Publ should do a maintenance rescan of the content files. Defaults to 7200 (2 hours); set to 0  or None to disable.
+        Be careful not to set this to a directory you want to store static files in, as they risk being deleted.
+
+    * **`index_rescan_interval`**: How frequently Publ should do a maintenance rescan of the content files. Defaults to 7200 (2 hours); set to 0 or `None` to disable.
 
     * **`timezone`**: The timezone to use for dates with no specified time zone. Defaults to the server's local timezone.
 
