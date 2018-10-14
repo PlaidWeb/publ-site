@@ -30,6 +30,8 @@ and then add the following line to your login script (usually
 export PATH=$HOME/Library/Python/3.7/bin:$PATH
 ```
 
+As an alternative to homebrew you can install Python 3.6 or later from the [Python website](http://python.org) or using your package manager of choice.
+
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
@@ -48,19 +50,19 @@ or
 pip3 install --user pipenv
 ```
 
-If you do the latter, make sure your pip user directory is on your PATH; this
+If you do the latter, make sure your pip user directory is on your `PATH`; this
 will probably be `$HOME/.local/bin` but it might vary based on your
 distribution.
 
 Also, if `pip3` doesn't work, try running just `pip` instead; not all
-distributions differentiate between Python 2 or 3 anymore.
+distributions differentiate between Python 2 and 3 anymore.
 
 ### Windows
 
-==Note:== I haven't yet managed to get Publ working from Windows. Perhaps someone
+==Note:== I haven't yet managed to get Publ working under Windows. Perhaps someone
 with more Windows and Python experience could [help me out](https://github.com/fluffy-critter/Publ/issues/97)?
 In the meantime, the [Windows Subsystem for Linux](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)
-might be a good way to go.
+might be a good way to go, or you could run [Ubuntu](http://ubuntu.com) under [Virtualbox](http://virtualbox.org) or the like.
 
 1. Install [Python](http://python.org)
 
@@ -118,8 +120,7 @@ and if you're doing the `virtualenv` approach it would be:
 
 ```bash
 virtualenv env
-. env/bin/activate
-pip3 install Publ
+env/bin/pip3 install Publ
 ```
 
 Next, you'll need a `main.py` file. The absolute minimum for that is simply:
@@ -234,7 +235,7 @@ Anyway, read on for more information about how to build a bigger site!
 
 ### What does what
 
-Looking at the [example site](/github-site), here's the key things to look at:
+Looking at [the files for this site](/github-site), here are some key things to look at:
 
 * `Pipfile`: Configures `pipenv`
 * `main.py`: Configures the Publ site
