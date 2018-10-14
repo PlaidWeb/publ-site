@@ -57,7 +57,7 @@
 
         {% for entry in content.entries %}
 
-        <article>
+        <article class="h-entry entry">
         {% block entry scoped %}
         <h2 class="p-name">
             {%- if entry.more or entry['redirect-to'] %}<a class="u-url" href="{{entry.link}}">{% endif -%}
