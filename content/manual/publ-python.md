@@ -71,20 +71,18 @@ The path alias function takes a [`re.match` object](https://docs.python.org/3.5/
 
 This is the `main.py` that configures [beesbuzz.biz](https://beesbuzz.biz). It
 configures basic logging, sets the in-process cache to store up to 500 items for
-up to 60 seconds, and only does a maintenance rescan once per day. It also maps
-the legacy `/d/MMMMDDYY.php` and `/d/MMMMDDYY_w.php` URLs to the respective view
-in the [comics section](https://beesbuzz.biz/comics/).
+up to 300 seconds, and only does a maintenance rescan once per day. It also maps
+a bunch of legacy URLs as well as forwarding ActivityPub requests to fed.brid.gy's handler.
 
 ```python
 """ Main Publ application """
-
-from dateutil import tz
 
 import os
 import logging
 import logging.handlers
 
 import publ
+import flask
 
 if os.path.isfile('logging.conf'):
     logging.config.fileConfig('logging.conf')
@@ -94,21 +92,24 @@ else:
     logging.basicConfig(level=logging.INFO,
                         handlers=[
                             logging.handlers.TimedRotatingFileHandler(
-                                'logs/publ.log'),
+                                'logs/publ.log', when='D'),
                             logging.StreamHandler()
                         ],
                         format="%(levelname)s:%(threadName)s:%(name)s:%(message)s")
 
 logging.info("Setting up")
 
-APP_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+APP_PATH = os.path.dirname(os.path.abspath(__file__))
 
 config = {
-    'database': 'sqlite:///index.db',
+    'database_config': {
+        'provider': 'sqlite',
+        'filename': os.path.join(APP_PATH, 'index.db')
+    },
     'timezone': 'US/Pacific',
     'cache': {
         'CACHE_TYPE': 'simple',
-        'CACHE_DEFAULT_TIMEOUT': 60,
+        'CACHE_DEFAULT_TIMEOUT': 300,
         'CACHE_THRESHOLD': 500
     } if not os.environ.get('FLASK_DEBUG') else {},
     'index_rescan_interval': 86400
@@ -116,16 +117,29 @@ config = {
 
 app = publ.publ(__name__, config)
 
-# Rewrite old comic URLs to date-based views; ideally this should be a feature in
-# Publ itself. See https://github.com/fluffy-critter/Publ/issues/11
-import flask
+
+@app.route('/favicon.ico')
+def favicon():
+    return flask.redirect(flask.url_for('static', filename='favicon.ico'))
 
 
 @app.path_alias_regex(r'/d/([0-9]{8}(_w)?)\.php')
 def redirect_date(match):
+    ''' legacy comic url '''
     return flask.url_for('category', category='comics', date=match.group(1)), True
+
+
+@app.path_alias_regex(r'/blog/e/')
+def redirect_blog_entry(match):
+    ''' missing blog entry -- put up the apology page '''
+    return flask.url_for('entry', entry_id=7821), False
+
+
+@app.path_alias_regex(r'/\.well-known/(host-meta|webfinger).*')
+def redirect_bridgy(match):
+    ''' support ActivityPub via fed.brid.gy '''
+    return 'https://fed.brid.gy' + flask.request.full_path, False
 
 if __name__ == "__main__":
     app.run(port=os.environ.get('PORT', 5000))
-
 ```
