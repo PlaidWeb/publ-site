@@ -12,8 +12,10 @@ import publ
 if os.path.isfile('logging.conf'):
     logging.config.fileConfig('logging.conf')
 else:
-    if not os.path.isdir('logs'):
+    try:
         os.makedirs('logs')
+    except FileExistsError:
+        pass
     logging.basicConfig(level=logging.INFO,
                         handlers=[
                             logging.handlers.TimedRotatingFileHandler(
