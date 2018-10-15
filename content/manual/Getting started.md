@@ -258,7 +258,7 @@ For more information about templates, see [the manual on template formats](/temp
 
 For more information about content, see [that manual page](/entry-format).
 
-I also have made [some of my own website templates](https://github.com/PlaidWeb/Publ-sample-templates) available.
+I also have made [some of my own website templates](https://github.com/PlaidWeb/Publ-templates-beesbuzz.biz) available.
 
 ### Putting it on the web
 

@@ -12,24 +12,26 @@ Last-Modified: 2018-10-01 02:06:23+00:00
 
 ### What is Publ, anyway?
 
-It is a content management system (CMS) for publishing to the web. Think of it as filling
-a similar niche as Movable Type or Wordpress, only with a focus on heterogenous
-content and flexibility.  For [my own personal site](http://beesbuzz.biz/) I need to be able to manage
-comics, music, art, photography, a blog, and who knows what else as uniformly
-as possible, and I really want RSS/Atom feeds to be the norm again.
+Publ is a website **publ**ishing system. Think of it as filling
+a similar niche as [Movable Type](http://movabletype.org) or [Wordpress](http://wordpress.org), but with a focus on heterogenous content and flexibility, and with simple content management principles.
 
-Pretty much I want to focus on the "C" in "CMS."
+For [my own personal site](http://beesbuzz.biz/) I need to be able to manage
+comics, music, art, photography, a blog, and who knows what else as in a simple, uniform manner, while also supporting [IndieWeb](http://indieweb.org) principles.
 
-The name, incidentally, is short for "Publish."
+### Is Publ a CMS?
 
-### Why not just use Wordpress/Movable Type/Jekyll/Pelican/...?
+That depends on how you define "CMS." At its core, it is one -- it manages and renders content to be published to a website, after all -- but the term "CMS" has a history of implying something more complicated, with an integrated end-to-end asset management pipeline and database-driven post editor.
 
-I actually have played around with a lot of different CMSes, and have mostly used
-MT for running my sites in the past. Don't get me wrong, a lot of these CMSes have
-a lot going for them! But none of them really fit into the niche I'm looking for,
+I do sometimes refer to Publ as a CMS but for the above reason I prefer to think of it as a "publishing system" or "like a static site generator, but dynamic."
+
+### Why not just use one of the many existing publishing systems?
+
+I actually have played around with a lot of them, and have historically mostly used
+Movable Type for running my sites in the past. Don't get me wrong, a lot of these platforms have
+a lot going for them, and work very well for a lot of people! But none of them really fit into the niche I was looking for,
 with this particular combination of features:
 
-* Allowing multiple templates for different parts of the site
+* Allowing multiple templates for different parts of a single site
 * Ensuring the ability to reorganize content (or import content from other systems) and have permalinks remain valid
 * Having MVC-style routing rules that allow for future expansion
 * Keeping pages and their content together
@@ -50,7 +52,7 @@ into a specific content management mindset. The software primarily indexes separ
 content files, and uses that to present them in a way appropriate to the content
 in question.
 
-When I write a post for this I'm writing it in [my text editor of
+When I write a post for this I'm writing it using Markdown or HTML in [my text editor of
 choice](http://sublimetext.com) and checking it into [the website's GitHub
 repository](/github-site) and pushing it
 to the server. But someone else might want to upload the files manually via FTP,
@@ -62,13 +64,12 @@ not even be useful for a single site — republishing content would be best
 handled by other tools, like a [cron job](https://en.wikipedia.org/wiki/Cron)
 that pulls an external RSS feed, for example.
 
-My *intention* is that there will eventually be an online content editor that integrates with Publ, but that's more of a long-term goal rather
-than a necessity for Publ's initial release.
+My *intention* is that there will eventually be an online content editor that integrates with Publ, but this doesn't necessarily have to be written by me or work in any particular way. My vision for one is  a web-based file manager and a Publ-oriented Markdown editor, but maybe someone else would have a different (possibly better) idea.
 
-### Great, how do I install it?
+### How do I use it?
 
 Right now there's a [getting started guide](328) which covers the basics of running
-it locally, and [this site's files](/github-site)
+it locally and setting up a basic site, and [this site's files](/github-site)
 includes all of the necessary configuration for deploying on both Heroku and Dreamhost.
 There's definitely a lot of work to be done in the documentation area, though;
 I would love if someone could write up a clear and simple way for people to
@@ -131,10 +132,6 @@ is [no longer a primary target](358) it still informed my decisions.
 Also, while I'm far from a Python expert, I know it way better than any of the
 other languages people suggest for this purpose!
 
-I also like the Python ecosystem for this stuff; Jinja2 templating is
-particularly well-suited to the way I think about page render logic, for
-example, and is also compatible with plenty of HTML authoring tools.
-
 All that said, I'd love to see other people design similar systems using
 whatever choice of platform they prefer — at the very least, it amuses me to
 think that someone might make something that is "Publ-ish."
@@ -145,7 +142,7 @@ think that someone might make something that is "Publ-ish."
 
 ### How are you handling scaling issues?
 
-The CMS's scaling story is basically:
+Publ's scaling story is basically:
 
 * Limit the complexity of request routing
 * Make everything cache-friendly
@@ -206,7 +203,7 @@ I do have plans for supporting friends-only/private content, though, and I could
 
 Publ is only one piece of a puzzle for a rich [IndieWeb](http://indieweb.org) experience. It is intended to provide the publishing and content management aspects of a site, and allow the use of other, simple tools for other parts of the ecosystem.
 
-To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool is (tentatively) [Pushl](http://github.com/PlaidWeb/Pushl) to provide the notification conduit between Publ (or any other CMS, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
+To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool is (tentatively) [Pushl](http://github.com/PlaidWeb/Pushl) to provide the notification conduit between Publ (or any other publishing system, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
 
 For that matter, Pushl can also add basic ActivityPub support to a Publ site via [fed.brid.gy](http://fed.brid.gy).
 
