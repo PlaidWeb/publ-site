@@ -4,7 +4,7 @@ Entry-Type: sidebar
 Date: 2018-04-30 17:01:50-07:00
 Entry-ID: 374
 UUID: db73553b-e046-47f4-9ee3-8749b7daab2c
-Last-Modified: 2018-10-01 02:06:23+00:00
+Last-Modified: 2018-10-15 05:16:12+00:00
 
 .....
 
@@ -12,22 +12,23 @@ Last-Modified: 2018-10-01 02:06:23+00:00
 
 ### What is Publ, anyway?
 
-Publ is a website **publ**ishing system. Think of it as filling
-a similar niche as [Movable Type](http://movabletype.org) or [Wordpress](http://wordpress.org), but with a focus on heterogenous content and flexibility, and with simple content management principles.
+Publ is a website **publ**ishing system, with a focus on heterogenous content and flexibility, and with simple content management principles.
 
 For [my own personal site](http://beesbuzz.biz/) I need to be able to manage
 comics, music, art, photography, a blog, and who knows what else as in a simple, uniform manner, while also supporting [IndieWeb](http://indieweb.org) principles.
 
 ### Is Publ a CMS?
 
-That depends on how you define "CMS." At its core, it is one -- it manages and renders content to be published to a website, after all -- but the term "CMS" has a history of implying something more complicated, with an integrated end-to-end asset management pipeline and database-driven post editor.
+That depends on how you define "CMS." At the most basic, it is one -- it manages and renders content to be published to a website, after all -- but the term "CMS" has a history of implying something more complicated, with an integrated end-to-end asset management pipeline and database-driven post editor.
 
 I do sometimes refer to Publ as a CMS but for the above reason I prefer to think of it as a "publishing system" or "like a static site generator, but dynamic."
 
 ### Why not just use one of the many existing publishing systems?
 
+Oh, gosh, yes, there *are* [a lot of publishing systems](https://en.wikipedia.org/wiki/List_of_content_management_systems) out there! Movable Type, Wordpress, Pelican, Jekyll/Octopress, Drupal, GetSimple, not to mention proprietary hosted ones like Tumblr, Facebook, SquareSpace, Wix, Remixer, as well as the old-school hand-written HTML or PHP-with-minor-templating...
+
 I actually have played around with a lot of them, and have historically mostly used
-Movable Type for running my sites in the past. Don't get me wrong, a lot of these platforms have
+[Movable Type](http://movabletype.org) for running my own sites. Don't get me wrong, a lot of these platforms have
 a lot going for them, and work very well for a lot of people! But none of them really fit into the niche I was looking for,
 with this particular combination of features:
 
@@ -137,6 +138,14 @@ whatever choice of platform they prefer — at the very least, it amuses me to
 think that someone might make something that is "Publ-ish."
 
 (I *may* have had that pun in mind when I chose the name...)
+
+### Why Markdown and not reStructuredText?
+
+I haven't yet investigated what it will take to support RST. It is certainly within the realm of possibility, although at a glance I am not sure its concept of image handling quite fits in with Publ's design.
+
+### What about AsciiDoc?
+
+It is also on my radar, but like reStructuredText I haven't investigated its suitability for use in Publ.
 
 ## Performance
 
