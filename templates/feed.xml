@@ -10,7 +10,7 @@
     <subtitle>A personal publishing system for the modern web</subtitle>
     <link href="{{ view.link(template='feed',absolute=True) }}" rel="self" />
     <link href="{{ category.link(template='feed',absolute=True) }}" rel="current" />
-    <link href="https://pubsubhubbub.superfeedr.com" rel="hub" />
+    <link href="https://busybee.superfeedr.com" rel="hub" />
     {% if view.next %}
     <link href="{{ view.next.first.archive('month','feed',absolute=True) }}" rel="prev-archive" />
     {% endif %}
