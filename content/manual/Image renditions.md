@@ -28,6 +28,7 @@ render images.
 ### General configuration
 
 * **`absolute`**: Whether to produce absolute URLs
+
 * **`link`**: Put a hyperlink on the image pointing to the given URL
 
 ### <span id="style"></span>Style options
@@ -36,7 +37,7 @@ render images.
 
     If both are set, `class` wins; the intention is that in a Markdown context, `img_class` comes from the container and `class` comes from the image.
 
-* **`img_style`**, **`style`**: A string or a list of strings, which provide inline CSS rules to the `img` element
+* **`img_style`**, **`style`**: A string or a list of strings, which provide inline CSS rules to the `<img>` element
 
     When the element is written, any attributes in `style` will override those in `img_style`; the intention is that in a Markdown tag, `img_style` comes from the container and `style` comes from the image.
 
@@ -72,17 +73,26 @@ render images.
 ### Inline image sizing
 
 * **`scale`**: What factor to scale the source image down by (e.g. 3 = the display size should be 33%)
+
 * **`scale_min_width`**: The minimum width to target based on scaling
+
 * **`scale_min_height`**: The minimum height to target based on scaling
+
 * **`width`**: The width to target
+
 * **`height`**: The height to target
+
 * **`max_width`**: If present and smaller than `width`, use this instead (useful for templates)
+
 * **`max_height`**: If present and smaller than `height`, use this instead (useful for templates)
+
 * **`resize`**: If both `width` and `height` are specified, how to fit the image into the rectangle if the aspect ratio doesn't match
     * `fit`: Fit the image into the space (default)
     * `fill`: Fill the space with the image, cropping off the sides
     * `stretch`: Distort the image to fit
+
 * **`fill_crop_x`**: If `resize="fill"`, where to take the cropping (0=left, 1=right); default=0.5
+
 * **`fill_crop_y`**: If `resize="fill"`, where to take the cropping (0=top, 1=bottom); default=0.5
 
 **Note:** Images will never be scaled to larger than their native resolution. (In the future there may be
@@ -92,6 +102,7 @@ an option to still resize it larger client-side, where the actual rendition will
 ### File format options
 
 * **`format`**: Select the format to display the image as (defaults to the original format)
+
 * **`background`**: The background color to use when converting transparent images (such as .png) to non-transparent formats (such as .jpg).
 
     This parameter can be in a number of formats:
@@ -103,28 +114,43 @@ an option to still resize it larger client-side, where the actual rendition will
     If you're daring you can also use any of the other color formats supported by [PIL.ImageColor](https://pillow.readthedocs.io/en/3.1.x/reference/ImageColor.html)
 
 * **`quality`**: The JPEG quality level to use for all renditions
+
 * **`quality_ldpi`**: The JPEG quality level to use for low-DPI renditions
+
 * **`quality_hdpi`**: The JPEG quality level to use for high-DPI renditions
 
 ### Image set options
 
-These options drive the behavior of image sets for use with [lightbox.js](http://www.lokeshdhakar.com/projects/lightbox2/).
+These options drive the behavior of image sets.
 
-* **`gallery_id`**: An identifier for the Lightbox image set
+* **`div_class`**: The CSS class to use for the containing `<div>`
+
+* **`div_style`**: A string or a list of strings, which provide inline CSS rules to the `<div>` element
+
+* **`gallery_id`**: An identifier for the Lightbox image set (for use with [lightbox.js](http://www.lokeshdhakar.com/projects/lightbox2/))
     * **Note:** If this is not set, Lightbox will not be enabled, and popup renditions will not be generated
     * **Note:** If `link` is set, this option has no effect
+
 * **`count`**: How many images to allow in the image set (useful for feeds)
+
 * **`count_offset`**: If `count` is set, also skip this number of images at the beginning
+
 * **`fullsize_width`**: The maximum width for the popup image
+
 * **`fullsize_height`**: The maximum height for the popup image
+
 * **`fullsize_quality`**: The JPEG quality level to use for the popup image
+
 * **`fullsize_format`**: What format the popup image should be in (defaults to the original format)
+
 * **`fullsize_background`**: The background color to use when converting transparent images (such as .png) to non-transparent formats (such as .jpg)
 
 * **`more_text`**: If images were skipped due to `count` or `count_offset`, add this text after the image set. This string will be rendered with the following template arguments:
     * **`{count}`**: The total number of images in the image set
     * **`{remain}`**: The number of images not shown
+
 * **`more_link`**: If `more_text` is shown, it will be wrapped in a link with this location
+
 * **`more_class`**: If `more_text` is shown, it will be given this CSS class (either on the `<a>` tag if it's a link, or via a `<span>`)
 
 ## Useful template examples
@@ -173,8 +199,15 @@ In the above example, if you have a comic that is provided at screen resolution 
 Or if there's one you want to force to a specific size:
 
 ```markdown
-![](special-comic.jpg{scale=1,width=960,height=480})
+![](special-comic.jpg{width=960,height=480})
 ```
+
+which can also be written more compactly as:
+
+```markdown
+![](special-comic.jpg{960,480})
+```
+
 
 ### A photo gallery
 
@@ -213,7 +246,7 @@ The thumbnails will be wrapped in a `<div class="gallery_thumbs">`.
     height=640,
     resize="fill",
     lightbox_id=entry.uuid,
-    container_class="gallery_thumbs",
+    div_class="gallery_thumbs",
     fullsize_width=3840,
     fullsize_height=2160)
 }}
