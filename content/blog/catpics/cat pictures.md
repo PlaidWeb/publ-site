@@ -5,7 +5,7 @@ Entry-ID: 249
 UUID: dcb8ca7a-2091-4d1d-aed2-6a1061064ff3
 Path-Alias: /yay-cats-wooooo
 
-![{240,240,resize="fill",count_offset=7,div_class="gallery"}](
+![{240,240,resize="fill",count_offset=7,div_class="gallery",more_text="There are {remain} more cat pictures!",more_class="caption"}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
 |1373225533243.jpg
 |1377619425569.jpg
@@ -41,7 +41,7 @@ it. Eep/yay!
 Oh, and if you want to see what the Markdown for the gallery looks like, here you go:
 
 ```markdown
-![{240,240,resize="fill",count_offset=7,div_class="gallery"}](
+![{240,240,resize="fill",count_offset=7,div_class="gallery",more_text="There are {remain} more cat pictures!",more_class="caption"}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
 |1373225533243.jpg
 |1377619425569.jpg

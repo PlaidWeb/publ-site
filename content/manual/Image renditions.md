@@ -121,6 +121,12 @@ These options drive the behavior of image sets for use with [lightbox.js](http:/
 * **`fullsize_format`**: What format the popup image should be in (defaults to the original format)
 * **`fullsize_background`**: The background color to use when converting transparent images (such as .png) to non-transparent formats (such as .jpg)
 
+* **`more_text`**: If images were skipped due to `count` or `count_offset`, add this text after the image set. This string will be rendered with the following template arguments:
+    * **`{count}`**: The total number of images in the image set
+    * **`{remain}`**: The number of images not shown
+* **`more_link`**: If `more_text` is shown, it will be wrapped in a link with this location
+* **`more_class`**: If `more_text` is shown, it will be given this CSS class (either on the `<a>` tag if it's a link, or via a `<span>`)
+
 ## Useful template examples
 
 ### A webcomic
@@ -183,14 +189,16 @@ then on the index and feed (where there's a `count` set) skip the first two imag
 #### `index.html`
 
 This will show just the first image in the gallery at its original aspect, and then link the user to the full
-gallery page.
+gallery page with an image count.
 
 ```jinja
 {{ entry.body(
     width=640,
     height=640,
     link=entry.link,
-    count=1)
+    count=1,
+    more_text='Show {count} images',
+    more_link=entry.link)
     }}
 ```
 
@@ -221,7 +229,8 @@ This will show tiny thumbnails of the first three images of the gallery and will
     max_height=300,
     count=3,
     link=entry.link,
-    force_size=True)
+    force_size=True,
+    more_text='{remain} more images in gallery')
 }}
 ```
 
