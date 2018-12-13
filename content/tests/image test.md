@@ -73,6 +73,19 @@ rawr.jpg "image 3"
 
 `![alt text](rawr.jpg "test single image")`
 
+
+Inline image with a gallery class: ![{div_class="images"}](rawr.jpg{32,32}) should still be a block element
+
+Inline image with no gallery class: ![{div_class=None}](rawr.jpg{32,32}) should be inline
+
+Paragraph-level image set without a gallery class:
+
+![{div_class=None}](rawr.jpg
+| rawr.jpg
+| rawr.jpg)
+
+should still be in a paragraph
+
 ## Mixed-content gallery
 
 ![such gallery{255,gallery_id="rawry"}](rawr.jpg
