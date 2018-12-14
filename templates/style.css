@@ -176,13 +176,13 @@ a:active {
 .error { color: #f00; background-color: yellow; }
 .error code { color: #900 ; background-color: #ff3; }
 
-#banner {
+header {
     border-bottom: solid black 1px;
     margin-bottom: 1em;
     padding: 1em 1em 0 1em;
     background: #ffc;
 }
-#banner h1 {
+header h1 {
     display: inline-block;
     border-bottom: none;
     margin: 0;
