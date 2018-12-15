@@ -36,9 +36,13 @@
     max_height=320,
     link=entry.link(absolute=True),
     absolute=True,
-    count=3)|e}}
+    count=3)}}
 {% if entry.more %}
-<a href="{{entry.link(absolute=True)}}">Read more...</a>
+{{entry.more(max_width=320,
+    max_height=320,
+    link=entry.link(absolute=True),
+    absolute=True,
+    count=3)}}
 {% endif %}
 ]]>
         </content>
