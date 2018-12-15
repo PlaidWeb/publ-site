@@ -14,15 +14,15 @@
 </div>
 
 {% if entry.body %}
-<div class="preamble p-summary">
+<div class="preamble e-content">
     {{entry.body(gallery_id=entry.uuid,div_class='images')}}
-</div>
 {% endif %}
 
 {% if entry.more %}
-<div class="more p-content" id="more">
+<div class="more" id="more">
     {{entry.more(gallery_id=entry.uuid,div_class='images')}}
 </div>
 {% endif %}
+</div>
 
 {% endblock %}

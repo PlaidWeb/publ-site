@@ -44,7 +44,7 @@
             <div class="posted">Last updated: <time class="dt-posted" datetime="{{entry.date.isoformat()}}">{{entry.last_modified.format('YYYY-MM-DD h:mm A')}} ({{entry.last_modified.humanize()}})</time>
             </div>
             {% if entry.more %}
-            <div class="entry h-content">
+            <div class="entry e-content">
                 {{entry.more}}
             </div>
             {% else %} Oops, this page has no content... {% endif %}
