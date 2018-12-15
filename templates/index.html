@@ -11,12 +11,12 @@
 </head>
 <body id="{{template.name}}">
 
-<div id="banner">
+<header>
 <h1>Publ: {{category.name and category.name.title() or "Yet another site generator"}}</h1>
 {% if category.description %}
 <div class="description">{{category.description}}</div>
 {% endif %}
-</div>
+</header>
 
 <div id="nav" class="sidebar">
 
@@ -65,9 +65,9 @@
             {%- if entry.more %}</a>{% endif -%}
         </h2>
 
-        <div class="p-summary">
+        <section class="p-summary">
         {{entry.body}}
-        </div>
+        </section>
         {% endblock %}
 
         </article>
