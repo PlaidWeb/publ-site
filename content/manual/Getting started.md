@@ -59,24 +59,21 @@ distributions differentiate between Python 2 and 3 anymore.
 
 ### Windows
 
-==Note:== I haven't yet managed to get Publ working under Windows. Perhaps someone
-with more Windows and Python experience could [help me out](https://github.com/fluffy-critter/Publ/issues/97)?
-In the meantime, the [Windows Subsystem for Linux](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)
-might be a good way to go, or you could run [Ubuntu](http://ubuntu.com) under [Virtualbox](http://virtualbox.org) or the like.
-
 1. Install [Python](http://python.org)
 
     When you install, make sure to check the option for "add python to your
     PATH" and if you customize the installation, make sure it installs pip as
     well
 
-2. Install the [Visual Studio Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools)
+2. Install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017)
 
     This is necessary for some of the libraries Publ depends on. If you already
-    have Visual Studio installed with C++ support you can probably skip this
-    step.
+    have Visual Studio installed with C++ support you can skip this step.)
 
-3. From the command prompt, run `pip install pipenv`
+3. Install some sort of bash environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
+
+4. From a command prompt, run `pip install pipenv`
+
 
 ## Making a website
 
@@ -84,7 +81,8 @@ might be a good way to go, or you could run [Ubuntu](http://ubuntu.com) under [V
 
 The files for this website are in a [git repository](/github-site). You
 should be able to clone or fork that repository in order to have your own
-instance of it, and then you can start a local server for experimenting with:
+instance of it, and then you can start a local server for experimenting with; run
+the following commands from a command prompt from inside your git workspace:
 
 ```bash
 ./setup.sh    # Install Publ and do various setup steps
