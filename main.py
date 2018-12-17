@@ -76,7 +76,7 @@ config = {
 
     # The timezone for the site
     #'timezone': tz.tzlocal(),      # default; based on the server
-    #'timezone': 'US/Pacific',      # by name
+    'timezone': 'US/Pacific',      # by name
 
     # Caching configuration; see https://pythonhosted.org/Flask-Cache for
     # more information
