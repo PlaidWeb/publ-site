@@ -100,7 +100,7 @@ GitHub repo (for latest released versions, issue tracking, etc.):
             } else {
                 html += c.url.split('/')[2];
             }
-            html += '</a> ';
+            html += '</a>: ';
 
             var linkclass, linktext;
             if (c.name) {

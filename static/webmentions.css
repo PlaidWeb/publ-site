@@ -62,6 +62,3 @@
     color: #111;
 }
 
-#webmentions a.source:after {
-    content: ': ';
-}
