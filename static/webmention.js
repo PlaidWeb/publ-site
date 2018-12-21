@@ -27,7 +27,7 @@ Usage:
 1. Copy this file to your website and put it somewhere sensible
 2. Put a <div id="webmentions"></div> where you want your webmentions to be
    embedded
-3. Do a <script href="/path/to/webmention.js"> somewhere on your page
+3. Do a <script href="/path/to/webmention.js"></script> somewhere on your page
 
 You can also pass in some arguments, for example:
 
