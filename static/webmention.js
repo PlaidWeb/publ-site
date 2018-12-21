@@ -1,4 +1,4 @@
-/* webmention.js
+﻿/* webmention.js
 
 Simple thing for embedding webmentions from webmention.io into a page, client-side.
 
@@ -27,7 +27,11 @@ Usage:
 1. Copy this file to your website and put it somewhere sensible
 2. Put a <div id="webmentions"></div> where you want your webmentions to be
    embedded
-3. Do a <script href="/path/to/webmention.js"></script> somewhere on your page
+3. Put a <script src="{{static('webmention.js')}}" async></script>
+   somewhere on your page (typically inside <head> but it doesn't really matter)
+4. You'll probably want to add some CSS rules to your stylesheet, in particular:
+
+    #webmentions img { max-height: 1.2em; margin-right: -1ex; }
 
 You can also pass in some arguments, for example:
 
