@@ -19,12 +19,6 @@
     background: #ccc;
 }
 
-#webmentions img {
-    max-width: 1.2em;
-    max-height: 1.2em;
-    border-radius: 25%;
-}
-
 #webmentions .reacts img {
     margin: 3px -1ex 1px 0;
 }
@@ -42,6 +36,14 @@
 
 #webmentions a.reaction {
     text-decoration: none;
+    text-shadow: 0px 0px 3px white;
+    margin-right: 0;
+}
+
+#webmentions a.reaction img {
+    max-height: 1.3em;
+    margin-right: -1ex;
+    border-radius: 25%;
 }
 
 #webmentions .comments li {

@@ -44,7 +44,7 @@ This is a quick hack that could be a lot better.
 
 GitHub repo (for latest released versions, issue tracking, etc.):
 
-    http://github.com/PlaidWeb/Publ-templates-beesbuzz.biz
+    http://github.com/PlaidWeb/Publ-site
 
 (look in the static/ subdirectory)
 
@@ -66,13 +66,12 @@ GitHub repo (for latest released versions, issue tracking, etc.):
     };
 
     var reactEmoji = {
-        'replied': '💬',
-        'liked': '❤️',
-        'reposted': '🔄',
-        'bookmarked': '⭐️',
-        'mentioned': '💬',
-        'rsvp': '📅',
-        'reacted': '💥'
+        'in-reply-to': '💬',
+        'like-of': '❤️',
+        'repost-of': '🔄',
+        'bookmark-of': '⭐️',
+        'mention-of': '💬',
+        'rsvp': '📅'
     };
 
     function reactImage(r) {
@@ -81,11 +80,8 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         var html = '<a class="reaction" title="' + who + ' ' + response + '" href="' + r.url + '">';
         if (r.author && r.author.photo) {
             html += '<img src="' + r.author.photo + '">';
-        } else {
-            html += reactEmoji[response];
         }
-
-        html += '</a>';
+        html += (reactEmoji[r['wm-property']] || '⁉️') + '</a>';
 
         return html;
     }
