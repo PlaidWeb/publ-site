@@ -57,9 +57,10 @@
         <article class="h-entry entry">
         {% block entry scoped %}
         <h2 class="p-name">
-            {%- if entry.more or entry['redirect-to'] %}<a class="u-url" href="{{entry.link}}">{% endif -%}
+            {%- if entry.more or entry['redirect-to'] %}<a class="u-url" href="{{entry.link}}">{{entry.title}}</a>
+            {%- else -%}
             {{entry.title}}
-            {%- if entry.more %}</a>{% endif -%}
+            {%- endif -%}
         </h2>
 
         <section class="p-summary">

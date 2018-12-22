@@ -137,6 +137,10 @@ The `entry` object has the following methods/properties:
     Note that if there's more than one of a header, it's undefined which one this will retrieve.
     If you want to get more than one, use `get_all` instead.
 
+    Header names are not case-sensitive (i.e. `'fooBar'`, `'Foobar'`, and `'FOOBAR'` are all equivalent).
+
+    Also, if the header name is a valid variable name (i.e. consists of only letters, numbers, and underscores, and starts with a letter or underscore), and doesn't conflict with an API function, you can also retrieve it directly, e.g. `entry.Foobar` is equivalent to `entry.get('Foobar')`. It is recommended that if you do this, always start the name with a capital letter, to avoid conflicts with any future API functions (e.g. `entry.Next` will always be equivalent to `entry.get('Next')`).
+
 * **`get_all`**: Get all of a header type from an entry, as a list.
 
     For example, this template fragment
@@ -152,3 +156,5 @@ The `entry` object has the following methods/properties:
     </ul>
     {% endif %}
     ```
+
+    Header names are not case-sensitive (i.e. `'fooBar'`, `'Foobar'`, and `'FOOBAR'` are all equivalent).
