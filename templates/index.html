@@ -37,6 +37,7 @@
 
 </div>
 
+{% block content %}
 <div id="content">
     {% set content = view(entry_type_not='sidebar',count=20) %}
 
@@ -84,4 +85,6 @@
     </div>
 
 </div>
+{% endblock %}
+
 </body></html>

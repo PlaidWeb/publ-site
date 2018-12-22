@@ -1,4 +1,5 @@
 Title: Getting started
+Sort-Title: 000 Getting Started
 UUID: 4dea4c3b-c6ec-4dc0-9f40-b27a91128a60
 Entry-ID: 328
 Path-Alias: /getting-started

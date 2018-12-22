@@ -1,11 +1,12 @@
-Title: Template format
+Title: Template files
+Sort-Title: 100 templates
 Path-Alias: /template-format
 Path-Alias: /template-api
 Date: 2018-04-02 18:03:58-07:00
 Entry-ID: 324
 UUID: cbb977df-7902-4621-af9b-36ab44401748
 
-A guide to building templates for Publ
+A guide to building templates for Publ.
 
 .....
 
