@@ -49,7 +49,7 @@ templates; the following headers are what Publ itself uses:
     If none is given, it will try to infer the title from the filename. It will
     probably get this wrong.
 
-* **`Sort-Title`**: The sorting title of the entry
+* <a id="sort-title"></a>**`Sort-Title`**: The sorting title of the entry
 
     This affects the title for the purpose of [sorting](150#order), but is otherwise unused.
     If none is given it defaults to the entry's display title.
@@ -298,7 +298,7 @@ This also applies to images (e.g. `![](@foo.jpg)` will display the image `/stati
 treated the same way as an external image; if you want the image to be scaled to save bandwidth, it is better to
 put it into your content tree instead.
 
-### Entry links
+### <a id="entry-links"></a>Entry links
 
 You can also link to an entry by its entry ID or by an absolute or relative file path to the source file. This also
 supports anchors (`#`). Some examples:
