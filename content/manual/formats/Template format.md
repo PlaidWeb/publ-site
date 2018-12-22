@@ -44,11 +44,11 @@ name; otherwise it uses the `index` view.
 (The category can be blank, incidentally; `http://mysite.com/` shows you the
 (`index` view on the empty category.)
 
-<p id="template-mapping">Anyway, given the category and view name, Publ looks
+<span id="template-mapping"></span>Anyway, given the category and view name, Publ looks
 for the closest matching template, by starting out in the template directory
 that matches the category name, and then going up one level until it finds a
 matching template. And a template will match based on either the exact name, or
-the name with `.html`, `.htm`, `.xml`, or `.json` added to the end.</p>
+the name with `.html`, `.htm`, `.xml`, or `.json` added to the end.
 
 So for example, if you ask for `http://mysite.com/music/classical/baroque/feed`,
 it will look for a template file named `feed`, `feed.html`, `feed.htm`,

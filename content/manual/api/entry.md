@@ -60,7 +60,7 @@ The `entry` object has the following methods/properties:
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).
 
-* **`date`**: The creation date and time of the entry, as an Arrow object
+* **`date`**: The publication date and time of the entry, as an [Arrow](https://arrow.readthedocs.io/en/latest/#arrow.arrow.Arrow) object
 
     Since it's an Arrow object you can use it directly to get an incredibly
     precise time, but you'll probably want to call a method on it such as

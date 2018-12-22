@@ -49,7 +49,7 @@ templates; the following headers are what Publ itself uses:
     If none is given, it will try to infer the title from the filename. It will
     probably get this wrong.
 
-* <a id="sort-title"></a>**`Sort-Title`**: The sorting title of the entry
+* <span id="sort-title"></span>**`Sort-Title`**: The sorting title of the entry
 
     This affects the title for the purpose of [sorting](150#order), but is otherwise unused.
     If none is given it defaults to the entry's display title.
@@ -64,7 +64,7 @@ templates; the following headers are what Publ itself uses:
     [a link to /322](/322) or [322](322) works fine regardless of where the
     entry gets moved to in the future.
 
-* **`Date`**: The publication date and time
+* <span id="date"></span>**`Date`**: The publication date and time
 
     This can be in any format that [Arrow](http://arrow.readthedocs.io)
     understands. If no timezone is specified it will use the timezone indicated
@@ -107,7 +107,7 @@ templates; the following headers are what Publ itself uses:
     you want an entry to be a placeholder for some external content (e.g. when the entry
     was syndicated from an external source).
 
-* <a name="path-alias"></a>**`Path-Alias`**: An alternate path to this entry
+* <span id="path-alias"></span>**`Path-Alias`**: An alternate path to this entry
 
     This is useful for providing easy-to-remember short names for an entry, and
     for redirecting old, non-Publ URLs to this entry. For example, if you're
@@ -172,7 +172,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="template-override">**`Entry-Template`**</span>: Use the specified template instead of `entry` when rendering this entry
 
-* **`Last-Modified`**: The date to use for the last-modified time for this entry.
+* <span id="last-modified"></span>**`Last-Modified`**: The date to use for the last-modified time for this entry.
 
     Like with `Date`, if you set this to a non-date value (e.g. `now`) then it
     will be replaced with the file modification time when the file is scanned.
@@ -197,7 +197,7 @@ There are also some Publ-specific extensions for things like cuts, image renditi
 
 * **`.....`**: Indicates the cut from above-the-fold to below-the-fold content (must be on a line by itself)
 
-### <a name="image-renditions"></a>Images
+### <span name="image-renditions"></span>Images
 
 Publ extends the standard Markdown image tag (`![](imageFile)`) syntax with some added features for
 generating display-resolution-independent renditions and [Lightbox](http://lokeshdhakar.com/projects/lightbox2/) galleries. The syntax is based on the standard Markdown for an image, which is:
@@ -298,7 +298,7 @@ This also applies to images (e.g. `![](@foo.jpg)` will display the image `/stati
 treated the same way as an external image; if you want the image to be scaled to save bandwidth, it is better to
 put it into your content tree instead.
 
-### <a id="entry-links"></a>Entry links
+### <span id="entry-links"></span>Entry links
 
 You can also link to an entry by its entry ID or by an absolute or relative file path to the source file. This also
 supports anchors (`#`). Some examples:
