@@ -1,5 +1,5 @@
 Title: Image renditions
-Sort-Title: 100 images
+Sort-Title: 100 Image renditions
 Path-Alias: /image-renditions
 Date: 2018-04-05 02:12:57-07:00
 Entry-ID: 335

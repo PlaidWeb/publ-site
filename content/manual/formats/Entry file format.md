@@ -1,5 +1,4 @@
 Title: Entry files
-Sort-Title: 100 entry format
 Date: 2018-04-02 14:04:32-07:00
 Entry-ID: 322
 UUID: 9b03da44-da6a-46a7-893a-d4ecbe813681

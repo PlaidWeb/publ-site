@@ -1,4 +1,4 @@
-Title: Apache+`mod_proxy` and nginx
+Title: Apache+`mod_proxy` or nginx
 Date: 2018-12-16 22:41:45-08:00
 Entry-ID: 1278
 UUID: 6b0d8b5d-08d2-5ad5-8cf0-13a1c5720586
@@ -91,7 +91,7 @@ You will of course need to edit `ServerName`, `ErrorLog`, and `CustomLog` accord
 
 Here is an example SSL Apache configuration; it can go in the same file as the non-SSL configuration.
 
-```
+```apache
 <IfModule mod_ssl.c>
 <VirtualHost *:443>
     ServerName example.com

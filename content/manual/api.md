@@ -1,5 +1,5 @@
 Title: Template API
-Sort-Title: 100 api
+Sort-Title: 100 Template API
 Redirect-To: /manual/api
 Date: 2018-12-21 22:01:48-08:00
 Entry-ID: 463
