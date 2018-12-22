@@ -1,10 +1,11 @@
-Title: Entry file format
+Title: Entry files
+Sort-Title: 100 entry format
 Date: 2018-04-02 14:04:32-07:00
 Entry-ID: 322
 UUID: 9b03da44-da6a-46a7-893a-d4ecbe813681
 Path-Alias: /entry-format
 
-A guide to writing page content for Publ
+A guide to writing page content for Publ.
 
 .....
 
@@ -37,16 +38,21 @@ Header-Name: Header-Value
 Another-Header-Name: Header-Value
 ```
 
-followed by a blank line. (At present, Publ actually uses Python's RFC2822 parser, so in theory you should be able
+followed by a blank line. (At present, Publ actually uses Python's [RFC 2822](https://tools.ietf.org/html/rfc2822) parser, so in theory you should be able
 to do line continuations if that's necessary for some reason.)
 
 You can define whatever headers you want for your
 templates; the following headers are what Publ itself uses:
 
-* **`Title`**: The title of the entry
+* **`Title`**: The display title of the entry
 
     If none is given, it will try to infer the title from the filename. It will
     probably get this wrong.
+
+* **`Sort-Title`**: The sorting title of the entry
+
+    This affects the title for the purpose of [sorting](150#order), but is otherwise unused.
+    If none is given it defaults to the entry's display title.
 
 * **`Entry-ID`**: The numerical ID of the entry
 
