@@ -297,3 +297,14 @@ to the static files directly, e.g. `/static/files/file.txt`.
 This also applies to images (e.g. `![](@foo.jpg)` will display the image `/static/foo.jpg`), although it will be
 treated the same way as an external image; if you want the image to be scaled to save bandwidth, it is better to
 put it into your content tree instead.
+
+### Entry links
+
+You can also link to an entry by its entry ID or by an absolute or relative file path to the source file. This also
+supports anchors (`#`). Some examples:
+
+* `[link to entry 322](322)` &rarr; [link to entry 322](322)
+* ``[link to `Template format.md`](Template format.md)`` &rarr; [link to `Template format.md`](./Template format.md)
+* ``[link to `/faq.md`](/faq.md)`` &rarr; [link to `/faq.md`](/faq.md)
+* ``[link to `../api/view.md#order`](../api/view.md#order)`` &rarr; [link to `../api/view.md#order`](../api/view.md#order)
+
