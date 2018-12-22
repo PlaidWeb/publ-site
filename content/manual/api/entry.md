@@ -60,7 +60,9 @@ The `entry` object has the following methods/properties:
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).
 
-* **`date`**: The publication date and time of the entry, as an [Arrow](https://arrow.readthedocs.io/en/latest/#arrow.arrow.Arrow) object
+* **`date`**: The publication date and time of the entry, as an [Arrow](https://arrow.readthedocs.io/en/latest/#arrow.arrow.Arrow) object.
+
+    This is taken from the entry's [`Date` header](322#date).
 
     Since it's an Arrow object you can use it directly to get an incredibly
     precise time, but you'll probably want to call a method on it such as
@@ -103,7 +105,9 @@ The `entry` object has the following methods/properties:
     * **`category`**: Which category to link to; defaults to the entry's own category
     * **`absolute`**: Whether to use an absolute link (defaults to `False`)
 
-* **`last_modified`**: A last-modified time for this entry
+* **`last_modified`**: A last-modified time for this entry.
+
+    This is taken from the entry's [`Last-Modified` header](322#last-modified).
 
 * **`next`**: The next entry (ordered by date)
 
