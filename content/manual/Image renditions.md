@@ -48,7 +48,7 @@ render images.
 
     * A string value: uses the specified image's alpha channel as the shape
 
-        This can be any path scheme supported by the [image path scheme](/entry-format#image-renditions) (e.g. `local-file.png`, `/common/absolute-file.png`, `@/images/static-file.png`, `//example.com/remote-file.png`).
+        This can be any path scheme supported by the [image path scheme](322#image-renditions) (e.g. `local-file.png`, `/common/absolute-file.png`, `@images/static-file.png`, `//example.com/remote-file.png`).
 
     For example, if you have an image `inset-image.jpg` that you want to mask off with `inset-image-mask.png` and float left,
     you can do:
@@ -108,11 +108,11 @@ an option to still resize it larger client-side, where the actual rendition will
 
     This parameter can be in a number of formats:
 
-    * A [plain-text color name](https://github.com/python-pillow/Pillow/blob/5.1.0/src/PIL/ImageColor.py#L143m) such as `"black"` or `"white"`
-    * A hex code such as `"#ff7733"` or `"#f73"`
-    * A tuple such as `(0,127,35)`
+    * A [named color](https://drafts.csswg.org/css-color-4/#named-colors) such as `"black"` or `"white"`
+    * An HTML-style hex code such as `"#ff7733"` or `"#f73"`
+    * An RGB tuple such as `(0,127,35)` (note the lack of quotes!)
 
-    If you're daring you can also use any of the other color formats supported by [PIL.ImageColor](https://pillow.readthedocs.io/en/3.1.x/reference/ImageColor.html)
+    If you're daring you can also use any of the other color formats supported by [PIL.ImageColor](https://pillow.readthedocs.io/en/3.1.x/reference/ImageColor.html), e.g. `"hsl(0,100%,50%)"`
 
 * **`quality`**: The JPEG quality level to use for all renditions
 
