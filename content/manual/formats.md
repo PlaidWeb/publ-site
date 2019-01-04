@@ -1,5 +1,5 @@
 Title: File formats
-Redirect-to: /manual/formats
+Redirect-to: /manual/formats/
 Sort-Title: 100 File formats
 Date: 2018-12-21 22:42:41-08:00
 Entry-ID: 580
