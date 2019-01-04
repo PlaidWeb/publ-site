@@ -66,9 +66,9 @@ distributions differentiate between Python 2 and 3 anymore.
     PATH" and if you customize the installation, make sure it installs pip as
     well
 
-2. Install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017)
+2. Install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017), making sure to select "Visual C++ build tools" at the very least.
 
-    This is necessary for some of the libraries Publ depends on. If you already
+    This is necessary for some of the libraries Publ depends on. (If you already
     have Visual Studio installed with C++ support you can skip this step.)
 
 3. (Optional, but recommended) Install some sort of `bash` environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
@@ -105,6 +105,8 @@ PORT=12345 ./run.sh
 
 will run the site at [`http://localhost:12345`](http://localhost:12345) instead.
 
+On Windows you can also avoid the use of `bash` and can simply double-click the `winsetup.cmd` and `winrun.cmd` files in order. If you want to change the port, edit `run.cmd` with your text editor of choice.
+
 ### Setting one up from scratch
 
 #### Creating the environment
@@ -113,6 +115,8 @@ To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or
 `pipenv` to set up a sandbox and install the `Publ` package to it; I recommend
 `pipenv` for a number of reasons but if you're familiar with `virtualenv` or are
 using a hosting provider that requires it, feel free to do that instead.
+
+You can copy the `setup.sh` and `run.sh` from the [main site](/github-site), and also `winsetup.cmd` and `winrun.cmd` if you would like to run it on Windows.
 
 If you're using `pipenv` the command would be:
 

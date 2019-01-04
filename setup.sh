@@ -5,12 +5,12 @@ if ! which pipenv > /dev/null ; then
     exit 1
 fi
 
-echo "Configuring environment..."
-
 if ! pipenv --venv ; then
     # We don't have a VEnv yet, so let's make sure we create one with Python 3
+    echo "Creating new environment"
     pipenv --three install
 else
+    echo "Installing dependencies"
     pipenv install
 fi
 
