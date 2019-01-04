@@ -71,7 +71,7 @@ distributions differentiate between Python 2 and 3 anymore.
     This is necessary for some of the libraries Publ depends on. If you already
     have Visual Studio installed with C++ support you can skip this step.)
 
-3. Install some sort of bash environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
+3. (Optional, but recommended) Install some sort of `bash` environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
 
 4. From a command prompt, run `pip install pipenv`
 
@@ -80,25 +80,30 @@ distributions differentiate between Python 2 and 3 anymore.
 
 ### Copying this one (recommended)
 
-The files for this website are in a [git repository](/github-site). You
-should be able to clone or fork that repository in order to have your own
-instance of it, and then you can start a local server for experimenting with; run
-the following commands from a command prompt from inside your git workspace:
+Run the following commands inside a UNIX shell environment (e.g. Terminal on macOS or Linux, or git bash on Windows):
 
 ```bash
-./setup.sh    # Install Publ and do various setup steps
-./run.sh      # Start running the server locally
+# Copy the website files
+git clone https://github.com/PlaidWeb/Publ-site
+cd Publ-site
+
+# Run the setup steps
+./setup.sh
+
+# Start the website locally
+./run.sh
 ```
 
-at which point connecting to `http://localhost:5000` should do what you want. If
-you want to run on a different port you can set the `PORT` environment variable,
-e.g.:
+at which point connecting to [`http://localhost:5000`](http://localhost:5000) should show you this website. Note that on the first page load it will take a little while before all of the content is visible -- but you can watch the site build in your terminal window to see it finish.
+
+If you need to run the site on a different port (for example, you get an error like `OSError: [Errno 48] Address already in use
+`), you can change this by setting the `PORT` environment variable; for example:
 
 ```bash
 PORT=12345 ./run.sh
 ```
 
-will run the site at `http://localhost:12345` instead.
+will run the site at [`http://localhost:12345`](http://localhost:12345) instead.
 
 ### Setting one up from scratch
 
@@ -122,7 +127,7 @@ virtualenv env
 env/bin/pip3 install Publ
 ```
 
-Next, you'll need a `main.py` file. The absolute minimum for that is simply:
+Next, you'll need a `main.py` file. Here is a pretty minimal one:
 
 ```python
 import os
@@ -162,7 +167,7 @@ env/bin/python3 main.py
 
 if you're using `virtualenv`.
 
-Now you have a site running at `http://localhost:5000` that does absolutely nothing! Congratulations!
+Now you should have a site running at [`http://localhost:5000`](http://localhost:5000) that does absolutely nothing! Congratulations!
 
 #### Basic templates
 
@@ -236,24 +241,22 @@ Anyway, read on for more information about how to build a bigger site!
 
 Looking at [the files for this site](/github-site), here are some key things to look at:
 
-* `Pipfile`: Configures `pipenv`
-* `main.py`: Configures the Publ site
-* `passenger_wsgi.py`: A Passenger wrapper, used for running the site on Dreamhost and other Passenger-WSGI hosting providers
-* `Procfile`: Configures the site to run on Heroku (and possibly other providers)
+* `Pipfile` and `Pipfile.lock`: Configures `pipenv`
+* `main.py`: Main "application" that runs the site
+* `Procfile`: Configures the site to run on [Heroku](http://heroku.com)
 * `templates/`: The site layout files (i.e. how to lay your content out). Some you can look at:
-    * `index.html`: What renders when you view a "directory" (e.g. [`/manual`](/manual))
+    * `index.html`: What renders when you view a category (e.g. [`/manual/`](/manual/))
     * `entry.html`: What renders when you look at an individual page (like this one)
     * `feed.xml`: The Atom feed
     * `error.html`: The error page ([for example](/_broken_link_))
     * `sitemap.xml`: Produces a sitemap for search engines
-* `content/`: The content on this site (for example, this page's content is stored in
-    `content/manual/getting started.md`)
+* `content/`: The content on this site (for example, this page's content is stored in `content/manual/Getting started.md`)
 * `static/`: Things that never change; for example, stylesheets and Javascript libraries. For example, this site has:
     * `style.css`: the global stylesheet
     * `lightbox`: A library used for presenting images in a gallery ([example page](/yay-cats-wooooo))
     * `pygments.default.css`: A stylesheet used by the Markdown engine when formatting code
 
-For more information about templates, see [the manual on template formats](/template-format).
+For more information about templates, see [the manual on template formats](/template-format). The only required templates are `index.html`, `entry.html`, and `error.html`.
 
 For more information about content, see [that manual page](/entry-format).
 
