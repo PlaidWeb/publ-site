@@ -60,8 +60,6 @@ GitHub repo (for latest released versions, issue tracking, etc.):
     var containerID = document.currentScript.getAttribute('data-id') || "webmentions";
     var textMaxWords = document.currentScript.getAttribute('data-wordcount');
 
-    refurl = 'http://publ.beesbuzz.biz/blog/730-v0-3-12-now-we-do-Windows';
-
     var reactTitle = {
         'in-reply-to': 'replied',
         'like-of': 'liked',
