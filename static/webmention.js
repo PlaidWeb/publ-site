@@ -60,6 +60,8 @@ GitHub repo (for latest released versions, issue tracking, etc.):
     var containerID = document.currentScript.getAttribute('data-id') || "webmentions";
     var textMaxWords = document.currentScript.getAttribute('data-wordcount');
 
+    refurl = 'http://publ.beesbuzz.biz/blog/730-v0-3-12-now-we-do-Windows';
+
     var reactTitle = {
         'in-reply-to': 'replied',
         'like-of': 'liked',
@@ -88,6 +90,28 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         html += (reactEmoji[r['wm-property']] || '⁉️') + '</a>';
 
         return html;
+    }
+
+    // strip the protocol off a URL
+    function stripurl(url) {
+        return url.substr(url.indexOf('//'));
+    }
+
+    // Deduplicate multiple mentions from the same source URL
+    function dedupe(mentions) {
+        var filtered = [];
+        var seen = {};
+
+        mentions.forEach(function(r) {
+            // Strip off the protocol (i.e. treat http and https the same)
+            var source = stripurl(r.url);
+            if (!seen[source]) {
+                filtered.push(r);
+                seen[source] = true;
+            }
+        });
+
+        return filtered;
     }
 
     function formatComments(comments) {
@@ -175,7 +199,7 @@ GitHub repo (for latest released versions, issue tracking, etc.):
     window.addEventListener("load", function() {
         var container = document.getElementById(containerID);
 
-        var pageurl = refurl.substr(refurl.indexOf('//'));
+        var pageurl = stripurl(refurl);
 
         var apiURL = 'https://webmention.io/api/mentions.jf2?target[]=' +
             encodeURIComponent('http:' + pageurl) +
@@ -202,12 +226,12 @@ GitHub repo (for latest released versions, issue tracking, etc.):
 
             // format the comment-type things
             if (comments.length > 0) {
-                html += formatComments(comments);
+                html += formatComments(dedupe(comments));
             }
 
             // format the other reactions
             if (collects.length > 0) {
-                html += formatReactions(collects);
+                html += formatReactions(dedupe(collects));
             }
 
             container.innerHTML = html;
