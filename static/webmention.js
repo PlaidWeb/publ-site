@@ -27,7 +27,7 @@ Usage:
 1. Copy this file to your website and put it somewhere sensible
 2. Put a <div id="webmentions"></div> where you want your webmentions to be
    embedded
-3. Put a <script src="{{static('webmention.js')}}" async></script>
+3. Put a <script src="/path/to/webmention" async></script>
    somewhere on your page (typically inside <head> but it doesn't really matter)
 4. You'll probably want to add some CSS rules to your stylesheet, in particular:
 
