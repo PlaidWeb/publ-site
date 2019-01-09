@@ -263,6 +263,20 @@ Of course, external absolute URLs (e.g. `http://example.com/image.jpg` or `//exa
 more limited in what you can do with them (for example, scaling will be done client-side and cropping
 options will not work). Also, keep in mind that URLs that are not under your control may change without notice.
 
+This functionality is also available for links to images; for example:
+
+```markdown
+Here is [a graph I made](my-graph.png).
+```
+
+In this variant you can also specify the image attributes:
+
+```markdown
+Here is [the same graph at smaller size](my-graph.png{320,240}), and here it is [as a JPEG](my-graph.png{format='jpg'}).
+```
+
+Note that these links to images do *not* inherit the default image arguments from the page template (this is by design). And, of course, only a single image is supported.
+
 #### Image sets
 
 To support image sets, the following options can be added to the `alt text` section to wrap the image(s) in a `<div>`:

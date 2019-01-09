@@ -11,4 +11,6 @@ Tests of links to content images
 
 [This link is to rawr](rawr.jpg)
 
-[This link is to tiny rawr](rawr.jpg{96})
+[This link is to tiny rawr](rawr.jpg{96} "so smol")
+
+[This is rawr as png](rawr.jpg{format="png"})
