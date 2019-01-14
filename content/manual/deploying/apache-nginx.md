@@ -9,7 +9,7 @@ How to run Publ on an Apache with `mod_proxy` or an nginx server
 
 Configuring Publ to work with Apache or nginx is largely the same either way, the difference being in how you point the server to your Publ instance.
 
-First, you need to decide which local port to run the site on. For this guide we'll use an example port of 5120, but any port that isn't taken by another service is fine. (Advanced users might want to consider using a UNIX-domain socket instead.)
+First, you need to decide which local port to run the site on. For this guide we'll use an example port of 5120, but any port that isn't taken by another service is fine. (Advanced users might want to consider using a UNIX-domain socket instead, but setting that up is outside the scope of this guide.)
 
 ## Running the Publ instance
 
@@ -32,7 +32,7 @@ After=network.target
 
 [Service]
 User=USERNAME
-Restart=on-failure
+Restart=always
 WorkingDirectory=/home/USERNAME/example.com
 ExecStart=/home/USERNAME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 main:app
 
@@ -62,7 +62,7 @@ and then run `crontab -e` and add a line like:
 
 ## Apache
 
-To use this with Apache, you'll need `mod_proxy` installed.
+To use this with Apache, you'll need `mod_proxy` installed and enabled.
 
 Here is a basic Apache configuration (e.g. `/etc/apache2/sites-enabled/100-example.com.conf`):
 
