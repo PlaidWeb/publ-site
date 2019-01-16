@@ -7,3 +7,5 @@ Entry-ID: 339
 This entry should not be visible from the index.
 .....
 This entry should be viewable directly.
+
+A link to [a draft entry by filename](draft.md) should resolve but should fail to load.
