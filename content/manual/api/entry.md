@@ -29,6 +29,8 @@ The `entry` object has the following methods/properties:
 
     * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution; this is mostly useful for Atom feeds. (default: `False`)
 
+* **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
+
 * **`body`** and **`more`**: The text above and below the fold, respectively
 
     These properties can be used directly, or they can take any of the following
@@ -162,3 +164,28 @@ The `entry` object has the following methods/properties:
     ```
 
     Header names are not case-sensitive (i.e. `'fooBar'`, `'Foobar'`, and `'FOOBAR'` are all equivalent).
+
+* The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
+
+    * `file_path`: The file path of the entry's content file
+
+    * `status`: The publish status of the entry
+
+        Note that as of Publ 0.3.14 this is a numerical value; in future versions this may change to a string or internal data representation. You should not actually rely on this for anything public.
+
+    * `slug_text`: The URL slug text for the entry
+
+    * `redirect_url`: The value of the `Redirect-To` header, if any
+
+    * `sort_title`: The value of the `Sort-Title` header, if any
+
+    * `entry_template`: The value of the `Entry-Template` header, if any
+
+    * `display_date`, `utc_date`, `local_date`: Various forms of the entry's `date` used for internal purposes
+
+    * `aliases`: The various registered path aliases for this entry. A list of items, each providing the following properties:
+        * `path`: The incoming path
+        * `url`
+        * `entry`
+        * `category`
+        * `template`

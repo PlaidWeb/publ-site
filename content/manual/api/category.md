@@ -49,6 +49,12 @@ The `category` object provides the following:
 
 * **`sort_name`**: The name used for sorting
 
+* The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
+
+    * `file_path`: The file path of the category's metadata file
+
+    * `aliases`: The various registered path aliases for this category
+
 Example template code for printing out an entire directory structure (flattened):
 
 ```jinja
