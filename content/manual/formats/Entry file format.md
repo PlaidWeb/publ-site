@@ -296,7 +296,33 @@ will produce the equivalent of the following HTML:
 <div class="foo"><img src="test.jpg"><img src="test2.jpg"></div>
 ```
 
-### Static file links
+#### Plain HTML entries
+
+In plain-HTML entries, `width` and `height` attributes are parsed from the `<img src>` tag; for example:
+
+```html
+<img src="foo.jpg" width="320" height="200" title="Custom title">
+```
+
+is equivalent to:
+
+```markdown
+![](foo.jpg{320,200} "Custom title")
+```
+
+You can also use most of the Markdown image rendition flags, for example:
+
+```html
+<img src="foo.jpg{200,format='png'}" title="Converted to PNG at 200 pixels across">
+```
+
+### Link targets
+
+Both Markdown and HTML entries support a number of enhancements to how link targets are handled.
+
+Note that for HTML the following functionality is *only* supported in plain HTML entries, and not in HTML embedded into Markdown entries.
+
+#### Static assets
 
 Starting a link target with `@` acts as a shorthand for linking to a static file. For example,
 
@@ -311,12 +337,19 @@ This also applies to images (e.g. `![](@foo.jpg)` will display the image `/stati
 treated the same way as an external image; if you want the image to be scaled to save bandwidth, it is better to
 put it into your content tree instead.
 
-### <span id="entry-links"></span>Entry links
+This also works in plain HTML entries; the following is equivalent to the above two examples:
+
+```html
+<a href="@files/file.txt">here is a file</a>
+<img src="@foo.jpg">
+```
+
+#### <span id="entry-links"></span>Entries
 
 You can also link to an entry by its entry ID or by an absolute or relative file path to the source file. This also
 supports anchors (`#`). Some examples:
 
-* `[link to entry 322](322)` &rarr; [link to entry 322](322)
+* `[link to entry 322](322)` &rarr; [link to entry 322](322) (HTML equiva)
 * ``[link to `Template format.md`](Template format.md)`` &rarr; [link to `Template format.md`](./Template format.md)
 * ``[link to `/faq.md`](/faq.md)`` &rarr; [link to `/faq.md`](/faq.md)
 * ``[link to `../api/view.md#order`](../api/view.md#order)`` &rarr; [link to `../api/view.md#order`](../api/view.md#order)

@@ -205,7 +205,7 @@ The following additional things are provided to all templates:
     specified output scaling and [image rendition arguments](/image-renditions).
     The default is to use an `output_scale` of 1.
 
-    It also has the following function on it:
+    It also has the following functions on it:
 
     * **`get_img_tag([arguments])`**: Makes an `<img>` tag with the provided
         [image rendition arguments](/image-renditions), with the following
@@ -215,7 +215,16 @@ The following additional things are provided to all templates:
         * **`title`**: Provides text for the `img`'s `title` attribute
 
     * **`get_css_background([arguments])`**: Makes the appropriate `background-image`
-        CSS attributes with the provided [image rendition arguments](/image-renditions).
+        CSS attributes with the provided [image rendition arguments](/image-renditions),
+        with the following additions:
+
+        * **`uncomment`**: Whether the CSS declaration will be wrapped inside a comment;
+            this is useful if your code editor would otherwise get confused by Jinja
+            declarations inside of CSS.
+
+    * **`get_image_attrs([arguments])`**: Generates the raw attributes that would
+        be applied to the `<img>` tag produced by `get_img_tag`. This is probably
+        not useful for templating, however.
 
 
     Example usage in HTML templates:
@@ -230,7 +239,7 @@ The following additional things are provided to all templates:
 
     ```jinja
     body {
-        {{image("/background.jpg").get_css_background(width=320,height=320)}}
+        /* {{image("/background.jpg").get_css_background(width=320,height=320,uncomment=True)}} */
         background-color: white;
     }
     ```

@@ -142,13 +142,18 @@ notsmiley.png{quality=1} "quality 1"
 
 ## Broken/parse failures
 
-![broken image](missingfile.jpg) `![broken image](missingfile.jpg)`
+![broken image](missingfile.jpg)
+`![broken image](missingfile.jpg)`
 
 
-![broken spec](foo{123[]}) `![broken spec](foo{123[]})`
+![broken spec](foo{123[]})
+`![broken spec](foo{123[]})`
 
-![broken spec](poiu{100} foo{200}) `![broken spec](poiu{100} foo{200})`
+![broken spec](poiu{100} foo{200})
+`![broken spec](poiu{100} foo{200})`
 
-![broken imageset](rawr.jpg rawr.jpg) `![broken imageset](rawr.jpg rawr.jpg)`
+![broken imageset](rawr.jpg rawr.jpg)
+`![broken imageset](rawr.jpg rawr.jpg)`
 
-![broken imageset](rawr.jpg "title rawr" rawr.jpg "title 2") `![broken imageset](rawr.jpg rawr.jpg)`
+![broken imageset](rawr.jpg "title rawr" rawr.jpg "title 2")
+`![broken imageset](rawr.jpg "title rawr" rawr.jpg "title 2")`

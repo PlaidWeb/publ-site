@@ -1,7 +1,7 @@
 @import url('../style.css');
 
 body {
-    background-image: url('{{image("/tests/rawr.jpg")(1,width=200)}}');
+    /* {{image("/tests/rawr.jpg").get_css_background(width=200,uncomment=True)}} */
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: top right;
