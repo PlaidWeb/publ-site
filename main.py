@@ -6,6 +6,7 @@ import os
 import logging
 import logging.handlers
 from urllib.parse import urlparse
+import flask
 
 import publ
 
@@ -90,6 +91,11 @@ config = {
 }
 
 app = publ.publ(__name__, config)
+
+
+@app.route('/issue/<int:id>')
+def redirect_github_issue(id):
+    return flask.redirect('https://github.com/PlaidWeb/Publ/issues/{}'.format(id))
 
 if __name__ == "__main__":
     app.run(port=os.environ.get('PORT', 5000))
