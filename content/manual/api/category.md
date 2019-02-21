@@ -49,6 +49,8 @@ The `category` object provides the following:
 
 * **`sort_name`**: The name used for sorting
 
+* **`breadcrumb`**: A list of the categories that lead to this one, as `category` objects, including the current one.
+
 * The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
 
     * `file_path`: The file path of the category's metadata file
