@@ -49,9 +49,9 @@ The `category` object provides the following:
 
 * **`sort_name`**: The name used for sorting
 
-* **`breadcrumb`**: A list of the categories that lead to this one, as `category` objects, including the current one.
+* <span id="breadcrumb"></span>**`breadcrumb`**: A list of the categories that lead to this one, as `category` objects, including the current one.
 
-* **`root`**: The root category of the blog, useful for storing site-level metadata (such as the site name or global configuration).
+* <span id="root"></span>**`root`**: The root category of the blog, useful for storing site-level metadata (such as the site name or global configuration).
 
     This is roughly equivalent to `category.breadcrumb[0]`, but is slightly more efficient and easier to type.
 
