@@ -49,7 +49,11 @@ The `category` object provides the following:
 
 * **`sort_name`**: The name used for sorting
 
-* **`breadcrumb`**: A list of the categories that lead to this one, as `category` objects, including the current one.
+* <span id="breadcrumb"></span>**`breadcrumb`**: A list of the categories that lead to this one, as `category` objects, including the current one.
+
+* <span id="root"></span>**`root`**: The root category of the blog, useful for storing site-level metadata (such as the site name or global configuration).
+
+    This is roughly equivalent to `category.breadcrumb[0]`, but is slightly more efficient and easier to type.
 
 * The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
 
@@ -76,6 +80,22 @@ Example template code for printing out the directory structure in a nice recursi
     {% if subcat.subcats %}
     <ul>{{ loop(subcat.subcats)}}</ul>
     {% endif %}</li>
+{% endfor %}
+</ul>
+```
+
+Categories can also be compared to other categories, which is useful for determining if a subcategory is the same as this one. This snippet will show all of the categories on the website, with the currently-visible one getting a class of `here` and any parent categories getting a class of `parent`:
+
+```jinja
+<ul>
+{% for subcat in category.root.subcats(recurse=True) %}
+{% if subcat == category %}
+<li class="here">{{category.path}}</li>
+{% elseif subcat in category.breadcrumb %}
+<li class="parent"><a href="{{category.link}}">{{category.path}}</a></li>
+{% else %}
+<li><a href="{{category.link}}">{{category.path}}</li>
+{% endif %}
 {% endfor %}
 </ul>
 ```

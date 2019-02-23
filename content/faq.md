@@ -4,7 +4,7 @@ Entry-Type: sidebar
 Date: 2018-04-30 17:01:50-07:00
 Entry-ID: 374
 UUID: db73553b-e046-47f4-9ee3-8749b7daab2c
-Last-Modified: 2018-10-15 05:16:12+00:00
+Last-Modified: 2019-02-21 05:24:49+00:00
 
 .....
 
@@ -227,6 +227,12 @@ This is of course not anything special to Publ.
 
 Unfortunately, that is not so straightforward. Currently, the ORM in use does not support segregating data across instances, and as such I also haven't put much effort into containerizing the Publ configuration (which is currently global). However, I haven't found a good use case for multiple Publ sites conmingled in a single app server anyway; if you can think of one, feel free to [open an issue](/newissue) and make your case for it!
 
+### Do you have any importers from other blogging platforms?
+
+If you want to convert a Movable Type blog's content over, see [mt2publ](https://github.com/PlaidWeb/mt2publ).
+
+There currently aren't any converters for other blogging systems, but since the [entry file format](/entry-format) is so simple, it shouldn't be too difficult to write converters from other systems either.
+
 ## Okay, so, how can I help?
 
 Glad you asked!
@@ -246,6 +252,8 @@ and I'm still relatively inexperienced in Python so I'm sure a lot of places
 where the code could be better/cleaner/more Pythonic
 
 * Making the Publ site look nicer in general
+
+* Writing more converters for other blog platforms
 
 I also have a [rather large list of to-do items](/issues),
 most of which are low priority for me. But if there's something you want to help
