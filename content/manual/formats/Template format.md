@@ -327,6 +327,7 @@ properties:
 
 * **`code`**: The associated HTTP error code
 * **`message`**: An explanation of what went wrong
+* **`category`**: Information about the [category](/api/category)
 * **`exception`**: In the case of an internal error, this will be an object
     with the following properties:
 

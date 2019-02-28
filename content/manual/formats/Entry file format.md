@@ -322,9 +322,36 @@ Both Markdown and HTML entries support a number of enhancements to how link targ
 
 Note that for HTML the following functionality is *only* supported in plain HTML entries, and not in HTML embedded into Markdown entries.
 
+#### Local files
+
+Entries can link to files that are stored within the content directory, using the same relative path rules as images. For example, if you have
+a file `term paper.pdf` in the same directory as `my entry.md`, then from the entry you can link to it with:
+
+```markdown
+You want to read [my paper](term paper.pdf)? Well here you go!
+```
+
+Any file type is supported; however, keep in mind that an HTML or Markdown file will be interpreted as an [entry](#entry-links). If you would like to
+serve one up as just their plain content, you can give it headers like:
+
+```
+Status: HIDDEN
+Entry-Template: _plain
+```
+
+and create a `templates/_plain.html` file that is simply:
+
+```jinja
+{{entry.body}}
+{% if entry.more %}
+.....
+{{entry.more}}
+{% endif %}
+```
+
 #### Static assets
 
-Starting a link target with `@` acts as a shorthand for linking to a static file. For example,
+Starting a link target with `@` acts as a shorthand for linking to a file in the static assets directory. For example,
 
 ```markdown
 [here is a file](@files/file.txt)

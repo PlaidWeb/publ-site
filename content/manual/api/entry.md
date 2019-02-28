@@ -71,6 +71,8 @@ The `entry` object has the following methods/properties:
     [`format()`](http://arrow.readthedocs.io/en/latest/#format) or
     [`humanize()`](http://arrow.readthedocs.io/en/latest/#humanize).
 
+* <span id="date_grouper"></span>**`date_year`**, **`date_month`**, **`date_day`**: Three pre-defined formats of `date` for the purpose of making it easier to use Jinja's [`groupby`](http://jinja.pocoo.org/docs/2.10/templates/#groupby) functionality.
+
 * **`permalink`**: A permanent link to the entry
 
     Takes the following arguments:

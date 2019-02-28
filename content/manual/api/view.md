@@ -28,6 +28,10 @@ The `view` object has the following things on it:
 * **`older`**: The previous page for this view, going back in time
 * **`newer`**: The next page for this view, going forward in time
 
+* <span id="all_pages"></span>**`pages`**: A list of every page for this view based on the current pagination.
+
+    ==Note:== This will probably be *very slow*; use sparingly.
+
 * **`link`**: The link to this view; optionally takes the following arguments:
 
     * **`category`**: Which category to use (defaults to the category this view is queried against)
@@ -86,7 +90,10 @@ Any view object can also take arguments to further refine the view; the followin
 arguments are supported:
 
 
-* **`category`**: The top-level category to consider (defaults to the current view-s category)
+* **`category`**: The top-level category to consider (defaults to the current view's category)
+
+    Note that if you want to
+
 * **`recurse`**: Whether to include subcategories
     * `True`: Include subcategories
     * `False`: Do not include subcategories (default)
