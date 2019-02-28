@@ -9,5 +9,18 @@ UUID: 158e7a37-d3f6-5e3e-9faa-56cfd5c3fad5
 
 .....
 
-While we're here, does <code>src</code> work on things that aren't <code>&lt;img&gt;</code>? <span id="flibble">Nope!</span>
+<p>While we're here, does <code>src</code> work on things that aren't <code>&lt;img&gt;</code>? <noscript>Hard to tell, you have Javascript disabled!</noscript> <span id="flibble">Nope!</span></p>
+
 <script src="@tests/inline-javascript.js"></script>
+
+<p>We should also be able to support non-image assets, such as:</p>
+
+<ul>
+    <li><a href="boxes.svg">SVG files</a></li>
+    <li><a href="hello.cpp">C++ source code</a></li>
+</ul>
+
+<p>and inline assets should work too:</p>
+
+<p><img src="boxes.svg"></p>
+
