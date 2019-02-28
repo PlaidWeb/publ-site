@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 gunicorn = "*"
-publ = "==0.3.18"
+publ = "==0.3.18.1"
 "psycopg2" = "*"
 
 [dev-packages]
