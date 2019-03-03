@@ -73,6 +73,12 @@ rawr.jpg "image 3"
 
 `![alt text](rawr.jpg "test single image")`
 
+![alt text](rawr.jpg{120,crop=(0,0,240,352)} "test crop (left half of rawr.jpg, scaled down)")
+
+```
+![alt text](rawr.jpg{120,crop=(0,0,240,352)} "test crop (left half of rawr.jpg, scaled down)")
+```
+
 
 Inline image with a gallery class: ![{div_class="images"}](rawr.jpg{32,32}) should still be a block element
 
