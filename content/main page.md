@@ -28,4 +28,5 @@ featured, please [email me](mailto:fluffy-AT-beesbuzz-DOT-biz?subject=A+Publ+sit
 and I'll take a look.
 
 * [busybee](https://beesbuzz.biz) — Contains very heterogenous content including photo galleries, webcomics, and blog-type content in varying presentations.
+* [Mullins Molecular Retrovirology Lab](https://mullinslab.microbiol.washington.edu) -- An academic research lab which uses Publ to disseminate research materials
 
