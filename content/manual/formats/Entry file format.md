@@ -135,20 +135,6 @@ templates; the following headers are what Publ itself uses:
     which will cause the legacy URL to remap to showing this view within the category using the `archive` template.
     If you would like to just go to the category without any specific template, use `index`.
 
-* **`Path-Unalias`**: Remove an old path alias
-
-    If you accidentally set a path-alias or want to remove it, rather than just deleting
-    the `Path-Alias` header you should change it to a `Path-Unalias` (or add that header to
-    another entry). This way you can ensure that the path alias will be removed from the
-    index.
-
-    ```
-    Path-Unalias: /some/old/url/5-oops
-    ```
-
-    Note that if two separate entries define the same alias with `Path-Alias` or
-    `Path-Unalias`, the results will be unspecified.
-
 * **`UUID`**: A globally-unique identifier for the entry
 
     While Publ doesn't use this for itself, having this sort of generated ID is

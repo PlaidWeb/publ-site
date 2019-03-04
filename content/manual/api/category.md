@@ -136,7 +136,7 @@ Category: /art/sketchbook
 Path-Alias: /comics/cat-sketchbook.php archive
 ```
 
-will redirect requests to `/comics/catch-sketchbook.php` to the `/art/sketchbook` category using the `archive` template.
+will redirect requests to `/comics/cat-sketchbook.php` to the `/art/sketchbook` category using the `archive` template.
 
 You can also define any other arbitrary values you like, which will then be put on the category object, and which are
 accessible directly via `get` and `get_all`. The behavior is the same as on [entry files](/entry-format).
