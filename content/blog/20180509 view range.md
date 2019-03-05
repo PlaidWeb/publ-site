@@ -2,6 +2,7 @@ Title: Even more updates, v0.1.10 released
 UUID: 1a697a3a-8156-402f-a2f1-cf34f8719f29
 Date: 2018-05-09 23:29:01-07:00
 Entry-ID: 4
+Tag: release
 
 If you are reading this, it means that Publ v0.1.10 is out. This release is mostly about a few cleanups, such as:
 

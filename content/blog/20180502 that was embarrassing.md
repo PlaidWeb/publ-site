@@ -2,6 +2,7 @@ Title: Well, that was embarrassing...
 Date: 2018-05-02 22:56:59-07:00
 Entry-ID: 216
 UUID: 55415435-a738-488b-b407-d140bb040c2c
+Tag: post-mortem
 
 So, note to self: library version pinning is a good idea. I should also learn how to properly manage my library version dependencies.
 
