@@ -95,6 +95,8 @@ The `entry` object has the following methods/properties:
     This is the same as **`permalink`** except it will also follow an entry's
     `Redirect-To` destination.
 
+* **`tags`**: A list of tags associated with this entry.
+
 * **`archive`**: Get an archive link for rendering this in a category view.
 
     This takes the following arguments:
@@ -108,6 +110,7 @@ The `entry` object has the following methods/properties:
     * **`template`**: Which template to use for the link (defaults to `''`, i.e. the default/index category template)
     * **`category`**: Which category to link to; defaults to the entry's own category
     * **`absolute`**: Whether to use an absolute link (defaults to `False`)
+    * **`tag`**: Limit the view to the specified tag(s)
 
 * **`last_modified`**: A last-modified time for this entry.
 

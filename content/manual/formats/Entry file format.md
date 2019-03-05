@@ -3,6 +3,7 @@ Date: 2018-04-02 14:04:32-07:00
 Entry-ID: 322
 UUID: 9b03da44-da6a-46a7-893a-d4ecbe813681
 Path-Alias: /entry-format
+Last-Modified: 2019-03-04 23:49:10+00:00
 
 A guide to writing page content for Publ.
 
@@ -164,6 +165,7 @@ templates; the following headers are what Publ itself uses:
 
     **Default value:** the entry's `Date`
 
+* <span id="tag"></span>**`Tag`**: Add the specified tag to the entry. To add more than one tag, use separate `Tag:` headers.
 
 ## Entry content
 

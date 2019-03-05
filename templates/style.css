@@ -121,6 +121,10 @@ pre {
     content: "➡︎ ";
 }
 
+#nav li.cat-here:before {
+    content: "⊗ ";
+}
+
 #nav li.cat-back:before {
     content: "⬅︎ ";
 }
@@ -208,4 +212,20 @@ header h1 {
 .inset-right {
     float: right;
     shape-margin: 1ex;
+}
+
+ul.tags {
+    margin: 0;
+    padding: 0;
+    font-size: small;
+    list-style-type: none;
+}
+ul.tags:before {
+    content: "Tagged: ";
+}
+ul.tags li {
+    font-style: italic;
+    display: inline;
+    margin: 0;
+    padding: 0;
 }

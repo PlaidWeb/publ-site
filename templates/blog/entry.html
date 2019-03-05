@@ -13,6 +13,13 @@
     {% if entry.last_modified > entry.date and entry.last_modified.humanize() != entry.date.humanize() %}
         <div class="update">Last updated {{entry.last_modified.humanize()}}</div>
     {% endif %}
+    {% if entry.tags %}
+    <ul class="tags">
+        {% for tag in entry.tags %}
+        <li><a href="{{entry.archive(tag=tag)}}">{{tag}}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 
 {% if entry.body %}

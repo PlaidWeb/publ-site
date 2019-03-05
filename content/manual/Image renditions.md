@@ -92,9 +92,14 @@ render images.
     * `fill`: Fill the space with the image, cropping off the sides
     * `stretch`: Distort the image to fit
 
+* <span id="crop"></span>**`crop`**: Crops the thumbnail to the given rectangle, which is provided in the form of `(x,y,w,h)`, where `x` and `y` are the coordinates of the top-left corner and `w` and `h` are the size of the rectangle.
+
+    ==Note:== In v0.3.19 this is interpreted as `(left,top,right,bottom)`, or in other words the coordinates of the top-left and bottom-right corners of the rectangle. In 0.3.20 this will be changed to `(x,y,w,h)` to make more intuitive sense and to match with the vast majority of image-processing software.
+
 * **`fill_crop_x`**: If `resize="fill"`, where to take the cropping (0=left, 1=right); default=0.5
 
 * **`fill_crop_y`**: If `resize="fill"`, where to take the cropping (0=top, 1=bottom); default=0.5
+
 
 **Note:** Images will never be scaled to larger than their native resolution. (In the future there may be
 an option to still resize it larger client-side, where the actual rendition will be the native size but the
@@ -139,6 +144,8 @@ These options drive the behavior of image sets.
 * **`fullsize_width`**: The maximum width for the popup image
 
 * **`fullsize_height`**: The maximum height for the popup image
+
+* **`fullsize_crop`**: The cropping rectangle for the full-sized image; see [`crop`](#crop) for the format.
 
 * **`fullsize_quality`**: The JPEG quality level to use for the popup image
 

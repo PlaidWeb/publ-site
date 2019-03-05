@@ -10,7 +10,9 @@
 
 <header>
 <h1>Publ: {{category.name and category.name.title() or "Yet another site generator"}}</h1>
-{% if category.description %}
+{% if 'tag' in view.spec %}
+<div class="description">Entries tagged {{view.spec['tag']}}</div>
+{% elif category.description %}
 <div class="description">{{category.description}}</div>
 {% endif %}
 </header>
@@ -29,7 +31,11 @@
     <li class="cat-down"><a href="{{subcat.link}}">{{subcat.name}}</a></li>
     {% endfor %}
 
-    {% for entry in view(category='',entry_type='sidebar').entries %}
+    {% if 'tag' in view.spec %}
+    <li class="cat-here"><a href="{{view(tag=None).link}}">Clear tags</a></li>
+    {% endif %}
+
+    {% for entry in view(category='',entry_type='sidebar',tag=None).entries %}
     <li class="{{entry.get('Redirect-To') and 'extlink' or 'sblink'}}"><a href="{{entry.link}}">{{entry.title}}</a></li>
     {% endfor %}
     </ul>
