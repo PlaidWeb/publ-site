@@ -20,7 +20,7 @@ and if you want a different shape mask for your image than its own alpha channel
 
 .....
 
-![](/tests/rawr.jpg{320,320,img_class="inset-left",shape="/tests/rawr-mask.png"} "rawr, now with extra wrapping")
+![](rawr.jpg{320,320,img_class="inset-left",shape="rawr-mask.png"} "rawr, now with extra wrapping")
 
 But in Publ there is now an additional attribute you can set on an image, `shape`, which is, I think, [pretty easy to work with](/image-renditions#style).
 
@@ -33,17 +33,17 @@ For example, the code for the little ghost in the intro is just:
 and the code for this rawr right here is:
 
 ```markdown
-![](/tests/rawr.jpg{320,320,img_class="inset-left",shape="/tests/rawr-mask.png"})
+![](rawr.jpg{320,320,img_class="inset-left",shape="rawr-mask.png"})
 ```
 
 See, the rawr image is a .jpg file (which is why its box still overwrites the code blocks here, since there's no transparency), and it's pretty sparse, so I made a mask image for it, which looks like this:
 
-![](/tests/rawr-mask.png{320,320} "the rawr mask")
+![](rawr-mask.png{320,320} "the rawr mask")
 
 On that note I also fixed a bug where you couldn't add a background to a transparent paletted PNG (oops).
 
-![](/tests/notsmiley.png{200,200,img_class="inset-left",shape="/tests/rawr-mask.png"} "a smiley shaped like a rawr" |
-/tests/rawr.jpg{200,200,img_class="inset-right",shape="/tests/notsmiley.png"} "a rawr shaped like a smiley")
+![](notsmiley.png{200,200,img_class="inset-left",shape="rawr-mask.png"} "a smiley shaped like a rawr" |
+rawr.jpg{200,200,img_class="inset-right",shape="notsmiley.png"} "a rawr shaped like a smiley")
 
 You can also mix-and-match shapes and masks, as I have done here where the not-smiley has the rawr mask and vice-versa. This can get really confusing, especially if the images are different sizes, but Publ attempts to make a best attempt to size them consistently with one another. You might just want to always have your mask image have the same aspect ratio as the base image, however, just to keep things a bit more sensible. Also I am mostly writing this extra-verbose text to have extra stuff to wrap around the images. While I'm here I'd might as well mention that mask images can come from any of the same sources as rendition images, *but* non-rendition images won't be subject to the same sizing (as CSS3 does not provide any means of resizing the outline) so for example if you have your mask stored as a static image (i.e. `@layout/thing-mask.png`) it *won't* be scaled along with the image as it's being laid out. Although if the image being laid out is also a static image then it may or may not actually be sized at the same scale. I'm not sure; the spec is pretty vague about this and kind of handwaves about it. So really you only want to set shape masks on local/rendered images, and most of the time you'll probably want to use the simple `shape=True` form since that's the easiest to deal with.
 
