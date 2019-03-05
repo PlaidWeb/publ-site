@@ -2,6 +2,10 @@ Title: The shape of the float (v0.3.1)
 Date: 2018-09-20 22:58:10-07:00
 Entry-ID: 660
 UUID: fe9982b7-455a-52ee-8007-db46c4f63ad4
+Tag: release
+Tag: design
+Tag: demo
+Tag: images
 
 ![](woo-ghost.png{img_class="inset-right",shape=True} "a tightly-wrapped ghost!")
 

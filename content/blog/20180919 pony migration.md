@@ -2,6 +2,9 @@ Title: Goodbye peewee, hello PonyORM
 Date: 2018-09-19 02:27:21-07:00
 Entry-ID: 1080
 UUID: 26ccac61-8792-54c6-8681-eb173adee58c
+Tag: design
+Tag: performance
+Tag: community
 
 For a number of reasons, I have replaced the backing ORM. Previously I was using peewee, but now I'm using [PonyORM](http://ponyorm.com). The primary reason for this is purely ideological; I do not want to use software which is maintained by someone with a track record of toxic behavior.  peewee's maintainer responds to issues and feature requests with shouting and dismissive snark; PonyORM's maintainer responds with helpfulness and grace. I am a [strong proponent of the latter](//beesbuzz.biz/7502).
 
