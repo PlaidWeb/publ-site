@@ -92,7 +92,9 @@ render images.
     * `fill`: Fill the space with the image, cropping off the sides
     * `stretch`: Distort the image to fit
 
-* <span id="crop"></span>**`crop`**: Crops the thumbnail to the given rectangle, which is provided in the form of `(x,y,w,h)`, where `x` and `y` are the coordinates of the top-left corner and `w` and `h` are the size of the rectangle.
+* <span id="crop"></span>**`crop`**: Crops the thumbnail to the given rectangle, which is provided in the form of `(x,y,w,h)` or `'x,y,w,h'`, where `x` and `y` are the coordinates of the top-left corner and `w` and `h` are the size of the rectangle.
+
+    The `()` notation is more flexible, but sometimes it doesn't work; in that case, use the `''` notation instead.
 
     ==Note:== In v0.3.19 this is interpreted as `(left,top,right,bottom)`, or in other words the coordinates of the top-left and bottom-right corners of the rectangle. In 0.3.20 this will be changed to `(x,y,w,h)` to make more intuitive sense and to match with the vast majority of image-processing software.
 
