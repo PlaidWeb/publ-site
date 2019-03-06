@@ -2,6 +2,9 @@ Title: So much for Dreamhost
 Date: 2018-05-25 21:42:32-07:00
 Entry-ID: 358
 UUID: 1c5aad01-e4f5-4c6c-8322-941734f47fe6
+Tag: hosting
+Tag: rant
+Tag: rumination
 
 One of the overarching reasons I decided to build Publ the way I did was in order to take advantage of Dreamhost's support for Passenger WSGI. I was expecting that to be the primary means of hosting my main site (which is way too big for a Heroku instance) and given how smoothly things were working with this site on Dreamhost I figured it wouldn't be a big deal.
 

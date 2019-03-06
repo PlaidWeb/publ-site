@@ -28,7 +28,9 @@
     {% endif %}
 
     {% for subcat in category.subcats %}
+    {% if not subcat.hidden %}
     <li class="cat-down"><a href="{{subcat.link}}">{{subcat.name}}</a></li>
+    {% endif %}
     {% endfor %}
 
     {% if 'tag' in view.spec %}

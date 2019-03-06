@@ -2,6 +2,9 @@ Title: The Trouble with PHP
 Date: 2018-05-08 00:00:00-07:00
 Entry-ID: 246
 UUID: bed88efa-a822-4a13-acaf-77df79bb0a12
+Tag: rant
+Tag: history
+Tag: design
 
 I've had people ask me why I'm not building Publ using PHP. While [much](http://phpsadness.com)
 has been [written](https://www.quaxio.com/wtf/php.html) on this [subject](http://tracks.ranea.org/post/13908062333/php-is-not-an-acceptable-cobol) from

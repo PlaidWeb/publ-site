@@ -40,8 +40,6 @@ ExecStart=/home/USERNAME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 main:a
 WantedBy=multi-user.target
 ```
 
-And, of course, the address in the `gunicorn` invocation needs to match it in `ProxyPass` above.
-
 ### cron
 
 Another approach is to use `cron` as your service launcher; first, make a file like `cron-launcher.sh` in your site's
@@ -85,7 +83,7 @@ Here is a basic Apache configuration (e.g. `/etc/apache2/sites-enabled/100-examp
 </VirtualHost>
 ```
 
-You will of course need to edit `ServerName`, `ErrorLog`, and `CustomLog` accordingly, and make sure that the port in `ProxyPass` matches your running service.
+You will of course need to edit `ServerName`, `ErrorLog`, and `CustomLog` accordingly, and make sure that the address and port in `ProxyPass` matches your running service as configured in the service launcher.
 
 ### SSL
 

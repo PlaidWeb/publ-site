@@ -2,6 +2,9 @@ Title: Embedding webmention.io pings on your site
 Date: 2018-12-20 23:14:47-08:00
 Entry-ID: 1048
 UUID: 66ca748a-4597-5381-a0c9-fcf41f7fb75e
+Tag: tools
+Tag: indieweb
+Tag: webmention
 
 Are you using [webmention.io](https://webmention.io) as your webmention endpoint? Want to get your incoming webmentions displayed on your website?
 

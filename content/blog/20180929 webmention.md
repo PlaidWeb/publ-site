@@ -2,6 +2,9 @@ Title: Some thoughts on WebMention
 Date: 2018-09-29 21:00:00-07:00
 Entry-ID: 113
 UUID: 1030017a-6302-5f07-9b58-74defffe7906
+Tag: indieweb
+Tag: webmention
+Tag: rumination
 
 So, for the last couple of days I've been playing with some of the [IndieWeb](http://indieweb.org) concepts, in particular [Webmention](https://indieweb.org/Webmention). Spurred on by a [helpful thread with Kevin Marks](https://queer.party/@fluffy/100800119621478938), I took some time to actually do a [rough implementation of outgoing Webmentions](https://github.com/fluffy-critter/Publ/tree/feature/128-webmention), and also did some of the work to set up the [`h-card`](http://microformats.org/wiki/h-card) and [`h-entry`](http://microformats.org/wiki/h-entry) microformats on [my main site](http://beesbuzz.biz).
 
