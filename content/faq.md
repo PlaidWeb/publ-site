@@ -192,8 +192,7 @@ necessary, it will be fairly straightforward to implement a third option:
 sshfs, S3, etc.) which acts as the CDN origin
 
 If you are running a site which gets to this point then clearly you're making
-more money than me at this and I'd humbly suggest you consider [contributing to
-Publ development](https://patreon.com/fluffy).
+more money than me at this and I'd humbly suggest you consider [showing your support](https://liberapay.com/fluffy).
 
 
 ## Interoperability
