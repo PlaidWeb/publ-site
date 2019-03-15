@@ -37,7 +37,7 @@ echo "Deploying new site content..."
 
 cd $HOME/example.com
 unset GIT_DIR
-git pull
+git pull --rebase
 ```
 
 Next, the post-merge hook on the deployment repo, e.g. `$HOME/example.com/.git/hooks/post-merge`:
