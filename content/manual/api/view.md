@@ -84,6 +84,8 @@ The `view` object has the following things on it:
     Any format string accepted by [Arrow](http://arrow.readthedocs.io/en/latest/#tokens)
     is acceptable (for example, `MMMM YYYY` will appear as `January 2012`).
 
+* **`tags`**: Any tags that are applied to this view, provided as a (possibly-empty) list.
+
 ### <span id="subviews">Getting subviews</span>
 
 Any view object can also take arguments to further refine the view; the following
