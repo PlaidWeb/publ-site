@@ -96,8 +96,6 @@ render images.
 
     The `()` notation is more flexible, but sometimes it doesn't work; in that case, use the `''` notation instead.
 
-    ==Note:== In v0.3.19 this is interpreted as `(left,top,right,bottom)`, or in other words the coordinates of the top-left and bottom-right corners of the rectangle. In 0.3.20 this will be changed to `(x,y,w,h)` to make more intuitive sense and to match with the vast majority of image-processing software.
-
 * **`fill_crop_x`**: If `resize="fill"`, where to take the cropping (0=left, 1=right); default=0.5
 
 * **`fill_crop_y`**: If `resize="fill"`, where to take the cropping (0=top, 1=bottom); default=0.5

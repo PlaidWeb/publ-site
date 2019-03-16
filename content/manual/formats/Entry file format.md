@@ -166,6 +166,7 @@ templates; the following headers are what Publ itself uses:
     **Default value:** the entry's `Date`
 
 * <span id="tag"></span>**`Tag`**: Add the specified tag to the entry. To add more than one tag, use separate `Tag:` headers.
+* <span id="hiddentag"></span>**`Hidden-Tag`**: Like `Tag`, but the tag will not appear in the entry's tag list. This lets you filter an entry without making its filter criteria visible.
 
 ## Entry content
 
