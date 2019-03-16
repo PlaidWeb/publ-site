@@ -70,10 +70,11 @@ The path alias function takes a [`re.match` object](https://docs.python.org/3.5/
 
 ## Sample `main.py`
 
-This is the `main.py` that configures [beesbuzz.biz](https://beesbuzz.biz). It
+This is based on the `main.py` that configures [beesbuzz.biz](https://beesbuzz.biz). It
 configures basic logging, sets the in-process cache to store up to 500 items for
 up to 300 seconds, and only does a maintenance rescan once per day. It also maps
-a bunch of legacy URLs as well as forwarding ActivityPub requests to fed.brid.gy's handler.
+a bunch of legacy URLs as well as forwarding ActivityPub requests to fed.brid.gy's
+handler.
 
 ```python
 """ Main Publ application """
@@ -121,7 +122,8 @@ app = publ.publ(__name__, config)
 
 @app.route('/favicon.ico')
 def favicon():
-    return flask.redirect(flask.url_for('static', filename='favicon.ico'))
+    """ Send the favicon.ico file directly from this directory """
+    return flask.send_file('favicon.ico')
 
 
 @app.path_alias_regex(r'/d/([0-9]{8}(_w)?)\.php')
