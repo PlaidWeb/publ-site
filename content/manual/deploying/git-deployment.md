@@ -83,14 +83,14 @@ fi
 
 ```
 
-Then, in your `main.py`, add a function like this (changing the `/_deploymenthook`, `secret`, and `password` to strings only you know); it should go somewhere between `app = publ.publ(...)` and `app.run(...)`:
+Then, in your `main.py`, add a function like this (changing the `/_deploymenthook` and `secret` to strings only you know); it should go somewhere between `app = publ.publ(...)` and `app.run(...)`:
 
 ```python
 @app.route('/_deploymenthook', methods=['POST'])
 def deploy():
     import threading
 
-    if flask.request.form.get('secret') != 'password':
+    if flask.request.form.get('secret') != os.environ.get('REDEPLOY_SECRET'):
         raise http_error.Forbidden()
 
     try:
@@ -111,13 +111,17 @@ def deploy():
     return flask.Response(result, mimetype='text/plain')
 ```
 
+Then,  in whatever mechanism you use to run the website, set the environment variable `REDEPLOY_SECRET` to some secret string. For example, if you're using a `systemd` service, add a line like:
+
+    Environment="REDEPLOY_SECRET=the secret password"
+
 Deploy these changes to your website and restart it. Now you should be able to make your website re-deploy from git and restart itself with a command like:
 
 ```bash
-curl -s https://example.com/_deploymenthook -d secret=password
+curl -s https://example.com/_deploymenthook -d "secret=the secret password"
 ```
 
-after changing `example.com`, `_deploymenthook`, `secret`, and `password` as appropriate.
+after changing `example.com`, `_deploymenthook`, `secret`, and `the secret password` as appropriate.
 
 Finally, on your main git repository, create a `post-receive` hook which looks like this:
 
@@ -134,7 +138,7 @@ done
 
 if [ "$DEPLOY" ] ; then
     # send a deployment signal to the site
-    curl -s https://example.com/_deploymenthook -d secret=password
+    curl -s https://example.com/_deploymenthook -d "secret=the secret password"
 fi
 ```
 
@@ -142,20 +146,26 @@ again modifying the `curl` command as above.
 
 Now when you push a change to the `master` branch of your repository, it should send a very basic signal to your website to tell it to run the `deploy.sh` script, which in turn will attempt to update the site from git. If this is successful, this hook will wait 3 seconds and then tell the controlling process to restart.
 
-### TODO: GitHub web hooks
+### GitHub web hooks
 
-If you're hosting your site files on GitHub, you cannot make your own custom `post-receive` hook. Fortunately, they provide a built-in webhook mechanism which you can use to do the same thing as the above; go to your repository settings, then "Webhooks," then "Add webhook." On the new webhook, set your payload URL to your deployment hook, the content type to `application/x-www-form-urlencoded`, and the secret to some secret string.
+If you're hosting your site files on GitHub, you cannot make your own custom `post-receive` hook. Fortunately, they provide a built-in webhook mechanism which you can use to do the same thing as the above; go to your repository settings, then "Webhooks," then "Add webhook." On the new webhook, set your payload URL to your deployment hook (e.g. `http://example.com/_deploymenthook`), the content type to `application/x-www-form-urlencoded`, and the secret to some secret string.
 
 Then in the `deploy` function, change the lines:
 
 ```python
-    if flask.request.form.get('secret') != 'password':
+    if flask.request.form.get('secret') != os.environ.get('REDEPLOY_SECRET'):
         raise http_error.Forbidden()
 ```
 
 to:
 
 ```python
+    ### [[[TODO: verify that this works! ]]]
     import hmac
-    ### [[[TODO: write the actual HMAC validation code ]]]
+    digest = hmac.new(os.environ.get('GITHUB_SECRET'), flask.request.get_data(), digestmod='sha1')
+    if not hmac.compare_digest(digest.hexdigest(),
+                               flask.request.headers.get('X-Hub-Signature')):
+        raise http_error.Forbidden()
 ```
+
+Finally, in whatever mechanism you use to run the website, set the value of the `GITHUB_SECRET` environment variable to match the secret string provided to GitHub.
