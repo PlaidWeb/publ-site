@@ -160,13 +160,13 @@ mkdir -p content templates static
 Then you can launch your (not yet very functional) site with
 
 ```bash
-pipenv run python3 main.py
+FLASK_APP=main.py pipenv run flask run
 ```
 
 if you're using `pipenv`, or
 
 ```bash
-env/bin/python3 main.py
+FLASK_APP=main.py env/bin/flask run
 ```
 
 if you're using `virtualenv`.
