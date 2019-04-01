@@ -305,6 +305,8 @@ You can also use most of the Markdown image rendition flags, for example:
 <img src="foo.jpg{200,format='png'}" title="Converted to PNG at 200 pixels across">
 ```
 
+Note that this `<img>` functionality is only available on HTML entries.
+
 ### Link targets
 
 Both Markdown and HTML entries support a number of enhancements to how link targets are handled.
@@ -365,8 +367,16 @@ This also works in plain HTML entries; the following is equivalent to the above 
 You can also link to an entry by its entry ID or by an absolute or relative file path to the source file. This also
 supports anchors (`#`). Some examples:
 
-* `[link to entry 322](322)` &rarr; [link to entry 322](322) (HTML equiva)
+* `[link to entry 322](322)` &rarr; [link to entry 322](322)
 * ``[link to `Template format.md`](Template format.md)`` &rarr; [link to `Template format.md`](./Template format.md)
 * ``[link to `/faq.md`](/faq.md)`` &rarr; [link to `/faq.md`](/faq.md)
 * ``[link to `../api/view.md#order`](../api/view.md#order)`` &rarr; [link to `../api/view.md#order`](../api/view.md#order)
 
+And the HTML equivalents to the above:
+
+```html
+<a href="322">link to entry 322</a>
+<a href="Template format.md">Link to <code>Template format.md</code></a>
+<a href="/faq.md">Link to <code>/faq.md</code></a>
+<a href="../api/view.md#order">Link to <code>../api/view.md#order</code></a>
+```
