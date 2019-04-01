@@ -232,7 +232,29 @@ If you want to convert a Movable Type blog's content over, see [mt2publ](https:/
 
 There currently aren't any converters for other blogging systems, but since the [entry file format](/entry-format) is so simple, it shouldn't be too difficult to write converters from other systems either.
 
-## Okay, so, how can I help?
+## Troubleshooting
+
+### I get `OSError: [Errno 8] Exec format error: '/path/to/main.py'` when running in debug
+
+Flask 0.15 changed the way the automatic reload works, which makes it so that if `main.py` is set executable, this will
+fail. (See [an associated GitHub issue](https://github.com/pallets/werkzeug/issues/1482) for more information.)
+
+If you're on Linux or macOS, the easiest solution is to make sure that `main.py` is not set executable, with e.g.
+
+```bash
+chmod a-x main.py
+```
+
+A more general fix (which includes Windows) is to use the `flask run` script instead:
+
+```bash
+FLASK_ENV=development FLASK_DEBUG=1 FLASK_APP=main.py pipenv run flask run
+```
+
+The scripts bundled with the [publ-site repository](https://github.com/PlaidWeb/publ-site) have been updated accordingly.
+
+
+## How can I help out?
 
 Glad you asked!
 
