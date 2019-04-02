@@ -59,6 +59,10 @@ The `entry` object has the following methods/properties:
 
     Please see the [OpenGraph documentation](http://ogp.me/) for more information.
 
+* **`summary`**: The value of the `og:description` field in the OpenGraph card.
+
+    ==PENDING v0.3.21==
+
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).
 
