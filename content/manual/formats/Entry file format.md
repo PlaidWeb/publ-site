@@ -168,6 +168,10 @@ templates; the following headers are what Publ itself uses:
 * <span id="tag"></span>**`Tag`**: Add the specified tag to the entry. To add more than one tag, use separate `Tag:` headers.
 * <span id="hiddentag"></span>**`Hidden-Tag`**: Like `Tag`, but the tag will not appear in the entry's tag list. This lets you filter an entry without making its filter criteria visible.
 
+* <span id="summary"></span>**`Summary`**: A summary/description of the entry.
+
+    ==PENDING 0.3.21== Any text in here will replace the "description" element in the OpenGraph tag.
+
 ## Entry content
 
 After the headers, you can have entry content; if the file has a `.htm` or `.html`

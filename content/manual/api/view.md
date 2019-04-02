@@ -93,9 +93,6 @@ arguments are supported:
 
 
 * **`category`**: The top-level category to consider (defaults to the current view's category)
-
-    Note that if you want to
-
 * **`recurse`**: Whether to include subcategories
     * `True`: Include subcategories
     * `False`: Do not include subcategories (default)
