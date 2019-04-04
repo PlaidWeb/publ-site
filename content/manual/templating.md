@@ -1,4 +1,4 @@
-Title: Template files
+Title: Templating Guide
 Path-Alias: /template-format
 Path-Alias: /template-api
 Date: 2018-04-02 18:03:58-07:00
