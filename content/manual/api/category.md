@@ -55,7 +55,7 @@ The `category` object provides the following:
 
     This is roughly equivalent to `category.breadcrumb[0]`, but is slightly more efficient and easier to type.
 
-* **`tags`**: A list of tags available on the category, provided as pairs of name and count.
+* <span id="tags"></span>**`tags`**: A list of tags available on the category, provided as pairs of name and count.
 
     This can take optional view arguments; probably the only useful one is `recurse`.
 
