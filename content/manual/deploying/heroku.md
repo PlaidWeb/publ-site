@@ -106,6 +106,12 @@ You will also need to install the `psycopg2` library; this is simply:
 pipenv install psycopg2
 ```
 
+If you get an error about it failing to install (accompanied with a gigantic log) you might try pinning the version:
+
+```bash
+pipenv install 'psycopg2<2.8'
+```
+
 For local testing (to make sure everything is wired up correctly) you can do:
 
 ```bash
