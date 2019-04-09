@@ -34,17 +34,28 @@
     {% endif %}
     {% endfor %}
 
-    {% if 'tag' in view.spec %}
-    <li class="cat-here"><a href="{{view(tag=None).link}}">Clear tags</a></li>
-    {% endif %}
-
     {% for entry in view(category='',entry_type='sidebar',tag=None).entries %}
     <li class="{{entry.get('Redirect-To') and 'extlink' or 'sblink'}}"><a href="{{entry.link}}">{{entry.title}}</a></li>
     {% endfor %}
     </ul>
     {% endblock %}
 
+{% if category.tags or 'tag' in view.spec %}
+    <h2>Tags</h2>
+
+    <ul class="tag-list">
+    {% if view.tags %}
+    <li class="tag-clear"><a href="{{view(tag=None).link}}">Clear tags</a></li>
+    {% endif %}
+
+    {% for name,count in category.tags|sort(attribute='count',reverse=True) %}
+    <li class="{{name in view.tags and 'tag-selected' or ''}}"><a href="{{view.toggle_tag(name)}}">{{name}}</a> ({{count}})</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
 </div>
+
 
 {% block content %}
 <div id="content">

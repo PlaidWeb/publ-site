@@ -86,6 +86,23 @@ The `view` object has the following things on it:
 
 * <span id="tags"></span>**`tags`**: Any tags that are applied to this view, provided as a (possibly-empty) list.
 
+* **`toggle_tag`**: Generates a view with one or more tags toggled; takes zero or more tags to toggle on the view specification.
+
+    For example, if the current view has a tag list of `['curly']`,
+    `view.toggle_tag('larry')` produces a view tagged `['curly','larry']`, and `view.toggle_tag('curly','moe')` produces a
+    view tagged `['larry','moe']`.
+
+    This is useful for a tag browser where you want to be able to toggle tags on and off; for example:
+
+    ```jinja
+    <ul>
+    {% for name,count in category.tags %}
+    <li><a href="{{view.toggle_tag(name)}}">{{name}}</a> ({{count}} entries)</li>
+    {% endfor %}
+    </ul>
+    ```
+
+
 ### <span id="subviews">Getting subviews</span>
 
 Any view object can also take arguments to further refine the view; the following
