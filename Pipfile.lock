@@ -264,11 +264,11 @@
         },
         "publ": {
             "hashes": [
-                "sha256:738a5e4cb84564ea31de62f88d5d17f8798bccff651bbfdfc63fedf8835faced",
-                "sha256:9d878f30881bf8183670c53a573c2e96ea7c53cf20a5c6e406f0e72aa1e2d643"
+                "sha256:41e62dfdb5e5e61780c173a9222bfea4457afc29384638ac367b94bb17883363",
+                "sha256:7cb999478320ca8d33ef3aeb41e50a37da1dfc1789f38dc3b3ee4e2839d1485a"
             ],
             "index": "pypi",
-            "version": "==0.3.22"
+            "version": "==0.3.22.1"
         },
         "pycparser": {
             "hashes": [
