@@ -161,6 +161,38 @@ These options drive the behavior of image sets.
 
 * **`more_class`**: If `more_text` is shown, it will be given this CSS class (either on the `<a>` tag if it's a link, or via a `<span>`)
 
+### Template meta-options
+
+* **`prefix`**: Specify one or more prefixes to check for additional rendition options.
+
+    For example, if you have the following in your `index.html`:
+
+    ```jinja
+    {{ entry.body(prefix='index_') }}
+    ```
+
+    then if you have an image like this:
+
+    ```markdown
+    ![](me.jpg{crop='5,5,500,400',index_crop='20,20,400,300'})
+    ```
+
+    then on the page rendered via `index.html` it will be equivalent to:
+
+    ```markdown
+    ![](me.jpg{crop='20,20,400,300'})
+    ```
+
+    You can also specify multiple prefixes to check by putting them in a list, e.g.
+
+    ```jinja
+    {{ entry.body(prefix=['index_','blog_']) }}
+    ```
+
+    In the case of multiple prefixes, the last one takes priority, so list them as least to most specific.
+
+    This is probably only useful from a template file, rather than from an entry. Using a prefix on the `prefix` attribute itself (e.g. `![{index_prefix='foo_'}](me.jpg{foo_format='png'}`)) is undefined behavior and should probably make your head hurt to think about, and no it isn't Turing-complete so don't bother trying.
+
 ## Useful template examples
 
 ### A webcomic

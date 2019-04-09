@@ -170,7 +170,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="summary"></span>**`Summary`**: A summary/description of the entry.
 
-    ==PENDING 0.3.21== Any text in here will replace the "description" element in the OpenGraph tag.
+    Any text in here will replace the "description" element in the OpenGraph tag.
 
 ## Entry content
 

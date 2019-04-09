@@ -83,6 +83,11 @@ pre {
     border-right: none;
     background: white;
     padding: 0 0 1em;
+    clear: right;
+    font-size: small;
+    border-radius: 8px 0 0 8px;
+    overflow: hidden;
+    margin-bottom: 2em;
 }
 
 .posted {
@@ -92,13 +97,7 @@ pre {
     border-bottom: dotted black 1px;
 }
 
-#nav {
-    font-size: small;
-    border-radius: 8px 0 0 8px;
-}
-
-#nav h2 {
-    border-top-left-radius: 8px;
+.sidebar h2 {
     padding: 0 1ex;
     margin: 0 0 1ex;
     background: #eee;
@@ -228,4 +227,23 @@ ul.tags li {
     display: inline;
     margin: 0;
     padding: 0;
+}
+
+.tag-list li:before {
+    content: '☐';
+}
+
+ul.tag-list li.tag-clear:before {
+    content: '☒';
+}
+
+ul.tag-list li.tag-selected:before {
+    content: '☑︎';
+}
+
+ul.tag-list li.tag-selected {
+    font-weight: bold;
+
+.hidden {
+    display: none;
 }

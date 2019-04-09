@@ -55,6 +55,40 @@ The `category` object provides the following:
 
     This is roughly equivalent to `category.breadcrumb[0]`, but is slightly more efficient and easier to type.
 
+* <span id="tags"></span>**`tags`**: A list of tags available on the category, provided as pairs of name and count.
+
+    This can take optional view arguments; probably the only useful one is `recurse`.
+
+    There are multiple ways to access the tag information, depending on preference; for example, you can separate them in the loop:
+
+    ```jinja
+    <ul>
+    {% for name,count in category.tags %}
+    <li><a href="{{view(tag=name)}}">{{name}}</a> ({{count}} entries)</a></li>
+    {% endfor %}
+    </ul>
+    ```
+
+    or you can get at them directly:
+
+    ```jinja
+    <ul>
+    {% for tag in category.tags %}
+    <li><a href="{{view(tag=tag.name)}}">{{name}}</a> ({{tag.count}} entries)</a></li>
+    {% endfor %}
+    </ul>
+    ```
+
+    This does not provide any built-in sorting; you can use [Jinja's `sort` filter](http://jinja.pocoo.org/docs/2.10/templates/#sort) for that:
+
+    ```jinja
+    <ul>
+    {% for name,count in category.tags|sort(attribute='count',reverse=True) %}
+    <li><a href="{{view(tag=name)}}">{{name}}</a> ({{count}} entries)</a></li>
+    {% endfor %}
+    </ul>
+    ```
+
 * The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
 
     * `file_path`: The file path of the category's metadata file

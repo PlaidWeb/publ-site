@@ -1,4 +1,4 @@
-Title: Template files
+Title: Templating Guide
 Path-Alias: /template-format
 Path-Alias: /template-api
 Date: 2018-04-02 18:03:58-07:00
@@ -26,8 +26,7 @@ that matches, and uses that to render the page.
 When someone requests a page, Publ looks up whether it's a category view or an
 entry. Category views look something like
 `http://mysite.com/art/photos/seattle/` or `http://mysite.com/blog/minimal`.
-Entry views look something like `http://mysite.com/art/photos/1529-unwelcome-
-visitor`.
+Entry views look something like `http://mysite.com/art/photos/1529-unwelcome-visitor`.
 
 Every view has a category associated with it; for example,
 `http://mysite.com/art/photos/1529-unwelcome-visitor` is in the `art/photos`
@@ -56,21 +55,17 @@ it will look for a template file named `feed`, `feed.html`, `feed.htm`,
 `templates/music`, and `templates`, in that order, returning the first one that
 matches. (If no templates match, it shows an error page.)
 
-Note that the default names of `entry` and `index` can be overridden on a [per-
-entry](/entry-format#template-override) or
+Note that the default names of `entry` and `index` can be overridden on a [per-entry](/entry-format#template-override) or
 [per-category](/category-format#template-override) basis.
 
 #### Error templates
 
 A note on error templates: Error pages *generally* get handled by whatever
 matches the `error` template; however, in the case of a specific status code, it
-will also look for a template named based on that code. For example, a 404 error
-will try to render the `404` template first, before falling back to `error`.
+will also look for a template named based on that code and its category. For example, a 404 error
+will try to render the `404` template first, then try `400`, then finally `error`.
 (And of course this can be `404.html`, `404.xml`, `404.json`, and so on,
 although in most cases you'll probably be doing it as HTML.)
-
-Also, if no error template is found (i.e. there's no top-level `error.html`),
-Publ will provide a built-in template instead.
 
 #### Generating CSS files
 
@@ -101,7 +96,7 @@ templates:
 
 * `index.html`: the default category view
 * `entry.html`: the entry view
-* `error.html`: Some sort of error page (but this is entirely optional)
+* `error.html`: Some sort of error page (although this is technically optional)
 
 ### Template naming and overrides
 

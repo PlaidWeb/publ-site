@@ -22,9 +22,15 @@
     {% endif %}
 </div>
 
+{% if entry.summary %}
+<div class="hidden p-summary">{{ entry.summary }}</div>
+{% endif %}
+
+<div class="e-content">
 {% if entry.body %}
-<div class="preamble e-content">
+<div class="preamble">
     {{entry.body(gallery_id=entry.uuid,div_class='images')}}
+</div>
 {% endif %}
 
 {% if entry.more %}
