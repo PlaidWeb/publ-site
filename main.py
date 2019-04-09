@@ -93,6 +93,12 @@ config = {
 app = publ.publ(__name__, config)
 
 
+@app.path_alias_regex(r'/\.well-known/(host-meta|webfinger).*')
+def redirect_bridgy(match):
+    ''' support ActivityPub via fed.brid.gy '''
+    return 'https://fed.brid.gy' + flask.request.full_path, False
+
+
 @app.route('/issue/<int:id>')
 def redirect_github_issue(id):
     """ Custom routing rule to redirect /issue/NNN to the corresponding issue on GitHub """
