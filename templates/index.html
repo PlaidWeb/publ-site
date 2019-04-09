@@ -49,7 +49,7 @@
     {% endif %}
 
     {% for name,count in category.tags|sort(attribute='count',reverse=True) %}
-    <li class="{{name in view.tags and 'tag-selected' or ''}}"><a href="{{view.toggle_tag(name)}}">{{name}}</a> ({{count}})</a></li>
+    <li class="{{name in view.tags and 'tag-selected' or ''}}"><a href="{{view.tag_toggle(name)}}">{{name}}</a> ({{count}})</a></li>
     {% endfor %}
     </ul>
 {% endif %}
