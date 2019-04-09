@@ -147,6 +147,7 @@ The headers supported by Publ itself:
 * <span id="template-override">**`Index-Template`**</span>: Use this template instead of `index` when rendering this category (useful if you want to override a category or site's index template without overriding its subcategories)
 * **`Entry-Template`**: Use this template instead of `entry` when rendering an entry
 * **`Sort-Name`**: The name to use when sorting this in a subcategory list
+* **`Path-Alias`**: Redirects another URL to this category
 
 For example, given the file `some/category/info.cat`:
 
@@ -178,10 +179,10 @@ accessible directly via `get` and `get_all`. The behavior is the same as on [ent
 Any text after the headers will be treated as the `description` for the category. Markdown is supported.
 
 Note that at least one header is required. If you just want to provide a description and no other configuration,
-you can put a bogus Description header in, which will be overridden by the actual description. For example:
+you can simply start the file with a blank line, or you can use a bogus header, for example:
 
 ```
-Description: asdf
+Asdf: qwer
 
 Here is a description with no real configuration.
 ```
