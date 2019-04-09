@@ -4,6 +4,9 @@ Date: 2018-04-18 16:00:00-07:00
 Entry-ID: 249
 UUID: dcb8ca7a-2091-4d1d-aed2-6a1061064ff3
 Path-Alias: /yay-cats-wooooo
+Tag: demo
+Tag: images
+Tag: cats!!!
 
 ![{240,240,resize="fill",count_offset=7,div_class="gallery",more_text="There are {remain} more cat pictures!",more_class="caption"}](
 IMG_20130701_223914.jpg "Why are there cat photos here?"
