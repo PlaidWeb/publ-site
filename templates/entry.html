@@ -45,6 +45,8 @@
     <div id="content">
         <div class="entries">
             <article class="h-entry">
+            <a href="https://fed.brid.gy/"></a>
+
             {% block entry %}
             <div class="posted">Last updated: <time class="dt-posted" datetime="{{entry.date.isoformat()}}">{{entry.last_modified.format('YYYY-MM-DD h:mm A')}} ({{entry.last_modified.humanize()}})</time>
             </div>

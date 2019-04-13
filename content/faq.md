@@ -197,22 +197,17 @@ more money than me at this and I'd humbly suggest you consider [showing your sup
 
 ## Interoperability
 
-### Why don't you support ActivityPub?
+### Do you support ActivityPub?
 
-I do plan on that being part of the system in the long term, but it's not really
-necessary for any of my current requirements. Being able to subscribe to long-form content is already well-handled by syndication feeds like Atom and RSS, and
-ActivityPub is focused more on doing instant push updates for short-form
-content. For most uses of public Internet content, [Atom is fine](http://beesbuzz.biz/blog/2535-ActivityPub-hot-take) -- and this can still handle push via [WebSub](https://github.com/w3c/websub) (which Publ also doesn't yet support but adding that would be fairly simple).
+At some point I will write a longer piece on why ActivityPub has an impedance mismatch with Publ's design goals, but in the meantime you can read an [off-the-cuff rant about it](http://beesbuzz.biz/blog/2535-ActivityPub-hot-take).
 
-I do have plans for supporting friends-only/private content, though, and I could see a future in which ActivityPub providers are used to provide federated authentication. And there's no reason it couldn't also be used to support ActivityPub for push, although it'll take some doing to make it actually work well in that ecosystem.
+That said, it is fairly simple to support ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295); this very site is [configured to use that](https://github.com/PlaidWeb/publ-site/blob/384e2c9bca9c25dedde3e9d68f682f2872db15be/main.py#L96), and should be followable at `@publ.beesbuzz.biz@publ.beesbuzz.biz` on your WebFinger-enabled social network of choice, although the experience isn't particularly great.
 
 ### What about Webmention, WebSub, ...?
 
 Publ is only one piece of a puzzle for a rich [IndieWeb](http://indieweb.org) experience. It is intended to provide the publishing and content management aspects of a site, and allow the use of other, simple tools for other parts of the ecosystem.
 
-To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool is (tentatively) [Pushl](http://github.com/PlaidWeb/Pushl) to provide the notification conduit between Publ (or any other publishing system, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
-
-For that matter, Pushl can also add basic ActivityPub support to a Publ site via [fed.brid.gy](http://fed.brid.gy).
+To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool is [Pushl](1295) to provide the notification conduit between Publ (or any other publishing system, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
 
 As far as incoming Webmentions are concerned, most of that comes down to selecting whatever endpoint you want. There is already a rich ecosystem of Webmention endpoints that are available for use now (I use [webmention.io](http://webmention.io), personally), and I haven't seen any compelling reason to integrate one into Publ directly.
 
