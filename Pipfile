@@ -8,5 +8,6 @@ gunicorn = "*"
 publ = "*"
 psycopg2-binary = "*"
 psycopg2 = "<2.8"
+pypandoc = "*"
 
 [dev-packages]

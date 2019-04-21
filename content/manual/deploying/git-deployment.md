@@ -7,9 +7,9 @@ How to use git hooks to automatically deploy site content
 
 .....
 
-## Same-server deployment
+## Script hook deployment
 
-This is the approach I use for managing my site content on [my main website](http://beesbuzz.biz). It requires that your git repository lives on the same server as your actual Publ installation.
+This is the approach I use for managing my site content on [my main website](http://beesbuzz.biz). It requires that you can run shell scripts from your git repositories, and ideally your git repository lives on the same server as your actual Publ installation.
 
 On your webserver, create a private git repository wherever you want it, for example, `$HOME/sitefiles/example.com.git`; here is an example of how to do so (after logging into your server with `ssh`):
 
@@ -28,19 +28,7 @@ Back on your desktop (or wherever you're developing your site), configure the ba
 git remote add publish username@servername:sitefiles/example.com.git
 ```
 
-Now back on the server, you need two git hooks. First, the post-update hook on the bare repo, e.g. `$HOME/sitefiles/example.com.git/hooks/post-update`:
-
-```bash
-#!/bin/sh
-
-echo "Deploying new site content..."
-
-cd $HOME/example.com
-unset GIT_DIR
-git pull --no-ff
-```
-
-Next, the post-merge hook on the deployment repo, e.g. `$HOME/example.com/.git/hooks/post-merge`:
+Now, add a post-merge hook on the deployment repo, e.g. `$HOME/example.com/.git/hooks/post-merge`:
 
 ```bash
 #!/bin/sh
@@ -55,12 +43,29 @@ echo "Restarting web services"
 killall -HUP gunicorn
 ```
 
+Finally, add a post-update hook to the bare repository, e.g. `$HOME/sitefiles/example.com.git/hooks/post-update`:
 
-Now, when you push new content to the `publish` remote, it will go to the bare repo, which will then tell the deployment repo to pull the latest changes. After these changes are deployed, it will update whatever packages changed in your Pipfile, and then restart your gunicorn processes. (Yes, all of them. If you have multiple gunicorn sites you'll probably want to do something to track the process ID on a per-site basis.)
+```bash
+#!/bin/sh
 
-## Different-server deployment
+echo "Deploying new site content..."
 
-If your git repository and site live on different servers, you need to get a bit fancier.
+### Uncomment these lines if your deployment target is on the same server
+#cd $HOME/example.com
+#unset GIT_DIR
+#git pull --no-ff
+
+### Uncomment this line if your deployment is on a different server
+#ssh DEPLOYMENT_SERVER 'cd example.com && git pull'
+```
+
+If the deployment server differs from your repository server, there will also need to be an ssh key or other authentication mechanism other than password.
+
+Now, when you push new content to the `publish` remote, it will go to the bare repo, which will then run the `post-update` hook which will tell the deployment repo to pull the latest changes. After these changes are deployed, it will update whatever packages changed in your Pipfile, and then restart your gunicorn processes. (Yes, all of them. If you have multiple gunicorn sites you'll probably want to do something to track the process ID on a per-site basis.)
+
+### Using a web hook
+
+If you can't use any of the above methods (for example, your git host doesn't allow you to install arbitrary script hooks), you'll need to use a web hook instead.
 
 First, create a file called `deploy.sh` in your top-level site directory:
 
@@ -123,7 +128,9 @@ curl -s https://example.com/_deploymenthook -d "secret=the secret password"
 
 after changing `example.com`, `_deploymenthook`, `secret`, and `the secret password` as appropriate.
 
-Finally, on your main git repository, create a `post-receive` hook which looks like this:
+### Self-installed web hooks
+
+If you're just using a web hook because you'd rather do that than set up an ssh key or whatever, create a `post-receive` hook (e.g. `$HOME/sitefiles/example.com.git/hooks/post-receive`) which looks like this:
 
 ```bash
 #!/bin/bash
@@ -146,9 +153,9 @@ again modifying the `curl` command as above.
 
 Now when you push a change to the `master` branch of your repository, it should send a very basic signal to your website to tell it to run the `deploy.sh` script, which in turn will attempt to update the site from git. If this is successful, this hook will wait 3 seconds and then tell the controlling process to restart.
 
-### GitHub web hooks
+### GitHub-style web hooks
 
-If you're hosting your site files on GitHub, you cannot make your own custom `post-receive` hook. Fortunately, they provide a built-in webhook mechanism which you can use to do the same thing as the above; go to your repository settings, then "Webhooks," then "Add webhook." On the new webhook, set your payload URL to your deployment hook (e.g. `http://example.com/_deploymenthook`), the content type to `application/x-www-form-urlencoded`, and the secret to some secret string.
+If you're hosting your site files on GitHub or the like, you cannot make your own custom `post-receive` hook. Fortunately, they provide a built-in webhook mechanism which you can use to do the same thing as the above; go to your repository settings, then "Webhooks," then "Add webhook." On the new webhook, set your payload URL to your deployment hook (e.g. `http://example.com/_deploymenthook`), the content type to `application/x-www-form-urlencoded`, and the secret to some secret string.
 
 Then in the `deploy` function, change the lines:
 
