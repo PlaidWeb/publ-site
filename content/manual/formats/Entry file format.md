@@ -68,9 +68,7 @@ templates; the following headers are what Publ itself uses:
 
     This can be in any format that [Arrow](http://arrow.readthedocs.io)
     understands. If no timezone is specified it will use the timezone indicated
-    in `config.py`. ([TODO](https://github.com/fluffy-critter/Publ/issues/41);
-    this is pending an [external
-    fix](https://github.com/PlaidWeb/Publ/issues/41))
+    in `config.py`.
 
     **Default value**: the modification time of the entry file (which will be added to the
     file for later).
@@ -152,9 +150,7 @@ templates; the following headers are what Publ itself uses:
 
     Note that this is intended for affecting the layout/structure of the site,
     and each entry only has a single type. If you set more than one, only one of them will be used (and which one
-    is undefined). In the future there will be a [content tagging
-    system](https://github.com/fluffy-critter/Publ/issues/22) which will allow
-    for filtering entries based on content tags.
+    is undefined). For making content that can be filtered on multiple criteria, use [tags](#tag) instead.
 
 * <span id="template-override">**`Entry-Template`**</span>: Use the specified template instead of `entry` when rendering this entry
 
