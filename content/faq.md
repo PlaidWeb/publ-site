@@ -231,7 +231,7 @@ There currently aren't any converters for other blogging systems, but since the 
 
 ### I get `OSError: [Errno 8] Exec format error: '/path/to/main.py'` when running in debug
 
-Flask 0.15 changed the way the automatic reload works, which makes it so that if `main.py` is set executable, this will
+Werkzeug 0.15 (used by Flask) changed the way the automatic reload works, which makes it so that if `main.py` is set executable, this will
 fail. (See [an associated GitHub issue](https://github.com/pallets/werkzeug/issues/1482) for more information.)
 
 If you're on Linux or macOS, the easiest solution is to make sure that `main.py` is not set executable, with e.g.
