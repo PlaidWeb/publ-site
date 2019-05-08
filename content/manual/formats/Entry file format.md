@@ -171,13 +171,12 @@ templates; the following headers are what Publ itself uses:
 ## Entry content
 
 After the headers, you can have entry content; if the file has a `.htm` or `.html`
-extension it will just render as plain HTML, but with a `.md` extension it will
+extension it will just render directly as HTML (with internal `href` and `src` links rewritten to local files and entries), but with a `.md` extension it will
 render as [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
 Publ supports [GitHub-flavored markdown](https://guides.github.com/features/mastering-markdown/), specifically via [Misaka](http://misaka.61924.nl) (which in turn uses [Hoedown](https://github.com/hoedown/hoedown "My, Earth certainly is full of things!")).
 
-Code highlighting uses the [Pygments](http://pygments.org) library, which supports
-[a rather large list of syntaxes](http://pygments.org/docs/lexers/).
+Markdown entries can use code fences, which support syntax highlighting via [Pygments](http://pygments.org); see its [rather large list of syntaxes](http://pygments.org/docs/lexers/).
 
 There are also some Publ-specific extensions for things like cuts, image renditions, and galleries.
 
