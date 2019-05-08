@@ -3,7 +3,7 @@ Date: 2018-04-02 14:04:32-07:00
 Entry-ID: 322
 UUID: 9b03da44-da6a-46a7-893a-d4ecbe813681
 Path-Alias: /entry-format
-Last-Modified: 2019-03-04 23:49:10+00:00
+Last-Modified: 2019-05-08 07:39:26+00:00
 
 A guide to writing page content for Publ.
 
@@ -305,13 +305,15 @@ You can also use most of the Markdown image rendition flags, for example:
 <img src="foo.jpg{200,format='png'}" title="Converted to PNG at 200 pixels across">
 ```
 
-Note that this `<img>` functionality is only available on HTML entries.
+This `<img>` functionality is also available on Markdown entries.
 
 ### Link targets
 
-Both Markdown and HTML entries support a number of enhancements to how link targets are handled.
+Both Markdown and HTML entries support a number of enhancements to how link targets are handled; this allows the transparent use of local file paths in your entries.
 
-Note that for HTML the following functionality is *only* supported in plain HTML entries, and not in HTML embedded into Markdown entries.
+In HTML entries, this applies to all `href` and `src` attributes (e.g. `<a href="example.md">link</a>` and `<audio src="example.mp3" controls>`).
+
+In Markdown entries, this also applies to images (e.g. `![](example.jpg)`) and hyperlinks (e.g. `[example link](example.md)`) in addition to applying to embedded HTML content.
 
 #### Local files
 
@@ -320,6 +322,12 @@ a file `term paper.pdf` in the same directory as `my entry.md`, then from the en
 
 ```markdown
 You want to read [my paper](term paper.pdf)? Well here you go!
+```
+
+Similarly, from an HTML entry, this will work:
+
+```html
+You want to read <a href="term paper.pdf">my paper</a>? I'm flattered!
 ```
 
 Any file type is supported; however, keep in mind that an HTML or Markdown file will be interpreted as an [entry](#entry-links). If you would like to
@@ -355,7 +363,7 @@ This also applies to images (e.g. `![](@foo.jpg)` will display the image `/stati
 treated the same way as an external image; if you want the image to be scaled to save bandwidth, it is better to
 put it into your content tree instead.
 
-This also works in plain HTML entries; the following is equivalent to the above two examples:
+When writing HTML, the following is equivalent to the above two examples:
 
 ```html
 <a href="@files/file.txt">here is a file</a>
