@@ -84,7 +84,7 @@ config = {
     'cache': {
         'CACHE_TYPE': 'simple',
         'CACHE_DEFAULT_TIMEOUT': 600,
-        'CACHE_THRESHOLD': 100
+        'CACHE_THRESHOLD': 20
     } if not os.environ.get('FLASK_DEBUG') else {
         'CACHE_NO_NULL_WARNING': True
     },
