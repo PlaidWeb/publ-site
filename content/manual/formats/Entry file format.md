@@ -174,7 +174,7 @@ After the headers, you can have entry content; if the file has a `.htm` or `.htm
 extension it will just render directly as HTML (with internal `href` and `src` links rewritten to local files and entries), but with a `.md` extension it will
 render as [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
-Publ supports [GitHub-flavored markdown](https://guides.github.com/features/mastering-markdown/), specifically via [Misaka](http://misaka.61924.nl) (which in turn uses [Hoedown](https://github.com/hoedown/hoedown "My, Earth certainly is full of things!")).
+Publ supports a number of extensions to Markdown, specifically via [Misaka](http://misaka.61924.nl) (which in turn uses [Hoedown](https://github.com/hoedown/hoedown "My, Earth certainly is full of things!")). The extensions are [configurable](865#markdown_extensions); by default it is configured to resemble [GitHub-flavored markdown](https://guides.github.com/features/mastering-markdown/) with the addition of [Kramdown-style math](https://kramdown.gettalong.org/syntax.html#math-blocks) (which in turn works with [MathJax or KaTeX](https://kramdown.gettalong.org/math_engine/mathjax.html)).
 
 Markdown entries can use code fences, which support syntax highlighting via [Pygments](http://pygments.org); see its [rather large list of syntaxes](http://pygments.org/docs/lexers/).
 

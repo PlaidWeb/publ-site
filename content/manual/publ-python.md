@@ -48,7 +48,7 @@ The `publ` library provides the following functions:
 
     * **`cache`**: A dictionary with the caching configuration; see the [Flask-Caching documentation](https://pythonhosted.org/Flask-Caching/#configuring-flask-caching) for more information. Defaults to `{}` (i.e. no caching).
 
-    * **`markdown_extensions`**: A list of extensions to use with the Markdown processor; see the [misaka documentation](https://misaka.61924.nl/#extensions) for a list of accepted values. Defaults to `('tables', 'fenced-code', 'footnotes', 'strikethrough', 'highlight', 'superscript', 'math')`.
+    * <span id="markdown_extensions"></span>**`markdown_extensions`**: A list of extensions to use with the Markdown processor; see the [misaka documentation](https://misaka.61924.nl/#extensions) for a list of accepted values. Defaults to `('tables', 'fenced-code', 'footnotes', 'strikethrough', 'highlight', 'superscript', 'math')`.
 
         Generally you will only want to configure this globally, but you can also override these settings at the template level by passing `markdown_extensions` in as configuration to the [entry properties](115) (`entry.body`, `entry.text`, `entry.title`, etc.).
 
