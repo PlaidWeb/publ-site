@@ -264,11 +264,11 @@
         },
         "publ": {
             "hashes": [
-                "sha256:1c0cb2653b3b9899fde89b57bf687b58d76cda7a88f47820675f9ffaf05b1a9f",
-                "sha256:37b4225acaeb4d536b44cb39b3e0468ee42231b66943374271d2e927cbf54f8a"
+                "sha256:13530ccdfecf998a604adb25391c9e323ec44a277e114e027b13bbdd92ad4457",
+                "sha256:3d07b0d8ad4f324f0df14930097ff53286bbf4579ae218ce3b0b2f5fc818b64c"
             ],
             "index": "pypi",
-            "version": "==0.3.23.1"
+            "version": "==0.4.0"
         },
         "pycparser": {
             "hashes": [
@@ -278,10 +278,10 @@
         },
         "pygments": {
             "hashes": [
-                "sha256:5ffada19f6203563680669ee7f53b64dabbeb100eb51b61996085e99c03b284a",
-                "sha256:e8218dd399a61674745138520d0d4cf2621d7e032439341bc3f647bff125818d"
+                "sha256:31cba6ffb739f099a85e243eff8cb717089fdd3c7300767d9fc34cb8e1b065f5",
+                "sha256:5ad302949b3c98dd73f8d9fcdc7e9cb592f120e32a18e23efd7f3dc51194472b"
             ],
-            "version": "==2.3.1"
+            "version": "==2.4.0"
         },
         "pypandoc": {
             "hashes": [
@@ -356,10 +356,10 @@
         },
         "wheel": {
             "hashes": [
-                "sha256:66a8fd76f28977bb664b098372daef2b27f60dc4d1688cfab7b37a09448f0e9d",
-                "sha256:8eb4a788b3aec8abf5ff68d4165441bc57420c9f64ca5f471f58c3969fe08668"
+                "sha256:5e79117472686ac0c4aef5bad5172ea73a1c2d1646b808c35926bd26bdfb0c08",
+                "sha256:62fcfa03d45b5b722539ccbc07b190e4bfff4bb9e3a4d470dd9f6a0981002565"
             ],
-            "version": "==0.33.1"
+            "version": "==0.33.4"
         }
     },
     "develop": {}

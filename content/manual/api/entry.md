@@ -28,6 +28,7 @@ The `entry` object has the following methods/properties:
         ```
 
     * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution; this is mostly useful for Atom feeds. (default: `False`)
+    * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
 
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
 
@@ -40,6 +41,7 @@ The `entry` object has the following methods/properties:
     * **`xhtml`**: Set to `True` to render as XHTML instead of HTML (default: `False`)
     * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
     * **`absolute`**: Set to True to force all links to be absolute (rather than relative); this includes ones that are written in `'[markdown links](/foo)`.'
+    * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
 
 * **`card`**: `<meta>` tags for an OpenGraph card
 
@@ -58,6 +60,8 @@ The `entry` object has the following methods/properties:
     ```
 
     Please see the [OpenGraph documentation](http://ogp.me/) for more information.
+
+    This also accepts the `markdown_extensions` argument.
 
 * <span id="summary"></span>**`summary`**: The value of the `og:description` field in the OpenGraph card.
 
