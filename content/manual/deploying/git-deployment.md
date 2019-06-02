@@ -59,13 +59,13 @@ echo "Deploying new site content..."
 #ssh DEPLOYMENT_SERVER 'cd example.com && git pull'
 ```
 
-If the deployment server differs from your repository server, there will also need to be an ssh key or other authentication mechanism other than password.
+If the deployment server differs from your repository server, there will also need to be an [ssh key](https://www.ssh.com/ssh/key/) or other authentication mechanism other than password.
 
 Now, when you push new content to the `publish` remote, it will go to the bare repo, which will then run the `post-update` hook which will tell the deployment repo to pull the latest changes. After these changes are deployed, it will update whatever packages changed in your Pipfile, and then restart your gunicorn processes. (Yes, all of them. If you have multiple gunicorn sites you'll probably want to do something to track the process ID on a per-site basis.)
 
-### Using a web hook
+## Web hook deployment
 
-If you can't use any of the above methods (for example, your git host doesn't allow you to install arbitrary script hooks), you'll need to use a web hook instead.
+If you can't use the above method (for example, your git host doesn't allow you to install arbitrary script hooks), you'll need to use a web hook instead.
 
 First, create a file called `deploy.sh` in your top-level site directory:
 
