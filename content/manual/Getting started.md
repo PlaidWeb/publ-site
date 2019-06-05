@@ -74,7 +74,11 @@ If your distribution doesn't provide an easy recent version, consider using [pye
 
 3. (Optional, but recommended) Install some sort of `bash` environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
 
-4. From a command prompt (e.g. git bash, a Windows CMD prompt, or from "Run program..." from the start menu): `pip install pipenv`
+4. From a command prompt (e.g. git bash, a Windows CMD prompt, or from "Run program..." from the start menu):
+
+    ```bash
+    pip install pipenv
+    ```
 
 ## Making a website
 
@@ -112,7 +116,7 @@ will run the site at [`http://localhost:12345`](http://localhost:12345) instead.
 #### Creating the environment
 
 To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or
-`pipenv` to set up a sandbox and install the `Publ` package to it; I recommend
+`pipenv` to set up a sandbox and install the `Publ` package to it. I recommend
 `pipenv` for a number of reasons but if you're familiar with `virtualenv` or are
 using a hosting provider that requires it, feel free to do that instead.
 
