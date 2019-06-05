@@ -36,12 +36,13 @@ h4 a {
 
 code,
 .highlight pre {
-    background: #eee;
+    background: #ccc;
     font-family: 'Andale Mono', 'Liberation Mono', 'Monaco', 'Lucida Console', monospace;
+    border: dotted black 1px;
 }
 
 pre {
-    background: #eee;
+    background: #ccc;
     border: dotted black 1px;
     padding: 1ex;
 }

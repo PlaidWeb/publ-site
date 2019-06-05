@@ -68,8 +68,7 @@ distributions differentiate between Python 2 and 3 anymore.
 
 2. Install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017), making sure to select "Visual C++ build tools" at the very least.
 
-    This is necessary for some of the libraries Publ depends on. (If you already
-    have Visual Studio installed with C++ support you can skip this step.)
+    This is unfortunately necessary for some of the libraries Publ depends on. (If you already have Visual Studio installed with C++ support you can skip this step.)
 
 3. (Optional, but recommended) Install some sort of `bash` environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
 
