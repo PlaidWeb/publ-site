@@ -11,7 +11,7 @@ A guide to starting with Publ.
 
 ## Installing system requirements
 
-You'll need [Python](https://python.org) 3 (at least version 3.5) and
+You'll need [Python](https://python.org) (at least version 3.5) and
 [`pipenv`](https://pipenv.org) to be installed. If you don't know what that means, follow the directions specific to your operating system.
 
 ### macOS

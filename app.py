@@ -10,20 +10,6 @@ import flask
 
 import publ
 
-if os.path.isfile('logging.conf'):
-    logging.config.fileConfig('logging.conf')
-else:
-    try:
-        os.makedirs('logs')
-    except FileExistsError:
-        pass
-    logging.basicConfig(level=logging.INFO,
-                        handlers=[
-                            logging.handlers.TimedRotatingFileHandler(
-                                'logs/publ.log'),
-                            logging.StreamHandler()
-                        ])
-
 logging.info("Setting up")
 
 APP_PATH = os.path.dirname(os.path.abspath(__file__))
