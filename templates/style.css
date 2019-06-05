@@ -39,10 +39,19 @@ code,
     font-family: 'Andale Mono', 'Liberation Mono', 'Monaco', 'Lucida Console', monospace;
 }
 
+code {
+    background: #eee;
+    color: #300;
+    border: solid #ccc 1px;
+    border-radius: 2px;
+    padding: 0.2ex;
+}
+
 pre {
-    background: #ede;
+    background: #eeeaec;
     border: dotted black 1px;
     padding: 1ex;
+    border-radius: 5px;
 }
 
 .images {
