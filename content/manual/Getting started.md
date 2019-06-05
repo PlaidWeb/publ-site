@@ -11,8 +11,8 @@ A guide to starting with Publ.
 
 ## Installing system requirements
 
-You'll need Python 3 (at least version 3.6) and
-[`pipenv`](https://pipenv.org) to be installed.
+You'll need [Python](https://python.org) 3 (at least version 3.5) and
+[`pipenv`](https://pipenv.org) to be installed. If you don't know what that means, follow the directions specific to your operating system.
 
 ### macOS
 
@@ -31,12 +31,12 @@ and then add the following line to your login script (usually
 export PATH=$HOME/Library/Python/3.7/bin:$PATH
 ```
 
-As an alternative to homebrew you can install Python 3.6 or later from the [Python website](http://python.org) or using your package manager of choice.
+As an alternative to homebrew you can install Python 3.5 or later from the [Python website](http://python.org) or using your package manager of choice.
 
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
-python 3.6 or later, and to also install `pip3` (Ubuntu
+python 3.5 or later, and to also install `pip3` (Ubuntu
 keeps this in the `python3-pip` package; other distributions will vary).
 
 Afterwards, you can install `pipenv` with either:
@@ -73,28 +73,29 @@ distributions differentiate between Python 2 and 3 anymore.
 
 3. (Optional, but recommended) Install some sort of `bash` environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
 
-4. From a command prompt, run `pip install pipenv`
-
+4. From a command prompt (e.g. git bash, a Windows CMD prompt, or from "Run program..." from the start menu): `pip install pipenv`
 
 ## Making a website
 
 ### Copying this one (recommended)
 
-Run the following commands inside a UNIX shell environment (e.g. Terminal on macOS or Linux, or git bash on Windows):
+1. Clone a local copy of [this website repository](https://github.com/PlaidWeb/Publ-site).
 
-```bash
-# Copy the website files
-git clone https://github.com/PlaidWeb/Publ-site
-cd Publ-site
+    You can use the command line (e.g. `git clone https://github.com/PlaidWeb/Publ-site`) or you can use your favorite git frontend for this (such as GitHub Desktop).
 
-# Run the setup steps
-./setup.sh
+2. Run the Publ setup script
 
-# Start the website locally
-./run.sh
-```
+    On macOS and Linux, or on Windows using git bash, open a command prompt and `cd` into where you checked out the files, and run `./setup.sh`
 
-at which point connecting to [`http://localhost:5000`](http://localhost:5000) should show you this website. Note that on the first page load it will take a little while before all of the content is visible -- but you can watch the site build in your terminal window to see it finish.
+    On Windows, double-click the `winsetup.cmd` file (which may appear as just `winsetup`)
+
+3. Launch the website locally
+
+    On macOS and Linux, or on Windows using git bash, run `./run.sh` (also from the same directory).
+
+    On Windows, double-click the `winrun.cmd` file (which may appear as just `winrun`)
+
+Now, connecting to [`http://localhost:5000`](http://localhost:5000) should show you this website. Note that on the first page load it will take a little while before all of the content is visible -- but you can watch the site build in your terminal window to see it finish.
 
 If you need to run the site on a different port (for example, you get an error like `OSError: [Errno 48] Address already in use
 `), you can change this by setting the `PORT` environment variable; for example:
@@ -104,8 +105,6 @@ PORT=12345 ./run.sh
 ```
 
 will run the site at [`http://localhost:12345`](http://localhost:12345) instead.
-
-On Windows you can also avoid the use of `bash` and can simply double-click the `winsetup.cmd` and `winrun.cmd` files in order. If you want to change the port, edit `run.cmd` with your text editor of choice.
 
 ### Setting one up from scratch
 
@@ -131,7 +130,7 @@ virtualenv env
 env/bin/pip3 install Publ
 ```
 
-Next, you'll need a `main.py` file. Here is a pretty minimal one:
+Next, you'll need a `app.py` file. Here is a pretty minimal one:
 
 ```python
 import os
@@ -151,7 +150,7 @@ if __name__ == "__main__":
     app.run(port=os.environ.get('PORT', 5000))
 ```
 
-Now, you'll need directories for your site content:
+Now, you'll need directories for your site content; create folders named `content`, `templates`, and `static` in the same directory as `app.py`. From the command line you can type:
 
 ```bash
 mkdir -p content templates static
@@ -160,16 +159,16 @@ mkdir -p content templates static
 Then you can launch your (not yet very functional) site with
 
 ```bash
-FLASK_APP=main.py pipenv run flask run
+pipenv run flask run
 ```
 
 if you're using `pipenv`, or
 
 ```bash
-FLASK_APP=main.py env/bin/flask run
+env/bin/flask run
 ```
 
-if you're using `virtualenv`.
+if you're using `virtualenv`. (Both must be run from the same directory as `app.py`.)
 
 Now you should have a site running at [`http://localhost:5000`](http://localhost:5000) that does absolutely nothing! Congratulations!
 
@@ -246,7 +245,7 @@ Anyway, read on for more information about how to build a bigger site!
 Looking at [the files for this site](/github-site), here are some key things to look at:
 
 * `Pipfile` and `Pipfile.lock`: Configures `pipenv`
-* `main.py`: Main "application" that runs the site
+* `app.py`: Main "application" that runs the site
 * `Procfile`: Configures the site to run on [Heroku](http://heroku.com)
 * `templates/`: The site layout files (i.e. how to lay your content out). Some you can look at:
     * `index.html`: What renders when you view a category (e.g. [`/manual/`](/manual/))

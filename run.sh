@@ -1,3 +1,3 @@
 #!/bin/sh
 
-FLASK_ENV=development FLASK_DEBUG=1 FLASK_APP=main.py pipenv run flask run
+FLASK_ENV=development FLASK_DEBUG=1 pipenv run flask run
