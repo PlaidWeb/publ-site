@@ -44,7 +44,7 @@ if sys.executable != INTERP:
 sys.path.append(os.getcwd())
 
 # load the app
-import main
+import app
 
 
 # hackish way to make Passenger urldecode the same way WSGI does
@@ -58,7 +58,7 @@ def application(environ, start_response):
     """
 
     environ["PATH_INFO"] = urllib.parse.unquote(environ["PATH_INFO"])
-    return main.app(environ, start_response)
+    return app.app(environ, start_response)
 
 # Uncomment next two lines to enable debugging
 # from werkzeug.debug import DebuggedApplication
