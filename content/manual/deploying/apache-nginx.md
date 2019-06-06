@@ -19,11 +19,11 @@ Your Publ environment needs to have a WSGI server installed. This guide assumes 
 pipenv install gunicorn
 ```
 
-Next, you need something to launch your site onto the assigned port; here are a few options:
+Next, you need something to launch your site onto the assigned port; here are a few options. These all assume that you're declaring your Publ app as `app` from the file `app.py`, per the [getting started guide](328), that `pipenv` was installed using `pip install --user pipenv`, and the Publ site's directory is `/home/USERNAME/example.com`.
 
 ### systemd
 
-If you're on a UNIX that uses `systemd`, the preferred approach is to run the site as a system service. Here is an example systemd launcher (e.g. `/etc/systemd/system/example.com.service`):
+If you're on a UNIX that uses `systemd` and you have root or `sudo` access (or are able to get the administrator to do this for you), the preferred approach is to run the site as a system service. Here is an example systemd launcher:
 
 ```systemd
 [Unit]
@@ -34,28 +34,37 @@ After=network.target
 User=USERNAME
 Restart=always
 WorkingDirectory=/home/USERNAME/example.com
-ExecStart=/home/USERNAME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 main:app
+ExecStart=/home/USERNAME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 app:app
 
 [Install]
 WantedBy=multi-user.target
 ```
 
+Install this file as e.g. `/etc/systemd/system/example.com.service` and then you should be able to start the server with:
+
+```bash
+sudo systemctl enable example.com
+sudo service example.com start
+```
+
+and the site should now be up and running on the local port. You can use e.g. `curl http://localhost:5120` to verify that the site is up and serving traffic.
+
 ### cron
 
-Another approach is to use `cron` as your service launcher; first, make a file like `cron-launcher.sh` in your site's
+If you don't have systemd, or you don't have administrator access, you can use `cron` as a service launcher; first, make a file like `cron-launcher.sh` in your site's
 directory:
 
 ```bash
 #!/bin/sh
 
 cd $(dirname "$0")
-flock -n .lockfile $HOME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 main:app
+flock -n .lockfile $HOME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 app:app
 ```
 
 and then run `crontab -e` and add a line like:
 
 ```crontab
-* * * * * /path/to/cron-launcher.sh
+* * * * * /home/USERNAME/example.com/cron-launcher.sh
 ```
 
 ## Apache

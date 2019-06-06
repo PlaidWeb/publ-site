@@ -44,7 +44,7 @@ code {
     color: #300;
     border: solid #ccc 1px;
     border-radius: 2px;
-    padding: 0.2ex;
+    padding: 0 0.2ex;
 }
 
 pre {
