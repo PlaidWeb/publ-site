@@ -38,7 +38,7 @@ This will install all of the deployment requirements for Heroku, and configure t
 At this point you should be able to run it locally with:
 
 ```bash
-pipenv run gunicorn main:app
+pipenv run gunicorn app:app
 ```
 
 and connecting to the URL gunicorn tells you (likely `http://127.0.0.1:8000/`).
@@ -46,7 +46,7 @@ and connecting to the URL gunicorn tells you (likely `http://127.0.0.1:8000/`).
 Next, you'll need a `Procfile` which tells Heroku how to launch your site:
 
 ```
-web: gunicorn main:app
+web: gunicorn app:app
 ```
 
 Check this file in as well.
@@ -115,7 +115,7 @@ pipenv install 'psycopg2<2.8'
 For local testing (to make sure everything is wired up correctly) you can do:
 
 ```bash
-DATABASE_URL=`heroku config:get DATABASE_URL` pipenv run gunicorn main:app
+DATABASE_URL=`heroku config:get DATABASE_URL` pipenv run gunicorn app:app
 ```
 
 although be advised that the database scan will be *much* slower than in production.
