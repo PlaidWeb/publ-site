@@ -201,7 +201,7 @@ more money than me at this and I'd humbly suggest you consider [showing your sup
 
 At some point I will write a longer piece on why ActivityPub has an impedance mismatch with Publ's design goals, but in the meantime you can read an [off-the-cuff rant about it](http://beesbuzz.biz/blog/2535-ActivityPub-hot-take).
 
-That said, it is fairly simple to support ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295); this very site is [configured to use that](https://github.com/PlaidWeb/publ-site/blob/384e2c9bca9c25dedde3e9d68f682f2872db15be/main.py#L96), and should be followable at `@publ.beesbuzz.biz@publ.beesbuzz.biz` on your WebFinger-enabled social network of choice, although the experience isn't particularly great.
+That said, it is fairly simple to support ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295); this very site is [configured to use that](https://github.com/PlaidWeb/publ-site/blob/384e2c9bca9c25dedde3e9d68f682f2872db15be/main.py#L96), and might be followable at `@publ.beesbuzz.biz@publ.beesbuzz.biz` on your WebFinger-enabled social network of choice, although the experience isn't particularly great.
 
 ### What about Webmention, WebSub, ...?
 
@@ -217,9 +217,11 @@ Being built in Flask, it is a simple matter to add additional routes to any Publ
 
 This is of course not anything special to Publ.
 
-### What about having multuple Publ instances on a single running server?
+### What about having multuple Publ instances within a single running site?
 
-Unfortunately, that is not so straightforward. Currently, the ORM in use does not support segregating data across instances, and as such I also haven't put much effort into containerizing the Publ configuration (which is currently global). However, I haven't found a good use case for multiple Publ sites conmingled in a single app server anyway; if you can think of one, feel free to [open an issue](/newissue) and make your case for it!
+Unfortunately, running multiple Publ instances within a single app server (gunicorn, etc.) is not so straightforward. Currently, the ORM in use does not support segregating data across instances, and as such I also haven't put much effort into containerizing the Publ configuration (which is currently global). However, I haven't found a good use case for multiple Publ sites conmingled in a single app server anyway; if you can think of one, feel free to [open an issue](/newissue) and make your case for it!
+
+That said, it's trivial to have different Publ instances for different subdomains or mount points, with the caveat that they can't directly communicate with one another.
 
 ### Do you have any importers from other blogging platforms?
 
