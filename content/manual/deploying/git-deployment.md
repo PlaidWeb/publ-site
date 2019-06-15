@@ -88,7 +88,7 @@ fi
 
 ```
 
-Then, in your `main.py`, add a function like this (changing the `/_deploymenthook` and `secret` to strings only you know); it should go somewhere between `app = publ.publ(...)` and `app.run(...)`:
+Then, in your `app.py`, add a function like this (changing the `/_deploymenthook` and `secret` to strings only you know); it should go somewhere between `app = publ.publ(...)` and `app.run(...)`:
 
 ```python
 @app.route('/_deploymenthook', methods=['POST'])

@@ -82,7 +82,7 @@ To provision a Postgres database at the free tier, from your local git repositor
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-This creates a database and then exports it to your environment as `DATABASE_URL`. Unfortunately, PonyORM does not *quite* directly support database connection URLs, so we need to do a bit more work on our end. Namely, in `main.py`, change the `database_config` part to the following:
+This creates a database and then exports it to your environment as `DATABASE_URL`. Unfortunately, PonyORM does not *quite* directly support database connection URLs, so we need to do a bit more work on our end. Namely, in `app.py`, change the `database_config` part to the following:
 
 ```python
 from urllib.parse import urlparse
@@ -98,7 +98,7 @@ config = {
 }
 ```
 
-A full example can be seen in the [`main.py` for this site's repository](https://github.com/PlaidWeb/publ-site/blob/master/main.py).
+A full example can be seen in the [`app.py` for this site's repository](https://github.com/PlaidWeb/publ-site/blob/master/app.py).
 
 You will also need to install the `psycopg2` library; this is simply:
 

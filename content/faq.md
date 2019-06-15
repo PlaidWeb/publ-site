@@ -201,7 +201,7 @@ more money than me at this and I'd humbly suggest you consider [showing your sup
 
 At some point I will write a longer piece on why ActivityPub has an impedance mismatch with Publ's design goals, but in the meantime you can read an [off-the-cuff rant about it](http://beesbuzz.biz/blog/2535-ActivityPub-hot-take).
 
-That said, it is fairly simple to support ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295); this very site is [configured to use that](https://github.com/PlaidWeb/publ-site/blob/384e2c9bca9c25dedde3e9d68f682f2872db15be/main.py#L96), and might be followable at `@publ.beesbuzz.biz@publ.beesbuzz.biz` on your WebFinger-enabled social network of choice, although the experience isn't particularly great.
+That said, it is fairly simple to support ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295); this very site is [configured to use that](https://github.com/PlaidWeb/publ-site/blob/d4f9d990e608e5bc1d6c35572bfe37b30e20dc2c/app.py#L82), and might be followable at `@publ.beesbuzz.biz@publ.beesbuzz.biz` on your WebFinger-enabled social network of choice, although the experience isn't particularly great.
 
 ### What about Webmention, WebSub, ...?
 
@@ -217,6 +217,8 @@ Being built in Flask, it is a simple matter to add additional routes to any Publ
 
 This is of course not anything special to Publ.
 
+Custom Flask endpoints can also make use of the Python API for querying and formatting entries.
+
 ### What about having multuple Publ instances within a single running site?
 
 Unfortunately, running multiple Publ instances within a single app server (gunicorn, etc.) is not so straightforward. Currently, the ORM in use does not support segregating data across instances, and as such I also haven't put much effort into containerizing the Publ configuration (which is currently global). However, I haven't found a good use case for multiple Publ sites conmingled in a single app server anyway; if you can think of one, feel free to [open an issue](/newissue) and make your case for it!
@@ -231,21 +233,21 @@ There currently aren't any converters for other blogging systems, but since the 
 
 ## Troubleshooting
 
-### I get `OSError: [Errno 8] Exec format error: '/path/to/main.py'` when running in debug
+### I get `OSError: [Errno 8] Exec format error: '/path/to/app.py'` when running in debug
 
-Werkzeug 0.15 (used by Flask) changed the way the automatic reload works, which makes it so that if `main.py` is set executable, this will
+Werkzeug 0.15 (used by Flask) changed the way the automatic reload works, which makes it so that if `app.py` is set executable, this will
 fail. (See [an associated GitHub issue](https://github.com/pallets/werkzeug/issues/1482) for more information.)
 
-If you're on Linux or macOS, the easiest solution is to make sure that `main.py` is not set executable, with e.g.
+If you're on Linux or macOS, the easiest solution is to make sure that `app.py` is not set executable, with e.g.
 
 ```bash
-chmod a-x main.py
+chmod a-x app.py
 ```
 
 A more general fix (which includes Windows) is to use the `flask run` script instead:
 
 ```bash
-FLASK_ENV=development FLASK_DEBUG=1 FLASK_APP=main.py pipenv run flask run
+FLASK_ENV=development FLASK_DEBUG=1 pipenv run flask run
 ```
 
 The scripts bundled with the [publ-site repository](https://github.com/PlaidWeb/publ-site) have been updated accordingly.

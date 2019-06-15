@@ -72,9 +72,9 @@ def redirect_date(match):
 
 The path alias function takes a [`re.match` object](https://docs.python.org/3.5/library/re.html#match-objects) and returns a tuple of `(url, is_permanent)`. This function can also make use of the various Flask request context things (e.g. `request.args`) and if it doesn't want to redirect after all it can return `(None,None)`.
 
-## Sample `main.py`
+## Sample `app.py`
 
-This is based on the `main.py` that configures [beesbuzz.biz](https://beesbuzz.biz). It
+This is based on the `app.py` that configures [beesbuzz.biz](https://beesbuzz.biz). It
 configures basic logging, sets the in-process cache to store up to 500 items for
 up to 300 seconds, and only does a maintenance rescan once per day. It also maps
 a bunch of legacy URLs as well as forwarding ActivityPub requests to fed.brid.gy's
