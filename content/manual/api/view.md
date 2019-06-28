@@ -28,6 +28,9 @@ The `view` object has the following things on it:
 * **`older`**: The previous page for this view, going back in time
 * **`newer`**: The next page for this view, going forward in time
 
+* **`current`**: The current/default page of this view; can take additional [restriction parameters](#subviews)
+* **`is_current`**: Whether this view is the current/default page
+
 * <span id="all_pages"></span>**`pages`**: A list of every page for this view based on the current pagination.
 
     ==Note:== This will probably be *very slow*; use sparingly.
