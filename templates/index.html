@@ -34,7 +34,7 @@
     {% endif %}
     {% endfor %}
 
-    {% for entry in view(category='',entry_type='sidebar',tag=None).entries %}
+    {% for entry in view.current(entry_type='sidebar',tag=None).entries %}
     <li class="{{entry.get('Redirect-To') and 'extlink' or 'sblink'}}"><a href="{{entry.link}}">{{entry.title}}</a></li>
     {% endfor %}
     </ul>
