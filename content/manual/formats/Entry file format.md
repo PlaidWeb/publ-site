@@ -168,6 +168,31 @@ templates; the following headers are what Publ itself uses:
 
     Any text in here will replace the "description" element in the OpenGraph tag.
 
+* <span id="auth"></span>**`Auth`**: A list of permissions to apply to this entry. This can be followed by a list of identities or groups, optionally prefixed with `!` to indicate that someone in that group is not allowed to see it. These permissions are applied from left to right.
+
+    For example:
+
+    `Auth: friends !bob@example.com`
+
+    means that anyone in the `friends` group, but *not* anyone who is equivalent to `bob@example.com`, can see the entry.
+
+    There is also a special identity, `*`, which refers to anyone who is logged in; for example:
+
+    `Auth: *`
+
+    means anyone who is logged in (regardless of permissions) can see it, and
+
+    `Auth: !*`
+
+    means it will only be shown to people who are *not* logged in.
+
+    These can also be combined with other permissions; for example:
+
+    `Auth: * !friends`
+
+    means it will be shown to anyone who's logged in *except* for people in the `friends` group.
+
+
 ## Entry content
 
 After the headers, you can have entry content; if the file has a `.htm` or `.html`
