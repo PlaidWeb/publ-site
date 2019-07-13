@@ -13,6 +13,10 @@ The `view` object has the following things on it:
 * **`entries`**: A list of all of the entries that are visible in this view
 * **`deleted`**: A list of all of the entries that were deleted from this view (with `Status: GONE` or `Status: DELETED`)
 
+* **`unauthorized`**: A list of all the entries which are not visible to the current user
+
+    This is mostly so that a template can indicate whether a logged-out user should try logging in to see the protected entries.
+
 * **`count`**: The number of visible entries in the view
 
 * **`last_modified`**: A last-modified time for this view (useful for feeds)
@@ -27,6 +31,9 @@ The `view` object has the following things on it:
 * **`next`**: The next page for this view, based on the current sort order
 * **`older`**: The previous page for this view, going back in time
 * **`newer`**: The next page for this view, going forward in time
+
+* **`current`**: The current/default page of this view; can take additional [restriction parameters](#subviews)
+* **`is_current`**: Whether this view is the current/default page
 
 * <span id="all_pages"></span>**`pages`**: A list of every page for this view based on the current pagination.
 
