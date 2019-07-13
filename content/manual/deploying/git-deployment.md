@@ -65,6 +65,8 @@ Now, when you push new content to the `publish` remote, it will go to the bare r
 
 ## Web hook deployment
 
+==Note:== This guide is fairly hard to follow especially if you aren't already familiar with git, Flask, and Python. In the future this functionality [may be built-in to Publ itself](https://github.com/PlaidWeb/Publ/issues/225).
+
 If you can't use the above method (for example, your git host doesn't allow you to install arbitrary script hooks), you'll need to use a web hook instead.
 
 First, create a file called `deploy.sh` in your top-level site directory:
