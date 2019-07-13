@@ -67,6 +67,10 @@ will try to render the `404` template first, then try `400`, then finally `error
 (And of course this can be `404.html`, `404.xml`, `404.json`, and so on,
 although in most cases you'll probably be doing it as HTML.)
 
+#### Login template
+
+Unlike most templates, only the top-level `login.html` will ever be used. This so that private entries will not reveal what category they belong to.
+
 #### Generating CSS files
 
 You can also use the template system to generate CSS, which is useful for having
@@ -95,8 +99,12 @@ functioning site, you should have, at the very least, the following top-level
 templates:
 
 * `index.html`: the default category view
-* `entry.html`: the entry view
-* `error.html`: Some sort of error page (although this is technically optional)
+* `entry.html`: the default entry view
+
+The following templates are optional but recommended; if they are not provided, Publ will use a built-in default:
+
+* `error.html`: the error handler
+* `login.html`: the login page
 
 ### Template naming and overrides
 
@@ -190,8 +198,13 @@ The following additional things are provided to all templates:
     {% endfor %}
     ```
 
-
 * **`template`**: Information about the current [template](/api/template)
+
+* **`user`**: Information about the current user; this object has the following properties:
+
+    * **`name`**: The login identity of the user
+    * **`groups`**: A list of the groups they belong to
+    * **`is_admin`**: `True` if the user is a member of the administrative group
 
 * **`image`**: Load an image
 
@@ -262,7 +275,7 @@ A note to advanced Flask users: while `url_for()` is available, it shouldn't
 ever be necessary, as all its useful functionality is exposed via the available
 objects. However, if you really want to write directly to an endpoint (or have
 extended the app with your own blueprints or other Flask modules/routes/etc.),
-here are the endpoints thatPubl makes available:
+here are the endpoints that Publ makes available:
 
 * **`category`**: Routes to a category page; options are:
     * `category`: The category's path
@@ -273,6 +286,22 @@ here are the endpoints thatPubl makes available:
         useful to specify in `url_for`)
     * `slug_text`: The SEO slug text
     * `category`: The category the entry lives in
+* **`login`**: Routes to the login page; options are:
+    * `redir`: The path to redirect to after login completes. Note that this must
+        not start with a `/`. Typical usage will be something like:
+
+        ```
+        {# login and redirect back to this page #}
+        {{ url_for('login', redir=request.full_path[1:]) }}
+
+        {# login and redirect to a specific entry #}
+        {{ url_for('login', redir=url_for('entry', entry_id=12345)[1:])}}
+        ```
+
+        The `[1:]` is to trim the initial `/` off the path.
+* **`logout`**: Routes to the logout page; options are the same as for `login`
+
+Eventually there will be [template functions](https://github.com/PlaidWeb/Publ/issues/246) for handling login and logout in a cleaner way.
 
 ### Entry pages
 
@@ -330,3 +359,57 @@ properties:
     * **`str`**: The human-readable exception string
     * **`args`**: Further information passed to the exception constructor
 
+### Login page
+
+The login template receives the following:
+
+* **`login_url`**: A URL for the login form's `ACTION` parameter
+* **`auth`**: The authentication handler object, which in turn has the following useful things:
+    * **`handlers`**: A list of configured handlers
+
+Each of the configured handlers has the following that is useful in a template:
+
+* **`service_name`**: A human-readable name for the service
+* **`description`**: A human-readable description of the service (may contain HTML)
+* **`url_schemes`**: A list of example URL schemes; this is provided as a tuple of `(template,placeholder)`. For example, a Twitter handler might provide `("https://twitter.com/%","username")` as a scheme.
+
+A simple `login.html` might look like this:
+
+```jinja
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login required</title>
+</head>
+<body>
+<form method="GET" action="{{login_url}}" novalidate>
+<input type="url" name="me" value="{{request.args['me']}}" placeholder="Your URL here" autofocus>
+</form>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<p>Configured handlers:</p>
+<ul>
+    {% for handler in auth.handlers %}
+    <li>{{handler.service_name}}: {{handler.description}}
+        {% if handler.url_schemes %}
+        <ul>
+            {% for tmpl, val in handler.url_schemes %}
+            <li><code>{{tmpl.replace('%', val)}}</code></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+```
+
+Note that the login template uses Flask message flashing to provide error feedback for a failed login.

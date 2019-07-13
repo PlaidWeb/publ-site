@@ -52,6 +52,12 @@ The `publ` library provides the following functions:
 
         Generally you will only want to configure this globally, but you can also override these settings at the template level by passing `markdown_extensions` in as configuration to the [entry properties](115) (`entry.body`, `entry.text`, `entry.title`, etc.).
 
+    * **`secret_key`**: The secret data used to sign session cookies and authentication tokens. This should be set to something unguessable and non-public. Defaults to a cryptographically-secure random value.
+
+    * **`auth`**: The configuration values for the [authentication system](authentication.md#auth).  Defaults to no configuration.
+    * **`user_list`**: The filename of the configuration file that stores the user configuration. Defaults to `users.cfg`
+    * **`admin_group`**: The name of the user group that will have administrative access; defaults to `admin`
+
     Returns an application object.
 
 ## Application object
