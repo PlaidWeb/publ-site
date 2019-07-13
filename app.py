@@ -76,7 +76,7 @@ config = {
     },
 }
 
-app = publ.publ(__name__, config)
+app = publ.Publ(__name__, config)
 
 
 @app.path_alias_regex(r'/\.well-known/(host-meta|webfinger).*')

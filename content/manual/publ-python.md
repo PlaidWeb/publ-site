@@ -11,9 +11,9 @@ The Python-side API when creating a Publ application.
 
 ## Library calls
 
-The `publ` library provides the following functions:
+The `publ` library provides the `publ.Publ` class. Its constructor is called as follows:
 
-* **`publ(name, cfg)`**: Creates a Publ application object.
+* **`Publ(name, cfg)`**: Creates a Publ application object.
 
     `name` is the internal name for the application; this is more or less
     arbitrary although it's useful if you're setting up multiple Publ
@@ -57,8 +57,6 @@ The `publ` library provides the following functions:
     * **`auth`**: The configuration values for the [authentication system](authentication.md#auth).  Defaults to no configuration.
     * **`user_list`**: The filename of the configuration file that stores the user configuration. Defaults to `users.cfg`
     * **`admin_group`**: The name of the user group that will have administrative access; defaults to `admin`
-
-    Returns an application object.
 
 ## Application object
 
