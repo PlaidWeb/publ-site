@@ -25,6 +25,8 @@ By default this is set randomly every time the application starts, which is secu
 
 This is a key-value dictionary that is sent along to Authl's `from_config` settings. See the Authl documentation for the most up-to-date configuration flags; at present the following configuration flags exist:
 
+* SSL options:
+    * `AUTH_FORCE_SSL`: set to True if logins should all go over HTTPS instead of HTTP (highly recommended!)
 * Email options:
     * `SMTP_HOST`: the email host (required; usually `localhost`)
     * `SMTP_PORT`: the email port (required; usually `25`)
