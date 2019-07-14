@@ -92,7 +92,7 @@ example:
 <link rel="stylesheet" href="style.css" />
 ```
 
-## Required templates
+## Special templates
 
 *Technically* no template is actually required, but in order to have a
 functioning site, you should have, at the very least, the following top-level
@@ -105,6 +105,7 @@ The following templates are optional but recommended; if they are not provided, 
 
 * `error.html`: the error handler
 * `login.html`: the login page
+* `unauthorized.html`: the error page for attempting to access an entry that the logged-in user doesn't have access to
 
 ### Template naming and overrides
 
@@ -271,37 +272,32 @@ The following additional things are provided to all templates:
         (for example, the template `templates/blog/feed.xml` will search in
         `content/blog`)
 
+* **`login`**: Provide a login link
+
+    This can be used directly, i.e. `{{login}}`, or it can be given a redirection path
+    for where to redirect on successful login; for example, if you want to redirect back to the
+    category rather than the current page, you can use:
+
+    ```
+    <a href="{{login(category.link)}}">Log in and return to {{category.name}}</a>
+    ```
+
+    You can also pass in additional parameters to the login handler; for example, it will take a
+    named `me` parameter to provide an identity to start logging in as, although this isn't
+    generally useful except for test purposes (such as providing quick `test:whatever` links).
+
+* **`logout`**: Provide a logout link
+
+    This can be used directly, i.e. `{{logout}}`, or it can be given a redirection path as with `login`.
+    For example:
+
+    ```
+    <a href="{{logout('/')}}">Log out and return to home page</a>
+    ```
+
 A note to advanced Flask users: while `url_for()` is available, it shouldn't
 ever be necessary, as all its useful functionality is exposed via the available
-objects. However, if you really want to write directly to an endpoint (or have
-extended the app with your own blueprints or other Flask modules/routes/etc.),
-here are the endpoints that Publ makes available:
-
-* **`category`**: Routes to a category page; options are:
-    * `category`: The category's path
-    * `template`: The template to render
-    * The [pagination parameters for `get_view()`](/api/view#subviews)
-* **`entry`**: Routes to an entry page; options are:
-    * `entry_id`: The numeric ID of the entry (this is the only one that's
-        useful to specify in `url_for`)
-    * `slug_text`: The SEO slug text
-    * `category`: The category the entry lives in
-* **`login`**: Routes to the login page; options are:
-    * `redir`: The path to redirect to after login completes. Note that this must
-        not start with a `/`. Typical usage will be something like:
-
-        ```
-        {# login and redirect back to this page #}
-        {{ url_for('login', redir=request.full_path[1:]) }}
-
-        {# login and redirect to a specific entry #}
-        {{ url_for('login', redir=url_for('entry', entry_id=12345)[1:])}}
-        ```
-
-        The `[1:]` is to trim the initial `/` off the path.
-* **`logout`**: Routes to the logout page; options are the same as for `login`
-
-Eventually there will be [template functions](https://github.com/PlaidWeb/Publ/issues/246) for handling login and logout in a cleaner way.
+objects. If you need to use the endpoints from the Python side, please see the [Python Flask endpoints](publ-python.md#endpoints).
 
 ### Entry pages
 
@@ -413,3 +409,8 @@ A simple `login.html` might look like this:
 ```
 
 Note that the login template uses Flask message flashing to provide error feedback for a failed login.
+
+### Unauthorized page
+
+The unauthorized template receives the same data as the entry template. The `entry` object will be sanitized and only provide limited information, and the `category` object will be based on the URL used to access the entry, rather than the actual category of the entry.
+

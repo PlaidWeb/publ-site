@@ -154,3 +154,60 @@ def redirect_bridgy(match):
 if __name__ == "__main__":
     app.run(port=os.environ.get('PORT', 5000))
 ```
+
+## <span id="endpoints"></span>Flask endpoints
+
+If you're writing Python code that extends Publ, you might need to use `flask.url_for`.
+Here are Publ's usable endpoints:
+
+* **`category`**: Routes to a category page; options are:
+    * `category`: The category's path
+    * `template`: The template to render
+    * The [pagination parameters for `get_view()`](/api/view#subviews)
+
+* **`entry`**: Routes to an entry page; options are:
+    * `entry_id`: The numeric ID of the entry (this is the only one that's
+        useful to specify in `url_for`)
+    * `slug_text`: The SEO slug text
+    * `category`: The category the entry lives in
+
+* **`login`**: Routes to the login page; options are:
+    * `redir`: The path to redirect to after login completes.
+
+        Note that this must not start with a `/`. Typical usage will be something like:
+
+        ```
+        {# login and redirect back to this page #}
+        {{ url_for('login', redir=request.full_path[1:]) }}
+
+        {# login and redirect to a specific entry #}
+        {{ url_for('login', redir=url_for('entry', entry_id=12345)[1:])}}
+        ```
+
+        The `[1:]` is to trim the initial `/` off the path.
+    * `me`: An identity to initiate sign-in as. This is equivalent to submitting
+        the login form with this value set, and is only really useful for testing.
+
+* **`logout`**: Routes to the logout page; takes the `redir` option with the same
+    usage as `login`.
+
+`login` and `logout` have a helper available in `publ.utils.auth_endpoint`, which
+simplifies the usage of the endpoints; it takes an endpoint name and returns a function
+which routes to that endpoint with an optional redirection parameter. If no redirection
+parameter is provided, it defaults to `flask.request.full_path`.
+
+```python
+import publ.utils
+
+# get the login helper
+login_helper = publ.utils.auth_endpoint('login')
+
+# log in and redirect back to the current page
+flask.redirect(login_link())
+
+# log in and redirect to a different page
+flask.redirect(login_link('/path/to/something'))
+
+logout_link = publ.utils.auth_endpoint('logout')
+flask.redirect(logout_link())
+```
