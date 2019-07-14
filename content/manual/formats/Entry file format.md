@@ -86,6 +86,7 @@ templates; the following headers are what Publ itself uses:
 
     * `DRAFT`: This entry is not visible at all
     * `HIDDEN`: This entry is visible when accessed directly, but will not be included in entry listings or in previous/next links
+    * `UNLISTED`: A synonym for `HIDDEN`
     * `PUBLISHED`: This entry is visible at all times
     * `SCHEDULED`: Until the publication date, this acts as `HIDDEN`; afterwards, it acts as `PUBLISHED`
     * `GONE`: The entry has been deleted and will not be coming back; attempts to access this entry will result in an HTTP 410 GONE error.
@@ -198,7 +199,7 @@ templates; the following headers are what Publ itself uses:
     Auth: * !enemies bob@example.com
     ```
 
-    will be visible to anyone who's logged in except for members of the `enemies` group, but `bob@example.com` will be allowed.
+    will be visible to anyone who's logged in except for members of the `enemies` group, but `bob@example.com` will be allowed even if they are in `enemies`.
 
     Note that identities won't necessarily be an email address; they are only listed as such here for illustrative purposes. For example, a Mastodon user will appear as e.g. `https://queer.party/@fluffy`.
 
