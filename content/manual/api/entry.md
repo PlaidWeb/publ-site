@@ -29,6 +29,7 @@ The `entry` object has the following methods/properties:
 
     * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution; this is mostly useful for Atom feeds. (default: `False`)
     * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
+    * **`always_show`**: Whether to always show the title, even if the entry isn't authorized; use with caution. (default: `False`)
 
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
 
