@@ -14,6 +14,7 @@ It is designed with the following principles in mind:
 * Rich support for adaptive templates that fit your content, not the other way around
 * High-quality image renditions, including support for high-DPI ("Retina") displays
 * Interoperate with other simple tools for an optimal [IndieWeb](http://indieweb.org) experience
+* Allow fine-grained control over post privacy (both hidden/unlisted and login-required)
 
 Want to know more? See [the FAQ](/faq).
 
