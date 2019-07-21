@@ -12,5 +12,6 @@ These templates include the following functionality:
 * Comments using [Disqus](https://disqus.com)
 * WebMention/Pingback integration with [webmention.io](https://webmention.io) and [Pushl](pushl.md)
 * ActivityPub integration with [fed.brid.gy](https://fed.brid.gy)
+* Private entries
 
 They are of course a work in progress; I try to keep these up-to-date as I improve my own site.
