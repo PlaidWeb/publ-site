@@ -208,6 +208,16 @@ flask.redirect(login_link())
 # log in and redirect to a different page
 flask.redirect(login_link('/path/to/something'))
 
-logout_link = publ.utils.auth_endpoint('logout')
+# get the logout helper
+logout_helper = publ.utils.auth_endpoint('logout')
+
+# log out and redirect to the same page
 flask.redirect(logout_link())
+
+# log out and redirect to server root
+flast.redirect(logout_link('/'))
 ```
+
+Also note that the redirection target *must* be a local URL; external URLs will
+not work. (This prevents your site from being used as a
+malicious URL redirector.)

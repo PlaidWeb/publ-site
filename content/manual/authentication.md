@@ -39,7 +39,7 @@ This is a key-value dictionary that is sent along to Authl's `from_config` setti
     * `EMAIL_CHECK_MESSAGE`: The message to send back to the user
     * `EMAIL_TEMPLATE_FILE`: A path to a text file for the email message
 * [IndieLogin](https://indielogin.com) options:
-    * `INDIELOGIN_CLIENT_ID`: the client ID to send to the IndieLOgin service (required)
+    * `INDIELOGIN_CLIENT_ID`: the client ID to send to the IndieLogin service (required)
     * `INDIELOGIN_ENDPOINT`: the endpoint to use for the IndieLogin service (default: https://indielogin.com/auth)
     * `INDIELOGIN_OPEN_MAX`: the maximum number of open requests to track
     * `INDIELOGIN_OPEN_TTL`: the time-to-live of an open request, in seconds
@@ -83,3 +83,12 @@ This configuration setting specifies which user group will have administrative a
 You can also set this configuration option to a specific identity.
 
 Members of the administrative group will always be able to see all entries, and will also have access to the administrative functions of the site (such as being able to see the user log).
+
+## Adding authentication to entries
+
+See [the Auth: header](322#auth).
+
+## Seeing who's been logging on
+
+The admin dashboard lives at `/_admin`; for example, [on this site](/_admin). It is restricted to members of the administrative group.
+
