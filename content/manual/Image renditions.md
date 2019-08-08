@@ -200,7 +200,7 @@ These options drive the behavior of image sets.
 `index.html` and `entry.html`:
 
 This will treat source images as being 3x screen resolution, make images scale to no narrower than 480 pixels and to no wider than 960 pixels,
-force them to be a JPEG (with transparency turning white), and with 35% JPEG quality for the high-DPI rendition
+encourage them to be a JPEG (with transparency turning white), and with 35% JPEG quality for the high-DPI rendition.
 
 ```jinja
 {{ entry.body(
@@ -221,12 +221,11 @@ of the image (making for a useful non-punchline-destroying excerpt).
 ```jinja
 {{ entry.body(link=entry.link(
     absolute=True,
-    force_width=400,
-    force_height=400,
+    max_width=400,
+    max_height=400,
     resize="fill",
     fill_crop_x=0,
-    fill_crop_y=0,
-    force_size=True)
+    fill_crop_y=0)
 }}
 ```
 
