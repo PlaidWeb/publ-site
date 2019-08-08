@@ -284,7 +284,7 @@ The thumbnails will be wrapped in a `<div class="gallery_thumbs">`.
     width=640,
     height=640,
     resize="fill",
-    lightbox_id=entry.uuid,
+    gallery_id=entry.uuid,
     div_class="gallery_thumbs",
     fullsize_width=3840,
     fullsize_height=2160)
@@ -301,7 +301,6 @@ This will show tiny thumbnails of the first three images of the gallery and will
     max_height=300,
     count=3,
     link=entry.link,
-    force_size=True,
     more_text='{remain} more images in gallery')
 }}
 ```
