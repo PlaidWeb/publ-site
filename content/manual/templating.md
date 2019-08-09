@@ -105,8 +105,8 @@ The following templates are optional but recommended; if they are not provided, 
 
 * `error.html`: the error handler
 * `login.html`: the login page
-* `unauthorized.html`: the error page for attempting to access an entry that the logged-in user doesn't have access to
 * `logout.html`: the interstitial logout page, if someone visits the logout page via link or manual URL entry (rather than a form submission)
+* `unauthorized.html`: the error page for attempting to access an entry that the logged-in user doesn't have access to
 
 ### Template naming and overrides
 

@@ -13,29 +13,29 @@ The format is pretty simple:
 ```cfg
 [admin]
 http://example.com/
-me@example.com
+mailto:me@example.com
 
 [friends]
-someone@example.com
-someone-else@example.com
+mailto:someone@example.com
+mailto:someone-else@example.com
 http://example.com/~friend/
 good-friends
 
 [enemies]
-mark@facebook.com
+mailto:mark@facebook.com
 http://tumblr.com/
 
 [good-friends]
 http://beesbuzz.biz/
 ```
 
-Simply put, each group is indicated by `[group_name]`, and each line after the group name indicates the authenticated identities (and other groups) which are a part of that group. So, in this case, anyone who is in the `good-friends` group will also be in the `friends` group.
+Simply put, each group is indicated by `[group_name]`, and each line after the group name indicates the authenticated identities (and other groups) which are a part of that group. So, in this case, anyone who is in the `good-friends` group will also be in the `friends` group.  All identities are given as full URIs.
 
 Identities can also be used as a group name, to help manage those folks who have more than one identity that you want to treat equivalently; for example:
 
 ```cfg
 [http://beesbuzz.biz]
-fluffy@beesbuzz.biz
+mailto:fluffy@beesbuzz.biz
 http://twitter.com/fluffy
 https://queer.party/@fluffy
 ```
