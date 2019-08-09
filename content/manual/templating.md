@@ -67,9 +67,9 @@ will try to render the `404` template first, then try `400`, then finally `error
 (And of course this can be `404.html`, `404.xml`, `404.json`, and so on,
 although in most cases you'll probably be doing it as HTML.)
 
-#### Login template
+#### Login/logout template
 
-Unlike most templates, only the top-level `login.html` will ever be used. This so that private entries will not reveal what category they belong to.
+Unlike most templates, `login.html` and `logout.html` do not support per-category overrides.
 
 #### Generating CSS files
 
@@ -106,6 +106,7 @@ The following templates are optional but recommended; if they are not provided, 
 * `error.html`: the error handler
 * `login.html`: the login page
 * `unauthorized.html`: the error page for attempting to access an entry that the logged-in user doesn't have access to
+* `logout.html`: the interstitial logout page, if someone visits the logout page via link or manual URL entry (rather than a form submission)
 
 ### Template naming and overrides
 
@@ -289,15 +290,27 @@ The following additional things are provided to all templates:
 * **`logout`**: Provide a logout link
 
     This can be used directly, i.e. `{{logout}}`, or it can be given a redirection path as with `login`.
-    For example:
+
+    If this is used as a link target, the user will be given a logout confirmation dialog (this is to
+    prevent certain issues with browsers prefetching pages). If you would like the user to not need to
+    confirm the logout, use it in a `<form method="POST">`. For example:
 
     ```
-    <a href="{{logout('/')}}">Log out and return to home page</a>
+    <a href="{{logout}}">Log out</a>
     ```
+
+    will show a logout confirmation dialog (using the `logout.html` template), whereas
+
+    ```
+    <form method="POST" method="{{logout}}"><input type="submit" name="Log out"></form>
+    ```
+
+    will not.
 
 A note to advanced Flask users: while `url_for()` is available, it shouldn't
 ever be necessary, as all its useful functionality is exposed via the available
-objects. If you need to use the endpoints from the Python side, please see the [Python Flask endpoints](publ-python.md#endpoints).
+objects. If you need to use the endpoints from the Python side, please see the
+[Python Flask endpoints](publ-python.md#endpoints).
 
 ### Entry pages
 
@@ -414,3 +427,8 @@ Note that the login template uses Flask message flashing to provide error feedba
 
 The unauthorized template receives the same data as the entry template. The `entry` object will be sanitized and only provide limited information, and the `category` object will be based on the URL used to access the entry, rather than the actual category of the entry.
 
+You can access the default login stylesheet with `{{url_for('login',asset='css')}}`, if so desired.
+
+### Logout page
+
+The logout template does not receive any special variables, and should only provide a logout form with `<form method="POST">` which will confirm the logout on submission.
