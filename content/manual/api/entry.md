@@ -34,7 +34,7 @@ The `entry` object has the following methods/properties:
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
 
 * **`private`**: Indicates whether this entry is only visible to logged-in users.
-* **`authorized`**: Indicates whether this entry is visible to the current user.
+* <span id="authorized"></span>**`authorized`**: Indicates whether this entry is visible to the current user.
 
 * **`body`** and **`more`**: The text above and below the fold, respectively
 

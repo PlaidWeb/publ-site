@@ -1,6 +1,9 @@
 Title: User configuration file
 Tag: auth
 Tag: config
+Date: 2019-08-10 01:46:14-07:00
+Entry-ID: 1341
+UUID: 144f6409-7745-518c-bcbc-dc30050f8839
 
 The file format for configuring user authentication.
 

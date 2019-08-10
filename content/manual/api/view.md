@@ -10,13 +10,13 @@ The template API for view objects.
 
 The `view` object has the following things on it:
 
-* **`entries`**: A list of all of the entries that are visible and authorized in this view
+* <span id="entries"></span>**`entries`**: A list of all of the entries that are visible and authorized in this view
 
     Optionally takes a parameter, `unauthorized`, which indicates the maximum number of unauthorized entries which will be included. If this is a number, that number of unauthorized entries will be included; if True, *all* unauthorized entries will be included. These entries will count against the `count` limit, if any. Defaults to `0`.
 
 * **`deleted`**: A list of all of the entries that were deleted from this view (with `Status: GONE` or `Status: DELETED`)
 
-* **`unauthorized`**: A list of entries which would be included if the user were authorized.
+* <span id="unauthorized"></span>**`unauthorized`**: A list of entries which would be included if the user were authorized.
 
     This is mostly so that a template can indicate whether a logged-out user should try logging in to see the protected entries, or for feeds to show placeholders.
 

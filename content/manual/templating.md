@@ -287,7 +287,7 @@ The following additional things are provided to all templates:
     named `me` parameter to provide an identity to start logging in as, although this isn't
     generally useful except for test purposes (such as providing quick `test:whatever` links).
 
-* **`logout`**: Provide a logout link
+* <span id="logout_link"></span>**`logout`**: Provide a logout link
 
     This can be used directly, i.e. `{{logout}}`, or it can be given a redirection path as with `login`.
 
