@@ -7,7 +7,7 @@
         {% if entry.tags %}
         <ul class="tags">
             {% for tag in entry.tags %}
-            <li><a href="{{entry.archive(tag=tag)}}">{{tag}}</a></li>
+            <li><a href="{{view(tag=tag).link}}">{{tag}}</a></li>
             {% endfor %}
         </ul>
         {% endif %}
