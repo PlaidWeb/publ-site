@@ -296,7 +296,8 @@ Here is [a graph I made](my-graph.png).
 In this variant you can also specify the image attributes:
 
 ```markdown
-Here is [the same graph at smaller size](my-graph.png{320,240}), and here it is [as a JPEG](my-graph.png{format='jpg'}).
+Here is [the same graph at smaller size](my-graph.png{320,240}),
+and here it is [as a JPEG](my-graph.png{format='jpg'}).
 ```
 
 Note that these links to images do *not* inherit the default image arguments from the page template (this is by design). And, of course, only a single image is supported.
@@ -311,7 +312,7 @@ To support image sets, the following options can be added to the `alt text` sect
 For example, this Markdown fragment:
 
 ```markdown
-![{div_class="foo"}(test.jpg | test2.jpg)]
+![{div_class="foo"}](test.jpg | test2.jpg)
 ```
 
 will produce the equivalent of the following HTML:
