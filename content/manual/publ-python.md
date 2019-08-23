@@ -24,29 +24,22 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
     the following values:
 
     * **`database_config`**: The parameters sent to PonyORM's [`db.bind()`](https://docs.ponyorm.com/api_reference.html#Database.bind) method. Defaults to an in-memory sqlite database.
+    * **`index_rescan_interval`**: How frequently Publ should do a maintenance rescan of the content files. Defaults to 7200 (2 hours); set to 0 or `None` to disable.
 
     * **`content_folder`**: The directory which contains the root of your site's content files. Defaults to `content`
-
     * **`template_folder`**: The directory which contains the root of your site's template files. Defaults to `templates`
-
     * **`static_folder`**: The directory which contains the root of your site's static files. Defaults to `static`
-
-    * **`static_url_path`**: The root path that browsers will be directed to for static content files. Defaults to `/static`. If you want to use a separate CDN/image server/etc., you would configure this to be the URL that would correspond to your static asset directory for the public.
-
-        Note that your image server will need a separate route into your static
-        content files, be it through network file storage of some sort or
-        through a separate webserver that maps this content directory or the
-        like.
+    * **`static_url_path`**: The root path that browsers will be directed to for static content files. Defaults to `/static`. If you want to use a separate CDN/image server/etc., you would configure this to be the URL that would correspond to your static asset directory for the public (and configure some other mechanism for that external service to actually retrieve your origin content).
 
     * **`image_output_subdir`**: The subdirectory of `static_folder` that will be used to store the image rendition cache. Defaults to `_img`.
 
         Be careful not to set this to a directory you want to store static files in, as they risk being deleted.
 
-    * **`index_rescan_interval`**: How frequently Publ should do a maintenance rescan of the content files. Defaults to 7200 (2 hours); set to 0 or `None` to disable.
-
+    * **`image_cache_interval`**: How frequently to clean the image rendition cache, in seconds. Defaults to 7200 (3 hours).
+    * **`image_cache_age`**: The maximum age of image renditions to keep, in seconds. Defaults to one month.
     * **`timezone`**: The timezone to use for dates with no specified time zone. Defaults to the server's local timezone.
 
-    * **`cache`**: A dictionary with the caching configuration; see the [Flask-Caching documentation](https://pythonhosted.org/Flask-Caching/#configuring-flask-caching) for more information. Defaults to `{}` (i.e. no caching).
+    * **`cache`**: A dictionary with the page caching configuration; see the [Flask-Caching documentation](https://pythonhosted.org/Flask-Caching/#configuring-flask-caching) for more information. Defaults to `{}` (i.e. no caching).
 
     * <span id="markdown_extensions"></span>**`markdown_extensions`**: A list of extensions to use with the Markdown processor; see the [misaka documentation](https://misaka.61924.nl/#extensions) for a list of accepted values. Defaults to `('tables', 'fenced-code', 'footnotes', 'strikethrough', 'highlight', 'superscript', 'math')`.
 
@@ -57,6 +50,8 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
     * **`auth`**: The configuration values for the [authentication system](authentication.md#auth).  Defaults to no configuration.
     * **`user_list`**: The filename of the configuration file that stores the user configuration. Defaults to `users.cfg`
     * **`admin_group`**: The name of the user group that will have administrative access; defaults to `admin`
+    * **`auth_log_prune_interval`**: How frequently to clean out the authentication log, in seconds. Defaults to 3600 (one hour).
+    * **`auth_log_prune_age`**: The maximum age of authentication log entries to keep, in seconds. Defaults to one month.
 
 ## Application object
 
