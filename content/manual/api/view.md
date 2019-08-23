@@ -40,6 +40,15 @@ The `view` object has the following things on it:
 * **`current`**: The current/default page of this view; can take additional [restriction parameters](#subviews)
 * **`is_current`**: Whether this view is the current/default page
 
+* **`paging`**: Returns the type of pagination that is in effect for this view; one of:
+
+    * **`offset`**: Based on entry offset
+    * **`year`**: Based on the entry's publication year
+    * **`month`**: Based on the entry's publication month
+    * **`day`**: Based on the entry's publication day
+
+    These values are the same as the `paging` parameter of [`entry.archive`](entry.md#archive.paging).
+
 * <span id="all_pages"></span>**`pages`**: A list of every page for this view based on the current pagination.
 
     ==Note:== This will probably be *very slow*; use sparingly.

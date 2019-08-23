@@ -111,7 +111,7 @@ The `entry` object has the following methods/properties:
 
     This takes the following arguments:
 
-    * **`paging`**: The pagination type; one of:
+    * <span id="archive.paging"></span>**`paging`**: The pagination type; one of:
         * **`"day"`**: Entries for that day
         * **`"month"`**: Entries for that month
         * **`"year"`**: Entries for that year
