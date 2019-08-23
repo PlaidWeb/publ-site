@@ -41,6 +41,17 @@
             <article class="h-entry">
             <a href="https://fed.brid.gy/"></a>
 
+            {%- for type in ('like-of', 'in-reply-to', 'repost-of', 'bookmark-of', 'mention-of') -%}
+                {%- for link in entry.get_all(type) -%}
+                    <a href="{{link}}" class="hidden u-{{type}}"></a>
+                {%- endfor -%}
+            {%- endfor -%}
+            {%- for ping in entry.get_all('ping') -%}
+                {%- with link, class = ping.split() -%}
+                    <a href="{{link}}" class="hidden {{class}}"></a>
+                {%- endwith -%}
+            {%- endfor -%}
+
             {% block entry %}
             <div class="posted">Last updated: <time class="dt-posted" datetime="{{entry.date.isoformat()}}">{{entry.last_modified.format('YYYY-MM-DD h:mm A')}} ({{entry.last_modified.humanize()}})</time>
             </div>
