@@ -30,10 +30,10 @@
         },
         "authl": {
             "hashes": [
-                "sha256:856b2fb47d0f33cec902d94335f5b137d2260674d29717dfc93471b280718161",
-                "sha256:89691270ab39a7923d41a1723232206db71f334f8e0bf999c6ecc63d51d2441e"
+                "sha256:0cbabc9f6c7e5712cf34765d17ba9841d4ce1e5127ad2f3bae3f67c9b4063072",
+                "sha256:3a857452240aa24db8c1fce54f005e9aa71fcfc134ed07efae0b6c379985e160"
             ],
-            "version": "==0.2.0.post1"
+            "version": "==0.2.2"
         },
         "awesome-slugify": {
             "hashes": [
@@ -313,11 +313,11 @@
         },
         "publ": {
             "hashes": [
-                "sha256:46c2a4c7914b2bb609911ce4080a4bb9117ba943432fb0ba572ab54da41833a8",
-                "sha256:fd73e82f7fe4688888971435c3de7cbe04462e86f5a2e852711dd9326c99656d"
+                "sha256:00e5ab7aa19eb0d5a169ae163ca71f119bf277bcb7f248225abe6407bd3b0c9b",
+                "sha256:703f4df67d44ac999ecbadca587aa2a660f189c9eb1927b28cfc6e23374a44e0"
             ],
             "index": "pypi",
-            "version": "==0.5.1"
+            "version": "==0.5.3"
         },
         "pycparser": {
             "hashes": [
