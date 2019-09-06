@@ -22,41 +22,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Usage:
-
-1. Copy this file to your website and put it somewhere sensible
-2. Put a <div id="webmentions"></div> where you want your webmentions to be
-   embedded
-3. Put a <script src="/path/to/webmention.js" async></script>
-   somewhere on your page (typically inside <head> but it doesn't really matter)
-4. You'll probably want to add some CSS rules to your stylesheet, in particular:
-
-    #webmentions img { max-height: 1.2em; margin-right: -1ex; }
-
-You can also pass in some arguments, for example:
-
-    <script href="webmention.js" data-id="webmention-container">
-
-Accepted arguments:
-
-* data-page-url - use this reference URL instead of the current browser location
-* data-id - use this container ID instead of "webmentions"
-* data-wordcount - truncate the reply to this many words (adding an ellipsis to
-    the end of the last word)
-
-This is a quick hack that could be a lot better.
-
 GitHub repo (for latest released versions, issue tracking, etc.):
 
-    http://github.com/PlaidWeb/Publ-site
-
-(look in the static/ subdirectory)
+    http://github.com/PlaidWeb/webmention.js
 
 */
 
 
 (function() {
-    var refurl = document.currentScript.getAttribute('data-page-url') || window.location.href;
+    var refurl = document.currentScript.getAttribute('data-page-url') || window.location.href.replace(/#.*$/,'');
     var containerID = document.currentScript.getAttribute('data-id') || "webmentions";
     var textMaxWords = document.currentScript.getAttribute('data-wordcount');
 
@@ -66,7 +40,8 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         'repost-of': 'reposted',
         'bookmark-of': 'bookmarked',
         'mention-of': 'mentioned',
-        'rsvp': 'RSVPed'
+        'rsvp': 'RSVPed',
+        'follow-of': 'followed',
     };
 
     var reactEmoji = {
@@ -75,17 +50,29 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         'repost-of': '🔄',
         'bookmark-of': '⭐️',
         'mention-of': '💬',
-        'rsvp': '📅'
+        'rsvp': '📅',
+        'follow-of': '🐜',
+    };
+
+    var rsvpEmoji = {
+        'yes': '✅',
+        'no': '❌',
+        'interested': '💡',
+        'maybe': '💭'
     };
 
     function reactImage(r) {
         var who = (r.author && r.author.name ? r.author.name : r.url.split('/')[2]);
         var response = reactTitle[r['wm-property']] || 'reacted';
-        var html = '<a class="reaction" rel="nofollow" title="' + who + ' ' + response + '" href="' + r.url + '">';
+        var html = '<a class="reaction" rel="nofollow" title="' + who + ' ' + response + '" href="' + r['wm-source'] + '">';
         if (r.author && r.author.photo) {
             html += '<img src="' + r.author.photo + '">';
         }
-        html += (reactEmoji[r['wm-property']] || '⁉️') + '</a>';
+        html += (reactEmoji[r['wm-property']] || '💥');
+        if (r.rsvp && rsvpEmoji[r.rsvp]) {
+            html += '<sub>' + rsvpEmoji[r.rsvp] + '</sub>';
+        }
+        html += '</a>';
 
         return html;
     }
@@ -120,7 +107,7 @@ GitHub repo (for latest released versions, issue tracking, etc.):
 
             html += reactImage(c);
 
-            html += ' <a class="source" rel="nofollow" href="' + c.url + '">';
+            html += ' <a class="source" rel="nofollow" href="' + c['wm-source'] + '">';
             if (c.author && c.author.name) {
                 html += c.author.name;
             } else {
@@ -133,24 +120,26 @@ GitHub repo (for latest released versions, issue tracking, etc.):
                 linkclass = "name";
                 linktext = c.name;
             } else if (c.content && c.content.text) {
-                var words = c.content.text;
+                var text = c.content.text;
+                text = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
                 if (textMaxWords) {
-                    var words = c.content.text.replace(/\s+/g,' ').split(' ', textMaxWords + 1);
+                    var words = text.replace(/\s+/g,' ').split(' ', textMaxWords + 1);
                     if (words.length > textMaxWords) {
                         words[textMaxWords - 1] += '&hellip;';
                         words = words.slice(0, textMaxWords);
+                        text = words.join(' ');
                     }
-                    words = words.join(' ');
                 }
 
                 linkclass = "text";
-                linktext = words;
+                linktext = text;
             } else {
                 linkclass = "name";
                 linktext = "(mention)";
             }
 
-            html += '<span class="' + linkclass + '" href="' + c.url + '">' + linktext + '</span>';
+            html += '<span class="' + linkclass + '" href="' + c['wm-source'] + '">' + linktext + '</span>';
 
             html += '</li>';
         });
@@ -181,7 +170,7 @@ GitHub repo (for latest released versions, issue tracking, etc.):
             }).then(function(response) {
                 return response.json();
             }).then(callback).catch(function(error) {
-                console.log("Request failed", error);
+                console.error("Request failed", error);
             });
         } else {
             var oReq = new XMLHttpRequest();
@@ -189,13 +178,17 @@ GitHub repo (for latest released versions, issue tracking, etc.):
                 callback(JSON.parse(data));
             }
             oReq.onerror = function(error) {
-                console.log("Request failed", error);
+                console.error("Request failed", error);
             }
         }
     }
 
     window.addEventListener("load", function() {
         var container = document.getElementById(containerID);
+        if (!container) {
+            // no container, so do nothing
+            return;
+        }
 
         var pageurl = stripurl(refurl);
 
@@ -214,7 +207,8 @@ GitHub repo (for latest released versions, issue tracking, etc.):
                 "like-of": collects,
                 "repost-of": collects,
                 "bookmark-of": collects,
-                "mention-of": comments
+                "mention-of": comments,
+                "rsvp": comments
             };
 
             json.children.forEach(function(c) {
