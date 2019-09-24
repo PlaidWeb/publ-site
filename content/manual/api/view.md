@@ -128,11 +128,15 @@ Any view object can also take arguments to further refine the view; the followin
 arguments are supported:
 
 
-* **`category`**: The top-level category to consider (defaults to the current view's category)
-* **`recurse`**: Whether to include subcategories
+* **`category`**: The top-level categories to consider; can be a single category or a list of categories.
+
+    Setting this to `None` will get entries from all categories; this is equivalent to `category='',recurse=True`
+
+* **`category_not`**: Categories to exclude; this can be either a single category, or a list of categories.
+* **`recurse`**: Whether to include subcategories.
     * `True`: Include subcategories
     * `False`: Do not include subcategories (default)
-* **`future`**: Whether to include entries from the future
+* **`future`**: Whether to include entries from the future.
     * `True`: Include future entries
     * `False`: Do not include future entries (default)
 * **`date`**: Limit to entries based on a specified date; this can be of the format `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`.
@@ -195,7 +199,11 @@ If you want to use the same view refinement multiple times, you can use `{% set 
 The global `get_view()` function creates an entirely new view from scratch, rather
 than basing it on the current default view. Some possible uses for this are:
 
-* Always having a link to the latest entry on the entire site (e.g. `get_view(recurse=True).newest`)
+* Getting a link to the latest entry on the entire site (e.g. `get_view().newest`)
 * Properly showing the current category's sidebar links without filtering them by date or page (e.g. `get_view(category=category,entry_type='sidebar')`)
-* Having a global set of sidebar links (e.g. `get_view(entry_type='sidebar',recurse=True)`)
+
+    Note that this can also be achieved with `view.current(entry_type='sidebar')`
+
+* Having a global set of sidebar links (e.g. `get_view(entry_type='sidebar')`)
+
 
