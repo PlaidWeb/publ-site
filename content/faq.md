@@ -80,8 +80,7 @@ deploy to their platform of choice!
 
 ### What is it written in?
 
-Publ is written in Python (I'm specifically developing against 3.7 and targeting 3.5 as a minimum, although I am happy to accept compatibility patches to
-support earlier versions), using the [Flask](http://flask.pocoo.org) framework,
+Publ is written in Python (I'm currently developing against 3.7 and targeting 3.5 as a minimum), using the [Flask](http://flask.pocoo.org) framework,
 and [PonyORM](https://ponyorm.com) for its content indexing. For Markdown processing
 it's using [Misaka](http://misaka.61924.nl), and for time and date handling it
 uses [Arrow](https://arrow.readthedocs.io). It also uses [watchdog](https://github.com/gorakhargosh/watchdog)
