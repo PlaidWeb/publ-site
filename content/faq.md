@@ -76,20 +76,6 @@ There's definitely a lot of work to be done in the documentation area, though;
 I would love if someone could write up a clear and simple way for people to
 deploy to their platform of choice!
 
-### Why make it dynamic and not static?
-
-Static publishing has a lot of benefits, and I was even considering making Publ a static publishing system early on. I ended up going with a dynamic publishing model for a bunch of reasons.
-
-First and foremost, it makes for a much easier private-content access control model; with static publishing you can do a straightforward semi-private thing (by having hidden content that's not shown on the index) but having any sort of content gate contingent on a viewer's identity gets very complicated fast.
-
-This also allows for much better flexibility in image renditions; with a static publishing system you need to cut all possible renditions for all possible images up-front, or rely on a dynamic image rendition service (which could be easily abused), but Publ takes a middle ground where it only generates the renditions that are actively being used by visible pages.
-
-The dynamic publishing model also *vastly* simplifies the mechanism for generating redirections from content that's moved. It also makes scheduled posts much, much easier to handle.
-
-In static systems you either have to rebuild the entire site at publication time (which can be slow) or only rebuild the parts which have changed (which can be *incredibly* tricky, especially when pages depend on each other in unexpected ways). It also limits what sorts of archive paginations are feasible to do.
-
-The main tradeoffs are that you have to be able to run it as an application (which requires somewhat better hosting than most cheap providers provide) and that there's a bit more overhead when a page is rendered; however, there are many choices of [Python hosting providers](545), and in most cases the performance overhead is largely mitigated by Publ's caching design.
-
 ## Design
 
 ### What is it written in?
@@ -100,6 +86,20 @@ and [PonyORM](https://ponyorm.com) for its content indexing. For Markdown proces
 it's using [Misaka](http://misaka.61924.nl), and for time and date handling it
 uses [Arrow](https://arrow.readthedocs.io). It also uses [watchdog](https://github.com/gorakhargosh/watchdog)
 to watch the content store for changes.
+
+### Why make it dynamic and not static?
+
+Static publishing has a lot of benefits, and I was even considering making Publ a static publishing system early on. I ended up going with a dynamic publishing model for a bunch of reasons.
+
+First and foremost, it makes for a much easier private-content access control model; with static publishing you can do a straightforward semi-private thing (by having hidden content that's not shown on the index) but having any sort of content gate contingent on a viewer's identity gets very complicated fast, and usually just ends up offloading it to the web server, badly.
+
+This also allows for much better flexibility in image renditions; with a static publishing system you need to cut all possible renditions for all possible images up-front, or rely on a dynamic image rendition service (which could be easily abused), but Publ takes a middle ground where it only generates the renditions that are actively being used by visible pages.
+
+The dynamic publishing model also *vastly* simplifies the mechanism for generating redirections from content that's moved. It also makes scheduled posts much, much easier to handle.
+
+In static systems you either have to rebuild the entire site at publication time (which can be slow) or only rebuild the parts which have changed (which can be *incredibly* tricky, especially when pages depend on each other in unexpected ways). It also limits what sorts of archive paginations are feasible to do.
+
+The main tradeoffs are that you have to be able to run it as an application (which requires somewhat better hosting than most cheap providers provide) and that there's a bit more overhead when a page is rendered; however, there are many choices of [Python hosting providers](545), and in most cases the performance overhead is largely mitigated by Publ's caching design.
 
 #### Why Flask (and not web.py/pyramids/...)?
 
