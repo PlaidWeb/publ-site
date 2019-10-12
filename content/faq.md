@@ -76,6 +76,20 @@ There's definitely a lot of work to be done in the documentation area, though;
 I would love if someone could write up a clear and simple way for people to
 deploy to their platform of choice!
 
+### Why make it dynamic and not static?
+
+Static publishing has a lot of benefits, and I was even considering making Publ a static publishing system early on. I ended up going with a dynamic publishing model for a bunch of reasons.
+
+First and foremost, it makes for a much easier private-content access control model; with static publishing you can do a straightforward semi-private thing (by having hidden content that's not shown on the index) but having any sort of content gate contingent on a viewer's identity gets very complicated fast.
+
+This also allows for much better flexibility in image renditions; with a static publishing system you need to cut all possible renditions for all possible images up-front, or rely on a dynamic image rendition service (which could be easily abused), but Publ takes a middle ground where it only generates the renditions that are actively being used by visible pages.
+
+The dynamic publishing model also *vastly* simplifies the mechanism for generating redirections from content that's moved. It also makes scheduled posts much, much easier to handle.
+
+In static systems you either have to rebuild the entire site at publication time (which can be slow) or only rebuild the parts which have changed (which can be *incredibly* tricky, especially when pages depend on each other in unexpected ways). It also limits what sorts of archive paginations are feasible to do.
+
+The main tradeoffs are that you have to be able to run it as an application (which requires somewhat better hosting than most cheap providers provide) and that there's a bit more overhead when a page is rendered; however, there are many choices of [Python hosting providers](545), and in most cases the performance overhead is largely mitigated by Publ's caching design.
+
 ## Design
 
 ### What is it written in?
@@ -203,17 +217,19 @@ At some point I will write a longer piece on why ActivityPub has an impedance mi
 
 That said, it is fairly simple to support ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295); this very site is [configured to use that](https://github.com/PlaidWeb/publ-site/blob/d4f9d990e608e5bc1d6c35572bfe37b30e20dc2c/app.py#L82), and might be followable at `@publ.beesbuzz.biz@publ.beesbuzz.biz` on your WebFinger-enabled social network of choice, although the experience isn't particularly great.
 
+I am also thinking of ways to support ActivityPub as an add-on, which would also work with the authentication system to give proper privacy granularity in the Fediverse.
+
 ### What about Webmention, WebSub, ...?
 
 Publ is only one piece of a puzzle for a rich [IndieWeb](http://indieweb.org) experience. It is intended to provide the publishing and content management aspects of a site, and allow the use of other, simple tools for other parts of the ecosystem.
 
 To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool is [Pushl](1295) to provide the notification conduit between Publ (or any other publishing system, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
 
-As far as incoming Webmentions are concerned, most of that comes down to selecting whatever endpoint you want. There is already a rich ecosystem of Webmention endpoints that are available for use now (I use [webmention.io](http://webmention.io), personally), and I haven't seen any compelling reason to integrate one into Publ directly.
+As far as incoming Webmentions are concerned, most of that comes down to selecting whatever endpoint you want. There is already a rich ecosystem of Webmention endpoints that are available for use now (I use [webmention.io](http://webmention.io), personally), and I haven't seen any compelling reason to integrate one into Publ directly. (That said, I do have a [Webmention endpoint wishlist](http://beesbuzz.biz/blog/6982-My-webmention-endpoint-wish-list) and it'd be nice to build it as a Flask blueprint.)
 
 ### What about adding other functionality?
 
-Being built in Flask, it is a simple matter to add additional routes to any Publ instance, by simply registering them with Publ's routing rules. Any Flask-specific plugin should Just Work out of the box, and building API endpoints that wrap existing libraries is quite straightforward.
+Being built in Flask, it is a simple matter to add additional routes to any Publ instance, by simply registering them with Publ's routing rules. Any Flask-specific plugin or blueprint should Just Work out of the box, and building API endpoints that wrap existing libraries is quite straightforward.
 
 This is of course not anything special to Publ.
 
@@ -227,7 +243,7 @@ That said, it's trivial to have different Publ instances for different subdomain
 
 ### Do you have any importers from other blogging platforms?
 
-If you want to convert a Movable Type blog's content over, see [mt2publ](https://github.com/PlaidWeb/mt2publ).
+If you want to convert a Movable Type blog's content over, see [mt2publ](1083).
 
 There currently aren't any converters for other blogging systems, but since the [entry file format](/entry-format) is so simple, it shouldn't be too difficult to write converters from other systems either.
 
