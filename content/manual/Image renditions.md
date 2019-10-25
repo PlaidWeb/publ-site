@@ -32,6 +32,8 @@ render images.
 
 * **`link`**: Put a hyperlink on the image pointing to the given URL
 
+* **`link_class`**: What CSS class to apply to the image's hyperlink
+
 ### <span id="style"></span>Style options
 
 * **`img_class`**, **`class`**: If set, sets the `class` attribute on the image tag
