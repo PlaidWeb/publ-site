@@ -44,13 +44,7 @@ Atom provides a way of sharing items; [Feed on Feeds](https://github.com/fluffy-
 <link href="https://beesbuzz.biz/comics/journal/3675-ADDitive" rel="alternate" type="text/html"/>
 <title type="html">Journal: ADDitive</title>
 <summary type="html">
-&lt;div class=&quot;images&quot;&gt;&lt;a href=&quot;https://beesbuzz.biz/comics/journal/3675-ADDitive&quot;&gt;&lt;img src=&quot;https://beesbuzz.biz/static/_img/af/afb8/20101012-additive_5a2a549b1a_960x480.jpg&quot; width=&quot;960&quot; height=&quot;480&quot; srcset=&quot;https://beesbuzz.biz/static/_img/af/afb8/20101012-additive_5a2a549b1a_960x480.jpg 1x, https://beesbuzz.biz/static/_img/af/afb8/20101012-additive_5a2a549b1a_1920x960.jpg 2x&quot; alt=&quot;20101012-additive.jpg&quot; title=&quot;Several times while drawing this comic I had to remind myself to eat lunch and eventually I did and oh oops wasn't I going to take a walk two hours ago&quot;&gt;&lt;/a&gt;&lt;/div&gt;
-
-
-
-
-&lt;p&gt;So hey, I wrote about this &lt;a href=&quot;https://beesbuzz.biz/blog/8490-ADHD&quot;&gt;over on my blog&lt;/a&gt; but you might want to check out &lt;a href=&quot;https://www.additudemag.com/symptoms-of-add-hyperarousal-rejection-sensitivity/&quot;&gt;this article about undiagnosed ADHD&lt;/a&gt; and also this &lt;a href=&quot;https://adhd-alien.tumblr.com/post/188343963724/the-incorrect-and-negative-beliefs-we-can-get&quot;&gt;amazingly helpful comic by ADHD Alien&lt;/a&gt; (really, &lt;a href=&quot;https://adhd-alien.tumblr.com/&quot;&gt;all of ADHD Alien&lt;/a&gt;). It’s easier to get help if you know what you need help with.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://beesbuzz.biz/comics/journal/3675-ADDitive#comments&quot;&gt;comments&lt;/a&gt;&lt;/p&gt;
+<!-- actual item content goes here -->
 </summary>
 <updated>2019-10-15T23:14:52Z</updated>
 <source>
