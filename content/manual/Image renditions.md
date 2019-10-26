@@ -32,7 +32,7 @@ render images.
 
 * **`link`**: Put a hyperlink on the image pointing to the given URL
 
-* **`link_class`**: What CSS class to apply to the image's hyperlink
+* <span id="link_class"></span>**`link_class`**: What CSS class to apply to the image's hyperlink
 
 ### <span id="style"></span>Style options
 

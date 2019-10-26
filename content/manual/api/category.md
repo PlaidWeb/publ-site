@@ -20,6 +20,14 @@ The `category` object provides the following:
     title-casing the name. For example, the category `some/long/category_name` will have
     a default name of `"Category Name"`. This can be overridden using a [meta file](#meta-files).
 
+    Optionally takes the following arguments:
+
+    * **`markup`**: Whether to include markup. Possible values:
+        * **`False`**: Strip out all formatting
+        * **`True`**: Include formatting (default)
+    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution; this is mostly useful for Atom feeds. (default: `False`)
+    * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
+
 * **`subcats`**: The subcategories of this category. Takes the following argument:
 
     * **`recurse`**: Whether to include the subcategories of the subcategories, and their subcategories
