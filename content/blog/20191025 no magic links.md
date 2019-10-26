@@ -26,7 +26,7 @@ Right now, when people want to subscribe to a feed, they usually point their fee
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="feed" />
 ```
 
-Sometimes there may be more than one of these `<link>` tags for different styles of feed; for example, it might have both RSS and Atom versions, or there might be a choice between full-content and summary, or a comments feed, or so on. Some feed readers will show a list and allow the user to select which feed to use, while others will simply use the first one on the list.
+Sometimes there may be more than one of these `<link>` tags for different styles of feed; for example, it might have both RSS and Atom versions, or there might be a choice between full-content and summary, or a comments feed, and so on. Some feed readers will show a list and allow the user to select which feed to use, while others will simply use the first one.
 
 In the case of a magic link, however, these links are only provided to the person who is logged in. An external feed reader won't be logged in, and therefore won't see the magic link.
 
