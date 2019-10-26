@@ -32,11 +32,11 @@ render images.
 
 * **`link`**: Put a hyperlink on the image pointing to the given URL
 
+* **`link_class`**: What CSS class to apply to the image's hyperlink
+
 ### <span id="style"></span>Style options
 
-* **`img_class`**, **`class`**: If set, sets the `class` attribute on the image tag
-
-    If both are set, `class` wins; the intention is that in a Markdown context, `img_class` comes from the container and `class` comes from the image.
+* **`img_class`**: If set, sets the `class` attribute on the image tag
 
 * **`img_style`**, **`style`**: A string or a list of strings, which provide inline CSS rules to the `<img>` element
 
