@@ -1,11 +1,16 @@
 #!env/bin/python
 # Wrapper script to make this work in Passenger environments (e.g. Dreamhost)
 
-import sys
-import os
-import subprocess
 import logging
 import logging.handlers
+import os
+import subprocess
+import sys
+# hackish way to make Passenger urldecode the same way WSGI does
+import urllib.parse
+
+# load the app
+import app
 
 # hack to keep click happy
 os.environ['LANG'] = 'C.UTF-8'
@@ -42,13 +47,6 @@ if sys.executable != INTERP:
     os.execl(INTERP, INTERP, *sys.argv)
 
 sys.path.append(os.getcwd())
-
-# load the app
-import app
-
-
-# hackish way to make Passenger urldecode the same way WSGI does
-import urllib.parse
 
 
 def application(environ, start_response):

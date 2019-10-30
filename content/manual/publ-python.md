@@ -52,6 +52,7 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
     * **`admin_group`**: The name of the user group that will have administrative access; defaults to `admin`
     * **`auth_log_prune_interval`**: How frequently to clean out the authentication log, in seconds. Defaults to 3600 (one hour).
     * **`auth_log_prune_age`**: The maximum age of authentication log entries to keep, in seconds. Defaults to one month.
+    * **`max_token_age`**: The expiry time for [AutoAuth](https://indieweb.org/AutoAuth) tokens, in seconds. Defaults to one hour.
 
 ## Application object
 

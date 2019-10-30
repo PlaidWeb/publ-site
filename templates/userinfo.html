@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User information</title>
+</head>
+
+<body>
+    <h1>User Information</h1>
+
+    {% if user %}
+    <ul>
+        <li>name: {{user.name}}</li>
+        <li>auth type: {{user.auth_type}}</li>
+        <li>scope: {{user.scope}}</li>
+        <li>groups: {{user.groups}}</li>
+        <li>auth_groups: {{user.auth_groups}}</li>
+        <li>is_admin: {{user.is_admin}}</li>
+    </ul>
+    {% else %}
+    <p>No active user</p>
+    {% endif %}
+</body>
+
+</html>

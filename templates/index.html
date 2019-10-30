@@ -20,6 +20,19 @@
 
 <div id="nav" class="sidebar">
 
+    {% if user %}
+    <h2>User</h2>
+    <ul><li>Signed in as <code><a href="{{user.name}}">{{user.name}}</a></code></li>
+        {% if user.is_admin %}
+        <li><a href="{{url_for('admin')}}">Auth log</a></li>
+        {% endif %}
+        <li><a href="{{logout}}">Log out</a></li>
+    </ul>
+    {% else %}
+    <h2>Log in</h2>
+    <ul><li><a href="{{login}}">Log in</a></li></ul>
+    {% endif %}
+
     <h2>Navigation</h2>
 
     {% block navigation %}
