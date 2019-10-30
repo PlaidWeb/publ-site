@@ -77,18 +77,18 @@ config = {
 
 
     'auth': {
-        # 'MASTODON_NAME': 'Publ CMS',
-        # 'MASTODON_HOMEPAGE': 'http://publ.beesbuzz.biz/',
+        'MASTODON_NAME': 'Publ CMS',
+        'MASTODON_HOMEPAGE': 'http://publ.beesbuzz.biz/',
 
-        # 'INDIEAUTH_CLIENT_ID': authl.flask.client_id,
+        'INDIEAUTH_CLIENT_ID': authl.flask.client_id,
 
-        # 'TWITTER_CLIENT_KEY': os.environ.get('TWITTER_CLIENT_KEY'),
-        # 'TWITTER_CLIENT_SECRET': os.environ.get('TWITTER_CLIENT_SECRET'),
+        'TWITTER_CLIENT_KEY': os.environ.get('TWITTER_CLIENT_KEY'),
+        'TWITTER_CLIENT_SECRET': os.environ.get('TWITTER_CLIENT_SECRET'),
 
         'TEST_ENABLED': True,
     },
 
-    'secret_key': 'A totally unguessable secret key!',
+    'secret_key': os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!'),
 }
 
 app = publ.Publ(__name__, config)
