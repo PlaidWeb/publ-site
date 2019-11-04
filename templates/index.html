@@ -22,7 +22,7 @@
 
     {% if user %}
     <h2>User</h2>
-    <ul><li>Signed in as <code><a href="{{user.name}}">{{user.name}}</a></code></li>
+    <ul><li>Signed in; <a href="/userinfo">user information</a></li>
         {% if user.is_admin %}
         <li><a href="{{url_for('admin')}}">Auth log</a></li>
         {% endif %}
