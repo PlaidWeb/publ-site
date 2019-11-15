@@ -30,7 +30,7 @@ render images.
 
 * **`absolute`**: Whether to produce absolute URLs
 
-* **`link`**: Put a hyperlink on the image pointing to the given URL
+* **`link`**: Put a hyperlink on the image pointing to the given URL. Set this to `False` to prevent *any* links from being added, including from galleries.
 
 * <span id="link_class"></span>**`link_class`**: What CSS class to apply to the image's hyperlink
 
