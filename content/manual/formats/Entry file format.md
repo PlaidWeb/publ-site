@@ -167,7 +167,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="summary"></span>**`Summary`**: A summary/description of the entry.
 
-    Any text in here will replace the "description" element in the OpenGraph tag.
+    If not provided, this will be the first paragraph of text in the entry body.
 
 * <span id="auth"></span>**`Auth`**: A list of permissions for who can and cannot see the entry.
 

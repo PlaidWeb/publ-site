@@ -53,8 +53,7 @@ The `entry` object has the following methods/properties:
     you will almost certainly want to set `width`, `height`, and `count`.
 
     This will generate an appropriate `og:title`, `og:url`, `og:image`, and `og:description`
-    tags based on the entry's permalink and text. At present, `og:description` is the
-    first paragraph of text and there will be `og:image` tags for up to the first `count` images.
+    tags based on the entry's permalink and text. `og:description` contains the [entry summary](322#summary), and there will be `og:image` tags for up to the first `count` images.
 
     If you use this, you should also provide your own `og:type` tag, e.g.
 
@@ -67,7 +66,7 @@ The `entry` object has the following methods/properties:
 
     This also accepts the `markdown_extensions` argument.
 
-* <span id="summary"></span>**`summary`**: The value of the `og:description` field in the OpenGraph card.
+* <span id="summary"></span>**`summary`**: The [entry summary](322#summary).
 
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).
