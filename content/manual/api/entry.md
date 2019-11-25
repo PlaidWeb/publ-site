@@ -46,6 +46,8 @@ The `entry` object has the following methods/properties:
     * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
     * **`absolute`**: Set to True to force all links to be absolute (rather than relative); this includes ones that are written in `'[markdown links](/foo)`.'
     * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
+    * **`footnotes_defer`**: If `False`, renders footnotes immediately; if `True`, renders them later. Defaults to `True` for `entry.body` and `False` for `entry.more`.
+    * **`footnotes_link`**: Specifies the base URL for footnote links; defaults to the entry's link.
 
 * **`card`**: `<meta>` tags for an OpenGraph card
 
