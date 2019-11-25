@@ -82,6 +82,18 @@ The `entry` object has the following methods/properties:
 
 * <span id="date_grouper"></span>**`date_year`**, **`date_month`**, **`date_day`**: Three pre-defined formats of `date` for the purpose of making it easier to use Jinja's [`groupby`](http://jinja.pocoo.org/docs/2.10/templates/#groupby) functionality.
 
+    For example, this snippet will collate the visible entries by month:
+
+    ```jinja
+    <ul>{% for month,entries in view.entries|groupby('date_month') %}
+        <li>{{month}}
+            <ul>{% for entry in entries %}
+            <li>{{entry.date.format()}}: <a href="{{entry.link}}">{{entry.title}}</a></li>
+            {% endfor %}</ul>
+        </li>
+    {% endfor %}</ul>
+    ```
+
 * **`permalink`**: A permanent link to the entry
 
     Takes the following arguments:
