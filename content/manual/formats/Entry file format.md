@@ -167,7 +167,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="summary"></span>**`Summary`**: A summary/description of the entry.
 
-    If not provided, this will be the first paragraph of text in the entry body.
+    **Default value:** The first paragraph of text in the entry body, with all formatting removed.
 
 * <span id="auth"></span>**`Auth`**: A list of permissions for who can and cannot see the entry.
 
