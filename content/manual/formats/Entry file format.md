@@ -321,9 +321,9 @@ will produce the equivalent of the following HTML:
 <div class="foo"><img src="test.jpg"><img src="test2.jpg"></div>
 ```
 
-#### Plain HTML entries
+#### HTML tags
 
-In plain-HTML entries, `width` and `height` attributes are parsed from the `<img src>` tag; for example:
+HTML `<img>` tags will use their `width` and `height` attributes to determine the image rendition size. For example:
 
 ```html
 <img src="foo.jpg" width="320" height="200" title="Custom title">
@@ -341,15 +341,26 @@ You can also use most of the Markdown image rendition flags, for example:
 <img src="foo.jpg{200,format='png'}" title="Converted to PNG at 200 pixels across">
 ```
 
-This `<img>` functionality is also available on Markdown entries.
+This `<img>` functionality is available on both HTML and Markdown entries.
 
 ### Link targets
 
 Both Markdown and HTML entries support a number of enhancements to how link targets are handled; this allows the transparent use of local file paths in your entries.
 
-In HTML entries, this applies to all `href` and `src` attributes (e.g. `<a href="example.md">link</a>` and `<audio src="example.mp3" controls>`).
+In HTML tags, this applies to all `href` and `src` attributes (e.g. `<a href="example.md">link</a>` and `<audio src="example.mp3" controls>`).
 
 In Markdown entries, this also applies to images (e.g. `![](example.jpg)`) and hyperlinks (e.g. `[example link](example.md)`) in addition to applying to embedded HTML content.
+
+In HTML tags, you can also force this to apply to other attributes by prefixing them with a $, which is useful for supporting various JavaScript libraries and the like. For example:
+
+```html
+<img $data-ondemand="image.jpg{320,320}">  <!-- becomes <img data-ondemand="/path/to/image_320x320.jpg"> -->
+
+<iframe src="other-entry.md">  <!-- becomes <iframe src="/category/1234-other-entry"> -->
+
+<a href="@some-asset.txt">  <!-- becomes <a href="/static/some-asset.txt"> -->
+```
+
 
 #### Local files
 
@@ -360,7 +371,7 @@ a file `term paper.pdf` in the same directory as `my entry.md`, then from the en
 You want to read [my paper](term paper.pdf)? Well here you go!
 ```
 
-Similarly, from an HTML entry, this will work:
+This also works in HTML links; for example:
 
 ```html
 You want to read <a href="term paper.pdf">my paper</a>? I'm flattered!
