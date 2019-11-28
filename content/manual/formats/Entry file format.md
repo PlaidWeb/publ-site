@@ -343,7 +343,7 @@ You can also use most of the Markdown image rendition flags, for example:
 
 This `<img>` functionality is available on both HTML and Markdown entries.
 
-### Link targets
+### <span id="link-targets"></span>Linking to things
 
 Both Markdown and HTML entries support a number of enhancements to how link targets are handled; this allows the transparent use of local file paths in your entries.
 
@@ -434,4 +434,11 @@ And the HTML equivalents to the above:
 <a href="Template format.md">Link to <code>Template format.md</code></a>
 <a href="/faq.md">Link to <code>/faq.md</code></a>
 <a href="../api/view.md#order">Link to <code>../api/view.md#order</code></a>
+```
+
+As above, you can also use these in any HTML element with the `src`, `href`, or arbitrary attributes annotated with `$`; for example:
+
+```html
+<iframe src="some entry.md"></iframe> <!-- by filename -->
+<div $data-popup="12345#anchor"></div> <!-- by entry ID -->
 ```

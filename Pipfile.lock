@@ -124,18 +124,18 @@
         },
         "flask-caching": {
             "hashes": [
-                "sha256:52e236cbc836c41a5ced0c0a67b48ad180c9e2b5cb69e881089bba766db5569e",
-                "sha256:b0daabd5249bebfbae3da4c22987bac22047fc8b18ea2716c4fc63d57d218946"
+                "sha256:3d0bd13c448c1640334131ed4163a12aff7df2155e73860f07fc9e5e75de7126",
+                "sha256:54b6140bb7b9f3e63d009ff08b03bacd84eefb1af1d30af06b4a6bc3c16fa3b2"
             ],
-            "version": "==1.7.2"
+            "version": "==1.8.0"
         },
         "gunicorn": {
             "hashes": [
-                "sha256:0806b5e8a2eb8ba9ac1be65d7b743ec896fc25f5d6cb16c5e051540157b315bb",
-                "sha256:ef69dea4814df95e64e3f40b47b7ffedc6911c5009233be9d01cfd0d14aa3f50"
+                "sha256:1904bb2b8a43658807108d59c3f3d56c2b6121a701161de0ddf9ad140073c626",
+                "sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c"
             ],
             "index": "pypi",
-            "version": "==20.0.0"
+            "version": "==20.0.4"
         },
         "idna": {
             "hashes": [
@@ -327,11 +327,11 @@
         },
         "publ": {
             "hashes": [
-                "sha256:38433243c92b6f2f2ba5aae8cfca7513168b267f3a1c32fe0f8b23578dbc1617",
-                "sha256:d147b010843c661baeca49e136148074049c92526bf447c731a54c715aaa572a"
+                "sha256:0cab3c7de38438f768bc1d595c9a3f8a3b55c35579252b1073db292635ffd3e5",
+                "sha256:3e98498a498e403d037f61032325c6d7db0730eaa95db02b7af24e9cdaf06679"
             ],
             "index": "pypi",
-            "version": "==0.5.9"
+            "version": "==0.5.10"
         },
         "pycparser": {
             "hashes": [
@@ -341,10 +341,10 @@
         },
         "pygments": {
             "hashes": [
-                "sha256:71e430bc85c88a430f000ac1d9b331d2407f681d6f6aec95e8bcfbc3df5b0127",
-                "sha256:881c4c157e45f30af185c1ffe8d549d48ac9127433f2c380c24b84572ad66297"
+                "sha256:83ec6c6133ca6b529b7ff5aa826328fd14b5bb02a58c37f4f06384e96a0f94ab",
+                "sha256:b7949de3d396836085fea596998b135a22610bbcc4f2abfe9e448e44cbc58388"
             ],
-            "version": "==2.4.2"
+            "version": "==2.5.1"
         },
         "pypandoc": {
             "hashes": [
