@@ -34,7 +34,7 @@ The `entry` object has the following methods/properties:
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
 
 * **`private`**: Indicates whether this entry is only visible to logged-in users.
-* <span id="authorized"></span>**`authorized`**: Indicates whether this entry is visible to the current user.
+* <span id="authorized">**`authorized`**: Indicates whether this entry is visible to the current user.</span>
 
 * **`body`** and **`more`**: The text above and below the fold, respectively
 
@@ -68,7 +68,7 @@ The `entry` object has the following methods/properties:
 
     This also accepts the `markdown_extensions` argument.
 
-* <span id="summary"></span>**`summary`**: The [entry summary](322#summary).
+* <span id="summary">**`summary`**: The [entry summary](322#summary).</span>
 
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).
@@ -82,7 +82,7 @@ The `entry` object has the following methods/properties:
     [`format()`](http://arrow.readthedocs.io/en/latest/#format) or
     [`humanize()`](http://arrow.readthedocs.io/en/latest/#humanize).
 
-* <span id="date_grouper"></span>**`date_year`**, **`date_month`**, **`date_day`**: Three pre-defined formats of `date` for the purpose of making it easier to use Jinja's [`groupby`](http://jinja.pocoo.org/docs/2.10/templates/#groupby) functionality.
+* <span id="date_grouper">**`date_year`**, **`date_month`**, **`date_day`**: Three pre-defined formats of `date` for the purpose of making it easier to use Jinja's [`groupby`](http://jinja.pocoo.org/docs/2.10/templates/#groupby) functionality.</span>
 
     For example, this snippet will collate the visible entries by month:
 
@@ -124,7 +124,7 @@ The `entry` object has the following methods/properties:
 
     This takes the following arguments:
 
-    * <span id="archive.paging"></span>**`paging`**: The pagination type; one of:
+    * <span id="archive.paging">**`paging`**: The pagination type; one of:</span>
         * **`"day"`**: Entries for that day
         * **`"month"`**: Entries for that month
         * **`"year"`**: Entries for that year

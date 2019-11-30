@@ -49,6 +49,8 @@ The `category` object provides the following:
 * **`first`**: Returns the first entry in this category; optionally takes [view arguments](/api#get-view)
 * **`last`**: Returns the last entry in this category; optionally takes [view arguments](/api#get-view)
 
+    Note that `first` and `last` will potentially point to entries for which the user is not authorized. If that matters, use [`get_view`](view.md#get_view) instead.
+
 * **`get`**: Get a header defined in the [meta file](#meta-files)
 * **`get_all`**: Get all instances of a meta file header as a list
 
@@ -57,13 +59,13 @@ The `category` object provides the following:
 
 * **`sort_name`**: The name used for sorting
 
-* <span id="breadcrumb"></span>**`breadcrumb`**: A list of the categories that lead to this one, as `category` objects, including the current one.
+* <span id="breadcrumb">**`breadcrumb`**: A list of the categories that lead to this one, as `category` objects, including the current one.</span>
 
-* <span id="root"></span>**`root`**: The root category of the blog, useful for storing site-level metadata (such as the site name or global configuration).
+* <span id="root">**`root`**: The root category of the blog, useful for storing site-level metadata (such as the site name or global configuration).</span>
 
     This is roughly equivalent to `category.breadcrumb[0]`, but is slightly more efficient and easier to type.
 
-* <span id="tags"></span>**`tags`**: A list of tags available on the category, provided as pairs of name and count.
+* <span id="tags">**`tags`**: A list of tags available on the category, provided as pairs of name and count.</span>
 
     This can take optional view arguments; probably the only useful one is `recurse`.
 

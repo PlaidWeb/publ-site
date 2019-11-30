@@ -10,13 +10,13 @@ The template API for view objects.
 
 The `view` object has the following things on it:
 
-* <span id="entries"></span>**`entries`**: A list of all of the entries that are visible and authorized in this view
+* <span id="entries">**`entries`**: A list of all of the entries that are visible and authorized in this view</span>
 
     Optionally takes a parameter, `unauthorized`, which indicates the maximum number of unauthorized entries which will be included. If this is a number, that number of unauthorized entries will be included; if True, *all* unauthorized entries will be included. These entries will count against the `count` limit, if any. Defaults to `0`.
 
 * **`deleted`**: A list of all of the entries that were deleted from this view (with `Status: GONE` or `Status: DELETED`)
 
-* <span id="unauthorized"></span>**`unauthorized`**: A list of entries which would be included if the user were authorized.
+* <span id="unauthorized">**`unauthorized`**: A list of entries which would be included if the user were authorized.</span>
 
     This is mostly so that a template can indicate whether a logged-out user should try logging in to see the protected entries, or for feeds to show placeholders.
 
@@ -49,7 +49,7 @@ The `view` object has the following things on it:
 
     These values are the same as the `paging` parameter of [`entry.archive`](entry.md#archive.paging).
 
-* <span id="all_pages"></span>**`pages`**: A list of every page for this view based on the current pagination.
+* <span id="all_pages">**`pages`**: A list of every page for this view based on the current pagination.</span>
 
     ==Note:== This will probably be *very slow*; use sparingly.
 
@@ -105,7 +105,7 @@ The `view` object has the following things on it:
     Any format string accepted by [Arrow](http://arrow.readthedocs.io/en/latest/#tokens)
     is acceptable (for example, `MMMM YYYY` will appear as `January 2012`).
 
-* <span id="tags"></span>**`tags`**: Any tags that are applied to this view, provided as a (possibly-empty) list.
+* <span id="tags">**`tags`**: Any tags that are applied to this view, provided as a (possibly-empty) list.</span>
 
 * **`tag_add`**: Generates a view with one or more tags added
 * **`tag_remove`**: Generates a view with one or more tags removed
@@ -167,7 +167,7 @@ arguments are supported:
 * **`first`**: Limit the view such to none older than the specified entry
 * **`before`**: Limit the view to only entries which came before the specified entry
 * **`after`**: Limit the view to only entries which came after the specified entry
-* <a id="order"></a>**`order`**: What sort order to provide the entries in; one of:
+* <span id="order">**`order`**: What sort order to provide the entries in; one of:</span>
     * **`oldest`**: Oldest-first
     * **`newest`**: Newest-first (default)
     * **`title`**: Sorted alphabetically by title
@@ -194,7 +194,7 @@ If you want to use the same view refinement multiple times, you can use `{% set 
 {% endif %}
 ```
 
-#### `view(...)` vs `get_view(...)`
+#### <span id="get_view"></span> `view(...)` vs `get_view(...)`
 
 The global `get_view()` function creates an entirely new view from scratch, rather
 than basing it on the current default view. Some possible uses for this are:

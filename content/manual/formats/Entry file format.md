@@ -49,7 +49,7 @@ templates; the following headers are what Publ itself uses:
     If none is given, it will try to infer the title from the filename. It will
     probably get this wrong.
 
-* <span id="sort-title"></span>**`Sort-Title`**: The sorting title of the entry
+* <span id="sort-title">**`Sort-Title`**: The sorting title of the entry</span>
 
     This affects the title for the purpose of [sorting](150#order), but is otherwise unused.
     If none is given it defaults to the entry's display title.
@@ -64,7 +64,7 @@ templates; the following headers are what Publ itself uses:
     [a link to /322](/322) or [322](322) works fine regardless of where the
     entry gets moved to in the future.
 
-* <span id="date"></span>**`Date`**: The publication date and time
+* <span id="date">**`Date`**: The publication date and time</span>
 
     This can be in any format that [Arrow](http://arrow.readthedocs.io)
     understands. If no timezone is specified it will use the timezone indicated
@@ -100,13 +100,13 @@ templates; the following headers are what Publ itself uses:
 
     **Default value:** the entry title; if there is no title, the entry's filename (minus extension)
 
-* <span id="redirect-to"></span>**`Redirect-To`**: A URL to redirect this entry to
+* <span id="redirect-to">**`Redirect-To`**: A URL to redirect this entry to</span>
 
     This is useful if you want to remove an entry and redirect to another entry, or if
     you want an entry to be a placeholder for some external content (e.g. when the entry
     was syndicated from an external source).
 
-* <span id="path-alias"></span>**`Path-Alias`**: An alternate path to this entry
+* <span id="path-alias">**`Path-Alias`**: An alternate path to this entry</span>
 
     This is useful for providing easy-to-remember short names for an entry, and
     for redirecting old, non-Publ URLs to this entry. For example, if you're
@@ -142,7 +142,7 @@ templates; the following headers are what Publ itself uses:
 
     It is *highly recommended* that this be unique across all entries.
 
-* <span id="entry-type"></span>**`Entry-Type`**: An arbitrary string which you can use to define an entry type
+* <span id="entry-type">**`Entry-Type`**: An arbitrary string which you can use to define an entry type</span>
 
     This allows you to differentiate entry types however you
     want; with this you can, for example, set up something similar to what
@@ -155,21 +155,21 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="template-override">**`Entry-Template`**</span>: Use the specified template instead of `entry` when rendering this entry
 
-* <span id="last-modified"></span>**`Last-Modified`**: The date to use for the last-modified time for this entry.
+* <span id="last-modified">**`Last-Modified`**: The date to use for the last-modified time for this entry.</span>
 
     Like with `Date`, if you set this to a non-date value (e.g. `now`) then it
     will be replaced with the file modification time when the file is scanned.
 
     **Default value:** the entry's `Date`
 
-* <span id="tag"></span>**`Tag`**: Add the specified tag to the entry. To add more than one tag, use separate `Tag:` headers.
-* <span id="hiddentag"></span>**`Hidden-Tag`**: Like `Tag`, but the tag will not appear in the entry's tag list. This lets you filter an entry without making its filter criteria visible.
+* <span id="tag">**`Tag`**: Add the specified tag to the entry. To add more than one tag, use separate `Tag:` headers.</span>
+* <span id="hiddentag">**`Hidden-Tag`**: Like `Tag`, but the tag will not appear in the entry's tag list. This lets you filter an entry without making its filter criteria visible.</span>
 
-* <span id="summary"></span>**`Summary`**: A summary/description of the entry.
+* <span id="summary">**`Summary`**: A summary/description of the entry.</span>
 
     **Default value:** The first paragraph of text in the entry body, with all formatting removed.
 
-* <span id="auth"></span>**`Auth`**: A list of permissions for who can and cannot see the entry.
+* <span id="auth">**`Auth`**: A list of permissions for who can and cannot see the entry.</span>
 
     This is a list of identities or groups, separated by spaces. Identities/groups which start with a `!` means that they *cannot* access the entry. For example, this line:
 

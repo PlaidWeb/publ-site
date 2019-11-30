@@ -32,7 +32,7 @@ render images.
 
 * **`link`**: Put a hyperlink on the image pointing to the given URL. Set this to `False` to prevent *any* links from being added, including from galleries.
 
-* <span id="link_class"></span>**`link_class`**: What CSS class to apply to the image's hyperlink
+* <span id="link_class">**`link_class`**: What CSS class to apply to the image's hyperlink</span>
 
 ### <span id="style"></span>Style options
 
@@ -92,7 +92,7 @@ render images.
     * `fill`: Fill the space with the image, cropping off the sides
     * `stretch`: Distort the image to fit
 
-* <span id="crop"></span>**`crop`**: Crops the thumbnail to the given rectangle, which is provided in the form of `(x,y,w,h)` or `'x,y,w,h'`, where `x` and `y` are the coordinates of the top-left corner and `w` and `h` are the size of the rectangle.
+* <span id="crop">**`crop`**: Crops the thumbnail to the given rectangle, which is provided in the form of `(x,y,w,h)` or `'x,y,w,h'`, where `x` and `y` are the coordinates of the top-left corner and `w` and `h` are the size of the rectangle.</span>
 
     The `()` notation is more flexible, but sometimes it doesn't work; in that case, use the `''` notation instead.
 
