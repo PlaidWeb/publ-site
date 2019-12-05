@@ -10,3 +10,5 @@ Due to popular demand, there is now an [NPM package for webmention.js](https://w
 Thanks to [André Jaenisch](https://github.com/Ryuno-Ki) for his incredibly generous help in getting this set up!
 
 And, if you run into any trouble (or have any suggestions for improvement), please [open an issue](https://github.com/PlaidWeb/webmention.js/issues).
+
+(Full disclosure: I have even more of no idea what I'm doing than usual.)
