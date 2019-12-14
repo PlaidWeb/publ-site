@@ -36,7 +36,13 @@ The `entry` object has the following methods/properties:
 * **`private`**: Indicates whether this entry is only visible to logged-in users.
 * <span id="authorized">**`authorized`**: Indicates whether this entry is visible to the current user.</span>
 
-* **`body`** and **`more`**: The text above and below the fold, respectively
+* **`body`**, **`more`**, and **`footnotes`**: The different content sections of an entry.
+
+    `body` is the section above the fold.
+
+    `more` is the section below the fold.
+
+    `footnotes` are the footnotes for the entire entry.
 
     These properties can be used directly, or they can take any of the following
     parameters:
@@ -46,8 +52,20 @@ The `entry` object has the following methods/properties:
     * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
     * **`absolute`**: Set to True to force all links to be absolute (rather than relative); this includes ones that are written in `'[markdown links](/foo)`.'
     * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
-    * **`footnotes_defer`**: If `False`, renders footnotes immediately; if `True`, renders them later. Defaults to `True` for `entry.body` and `False` for `entry.more`.
     * **`footnotes_link`**: Specifies the base URL for footnote links; defaults to the entry's link.
+
+        From `body` and `more` this refers to the URL the footnotes will display on.
+
+        From `footnotes` this refers to a URL where the entry text will be visible.
+
+        You can make these different if you want to do something fancy like keeping your footnotes on a separate page (using an archive template or the like); for example,
+        `{{entry.more(footnotes_link=entry.link(template='footnotes'))}}`
+
+    * **`footnotes_class`**: Specifies the CSS class for the `<sup>` that contains the footnote reference link. Defaults to none.
+
+        If you would like to style the `<a>` element, you can use CSS selectors `[rel="footnote"]` and `[rev="footnote"]` for the reference and return links, respectively.
+
+    * **`footnotes_return`**: Specifies the text to put inside the return link; defaults to `'↩'`.
 
 * **`card`**: `<meta>` tags for an OpenGraph card
 
