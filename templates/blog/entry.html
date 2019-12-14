@@ -51,6 +51,12 @@
 <div class="more" id="more">
     {{entry.more(gallery_id=entry.uuid,div_class='images')}}
 </div>
+
+{% if entry.footnotes %}
+<div class="footnotes">
+    {{entry.footnotes}}
+</div>
+{% endif %}
 </div>
 
 {% endblock %}

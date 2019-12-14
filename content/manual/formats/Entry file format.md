@@ -351,7 +351,7 @@ In HTML tags, this applies to all `href` and `src` attributes (e.g. `<a href="ex
 
 In Markdown entries, this also applies to images (e.g. `![](example.jpg)`) and hyperlinks (e.g. `[example link](example.md)`) in addition to applying to embedded HTML content.
 
-In HTML tags, you can also force this to apply to other attributes by prefixing them with a $, which is useful for supporting various JavaScript libraries and the like. For example:
+<span id="rendition-attrs">In HTML tags, you can also force this to apply to other attributes by prefixing them with a $, which is useful for supporting various JavaScript libraries and the like.</span> For example:
 
 ```html
 <img $data-ondemand="image.jpg{320,320}">  <!-- becomes <img data-ondemand="/path/to/image_320x320.jpg"> -->

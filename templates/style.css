@@ -257,6 +257,11 @@ ul.tag-list li.tag-selected {
     display: none;
 }
 
+.footnotes {
+    font-size: small;
+    border-top: dashed black 1px;
+}
+
 :target {
     background-color: #def;
 }
