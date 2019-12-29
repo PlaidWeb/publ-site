@@ -75,7 +75,7 @@ config = {
         'CACHE_TYPE': 'memcached',
         'CACHE_DEFAULT_TIMEOUT': 300,
         'CACHE_THRESHOLD': 500,
-        'CACHE_KEY_PREFIX': 'beesbuzz.biz',
+        'CACHE_KEY_PREFIX': 'publ.beesbuzz.biz',
     } if not os.environ.get('FLASK_DEBUG') else {
         'CACHE_NO_NULL_WARNING': True
     },
