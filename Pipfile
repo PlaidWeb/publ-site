@@ -9,6 +9,7 @@ publ = "*"
 psycopg2-binary = "*"
 psycopg2 = "<2.8"
 pypandoc = "*"
+flask-hookserver = "*"
 
 [dev-packages]
 pylint = "*"

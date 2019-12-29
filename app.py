@@ -4,13 +4,17 @@
 import logging
 import logging.handlers
 import os
+import signal
 from urllib.parse import urlparse
 
 import authl
 import flask
 import publ
+from flask_hookserver import Hooks
 
-logging.info("Setting up")
+LOGGER = logging.getLogger(__name__)
+LOGGER.info("Setting up")
+
 
 APP_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -75,7 +79,6 @@ config = {
         'CACHE_NO_NULL_WARNING': True
     },
 
-
     'auth': {
         'FEDIVERSE_NAME': 'Publ CMS',
         'FEDIVERSE_HOMEPAGE': 'http://publ.beesbuzz.biz/',
@@ -92,6 +95,10 @@ config = {
 app = publ.Publ(__name__, config)
 app.secret_key = os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!')
 
+app.config['GITHUB_WEBHOOKS_KEY'] = os.environ.get('GITHUB_SECRET')
+app.config['VALIDATE_IP'] = False
+
+
 @app.path_alias_regex(r'/\.well-known/(host-meta|webfinger).*')
 def redirect_bridgy(match):
     ''' support ActivityPub via fed.brid.gy '''
@@ -103,6 +110,34 @@ def redirect_github_issue(id):
     """ Custom routing rule to redirect /issue/NNN to the corresponding
     issue on GitHub """
     return flask.redirect('https://github.com/PlaidWeb/Publ/issues/{}'.format(id))
+
+
+# Deployment hook for self-hosted instance
+hooks = Hooks(app, url='/_gh')
+
+
+@hooks.hook('push')
+def deploy(data, delivery):
+    import threading
+    import subprocess
+    import flask
+
+    try:
+        result = subprocess.check_output(
+            ['./deploy.sh', 'nokill'],
+            stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as err:
+        LOGGER.error("Deployment failed: %s", err.output)
+        return flask.Response(err.output, status_code=500, mimetype='text/plain')
+
+    def restart_server(pid):
+        LOGGER.info("Restarting")
+        os.kill(pid, signal.SIGHUP)
+
+    LOGGER.info("Restarting server in 3 seconds...")
+    threading.Timer(3, restart_server, args=[os.getpid()]).start()
+
+    return flask.Response(result, mimetype='text/plain')
 
 
 if __name__ == "__main__":
