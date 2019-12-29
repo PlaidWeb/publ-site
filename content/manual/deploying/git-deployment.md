@@ -167,3 +167,5 @@ Finally, go to your GitHub repository settings, then "Webhooks," then "Add webho
 ![Configuration settings for the GitHub webhooks{scale=2}](github-webhook-setup.png)
 
 Anyway, once you have it set up, every time you commit to GitHub, your site should automatically pull and redeploy the latest changes.
+
+An example of this in action can be seen at the [files for this site](/github-site); in particular, see the [`app.py`](https://github.com/PlaidWeb/publ-site/blob/master/app.py) and [`deploy.sh`](https://github.com/PlaidWeb/publ-site/blob/master/deploy.sh) files.
