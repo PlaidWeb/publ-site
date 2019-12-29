@@ -22,7 +22,7 @@
 
 
 {% block entry %}
-<h2 class="p-name"><a class="u-url" href="{{entry.permalink}}">{{entry.title}}</a></h2>
+<h1 class="p-name"><a class="u-url" href="{{entry.permalink}}">{{entry.title}}</a></h1>
 <div class="posted">Posted <time class="dt-published" datetime="{{entry.date.isoformat()}}">{{entry.date.format('dddd, MMMM D')}} at {{entry.date.format('h:mm A Z')}}</time> ({{entry.date.humanize()}})
     {% if entry.author %}by {{entry.author}}{% endif %}
     {% if entry.last_modified > entry.date and entry.last_modified.humanize() != entry.date.humanize() %}
