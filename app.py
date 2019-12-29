@@ -77,8 +77,8 @@ config = {
 
 
     'auth': {
-        'MASTODON_NAME': 'Publ CMS',
-        'MASTODON_HOMEPAGE': 'http://publ.beesbuzz.biz/',
+        'FEDIVERSE_NAME': 'Publ CMS',
+        'FEDIVERSE_HOMEPAGE': 'http://publ.beesbuzz.biz/',
 
         'INDIEAUTH_CLIENT_ID': authl.flask.client_id,
 
@@ -87,11 +87,10 @@ config = {
 
         'TEST_ENABLED': True,
     },
-
-    'secret_key': os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!'),
 }
 
 app = publ.Publ(__name__, config)
+app.secret_key = os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!')
 
 @app.path_alias_regex(r'/\.well-known/(host-meta|webfinger).*')
 def redirect_bridgy(match):
