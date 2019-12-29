@@ -72,9 +72,10 @@ config = {
     # Caching configuration; see https://pythonhosted.org/Flask-Cache for
     # more information
     'cache': {
-        'CACHE_TYPE': 'simple',
-        'CACHE_DEFAULT_TIMEOUT': 600,
-        'CACHE_THRESHOLD': 20
+        'CACHE_TYPE': 'memcached',
+        'CACHE_DEFAULT_TIMEOUT': 300,
+        'CACHE_THRESHOLD': 500,
+        'CACHE_KEY_PREFIX': 'beesbuzz.biz',
     } if not os.environ.get('FLASK_DEBUG') else {
         'CACHE_NO_NULL_WARNING': True
     },
