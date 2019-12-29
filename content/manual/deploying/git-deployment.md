@@ -88,8 +88,9 @@ If you don't have the ability to run arbitrary `post-update` hooks but do have s
 @app.route('/_deploy', methods=['POST'])
 def deploy():
     import threading
-    import flask
+    import signal
     import subprocess
+    import flask
 
     if flask.request.form.get('secret') != os.environ.get('REDEPLOY_SECRET'):
         return flask.abort(403)
@@ -137,6 +138,7 @@ hooks=Hooks(app, url='/_gh')
 @hooks.hook('push')
 def deploy(data, delivery):
     import threading
+    import signal
     import subprocess
     import flask
 
@@ -160,5 +162,8 @@ def deploy(data, delivery):
 
 Now, set up your deployment to have an environment variable called `GITHUB_SECRET` set to some random, unguessable string. Do a manual redeployment.
 
-Finally, go to your GitHub repository settings, then "Webhooks," then "Add webhook." On the new webhook, set your payload URL to your deployment hook (e.g. `http://example.com/_gh`), the content type to `application/x-www-form-urlencoded`, and the secret to the value of your `GITHUB_SECRET` string.
+Finally, go to your GitHub repository settings, then "Webhooks," then "Add webhook." On the new webhook, set your payload URL to your deployment hook (e.g. `http://example.com/_gh`), the content type to `application/x-www-form-urlencoded`, and the secret to the value of your `GITHUB_SECRET` string. It should look something like this:
 
+![Configuration settings for the GitHub webhooks{scale=2}](github-webhook-setup.png)
+
+Anyway, once you have it set up, every time you commit to GitHub, your site should automatically pull and redeploy the latest changes.

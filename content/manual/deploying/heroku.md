@@ -14,13 +14,13 @@ smaller websites. However, it is primarily intended for experimenting with Publ.
 * Your git deployment size must be [under 1 GB](https://devcenter.heroku.com/articles/limits#git-repos)
 * Your slug size must be [under 500MB limit on your slug size](https://devcenter.heroku.com/articles/limits#slug-size)
 * SQLite databases will not persist across site deployments, requiring a full reindex every time your site changes
-* You can use a Postgres database instead but this causes a slight performance hit on page loads
+* You can use a Postgres database instead but this causes a (very) slight performance hit on page loads
 
-That said, Heroku is a great platform for trying Publ out; as of October 2018, the official instance of [this website](http://publ.beesbuzz.biz) is hosted on it using the free tier, including a persistent database.
+That said, Heroku is a great platform for trying Publ out; as of December 2019, there is a [backup instance](http://publ.herokuapp.com/) of [this website](http://publ.beesbuzz.biz) hosted on it using the free tier, including a persistent database. Additionally, on the higher tiers you get some nice features like automatic load-balancing and staged deployments. Which is probably overkill for the sites you're running Publ for, but it's still nice to have.
 
 ### Prerequisites
 
-You'll need a [Heroku](http://heroku.com) account, of course, and you'll want to go through their [Python introduction](https://devcenter.heroku.com/articles/getting-started-with-python) to get your local environment configured.
+You'll need a [Heroku](http://heroku.com/) account, of course, and you'll want to go through their [Python introduction](https://devcenter.heroku.com/articles/getting-started-with-python) to get your local environment configured.
 
 This also assumes you are using a git repository to manage your website files.
 
@@ -29,7 +29,7 @@ This also assumes you are using a git repository to manage your website files.
 The easiest way to configure Heroku is using `pipenv` and `gunicorn`. Assuming you have a local test version of your site on your computer, do the following:
 
 ```bash
-cd (website_directory)
+cd WEBSITE_DIRECTORY
 pipenv --three install Publ gunicorn
 ```
 
@@ -57,10 +57,10 @@ Now you should be ready to deploy! You'll need to create your Heroku app and add
 
 ```bash
 heroku create
-heroku git:remote -a [NAME_OF_APP]
+heroku git:remote -a NAME_OF_APP
 ```
 
-replacing `[NAME_OF_APP]` with whatever name `heroku create` gave you.
+replacing `NAME_OF_APP` with whatever name `heroku create` gave you.
 
 Deploying to Heroku is now as simple as:
 
@@ -72,7 +72,7 @@ You may also want to run `heroku logs --tail` to watch its progress.
 
 ### Database persistence
 
-As mentioned above, most of the website startup time is taken up by the initial content index. Since Heroku does not persist your filesystem, you might want to consider using a SQL database to store the index persistently. Note that this *will* slow your site down a little bit (since accessing an in-process SQLite database is faster than going over the network to talk to SQL), but it reduces the amount of site downtime during a content update so that might be a worthwhile tradeoff depending on your needs.
+As mentioned above, most of the website startup time is taken up by the initial content index. Since Heroku does not persist your filesystem, you might want to consider using a Postgres database to store the index persistently. Note that this *will* slow your site down a little bit (since accessing an in-process SQLite database is faster than going over the network to talk to Postgres), but it reduces the amount of site downtime during a content update so that might be a worthwhile tradeoff depending on your needs.
 
 This slowdown can also be mitigated by increasing your cache timeout; since the site will be redeployed whenever content updates, the cache timeout really only affects how soon scheduled posts will appear after they are set to go live.
 

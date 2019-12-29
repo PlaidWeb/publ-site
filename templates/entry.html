@@ -94,10 +94,18 @@
 
             {% if entry.more %}
             <div class="entry e-content">
-                {{entry.more}}
+                {{entry.more(gallery_id=entry.id,div_class="images")}}
             </div>
             {% else %} Oops, this page has no content... {% endif %}
+
+            {% if entry.footnotes %}
+            <div class="footnotes">
+                {{entry.footnotes}}
+            </div>
+            {% endif %}
+
             {% endblock %}
+
             </article>
 
             <section id="webmentions"></section>
