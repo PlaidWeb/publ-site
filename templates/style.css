@@ -166,10 +166,6 @@ pre {
     margin-bottom: 0;
 }
 
-.entry {
-    border-bottom: solid black 1px;
-}
-
 .nav a.previous:before {
     content: '« ';
 }
