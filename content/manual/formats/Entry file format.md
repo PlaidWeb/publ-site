@@ -177,7 +177,7 @@ templates; the following headers are what Publ itself uses:
     Auth: friends !mailto:erik@example.com
     ```
 
-    means that members of `friends` can access the entry, but not `erik@example.com`.
+    means that members of `friends` can access the entry, but not `erik@example.com` (even if they are a member of `friends`).
 
     This list can grow arbitrarily long, and the rightmost rule wins.
 
@@ -199,7 +199,7 @@ templates; the following headers are what Publ itself uses:
     Auth: * !enemies mailto:bob@example.com
     ```
 
-    will be visible to anyone who's logged in except for members of the `enemies` group, but `mailto:bob@example.com` will be allowed even if they are in `enemies`.
+    will be visible to anyone who's logged in except for members of the `enemies` group, but `mailto:bob@example.com` will be allowed even if they are in `enemies`. This is one way that you can make an entry which is open to everyone *except* people who have been banned, for example.
 
     Note that identities won't necessarily be an email address; they are only listed as such here for illustrative purposes. For example, a Mastodon user will appear as e.g. `https://queer.party/@fluffy`.
 

@@ -7,7 +7,7 @@ import os
 import signal
 from urllib.parse import urlparse
 
-import authl
+import authl.flask
 import flask
 import publ
 from flask_hookserver import Hooks
@@ -81,6 +81,11 @@ config = {
     },
 
     'auth': {
+        'SMTP_HOST': 'localhost',
+        'SMTP_PORT': 25,
+        'EMAIL_FROM': 'nobody@beesbuzz.biz',
+        'EMAIL_SUBJECT': 'Sign in to publ.beesbuzz.biz',
+
         'FEDIVERSE_NAME': 'Publ CMS',
         'FEDIVERSE_HOMEPAGE': 'http://publ.beesbuzz.biz/',
 
@@ -104,7 +109,6 @@ app.config['VALIDATE_IP'] = False
 def redirect_bridgy(match):
     ''' support ActivityPub via fed.brid.gy '''
     return 'https://fed.brid.gy' + flask.request.full_path, False
-
 
 @app.route('/issue/<int:id>')
 def redirect_github_issue(id):
@@ -139,7 +143,3 @@ def deploy(data, delivery):
     threading.Timer(3, restart_server, args=[os.getpid()]).start()
 
     return flask.Response(result, mimetype='text/plain')
-
-
-if __name__ == "__main__":
-    app.run(port=os.environ.get('PORT', 5000))

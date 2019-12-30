@@ -27,7 +27,8 @@ fi
 if [ "$1" != "nokill" ] &&
     git diff --name-only HEAD@{1} | grep -qE '^(templates/|app\.py)'
 then
-    echo "Restarting web services"
+    echo "Configuration or template change detected; Restarting web services"
+    # see "a note on killall" below
     killall -HUP gunicorn
 fi
 ```
@@ -79,6 +80,29 @@ ssh DEPLOYMENT_SERVER 'cd example.com && ./deploy.sh'
 ```
 
 replacing `DEPLOYMENT_SERVER` with the actual server name, and `example.com` with the directory that contains the site deployment.
+
+### A note on `killall`
+
+The `deploy.sh` above uses `killall -HUP gunicorn` to restart the website when necessary. This is great if you have only one gunicorn-based site running under your user account, but if you have more than one, or you're using a WSGI server other than gunicorn, this won't work so well. You'll want to replace this with a different mechanism for restarting *just* the server.
+
+If you're using [a systemd user service](1278#systemd) to manage your process, you can simply replace the `killall` line with:
+
+```bash
+    systemctl --user restart SERVICE-NAME.service
+```
+
+Otherwise, you can put this at the bottom of your `app.py`:
+
+```python
+with open('.run.pid', 'w') as pidfile:
+    pidfile.write(os.getpid())
+```
+
+and then change the `killall` line to:
+
+```bash
+    [ -f .run.pid ] && kill -HUP $(cat .run.pid) && rm .run.pid
+```
 
 ## Simple webhook deployment
 
@@ -169,3 +193,7 @@ Finally, go to your GitHub repository settings, then "Webhooks," then "Add webho
 Anyway, once you have it set up, every time you commit to GitHub, your site should automatically pull and redeploy the latest changes.
 
 An example of this in action can be seen at the [files for this site](/github-site); in particular, see the [`app.py`](https://github.com/PlaidWeb/publ-site/blob/master/app.py) and [`deploy.sh`](https://github.com/PlaidWeb/publ-site/blob/master/deploy.sh) files.
+
+
+## A note on `killall`
+

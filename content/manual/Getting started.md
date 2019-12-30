@@ -102,11 +102,10 @@ If your distribution doesn't provide an easy recent version, consider using [pye
 
 Now, connecting to [`http://localhost:5000`](http://localhost:5000) should show you this website. Note that on the first page load it will take a little while before all of the content is visible -- but you can watch the site build in your terminal window to see it finish.
 
-If you need to run the site on a different port (for example, you get an error like `OSError: [Errno 48] Address already in use
-`), you can change this by setting the `PORT` environment variable; for example:
+If you need to run the site on a different port (for example, you get an error like `OSError: [Errno 48] Address already in use`), you can change this by setting the `FLASK_RUN_PORT` environment variable; for example:
 
 ```bash
-PORT=12345 ./run.sh
+FLASK_RUN_PORT=12345 ./run.sh
 ```
 
 will run the site at [`http://localhost:12345`](http://localhost:12345) instead.
@@ -144,15 +143,12 @@ import publ
 APP_PATH = os.path.dirname(os.path.abspath(__file__))
 
 config = {
-    # Leave this off to do an in-memory database
     'database_config': {
         'provider': 'sqlite',
         'filename': os.path.join(APP_PATH, 'index.db')
     },
 }
 app = publ.publ(__name__, config)
-if __name__ == "__main__":
-    app.run(port=os.environ.get('PORT', 5000))
 ```
 
 Now, you'll need directories for your site content; create folders named `content`, `templates`, and `static` in the same directory as `app.py`. From the command line you can type:

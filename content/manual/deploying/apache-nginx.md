@@ -9,8 +9,6 @@ How to run Publ on an Apache with `mod_proxy` or an nginx server
 
 Configuring Publ to work with Apache or nginx is largely the same either way, the difference being in how you point the server to your Publ instance.
 
-First, you need to decide which local port to run the site on. For this guide we'll use an example port of 5120, but any port that isn't taken by another service is fine. (Advanced users might want to consider using a UNIX-domain socket instead, but setting that up is outside the scope of this guide.)
-
 ## Running the Publ instance
 
 Your Publ environment needs to have a WSGI server installed. This guide assumes you're using [gunicorn](http://gunicorn.org) although any WSGI server should work. On that note, you'll probably need to install gunicorn into your Publ environment; if you're using pipenv that'll be
@@ -19,35 +17,41 @@ Your Publ environment needs to have a WSGI server installed. This guide assumes 
 pipenv install gunicorn
 ```
 
-Next, you need something to launch your site onto the assigned port; here are a few options. These all assume that you're declaring your Publ app as `app` from the file `app.py`, per the [getting started guide](328), that `pipenv` was installed using `pip install --user pipenv`, and the Publ site's directory is `/home/USERNAME/example.com`.
+Next, you need something to launch your site; here are a few options. These all assume that you're declaring your Publ app as `app` from the file `app.py`, per the [getting started guide](328), that `pipenv` was installed using `pip install --user pipenv`, and the Publ site's directory is `/home/USERNAME/example.com`.
 
-### systemd
+### <span id="systemd">systemd</span>
 
-If you're on a UNIX that uses `systemd` and you have root or `sudo` access (or are able to get the administrator to do this for you), the preferred approach is to run the site as a system service. Here is an example systemd launcher:
+If you're on a UNIX that uses `systemd`, the preferred approach is to run the site as a user service. Here is an example systemd launcher:
 
 ```systemd
 [Unit]
 Description=example.com website
-After=network.target
 
 [Service]
-User=USERNAME
 Restart=always
 WorkingDirectory=/home/USERNAME/example.com
-ExecStart=/home/USERNAME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 app:app
+ExecStart=/home/USERNAME/.local/bin/pipenv run gunicorn -b unix:gunicorn.sock app:app
+ExecReload=/bin/kill -HUP $MAINPID
+StandardOutput=file:/home/USERNAME/logs/example.com/service.log
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ```
 
-Install this file as e.g. `/etc/systemd/system/example.com.service` and then you should be able to start the server with:
+Install this file as e.g. `~/.config/systemd/user/example.com.service` and then you should be able to start the server with:
 
 ```bash
-sudo systemctl enable example.com
-sudo service example.com start
+systemctl --user enable example.com.service
+systemctl --user start example.com
 ```
 
-and the site should now be up and running on the local port. You can use e.g. `curl http://localhost:5120` to verify that the site is up and serving traffic.
+and the site should now be up and running on the local port; as long as it's up there should be a socket file named `gunicorn.sock` in the site's directory.
+
+However, this service will only run as long as the user is logged in; in order to make it run persistently, have an admin set your user to "linger" with e.g.:
+
+```bash
+loginctl enable-linger USERNAME
+```
 
 ### cron
 
@@ -58,7 +62,7 @@ directory:
 #!/bin/sh
 
 cd $(dirname "$0")
-flock -n .lockfile $HOME/.local/bin/pipenv run gunicorn -b 127.0.0.1:5120 app:app
+flock -n .lockfile $HOME/.local/bin/pipenv run gunicorn -b unix:gunicorn.sock app:app
 ```
 
 and then run `crontab -e` and add a line like:
@@ -87,12 +91,12 @@ Here is a basic Apache configuration (e.g. `/etc/apache2/sites-enabled/100-examp
     </Proxy>
 
     ProxyPreserveHost On
-    ProxyPass / "http://127.0.0.1:5120/"
+    ProxyPass / unix:/user/USERNAME/example.com/gunicorn.sock|http://localhost/
 
 </VirtualHost>
 ```
 
-You will of course need to edit `ServerName`, `ErrorLog`, and `CustomLog` accordingly, and make sure that the address and port in `ProxyPass` matches your running service as configured in the service launcher.
+You will of course need to edit `ServerName`, `ErrorLog`, and `CustomLog` accordingly, and make sure that the address and port in `ProxyPass` matches your running service as configured in the service launcher, and the `/path/to/gunicorn.sock` must be wherever the socket file is kept (e.g. `/home/USERNAME/example.com/gunicorn.sock`)
 
 ### SSL
 
@@ -115,7 +119,7 @@ Here is an example SSL Apache configuration; it can go in the same file as the n
     ProxyPreserveHost On
     RequestHeader set X-Forwarded-Protocol ssl
 
-    ProxyPass / "http://127.0.0.1:5120/"
+    ProxyPass / unix:/user/USERNAME/example.com/gunicorn.sock|http://localhost/
 
     SSLCertificateFile /path/to/fullchain.pem
     SSLCertificateKeyFile /path/to/privkey.pem
@@ -125,7 +129,7 @@ Here is an example SSL Apache configuration; it can go in the same file as the n
 
 Note that this uses the same local connection as the non-SSL version; in fact, you can have arbitrarily many fronting configurations to the same Publ instance, even with different domain names! Publ doesn't mind at all.
 
-If you use [Let's Encrypt](http://letsencrypt.org) to get your certificate, the configuration change made by `certbot` *should* "just work" although you will want to make sure that it sets `X-Forwarded-Protocol` or else Publ will still generate `http://` URLs for things, which is probably not what you want.
+If you use [Let's Encrypt](http://letsencrypt.org) to get your certificate, the configuration change made by `certbot --apache` *should* "just work" although you will want to make sure that it sets `X-Forwarded-Protocol` or else Publ will still generate `http://` URLs for things, which is probably not what you want.
 
 ## nginx
 
@@ -138,7 +142,7 @@ Here is an example nginx configuration, e.g. `/etc/nginx/sites-available/example
     access_log  /var/log/nginx/example.log;
 
     location / {
-        proxy_pass http://127.0.0.1:5120;
+        proxy_pass http://unix:/path/to/gunicorn.sock:/;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }

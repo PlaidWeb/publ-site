@@ -39,8 +39,13 @@ Identities can also be used as a group name, to help manage those folks who have
 ```cfg
 [http://beesbuzz.biz]
 mailto:fluffy@beesbuzz.biz
-http://twitter.com/fluffy
+https://twitter.com/fluffy#993171
 https://queer.party/@fluffy
 ```
 
+This will give the identities `mailto:fluffy@beesbuzz.biz`, `https://twitter.com/fluffy#993171
+`, and `https://queer.party/@fluffy` membership in all groups that `http://beesbuzz.biz` is in as well.
+
 Any identities which belong to the administrative group (which is `admin` by default but can configured differently) will have access to all entries, as well as the administrative dashboard. Otherwise, users are subject to the [permissions system](Entry file format.md#auth).
+
+You can also start a line with `#` or `;` to indicate that it is a comment.
