@@ -13,22 +13,8 @@ The `entry` object has the following methods/properties:
 * **`id`**: The numerical entry ID
 * **`title`**: The title of the entry
 
-    This property can be used directly, or it can take the following arguments:
+    This property can be used directly, or it can take [HTML processing arguments](/html-processing), as well as the following:
 
-    * **`markup`**: Whether to include any markup in the title; defaults to `True`,
-        set this to `False` in things like a `<title>` element where HTML isn't valid.
-
-        For example:
-
-        ```html
-        <html>
-        <head><title>{{ entry.title(markup=False) }}</title></head>
-        <body><h1>{{ entry.title }}</h1></body>
-        </html>
-        ```
-
-    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution; this is mostly useful for Atom feeds. (default: `False`)
-    * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
     * **`always_show`**: Whether to always show the title, even if the entry isn't authorized; use with caution. (default: `False`)
 
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
@@ -47,11 +33,7 @@ The `entry` object has the following methods/properties:
     These properties can be used directly, or they can take any of the following
     parameters:
 
-    * The standard [image rendition arguments](/image-renditions)
-    * **`xhtml`**: Set to `True` to render as XHTML instead of HTML (default: `False`)
-    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution (default: `False`)
-    * **`absolute`**: Set to True to force all links to be absolute (rather than relative); this includes ones that are written in `'[markdown links](/foo)`.'
-    * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
+    * The standard [HTML processing arguments](/html-processing)
     * **`footnotes_link`**: Specifies the base URL for footnote links; defaults to the entry's link.
 
         From `body` and `more` this refers to the URL the footnotes will display on.
@@ -86,7 +68,7 @@ The `entry` object has the following methods/properties:
 
     This also accepts the `markdown_extensions` argument.
 
-* <span id="summary">**`summary`**: The [entry summary](322#summary).</span>
+* <span id="summary">**`summary`**</span>: The [entry summary](322#summary). This is always treated as plain text (i.e. no HTML or Markdown).
 
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).

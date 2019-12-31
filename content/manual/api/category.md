@@ -1,4 +1,4 @@
-Title: Category object
+Title: Category objects
 Path-Alias: /api/category
 Date: 2018-04-25 15:02:41-07:00
 Entry-ID: 170
@@ -20,13 +20,7 @@ The `category` object provides the following:
     title-casing the name. For example, the category `some/long/category_name` will have
     a default name of `"Category Name"`. This can be overridden using a [meta file](#meta-files).
 
-    Optionally takes the following arguments:
-
-    * **`markup`**: Whether to include markup. Possible values:
-        * **`False`**: Strip out all formatting
-        * **`True`**: Include formatting (default)
-    * **`no_smartquotes`**: Set to `True` to disable automatic smartquote substitution; this is mostly useful for Atom feeds. (default: `False`)
-    * **`markdown_extensions`**: A list of extensions to configure the Markdown formatter with; defaults to the global configuration.
+    Optionally takes [HTML processing arguments](entry.md#html-processing).
 
 * **`subcats`**: The subcategories of this category. Takes the following argument:
 
@@ -55,7 +49,7 @@ The `category` object provides the following:
 * **`get_all`**: Get all instances of a meta file header as a list
 
 * **`description`**: Get the category description from the [meta file](#meta-files), if it exists. This optionally
-    takes arguments for [image renditions](/image-renditions) if so desired.
+    takes the standard [HTML processing arguments)(entry.md#html-processing).
 
 * **`sort_name`**: The name used for sorting
 

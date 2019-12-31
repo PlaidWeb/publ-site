@@ -165,7 +165,7 @@ templates; the following headers are what Publ itself uses:
 * <span id="tag">**`Tag`**: Add the specified tag to the entry. To add more than one tag, use separate `Tag:` headers.</span>
 * <span id="hiddentag">**`Hidden-Tag`**: Like `Tag`, but the tag will not appear in the entry's tag list. This lets you filter an entry without making its filter criteria visible.</span>
 
-* <span id="summary">**`Summary`**: A summary/description of the entry.</span>
+* <span id="summary">**`Summary`**</span>: A plain-text summary/description of the entry.
 
     **Default value:** The first paragraph of text in the entry body, with all formatting removed.
 
@@ -262,7 +262,7 @@ For the shorthand notation, if you want to specify only height you can use `None
 ![{None,240}](image1.jpg | image2.jpg | image3.jpg)
 ```
 
-For a full list of the configurations available, please see the manual entry on [image renditions](/image-renditions).
+For a full list of the configurations available, please see the manual entry on [image renditions](/image-renditions#arguments).
 
 If the image path is absolute (i.e. starts with a `/`) it will search for the image within the content directory. Otherwise it will search in the following order:
 

@@ -24,7 +24,7 @@ the default values for entry images.
 The template also gets a function, `image()`, that allows the template itself to
 render images.
 
-## Configuration values
+## <span id="arguments">Configuration values</span>
 
 ### General configuration
 
