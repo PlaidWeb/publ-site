@@ -361,11 +361,11 @@
         },
         "publ": {
             "hashes": [
-                "sha256:0b552eea4bacbfb35be03ba898d493b822b2150df971135415876686247cadfc",
-                "sha256:e3619636ea8ed98b70aefeb5006f3ba7460cced0155781edaa9bcec13ce6bfff"
+                "sha256:062f4328baa9980a29ab97c66b5a1dcdd6322d806aa4193eeea39fa62b9746d6",
+                "sha256:ee520dc207581c215eb939e451497f9c0861724c2736439a4a876ce88dfd81d7"
             ],
             "index": "pypi",
-            "version": "==0.5.11.post1"
+            "version": "==0.5.12"
         },
         "pycparser": {
             "hashes": [

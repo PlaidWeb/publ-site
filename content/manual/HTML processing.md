@@ -1,5 +1,8 @@
 Title: HTML processing
 Path-alias: /html-processing
+Date: 2019-12-30 18:55:57-08:00
+Entry-ID: 647
+UUID: c8d833f8-73e9-556a-9eb6-93f33b551f25
 
 How to configure HTML processing in templates
 
