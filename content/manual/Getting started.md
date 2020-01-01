@@ -1,13 +1,15 @@
 Title: Getting started
-Sort-Title: 000 Getting Started
+Sort-Title: 001 Getting Started
 UUID: 4dea4c3b-c6ec-4dc0-9f40-b27a91128a60
 Entry-ID: 328
 Path-Alias: /getting-started
 Date: 2018-10-13 15:59:50-07:00
 
-A guide to starting with Publ.
+A guide to starting with Publ
 
 .....
+
+This guide will walk you through setting up Publ on your local computer so that you can build and run a site that runs locally. To learn how to run this website on a webserver, see the [deployment guides](deploying/).
 
 ## Installing system requirements
 
@@ -268,8 +270,5 @@ I also have made [some of my own website templates](https://github.com/PlaidWeb/
 
 ### Putting it on the web
 
-Getting a Publ site online depends a lot on how you're going to be hosting it. If you're savvy with Flask apps you probably know what to do; otherwise, check out the [deployment guides](/deployment) to see if there's anything that covers your usage.
+Getting a Publ site online depends a lot on how you're going to be hosting it. If you're savvy with Flask apps you probably know what to do; otherwise, check out the [deployment guides](deployment/) to see if there's anything that covers your usage.
 
-### Next steps
-
-If you do end up using Publ, please let me know so that I can check it out — and maybe add it to a list of featured sites!
