@@ -9,29 +9,59 @@ How to use git hooks to automatically deploy site content
 
 This is the approach I use for managing my site content on [my main website](http://beesbuzz.biz). It requires that you can run shell scripts from your git repositories, and ideally your git repository lives on the same server as your actual Publ installation.
 
+This applies to any hosting setup where you log in to a server directly to manage your files and applications, such as [self-hosting](self-hosting.md) or using [Passenger](passenger.md). Other hosting environments (Heroku, Docker, etc.) will likely need a different build-and-deploy mechanism.
+
+## Deployment script
+
 Regardless of how you manage your deployment trigger, you will need a deployment script, which does a `git pull` and updates package versions if the `Pipfile.lock` has changed. Save this file as `deploy.sh` in your website repository, and make sure it's set executable:
 
 ```bash
 #!/bin/sh
-# deploy.sh -- wrapper script to pull the latest site content and redeploy
+# wrapper script to pull the latest site content and redeploy
 
 cd  $(dirname $0)
+
+# see where in the history we are now
+PREV=$(git rev-parse --short HEAD)
+
 git pull --ff-only || exit 1
 
-if git diff --name-only HEAD@{1} | grep -q Pipfile.lock
-then
-    echo "Pipfile.lock changed; redeploying"
-    pipenv install || exit 1
+if git diff --name-only $PREV | grep -qE '^(templates/|app\.py)' ; then
+    echo "Configuration or template change detected"
+    disposition=reload-or-restart
 fi
 
-if [ "$1" != "nokill" ] &&
-    git diff --name-only HEAD@{1} | grep -qE '^(templates/|app\.py)'
-then
-    echo "Configuration or template change detected; Restarting web services"
-    # see "a note on killall" below
-    killall -HUP gunicorn
+if git diff --name-only $PREV | grep -q Pipfile.lock ; then
+    echo "Pipfile.lock changed"
+    pipenv install || exit 1
+    disposition=restart
+fi
+
+if [ "$1" != "nokill" ] && [ ! -z "$disposition" ] ; then
+    # insert server restart command here (see note)
 fi
 ```
+
+There's a bit of wiggle room in how you actually restart the service. If you're using [a systemd user service](1278#systemd) to manage your process, you can use something like:
+
+```bash
+    systemctl --user $disposition SERVICE-NAME.service
+```
+
+Otherwise, you can put this at the bottom of your `app.py`:
+
+```python
+with open('.run.pid', 'w') as pidfile:
+    pidfile.write(os.getpid())
+```
+
+and then use this to restart the server:
+
+```bash
+    [ -f .run.pid ] && kill -HUP $(cat .run.pid) && rm .run.pid
+```
+
+This will only tell gunicorn to reload, however, and it probably won't cause the new version of gunicorn itself to start up, in case that's a concern.
 
 The remainder of the deployment process depends on how you're actually hosting your git repository.
 
@@ -81,28 +111,6 @@ ssh DEPLOYMENT_SERVER 'cd example.com && ./deploy.sh'
 
 replacing `DEPLOYMENT_SERVER` with the actual server name, and `example.com` with the directory that contains the site deployment.
 
-### A note on `killall`
-
-The `deploy.sh` above uses `killall -HUP gunicorn` to restart the website when necessary. This is great if you have only one gunicorn-based site running under your user account, but if you have more than one, or you're using a WSGI server other than gunicorn, this won't work so well. You'll want to replace this with a different mechanism for restarting *just* the server.
-
-If you're using [a systemd user service](1278#systemd) to manage your process, you can simply replace the `killall` line with:
-
-```bash
-    systemctl --user restart SERVICE-NAME.service
-```
-
-Otherwise, you can put this at the bottom of your `app.py`:
-
-```python
-with open('.run.pid', 'w') as pidfile:
-    pidfile.write(os.getpid())
-```
-
-and then change the `killall` line to:
-
-```bash
-    [ -f .run.pid ] && kill -HUP $(cat .run.pid) && rm .run.pid
-```
 
 ## Simple webhook deployment
 

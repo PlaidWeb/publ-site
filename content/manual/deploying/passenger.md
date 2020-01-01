@@ -1,21 +1,30 @@
-Title: Passenger WSGI
+Title: Passenger
 Date: 2018-04-03 02:22:07-07:00
 Entry-ID: 326
 UUID: 45e36baf-9c9a-40bf-9af7-1cbacefda9bd
 
-How to run Publ on a Passenger WSGI environment (including Dreamhost)
+How to run Publ on a Passenger environment (including Dreamhost)
 
 .....
 
-Deployment using Passenger WSGI (as used on several shared hosting providers
-such as Dreamhost) is fairly straightforward, once you have a python3
+Deployment using [Phusion Passenger](https://www.phusionpassenger.com/library/walkthroughs/start/python.html) (also known as Passenger WSGI) is fairly straightforward, once you have a python3
 environment working. However, on some web hosts, setting up python3 isn't quite obvious.
 
 ### Building Python 3
 
-First you need a Python 3 environment. On most shared hosting providers you can
-create one by using `ssh` to log in to your shell account and then downloaded the [Python source
-distribution](https://www.python.org/downloads/source/). For example, for version 3.7.0, you'd do:
+First you need a Python 3 environment. If your hosting provider doesn't provide one (you can check by running `python3` from the command line), there are a few ways to install it yourself.
+
+The easiest way is to use [pyenv](https://github.com/pyenv/pyenv):
+
+```bash
+curl https://pyenv.run | bash
+exec $SHELL
+pyenv update
+pyenv install 3.7.6
+```
+
+After a while you should be able to verify that you have a
+
 
 ```bash
 wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz
