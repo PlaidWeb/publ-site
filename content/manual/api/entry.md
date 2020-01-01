@@ -17,6 +17,8 @@ The `entry` object has the following methods/properties:
 
     * **`always_show`**: Whether to always show the title, even if the entry isn't authorized; use with caution. (default: `False`)
 
+    ==Note:== v0.5.12 has a bug where the `no_smartquotes` HTML argument doesn't work. This will be [fixed in v0.5.13](https://github.com/PlaidWeb/Publ/commit/004fb47a3c53830081579e6ae5c1133f1ca2581e).
+
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
 
 * **`private`**: Indicates whether this entry is only visible to logged-in users.
