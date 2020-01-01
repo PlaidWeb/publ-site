@@ -98,23 +98,35 @@ config = {
     },
 }
 
+# Create the application instance
 app = publ.Publ(__name__, config)
+
+# Configure the session security
 app.secret_key = os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!')
 
+# Configure the GitHub publishing webhook
 app.config['GITHUB_WEBHOOKS_KEY'] = os.environ.get('GITHUB_SECRET')
 app.config['VALIDATE_IP'] = False
 
 
 @app.path_alias_regex(r'/\.well-known/(host-meta|webfinger).*')
 def redirect_bridgy(match):
-    ''' support ActivityPub via fed.brid.gy '''
+    """ support ActivityPub via fed.brid.gy """
     return 'https://fed.brid.gy' + flask.request.full_path, False
 
-@app.route('/issue/<int:id>')
-def redirect_github_issue(id):
+
+@app.path_alias_regex(r'/issue/(.*)')
+def redirect_github_issue(match):
     """ Custom routing rule to redirect /issue/NNN to the corresponding
     issue on GitHub """
-    return flask.redirect('https://github.com/PlaidWeb/Publ/issues/{}'.format(id))
+    return 'https://github.com/PlaidWeb/Publ/issues/' + match.group(1), True
+
+@app.path_alias_regex(r'/site-issue/(.*)')
+def redirect_github_site_issue(match):
+    """ Custom routing rule to redirect /issue/NNN to the corresponding
+    issue on GitHub """
+    return 'https://github.com/PlaidWeb/Publ-site/issues/' + match.group(1), True
+
 
 
 # Deployment hook for self-hosted instance
