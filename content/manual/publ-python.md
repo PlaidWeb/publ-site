@@ -70,6 +70,23 @@ def redirect_date(match):
 
 The path alias function takes a [`re.match` object](https://docs.python.org/3.5/library/re.html#match-objects) and returns a tuple of `(url, is_permanent)`. This function can also make use of the various Flask request context things (e.g. `request.args`) and if it doesn't want to redirect after all it can return `(None,None)`.
 
+Note that you can also use `@app.route` like any typical Flask application, but due to Flask routing rules it may not work with variadic routes. For example:
+
+```python
+@app.route('/favicon.ico')
+def favicon():
+    """ Static route should work """
+    return flask.send_file('favicon.ico')
+
+```python
+@app.route('/foo/<path:path>')
+def redirect_foo(path):
+    """ Dynamic route will likely fail, as the 'category' route is a stronger match """
+    return "We are invisible: {}".format(path)
+```
+
+is unlikely to work. Currently Flask doesn't provide any clean mechanism for adjusting a routing rule's priority; [this StackOverflow question](https://stackoverflow.com/questions/17135006/url-routing-conflicts-for-static-files-in-flask-dev-server) discusses the issue and some possible workarounds.
+
 ## Sample `app.py`
 
 This is based on the `app.py` that configures [beesbuzz.biz](https://beesbuzz.biz). It
