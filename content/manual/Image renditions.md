@@ -92,6 +92,10 @@ render images.
     * `fill`: Fill the space with the image, cropping off the sides
     * `stretch`: Distort the image to fit
 
+* **`scale_filter`**: What scaling algorithm to use when resampling the image. Case-insensitive.
+    See the [Pillow documentation](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-filters) for more information on the available algorithms.
+    Defaults to `lanczos`.
+
 * <span id="crop">**`crop`**: Crops the thumbnail to the given rectangle, which is provided in the form of `(x,y,w,h)` or `'x,y,w,h'`, where `x` and `y` are the coordinates of the top-left corner and `w` and `h` are the size of the rectangle.</span>
 
     The `()` notation is more flexible, but sometimes it doesn't work; in that case, use the `''` notation instead.
