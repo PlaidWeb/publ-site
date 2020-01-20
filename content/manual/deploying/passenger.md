@@ -2,6 +2,7 @@ Title: Passenger
 Date: 2018-04-03 02:22:07-07:00
 Entry-ID: 326
 UUID: 45e36baf-9c9a-40bf-9af7-1cbacefda9bd
+Sort-Title: 300 Passenger
 
 How to run Publ on a Passenger environment (including Dreamhost)
 

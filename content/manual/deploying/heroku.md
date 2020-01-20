@@ -3,6 +3,7 @@ Date: 2018-10-13 14:23:23-07:00
 Entry-ID: 1210
 UUID: 5744383f-5712-5011-9a9d-1b3c9806e090
 Path-Alias: /heroku
+Sort-Title: 300 Heroku
 
 How to deploy a Publ website using [Heroku](http://heroku.com)
 

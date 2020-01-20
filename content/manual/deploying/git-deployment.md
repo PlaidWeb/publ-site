@@ -1,6 +1,7 @@
 Title: Continuous deployment with git
 Date: 2018-12-16 23:23:07-08:00
 Entry-ID: 441
+Sort-Title: 200
 UUID: b023c99e-0f41-51ea-9d41-5e575b37339d
 
 How to use git hooks to automatically deploy site content

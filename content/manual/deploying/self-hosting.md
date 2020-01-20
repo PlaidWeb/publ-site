@@ -2,6 +2,7 @@ Title: Self-hosting Publ
 Date: 2018-12-16 22:41:45-08:00
 Entry-ID: 1278
 UUID: 6b0d8b5d-08d2-5ad5-8cf0-13a1c5720586
+Sort-Title: 300 Self-hosting
 
 How to host Publ on your own webserver
 

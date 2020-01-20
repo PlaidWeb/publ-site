@@ -1,6 +1,7 @@
-Title: Known Python hosting providers
+Title: Hosting options
 Date: 2019-10-12 11:01:01-07:00
 Entry-ID: 545
+Sort-Title: 100
 UUID: 8d9bf039-ad27-5772-a5fc-aaf9b869c19c
 
 Here's some options when it comes to hosting Publ sites, with pluses and minuses.
