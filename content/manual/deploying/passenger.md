@@ -23,36 +23,7 @@ pyenv update
 pyenv install 3.7.6
 ```
 
-After a while you should be able to verify that you have a
-
-
-```bash
-wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz
-tar xzvf Python-3.7.0.tgz
-```
-
-Then building it is fairly straightforward:
-
-```bash
-cd Python-3.7.0
-./configure --prefix=$HOME/opt/python-3.7.0 --enable-optimizations
-nice -19 make build_all
-make install
-```
-
-The `nice -19` is to reduce the chances that Dreamhost's process killer kicks in
-for the build, and `build_all` builds Python without building unit tests.
-
-At this point you'll want to add Python 3 to the environment, by adding the
-following lines to your login script (usually `~/.bash_profile`):
-
-```bash
-# python3
-export PATH=$HOME/opt/python-3.7.0/bin:$HOME/.local/bin:$PATH
-```
-
-Log out and back in (or run the `export` line directly) and you should now have Python 3.7.0 on your path.
-You can verify this by typing
+After a while you should be able to verify that you have a working Python 3 installation with e.g.
 
 ```bash
 python3 --version
@@ -89,10 +60,6 @@ import sys
 import os
 import subprocess
 
-# hack to keep click happy
-os.environ['LANG'] = 'C.UTF-8'
-os.environ['LC_ALL'] = 'C.UTF-8'
-
 INTERP = subprocess.check_output(
     ['pipenv', 'run', 'which', 'python3']).strip().decode('utf-8')
 if sys.executable != INTERP:
@@ -113,7 +80,6 @@ Different hosts may have different requirements. Known configurations are below:
 
 Configure your web domain as follows:
 
-* Remove WWW from URL
 * Web directory: `/home/(username)/(site file directory)/public`
 * HTTPS (via LetsEncrypt): Yes
 * Passenger (Ruby/NodeJS/Python apps only): Yes
@@ -147,6 +113,5 @@ On Dreamhost you do this with:
 
 ```bash
 cd (website_directory)
-mkdir -p tmp    # only necessary the first time
-touch tmp/restart.txt
+mkdir -p tmp && touch tmp/restart.txt
 ```
