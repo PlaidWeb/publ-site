@@ -203,6 +203,3 @@ Anyway, once you have it set up, every time you commit to GitHub, your site shou
 
 An example of this in action can be seen at the [files for this site](/github-site); in particular, see the [`app.py`](https://github.com/PlaidWeb/publ-site/blob/master/app.py) and [`deploy.sh`](https://github.com/PlaidWeb/publ-site/blob/master/deploy.sh) files.
 
-
-## A note on `killall`
-
