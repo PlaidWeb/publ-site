@@ -29,12 +29,16 @@
     {% endblock %}
 
     {% block sidebar %}
-    <div id="nav" class="sidebar">
+    <nav id="nav" class="sidebar">
         <h2>Navigation</h2>
         <ul>
             <li class="cat-back"><a href="{{category.link}}">Back to {{category.name or "main site"}}</a></li>
         </ul>
-    </div>
+        {% if entry.toc %}
+        <h2>Table of Contents</h2>
+        {{entry.toc}}
+        {% endif %}
+    </nav>
     {% endblock %}
 
     <div id="content">
@@ -95,7 +99,7 @@
 
             {% if entry.more %}
             <div class="entry e-content">
-                {{entry.more(gallery_id=entry.id,div_class="images")}}
+                {{entry.more(gallery_id=entry.id,div_class="images",heading_link_class="permalink")}}
             </div>
             {% else %} Oops, this page has no content... {% endif %}
 
