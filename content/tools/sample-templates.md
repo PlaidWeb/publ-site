@@ -9,8 +9,8 @@ These are some sample templates and content files to get you started with a new 
 These templates include the following functionality:
 
 * Multiple site sections including a blog, articles, and a webcomic
-* Comments using [Disqus](https://disqus.com)
-* WebMention/Pingback integration with [webmention.io](https://webmention.io) and [Pushl](pushl.md)
+* Comments using [Isso](https://posativ.org/isso/)
+* Webmention/Pingback integration with [webmention.io](https://webmention.io) and [Pushl](pushl.md)
 * ActivityPub integration with [fed.brid.gy](https://fed.brid.gy)
 * Private entries
 
