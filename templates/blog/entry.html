@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block sidebar %}
-<div id="nav" class="sidebar">
+<nav id="nav" class="sidebar">
     <h2>Navigation</h2>
     <ul>
         <li class="cat-back"><a href="{{category.link}}">Back to {{category.name or "main site"}}</a></li>
@@ -17,7 +17,11 @@
         <li class="entry-next"><a href="{{entry.next.link}}">Next entry: {{entry.next.title}}</a></li>
         {% endif %}
     </ul>
-</div>
+    {% if entry.toc %}
+    <h2>Table of Contents</h2>
+    {{entry.toc}}
+    {% endif %}
+</nav>
 {% endblock %}
 
 
@@ -44,12 +48,12 @@
 <div class="e-content">
 {% if entry.body %}
 <div class="preamble">
-    {{entry.body(gallery_id=entry.uuid,div_class='images')}}
+    {{entry.body(gallery_id=entry.uuid,div_class='images',heading_link_class='permalink')}}
 </div>
 {% endif %}
 
 <div class="more" id="more">
-    {{entry.more(gallery_id=entry.uuid,div_class='images')}}
+    {{entry.more(gallery_id=entry.uuid,div_class='images',heading_link_class='permalink')}}
 </div>
 
 {% if entry.footnotes %}

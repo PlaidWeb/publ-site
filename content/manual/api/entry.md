@@ -82,7 +82,7 @@ The `entry` object has the following methods/properties:
 
         If you would not like any self-link to be produced for some reason, set `heading_template` to `{text}`.
 
-* **`toc`**: The table of contents for an entry.
+* <span id="toc">**`toc`**</span>: The table of contents for an entry.
 
     Renders a table of contents based on the headings of the entry; only applies to Markdown entries.
 
