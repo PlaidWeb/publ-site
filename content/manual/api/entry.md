@@ -17,8 +17,6 @@ The `entry` object has the following methods/properties:
 
     * **`always_show`**: Whether to always show the title, even if the entry isn't authorized; use with caution. (default: `False`)
 
-    ==Note:== v0.5.12 has a bug where the `no_smartquotes` HTML argument doesn't work. This will be [fixed in v0.5.13](https://github.com/PlaidWeb/Publ/commit/004fb47a3c53830081579e6ae5c1133f1ca2581e).
-
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
 
 * **`private`**: Indicates whether this entry is only visible to logged-in users.
@@ -36,7 +34,7 @@ The `entry` object has the following methods/properties:
     parameters:
 
     * The standard [HTML processing arguments](/html-processing)
-    * **`footnotes_link`**: Specifies the base URL for footnote links; defaults to the entry's link.
+    * **`footnotes_link`**: Specifies the base URL for footnote links; defaults to the entry's URL.
 
         From `body` and `more` this refers to the URL the footnotes will display on.
 
@@ -50,6 +48,51 @@ The `entry` object has the following methods/properties:
         If you would like to style the `<a>` element, you can use CSS selectors `[rel="footnote"]` and `[rev="footnote"]` for the reference and return links, respectively.
 
     * **`footnotes_return`**: Specifies the text to put inside the return link; defaults to `'↩'`.
+
+    * **`toc_link`**: The base URL for the heading's anchor link (for use from table of contents or generic permalinks); defaults to the entry's URL.
+
+    * **`heading_link_class`**: The HTML `class` attribute to add to the self-link from within headings; defaults to none.
+
+        This is useful for e.g. displaying a fancy permalink marker; for example, you can render the entry with:
+
+        ```html
+        {{ entry.more(heading_link_class='toc')}}
+        ```
+
+        and use a stylesheet rule like e.g.
+
+        ```css
+        .toc:before {
+            position: absolute;
+            margin-left: -1ex;
+            content: '#';
+            color: #777;
+        }
+        ```
+
+    * **`heading_link_config`**: Additional attributes to add to the self-link from within headings (for e.g. `title` or `data-*` or the like); defaults to nothing.
+
+    * **`heading_template`**: A template string for how to format headings; takes the following format fragments:
+        * **`link`**: The open link tag (e.g. `<a href="entry#anchor" class="linkClass">`)
+        * **`text`**: The formatted text of the heading itself
+
+        This defaults to `{link}</a>{text}` (the `<a>` is contained within `{link}`).
+
+        Note that this template will always be rendered inside the heading tags (e.g. `<h2 id="foo"><a class="toc" href="entry#foo"></a>Foo</h2>`).
+
+        If you would not like any self-link to be produced for some reason, set `heading_template` to `{text}`.
+
+* <span id="toc">**`toc`**</span>: The table of contents for an entry.
+
+    Renders a table of contents based on the headings of the entry; only applies to Markdown entries.
+
+    In addition to the standard [HTML processing arguments](/html-processing), it takes the following arguments:
+
+    * **`toc_link`**: The base URL for links to the entry; defaults to the entry's link.
+
+    * **`max_depth`**: How many levels deep to render
+
+
 
 * **`card`**: `<meta>` tags for an OpenGraph card
 

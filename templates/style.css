@@ -122,7 +122,16 @@ pre {
 
 #nav ul {
     list-style-type: none;
-    padding: 0 1em;
+    padding: 0 1ex;
+}
+
+#nav ol {
+    list-style-type: none;
+    padding: 0 1ex;
+}
+
+#nav ol ol {
+    padding: 0;
 }
 
 #nav li.extlink:before {
@@ -269,4 +278,17 @@ ul.tag-list li.tag-selected {
 
 :target {
     background-color: #def;
+}
+
+.permalink:after {
+    position: absolute;
+    margin-left: -1.2ex;
+    margin-top: .45em;
+    font-size: 65%;
+    content: '#';
+    color: rgba(0,0,0,0.5);
+}
+
+*:hover >.permalink:after {
+    color: rgba(0,0,0,0.75);
 }

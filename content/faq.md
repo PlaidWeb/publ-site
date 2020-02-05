@@ -267,6 +267,21 @@ FLASK_ENV=development FLASK_DEBUG=1 pipenv run flask run
 
 The scripts bundled with the [publ-site repository](https://github.com/PlaidWeb/publ-site) have been updated accordingly.
 
+### <span id="watchdog090"></span> My `Pipfile.lock` includes dependencies on things that don't work on Linux
+
+The core issue: The `watchdog` package uses `pyobjc` on macOS; `pipenv` dutifully adds that to your lockfile but doesn't mark it as system-dependent, so when `pipenv` tries to install from the lockfile on a non-macOS platform, it fails.
+
+`pipenv`'s maintainers say that [`pyobjc` should be platform-independent](https://github.com/pypa/pipenv/issues/3187), `pyobjc`'s maintainers say that [this would only cause more confusion and people shouldn't be trying to install it on other platforms](https://bitbucket.org/ronaldoussoren/pyobjc/issues/291/install-fails-on-non-macos-platforms). In the meantime, users of `watchdog` are stuck.
+
+For now, the solution is to add a specific dependency on `watchdog` 0.9.0 to your `Pipfile` with:
+
+```bash
+pipenv install watchdog==0.9.0
+pipenv clean
+```
+
+This isn't ideal but it at least works for now. Hopefully in the future this can get sorted out.
+
 
 ## How can I help out?
 
