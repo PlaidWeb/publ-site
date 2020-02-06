@@ -39,7 +39,7 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
     * **`image_cache_age`**: The maximum age of image renditions to keep, in seconds. Defaults to one month.
     * **`timezone`**: The timezone to use for dates with no specified time zone. Defaults to the server's local timezone.
 
-    * **`cache`**: A dictionary with the page caching configuration; see the [Flask-Caching documentation](https://pythonhosted.org/Flask-Caching/#configuring-flask-caching) for more information. Defaults to `{}` (i.e. no caching).
+    * <span id="cache">**`cache`**</span>: A dictionary with the page caching configuration; see the [deplyment guide](20) for more information. Defaults to `{}` (i.e. no caching).
 
     * <span id="markdown_extensions">**`markdown_extensions`**: A list of extensions to use with the Markdown processor; see the [misaka documentation](https://misaka.61924.nl/#extensions) for a list of accepted values. Defaults to `('tables', 'fenced-code', 'footnotes', 'strikethrough', 'highlight', 'superscript', 'math')`.</span>
 
