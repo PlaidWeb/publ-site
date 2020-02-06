@@ -71,3 +71,22 @@ It's worth noting that the default memcached expiry time is 5 minutes (which als
 As an experiment I will try increasing the cache timeout to an hour on all of my sites and see what effect that has. My hypothesis is that the allocation size and hit rate will both go up substantially, and the average page load time will go *way* down, with (much smaller) hourly spikes and otherwise a very fast page load (except for when I'm making content changes, of course).
 
 I'm also tempted to try setting the default expiry to 0 -- as in, never expire, only evict -- and see what effect that has on performance. I probably won't, though -- it would have an odd effect on the display of humanized time intervals and make that way too nondeterministic for my taste.
+
+## ==Update:== Initial results
+
+Even after just a few hours it becomes *pretty obvious* what effect this change had:
+
+![{scale=2}](apache_processes-pinpoint=1580849415,1580957415.png "Apache process counts"
+|http_loadtime-pinpoint=1580849415,1580957415.png "Page load time"
+|memcached_bytes-pinpoint=1580849415,1580957415.png "memcached throughput"
+|memcached_counters-pinpoint=1580849415,1580957415.png "memcached allocation"
+|memcached_rates-pinpoint=1580849415,1580957415.png "memcached commands"
+)
+
+The actual effect is a bit surprising, though; I would have expected the quiescent RAM allocation to be closer to the peak, and for the incoming (`SET`) traffic to be spikier after that as well. I wonder if improved site performance caused a malfunctioning spider to stop hammering my site quite so much, or something. I do know there are a bunch of spiders that have historically been pretty aggressive.
+
+Of course the most important metric -- page load time -- has ended up *exactly* as I expected, with it dropping to an average of 2ms for everything and it only being that high because of hourly spikes. I guess the fact Munin is the still seeing the spikes means that Munin is keeping my cache warm (for a handful of pages), so, thanks Munin!
+
+![](http_loadtime-pinpoint=1580929669,1580958694.png "Munin keeping the cache warm")
+
+Maybe I should set the cache expiration to a prime number so that it is less likely to be touched on an exact 5-minute interval.
