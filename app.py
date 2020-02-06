@@ -12,6 +12,8 @@ import flask
 import publ
 from flask_hookserver import Hooks
 
+logging.basicConfig(level=logging.INFO)
+
 LOGGER = logging.getLogger(__name__)
 LOGGER.info("Setting up")
 
@@ -64,6 +66,9 @@ config = {
     # and should probably not be backed up (i.e. put it in .gitignore or
     # similar)
     # 'image_output_subdir': '_img',
+
+    # How many image rendering threads to use
+    'image_render_threads': 2,
 
     # The timezone for the site
     # 'timezone': tz.tzlocal(),      # default; based on the server

@@ -37,6 +37,7 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
 
     * **`image_cache_interval`**: How frequently to clean the image rendition cache, in seconds. Defaults to 7200 (3 hours).
     * **`image_cache_age`**: The maximum age of image renditions to keep, in seconds. Defaults to one month.
+    * **`image_render_threads`**: The maximum number of threads to use for image rendering; defaults to the number of CPUs in the system. Set this to `None` to use the [Python default for `ThreadPoolExecutor`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor).
     * **`timezone`**: The timezone to use for dates with no specified time zone. Defaults to the server's local timezone.
 
     * <span id="cache">**`cache`**</span>: A dictionary with the page caching configuration; see the [deplyment guide](20) for more information. Defaults to `{}` (i.e. no caching).
