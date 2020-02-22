@@ -135,6 +135,41 @@ templates; the following headers are what Publ itself uses:
     which will cause the legacy URL to remap to showing this view within the category using the `archive` template.
     If you would like to just go to the category without any specific template, use `index`.
 
+* <span id="path-mount">**`Path-Mount`**: An alternate path to this entry</span>
+
+    This is similar to [`Path-Alias`](#path-alias), except that the browser will not be redirected; for example, if you have an
+    entry like:
+
+    ```
+    Title: Test
+    Category: blog
+    Entry-ID: 12345
+    Path-Mount: /faq
+    ```
+
+    then both `/blog/12345-test` and `/faq` will render as the entry directly.
+
+    Also, unlike `Path-Alias`, if a template is specified, this will be treated as an *entry* template (i.e. there will be an `entry` object and no `view` object).
+
+* <span id="path-canonical">**`Path-Canonical`**: Specify the canonical path to this entry</span>
+
+    This is the same as [`Path-Mount`](#path-mount), except that all accesses to this entry will be *redirected* to this path, and this will be treated as the canonical location.
+
+    For example, if there's an entry with:
+
+    ```
+    Title: Test
+    Category: blog
+    Entry-ID: 12345
+    Path-Mount: /faq
+    ```
+
+    then any access to `/blog/12345-test`, `/blog/12345`, `/12345`, etc. will be redirected to `/faq`.
+
+    As with `Path-Mount`, if a template is specified then this will be treated as an entry template.
+
+    If you specify more than one `Path-Canonical` header, all but one of them will be treated as `Path-Mount` instead; it is undefined as to which one becomes the canonical path.
+
 * **`UUID`**: A globally-unique identifier for the entry
 
     While Publ doesn't use this for itself, having this sort of generated ID is

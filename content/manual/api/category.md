@@ -151,7 +151,8 @@ The headers supported by Publ itself:
 * <span id="template-override">**`Index-Template`**</span>: Use this template instead of `index` when rendering this category (useful if you want to override a category or site's index template without overriding its subcategories)
 * **`Entry-Template`**: Use this template instead of `entry` when rendering an entry
 * **`Sort-Name`**: The name to use when sorting this in a subcategory list
-* **`Path-Alias`**: Redirects another URL to this category
+* **`Path-Alias`**: Redirects an unused path to this category; can optionally take a template parameter
+* **`Path-Mount`**: Display an otherwise-unused path as if it's a view of this category; can optionally take a template parameter
 
 For example, given the file `some/category/info.cat`:
 
@@ -168,14 +169,15 @@ Category: other/category
 
 then it will set the `name` attribute of the `other/category` category to `"Specific Category"`.
 
-Similarly to entries, this also supports the `Path-Alias` header; for example:
+Similarly to entries, this also supports the `Path-Alias` and `Path-Mount` headers; for example:
 
 ```
 Category: /art/sketchbook
 Path-Alias: /comics/cat-sketchbook.php archive
+Path-Mount: /sketchbook
 ```
 
-will redirect requests to `/comics/cat-sketchbook.php` to the `/art/sketchbook` category using the `archive` template.
+will redirect requests to `/comics/cat-sketchbook.php` to the `/art/sketchbook` category using the `archive` template (i.e. a path like `/art/sketchbook/archive`), and requests to `/sketchbook` will render this category using the default template (without redirecting).
 
 You can also define any other arbitrary values you like, which will then be put on the category object, and which are
 accessible directly via `get` and `get_all`. The behavior is the same as on [entry files](/entry-format).
