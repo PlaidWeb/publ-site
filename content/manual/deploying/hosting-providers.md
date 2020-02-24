@@ -48,7 +48,6 @@ Typically this gives you the advantages of self-hosting (cheap storage and bandw
 Most shared hosting providers don't allow running Python apps, but all of the following do:
 
 * [Nearly Free Speech](https://nearlyfreespeech.net/)
-* [WebFaction](https://webfaction.com/)
 * [Dreamhost](https://dreamhost.com/) (note that I have had [specific issues with them](358) but YMMV)
 
-Note that "supporting Python" doesn't necessarily mean supporting Python *apps*, as sometimes it just means being able to run Python CGI (which is a different, older mechanism). If a provider says they can host WSGI or Django and that they support Python 3, they can definitely host Publ.
+Note that "supporting Python" doesn't necessarily mean supporting Python *apps*, as sometimes it just means being able to run Python CGI (which is a different, older mechanism). If a provider says they can host WSGI, Flask, or Django, and that they support Python 3, they can probably host Publ.
