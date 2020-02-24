@@ -61,7 +61,7 @@ The `category` object provides the following:
 
 * <span id="tags">**`tags`**: A list of tags available on the category, provided as pairs of name and count.</span>
 
-    This can take optional view arguments; probably the only useful one is `recurse`.
+    This can take optional view arguments, such as `recurse`, `tag`, and `tag_filter`.
 
     There are multiple ways to access the tag information, depending on preference; for example, you can separate them in the loop:
 
@@ -92,6 +92,22 @@ The `category` object provides the following:
     {% endfor %}
     </ul>
     ```
+
+    If you want the tags to display based on a `view` you can pass in `**view.spec` as the argument
+    list; for example, this snippet will override the page's view to require all tags to be present,
+    and print a refinement list of tags:
+
+    ```jinja
+    {% set view = view(tag_filter='ALL') %}  {# modify view to require all
+                                                selected tags to be present #}
+
+    <ul>
+        {% for name,count in category.tags(**view.spec) %}
+        <li><a href="{{view.tag_toggle(name)}}">{{name}}</a> ({{count}})</li>
+        {% endfor %}
+    </ul>
+    ```
+    }
 
 * The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
 

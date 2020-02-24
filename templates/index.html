@@ -8,11 +8,12 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 </head>
 <body id="{{template.name}}">
+{% set view=view(tag_filter='ALL') %}
 
 <header>
 <h1>Publ: {{category.name and category.name.title() or "Yet another site generator"}}</h1>
 {% if view.tags %}
-<div class="description">Entries tagged {{[view.tags[:-1]|join(', '),view.tags[-1]]|select|join(' or ')}}</div>
+<div class="description">Entries tagged {{[view.tags[:-1]|join(', '),view.tags[-1]]|select|join(' and ')}}</div>
 {% elif category.description %}
 <div class="description">{{category.description}}</div>
 {% endif %}
@@ -61,7 +62,7 @@
     <li class="tag-clear"><a href="{{view(tag=None).link}}">Clear tags</a></li>
     {% endif %}
 
-    {% for name,count in category.tags|sort(attribute='count',reverse=True) %}
+    {% for name,count in category.tags(**view.spec)|sort(attribute='count',reverse=True) %}
     <li class="{{name in view.tags and 'tag-selected' or ''}}"><a href="{{view.tag_toggle(name)}}">{{name}}</a> ({{count}})</a></li>
     {% endfor %}
     </ul>

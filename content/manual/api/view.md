@@ -150,17 +150,20 @@ arguments are supported:
     These can be a single string, or it can be an array of strings. Note that
     these are case-sensitive (i.e. `"PaGe"` and `"pAgE"` are two different types).
 
-    * `get_view(entry_type='page')` - only get entries of type "page"
-    * `get_view(entry_type_not='page')` - only get entries which AREN'T of type "page"
-    * `get_view(entry_type=['news','comic'])` - get entries which are of type 'news' or 'comic'
-    * `get_view(entry_type_not=['news','comic'])` - get entries of all types except 'news' or 'comic'
+    * `get_view(entry_type='page')`: only get entries of type "page"
+    * `get_view(entry_type_not='page')`: only get entries which AREN'T of type "page"
+    * `get_view(entry_type=['news','comic'])`: get entries which are of type 'news' or 'comic'
+    * `get_view(entry_type_not=['news','comic'])`: get entries of all types except 'news' or 'comic'
 
     Mixing `entry_type` and `entry_type_not` results in undefined behavior, not that it makes
     any sense to do that anyway.
 
 * **`tag`**: Limit the view to entries which match the listed tag(s).
+* <span id="tag_filter">**`tag_filter`**</span>: What filter criterion to use for matching tags. One of:
 
-    The parameter can be a single string or a list of strings; if a list is given, entries which match any of the tags will be returned.
+    * **`'ANY'`**: All entries which have at least one of the listed tags (default); this can also be spelled `'OR'`
+    * **`'ALL'`**: Entries which have all of the listed tags; this can also be spelled `'AND'`
+    * **`'NONE'`**: Entries which have none of the listed tags'; this can also be spelled `'NOT'`
 
 * **`start`**: Limit the view to start with this entry, regardless of sort order
 * **`last`**: Limit the view such to none newer than the specified entry (by id or object)
@@ -168,6 +171,7 @@ arguments are supported:
 * **`before`**: Limit the view to only entries which came before the specified entry
 * **`after`**: Limit the view to only entries which came after the specified entry
 * <span id="order">**`order`**: What sort order to provide the entries in; one of:</span>
+
     * **`oldest`**: Oldest-first
     * **`newest`**: Newest-first (default)
     * **`title`**: Sorted alphabetically by title

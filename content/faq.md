@@ -1,5 +1,6 @@
 Title: Frequently Asked Questions
 Path-Alias: /faq
+Path-Canonical: /faq
 Entry-Type: sidebar
 Date: 2018-04-30 17:01:50-07:00
 Entry-ID: 374

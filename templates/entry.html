@@ -24,7 +24,7 @@
 <body id="{{template.name}}">
     {% block pagetitle %}
     <header>
-    <h1><a href="{{category.link}}">Publ:</a> {{ entry.title }}</h1>
+    <h1 id="top"><a href="{{category.link}}">Publ:</a> {{ entry.title }}</h1>
     </header>
     {% endblock %}
 
@@ -35,7 +35,7 @@
             <li class="cat-back"><a href="{{category.link}}">Back to {{category.name or "main site"}}</a></li>
         </ul>
         {% if entry.toc %}
-        <h2>Table of Contents</h2>
+        <h2 id="toc">Table of Contents</h2>
         {{entry.toc}}
         {% endif %}
     </nav>
@@ -99,7 +99,10 @@
 
             {% if entry.more %}
             <div class="entry e-content">
-                {{entry.more(gallery_id=entry.id,div_class="images",heading_link_class="permalink")}}
+                {{entry.more(gallery_id=entry.id,
+                    div_class="images",
+                    heading_link_class="permalink",
+                    heading_template='{link}</a>{text} <a class="toplink" href="#top">back to top</a>')}}
             </div>
             {% else %} Oops, this page has no content... {% endif %}
 

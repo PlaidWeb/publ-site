@@ -169,7 +169,7 @@ The following additional things are provided to all templates:
         * `True`: Use an absolute link
 
 * <span id="get-template">**`get_template`**</span>: A function that finds a template file for a given category or entry. The first argument is the
-    name of the template to find or a list of template names; the second argument is what to find the template relative to.
+    name of the template to find or a list of template names; the second argument is what to find the template relative to (entry, category, or a file path).
 
     Example usage:
 

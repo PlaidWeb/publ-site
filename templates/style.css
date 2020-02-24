@@ -43,6 +43,17 @@ h4 a {
     text-decoration: none;
 }
 
+a.toplink {
+    font-size: small;
+    margin-left: 1em;
+    font-weight: normal;
+    font-style: italic;
+}
+
+@media print {
+    a.toplink { display: none; }
+}
+
 code,
 .highlight pre {
     font-family: 'Andale Mono', 'Liberation Mono', 'Monaco', 'Lucida Console', monospace;

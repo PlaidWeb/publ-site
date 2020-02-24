@@ -137,7 +137,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="path-mount">**`Path-Mount`**: An alternate path to this entry</span>
 
-    This is similar to [`Path-Alias`](#path-alias), except that the browser will not be redirected; for example, if you have an
+    This is similar to [`Path-Alias`](#path-alias), except that the browser will not be redirected to the canonical location; for example, if you have an
     entry like:
 
     ```
@@ -153,7 +153,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="path-canonical">**`Path-Canonical`**: Specify the canonical path to this entry</span>
 
-    This is the same as [`Path-Mount`](#path-mount), except that all accesses to this entry will be *redirected* to this path, and this will be treated as the canonical location.
+    This is the same as [`Path-Mount`](#path-mount), except that this will be treated as the canonical location.
 
     For example, if there's an entry with:
 
@@ -161,10 +161,12 @@ templates; the following headers are what Publ itself uses:
     Title: Test
     Category: blog
     Entry-ID: 12345
-    Path-Mount: /faq
+    Path-Alias: /faq.html
+    Path-Canonical: /faq
+    Path-Mount: /faque
     ```
 
-    then any access to `/blog/12345-test`, `/blog/12345`, `/12345`, etc. will be redirected to `/faq`.
+    then any access to `/blog/12345-test`, `/blog/12345`, `/12345`, '/faq.html', etc. will be redirected to `/faq`.  However, `Path-Mount` paths (`/faque` in the above example) will still be a non-redirecting alias.
 
     As with `Path-Mount`, if a template is specified then this will be treated as an entry template.
 
