@@ -13,7 +13,7 @@
 <header>
 <h1>Publ: {{category.name and category.name.title() or "Yet another site generator"}}</h1>
 {% if view.tags %}
-<div class="description">Entries tagged {{[view.tags[:-1]|join(', '),view.tags[-1]]|select|join(' and ')}}</div>
+<div class="description">Entries tagged {{view.tags|join(', ')}}</div>
 {% elif category.description %}
 <div class="description">{{category.description}}</div>
 {% endif %}
