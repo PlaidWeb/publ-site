@@ -134,6 +134,42 @@ Simiarly, it is highly recommended that `Entry-Template` overrides use this
 convention, as it usually does not make sense to render an entry template in a
 category context.
 
+## Custom filters
+
+Publ provides the following custom filters for use in templates.
+
+### <span id="strip_html">`strip_html(text, allowed_tags=None, allowed_attrs=None, remove_elements=None)`</span>
+
+This filter allows conditional stripping of HTML elements, similar to the built-in [`striptags`](https://jinja.palletsprojects.com/en/2.11.x/templates/#striptags)
+filter except with a bit more flexibility:
+
+* `allowed_tags`: a string or list of strings for tags to preserve in the output
+* `allowed_attrs`: a string or list of strings for attributes to preserve in preserved tags
+* `remove_elements`: a string or list of strings for tags to completely remove, including their children and text content
+
+For example, with the following template:
+
+```jinja2
+{{ entry.body | strip_html('a', 'href', 'del') }}
+```
+
+and the following entry body:
+
+```markdown
+[This *is* a ~~text~~ test](http://example.com/ "hello")
+```
+
+the template output will be similar to:
+
+```html
+<a href="http://example.com/">This is a test</a>
+```
+
+Note that it preserves the `<a>` and its `href` attribute, but it strips the `<em>` tag and completely removes the `<del>` and its contents.
+
+This provides greater flexibility than passing `markup=False` to various template elements such as `entry.title` or `entry.body`.
+
+
 ## Template API
 
 As mentioned before, templates are rendered using
@@ -432,3 +468,4 @@ You can access the default login stylesheet with `{{url_for('login',asset='css')
 ### Logout page
 
 The logout template does not receive any special variables, and should only provide a logout form with `<form method="POST">` which will confirm the logout on submission.
+
