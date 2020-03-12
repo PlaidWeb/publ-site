@@ -150,7 +150,7 @@ filter except with a bit more flexibility:
 For example, with the following template:
 
 ```jinja2
-{{ entry.body | strip_html('a', 'href', 'del') }}
+{{ entry.body | strip_html(allowed_tags='a', allowed_attrs='href', remove_elements='del') }}
 ```
 
 and the following entry body:
