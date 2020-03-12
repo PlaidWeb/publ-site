@@ -1,8 +1,0 @@
-@import url('../style.css');
-
-body {
-    /* {{image("/tests/rawr.jpg").get_css_background(width=200,uncomment=True)}} */
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: top right;
-}
