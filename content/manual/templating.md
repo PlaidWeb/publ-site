@@ -101,12 +101,12 @@ templates:
 * `index.html`: the default category view
 * `entry.html`: the default entry view
 
-The following templates are optional but recommended; if they are not provided, Publ will use a built-in default:
+The following templates are optional; if they are not provided, Publ will use a built-in default:
 
-* `error.html`: the error handler
+* `error.html`: the generic error page (used if no more specific error template is available)
+* `unauthorized.html`: the error page specifically for attempting to access an entry that the logged-in user doesn't have access to
 * `login.html`: the login page
 * `logout.html`: the interstitial logout page, if someone visits the logout page via link or manual URL entry (rather than a form submission)
-* `unauthorized.html`: the error page for attempting to access an entry that the logged-in user doesn't have access to
 
 ### Template naming and overrides
 
