@@ -101,12 +101,12 @@ templates:
 * `index.html`: the default category view
 * `entry.html`: the default entry view
 
-The following templates are optional but recommended; if they are not provided, Publ will use a built-in default:
+The following templates are optional; if they are not provided, Publ will use a built-in default:
 
-* `error.html`: the error handler
+* `error.html`: the generic error page (used if no more specific error template is available)
+* `unauthorized.html`: the error page specifically for attempting to access an entry that the logged-in user doesn't have access to
 * `login.html`: the login page
 * `logout.html`: the interstitial logout page, if someone visits the logout page via link or manual URL entry (rather than a form submission)
-* `unauthorized.html`: the error page for attempting to access an entry that the logged-in user doesn't have access to
 
 ### Template naming and overrides
 
@@ -133,6 +133,42 @@ will not allow other URLs e.g. `/blog/_main_page` to use this template.
 Simiarly, it is highly recommended that `Entry-Template` overrides use this
 convention, as it usually does not make sense to render an entry template in a
 category context.
+
+## Custom filters
+
+Publ provides the following custom filters for use in templates.
+
+### <span id="strip_html">`strip_html(text, allowed_tags=None, allowed_attrs=None, remove_elements=None)`</span>
+
+This filter allows conditional stripping of HTML elements, similar to the built-in [`striptags`](https://jinja.palletsprojects.com/en/2.11.x/templates/#striptags)
+filter except with a bit more flexibility:
+
+* `allowed_tags`: a string or list of strings for tags to preserve in the output
+* `allowed_attrs`: a string or list of strings for attributes to preserve in preserved tags
+* `remove_elements`: a string or list of strings for tags to completely remove, including their children and text content
+
+For example, with the following template:
+
+```jinja2
+{{ entry.body | strip_html(allowed_tags='a', allowed_attrs=['href', 'src'], remove_elements='del') }}
+```
+
+and the following entry body:
+
+```markdown
+[This *is* a ~~text~~ test](http://example.com/ "hello")
+```
+
+the template output will be similar to:
+
+```html
+<a href="http://example.com/">This is a test</a>
+```
+
+Note that it preserves the `<a>` and its `href` attribute, but it strips the `<em>` tag and completely removes the `<del>` and its contents.
+
+This provides greater flexibility than passing `markup=False` to various template elements such as `entry.title` or `entry.body`.
+
 
 ## Template API
 
@@ -432,3 +468,4 @@ You can access the default login stylesheet with `{{url_for('login',asset='css')
 ### Logout page
 
 The logout template does not receive any special variables, and should only provide a logout form with `<form method="POST">` which will confirm the logout on submission.
+

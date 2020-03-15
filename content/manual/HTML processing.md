@@ -32,6 +32,9 @@ Anywhere that Markdown or HTML is processed from a content file, the following p
     <a href="{{entry.link}}" title="{{entry.title(markup=False)}}">{{entry.title}}</a>
     ```
 
+    For the sake of improving readability, this will also remove the contents of `<del>` and `<s>` tags (such as what are rendered by Markdown `~~strikethrough~~`); for example,
+        an entry title of `This is ~~not~~ a test` will render as `This is a test`. If you would like more control over this behavior, use the [`strip_html` filter](324#strip_html) instead.
+
 ## Markdown-only options
 
 The following options only apply to Markdown content:
