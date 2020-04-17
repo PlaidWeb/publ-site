@@ -70,9 +70,9 @@ If your distribution doesn't provide an easy recent version, consider using [pye
     PATH" and if you customize the installation, make sure it installs pip as
     well
 
-2. Install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017), making sure to select "Visual C++ build tools" at the very least.
+2. Install [Visual Studio](https://visualstudio.microsoft.com/downloads/), making sure to select "Visual C++ build tools" at the very least.
 
-    This is unfortunately necessary for some of the libraries Publ depends on. (If you already have Visual Studio installed with C++ support you can skip this step.)
+    This is unfortunately necessary for some of the libraries Publ depends on. You can either install the Visual Studio Community Edition, or you can install just the build tools (under the "Tools for Visual Studio" section).
 
 3. (Optional, but recommended) Install some sort of `bash` environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
 
