@@ -98,6 +98,18 @@ unset GIT_DIR
 ./deploy.sh
 ```
 
+In this situation, you might also want to [share the object store between the bare repo and the deployment](https://git.wiki.kernel.org/index.php/Git_FAQ#How_to_share_objects_between_existing_repositories.3F), to save on some disk space; for example:
+
+```bash
+cd $HOME/sitefiles/example.com.git
+git gc
+git repack -a
+cd $HOME/example.com
+echo "$HOME/sitefiles/example.com.git/objects/" > .git/objects/info/alternates
+git gc
+git repack -a -d -l
+```
+
 ### Separate servers using an `ssh` key
 
 If you keep your git repository on a separate server from where it's deployed to, set up an [ssh key](https://www.ssh.com/ssh/key/) or other authentication mechanism other than password so that you can do passwordless ssh from the repository server to the deployment server, and then add this as a `post-update` hook on the repository:
