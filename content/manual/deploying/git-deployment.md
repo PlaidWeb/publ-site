@@ -103,11 +103,9 @@ In this situation, you might also want to [share the object store between the ba
 ```bash
 cd $HOME/sitefiles/example.com.git
 git gc
-git repack -a
 cd $HOME/example.com
 echo "$HOME/sitefiles/example.com.git/objects/" > .git/objects/info/alternates
 git gc
-git repack -a -d -l
 ```
 
 ### Separate servers using an `ssh` key
