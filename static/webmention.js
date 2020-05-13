@@ -26,13 +26,78 @@ GitHub repo (for latest released versions, issue tracking, etc.):
 
     http://github.com/PlaidWeb/webmention.js
 
+Basic usage:
+
+<script src="/path/to/webmention.js" data-param="val" ... async />
+<div id="webmentions"></div>
+
+Allowed parameters:
+
+    page-url:
+
+        The base URL to use for this page. Defaults to window.location
+
+    add-urls:
+
+        Additional URLs to check, separated by |s
+
+    id:
+
+        The HTML ID for the object to fill in with the webmention data.
+        Defaults to "webmentions"
+
+    wordcount:
+
+        The maximum number of words to render in reply mentions.
+
+    max-webmentions:
+
+        The maximum number of mentions to retrieve. Defaults to 30.
+
+    prevent-spoofing:
+
+        By default, Webmentions render using the mf2 'url' element, which plays
+        nicely with webmention bridges (such as brid.gy and telegraph)
+        but allows certain spoofing attacks. If you would like to prevent
+        spoofing, set this to 1.
+
+    sort-by:
+
+        What to order the responses by; defaults to 'published'. See
+        https://github.com/aaronpk/webmention.io#api
+
+    sort-dir:
+
+        The order to sort the responses by; defaults to 'up' (i.e. oldest
+        first). See https://github.com/aaronpk/webmention.io#api
+
+A more detailed example:
+
+<script src="/path/to/webmention.js"
+    data-id="webmentionContainer"
+    data-wordcount="30"
+    data-prevent-spoofing="1"
+    />
+
 */
 
 
-(function() {
-    var refurl = document.currentScript.getAttribute('data-page-url') || window.location.href.replace(/#.*$/,'');
-    var containerID = document.currentScript.getAttribute('data-id') || "webmentions";
-    var textMaxWords = document.currentScript.getAttribute('data-wordcount');
+(function () {
+    "use strict";
+
+    function getCfg(key, dfl) {
+        return document.currentScript.getAttribute("data-" + key) || dfl;
+    }
+
+    var refurl = getCfg('page-url',
+                        window.location.href.replace(/#.*$/, ''));
+    var addurls = getCfg('add-urls', undefined);
+    var containerID = getCfg('data-id', "webmentions");
+    var textMaxWords = getCfg('wordcount');
+    var maxWebmentions = getCfg('max-webmentions', 30);
+    var mentionSource = getCfg('prevent-spoofing') ? 'wm-source' : 'url';
+    var sortBy = getCfg('sort-by', 'published');
+    var sortDir = getCfg('sort-dir', 'up');
 
     var reactTitle = {
         'in-reply-to': 'replied',
@@ -41,7 +106,7 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         'bookmark-of': 'bookmarked',
         'mention-of': 'mentioned',
         'rsvp': 'RSVPed',
-        'follow-of': 'followed',
+        'follow-of': 'followed'
     };
 
     var reactEmoji = {
@@ -51,7 +116,7 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         'bookmark-of': '⭐️',
         'mention-of': '💬',
         'rsvp': '📅',
-        'follow-of': '🐜',
+        'follow-of': '🐜'
     };
 
     var rsvpEmoji = {
@@ -61,12 +126,21 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         'maybe': '💭'
     };
 
+    function entities(text) {
+        return text.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
     function reactImage(r) {
-        var who = (r.author && r.author.name ? r.author.name : r.url.split('/')[2]);
+        var who = entities((r.author && r.author.name)
+                           ? r.author.name
+                           : r.url.split('/')[2]);
         var response = reactTitle[r['wm-property']] || 'reacted';
-        var html = '<a class="reaction" rel="nofollow" title="' + who + ' ' + response + '" href="' + r['wm-source'] + '">';
+        var html = '<a class="reaction" rel="nofollow ugc" title="' + who + ' ' +
+            response + '" href="' + r[mentionSource] + '">';
         if (r.author && r.author.photo) {
-            html += '<img src="' + r.author.photo + '">';
+            html += '<img src="' + entities(r.author.photo) + '">';
         }
         html += (reactEmoji[r['wm-property']] || '💥');
         if (r.rsvp && rsvpEmoji[r.rsvp]) {
@@ -100,31 +174,34 @@ GitHub repo (for latest released versions, issue tracking, etc.):
     }
 
     function formatComments(comments) {
-        var html = '<h2>' + comments.length + ' Response' + (comments.length > 1 ? 's' : '') +
+        var html = '<h2>' + comments.length + ' Response' +
+            (comments.length > 1 ? 's' : '') +
             '</h2><ul class="comments">';
         comments.forEach(function(c) {
             html += '<li>';
 
             html += reactImage(c);
 
-            html += ' <a class="source" rel="nofollow" href="' + c['wm-source'] + '">';
+            html += ' <a class="source" rel="nofollow ugc" href="' +
+                c[mentionSource] + '">';
             if (c.author && c.author.name) {
-                html += c.author.name;
+                html += entities(c.author.name);
             } else {
-                html += c.url.split('/')[2];
+                html += entities(c.url.split('/')[2]);
             }
             html += '</a>: ';
 
-            var linkclass, linktext;
+            var linkclass;
+            var linktext;
             if (c.name) {
                 linkclass = "name";
                 linktext = c.name;
             } else if (c.content && c.content.text) {
-                var text = c.content.text;
-                text = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                var text = entities(c.content.text);
 
                 if (textMaxWords) {
-                    var words = text.replace(/\s+/g,' ').split(' ', textMaxWords + 1);
+                    var words = text.replace(/\s+/g,' ')
+                        .split(' ', textMaxWords + 1);
                     if (words.length > textMaxWords) {
                         words[textMaxWords - 1] += '&hellip;';
                         words = words.slice(0, textMaxWords);
@@ -139,7 +216,7 @@ GitHub repo (for latest released versions, issue tracking, etc.):
                 linktext = "(mention)";
             }
 
-            html += '<span class="' + linkclass + '" href="' + c['wm-source'] + '">' + linktext + '</span>';
+            html += '<span class="' + linkclass + '">' + linktext + '</span>';
 
             html += '</li>';
         });
@@ -149,19 +226,20 @@ GitHub repo (for latest released versions, issue tracking, etc.):
     }
 
     function formatReactions(reacts) {
-        var html = '<h2>' + reacts.length + ' Reaction' + (reacts.length > 1 ? 's' : '') +
+        var html = '<h2>' + reacts.length + ' Reaction' +
+            (reacts.length > 1 ? 's' : '') +
             '</h2><ul class="reacts">';
 
         reacts.forEach(function(r) {
             html += reactImage(r);
-        })
+        });
 
         return html;
     }
 
     function getData(url, callback) {
-        if (fetch) {
-            fetch(url).then(function(response) {
+        if (window.fetch) {
+            window.fetch(url).then(function(response) {
                 if (response.status >= 200 && response.status < 300) {
                     return Promise.resolve(response);
                 } else {
@@ -176,28 +254,37 @@ GitHub repo (for latest released versions, issue tracking, etc.):
             var oReq = new XMLHttpRequest();
             oReq.onload = function(data) {
                 callback(JSON.parse(data));
-            }
+            };
             oReq.onerror = function(error) {
                 console.error("Request failed", error);
-            }
+            };
         }
     }
 
-    window.addEventListener("load", function() {
+    window.addEventListener("load", function () {
         var container = document.getElementById(containerID);
         if (!container) {
             // no container, so do nothing
             return;
         }
 
-        var pageurl = stripurl(refurl);
+        var pages = [stripurl(refurl)];
+        if (!!addurls) {
+            addurls.split('|').forEach(function (url) {
+                pages.push(stripurl(url));
+            })
+        }
 
-        var apiURL = 'https://webmention.io/api/mentions.jf2?target[]=' +
-            encodeURIComponent('http:' + pageurl) +
-            '&target[]=' + encodeURIComponent('https:' + pageurl);
+        var apiURL = 'https://webmention.io/api/mentions.jf2?per-page=' +
+            maxWebmentions + '&sort-by=' + sortBy + '&sort-dir=' + sortDir;
+
+        pages.forEach(function (path) {
+            apiURL += '&target[]=' + encodeURIComponent('http:' + path) +
+                '&target[]=' + encodeURIComponent('https:' + path);
+        });
 
         getData(apiURL, function(json) {
-            html = '';
+            var html = '';
 
             var comments = [];
             var collects = [];
@@ -213,7 +300,9 @@ GitHub repo (for latest released versions, issue tracking, etc.):
 
             json.children.forEach(function(c) {
                 var store = mapping[c['wm-property']];
-                if (store) store.push(c);
+                if (store) {
+                    store.push(c);
+                }
             });
 
             // format the comment-type things
@@ -230,4 +319,4 @@ GitHub repo (for latest released versions, issue tracking, etc.):
         });
     });
 
-})();
+}());
