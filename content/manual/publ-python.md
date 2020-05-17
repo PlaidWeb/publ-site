@@ -25,6 +25,7 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
 
     * **`database_config`**: The parameters sent to PonyORM's [`db.bind()`](https://docs.ponyorm.com/api_reference.html#Database.bind) method. Defaults to an in-memory sqlite database.
     * **`index_rescan_interval`**: How frequently Publ should do a maintenance rescan of the content files. Defaults to 7200 (2 hours); set to 0 or `None` to disable.
+    * **`index_wait_time`**: How long to wait to start updating the index after a change is detected, in seconds. Defaults to 1.
 
     * **`content_folder`**: The directory which contains the root of your site's content files. Defaults to `content`
     * **`template_folder`**: The directory which contains the root of your site's template files. Defaults to `templates`
