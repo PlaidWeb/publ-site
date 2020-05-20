@@ -14,6 +14,8 @@ The `view` object has the following things on it:
 
     Optionally takes a parameter, `unauthorized`, which indicates the maximum number of unauthorized entries which will be included. If this is a number, that number of unauthorized entries will be included; if True, *all* unauthorized entries will be included. These entries will count against the `count` limit, if any. Defaults to `0`.
 
+    Iterating on the `view` itself is equivalent to iterating on its `entries` without any arguments.
+
 * **`deleted`**: A list of all of the entries that were deleted from this view (with `Status: GONE` or `Status: DELETED`)
 
 * <span id="unauthorized">**`unauthorized`**: A list of entries which would be included if the user were authorized.</span>
@@ -175,6 +177,11 @@ arguments are supported:
     * **`oldest`**: Oldest-first
     * **`newest`**: Newest-first (default)
     * **`title`**: Sorted alphabetically by title
+
+* **`has_attachments`**: Limit the view to entries with (if `True`) or without (if `False`) attachments
+* **`is_attached`**: Limit the view to entries which are (if `True`) or are not (if `False`) attachments
+* **`attachments`**: Limit the view to entries which are attachments of the specified entry
+* **`attached`**: Limit the view to entries which have the specified entry attached
 
 For example, this will print the titles of
 the first 10 entries in the view, including subcategories:

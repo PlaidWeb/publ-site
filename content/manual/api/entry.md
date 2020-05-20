@@ -238,6 +238,28 @@ The `entry` object has the following methods/properties:
 
     Header names are not case-sensitive (i.e. `'fooBar'`, `'Foobar'`, and `'FOOBAR'` are all equivalent).
 
+* **`attachments`**: Other entries which are attached to this one, using the `Attach:` header.
+
+    This takes the standard [view arguments](150#subviews). Note that the default ordering is undefined, and if order matters you should specify it. For example:
+
+    ```jinja
+    {% for attachment in entry.attachments(order='oldest') %}
+    ```
+
+    will order by date, and
+
+    ```jinja
+    {% for attachment in entry.attachments(order='title') %}
+    ```
+
+    will order them by title (honoring the `Sort-Title` attribute). You can also sort by arbitrary metadata headers; for example:
+
+    ```jinja
+    {% for attachment in entry.attachments|sort(attribute='My-Custom-Header')} %}
+    ```
+
+* **`attached`**: Like `attachments`, but it shows the entries that this entry is attached to.
+
 * The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
 
     * `file_path`: The file path of the entry's content file
