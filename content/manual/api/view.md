@@ -172,13 +172,13 @@ arguments are supported:
 * **`first`**: Limit the view such to none older than the specified entry
 * **`before`**: Limit the view to only entries which came before the specified entry
 * **`after`**: Limit the view to only entries which came after the specified entry
-* <span id="order">**`order`**: What sort order to provide the entries in; one of:</span>
+* <span id="order">**`order`**</span>: What sort order to provide the entries in; one of:
 
     * **`oldest`**: Oldest-first
     * **`newest`**: Newest-first (default)
     * **`title`**: Sorted alphabetically by title
 
-* **`has_attachments`**: Limit the view to entries with (if `True`) or without (if `False`) attachments
+* <span id="attachments">**`has_attachments`**</span>: Limit the view to entries with (if `True`) or without (if `False`) attachments
 * **`is_attached`**: Limit the view to entries which are (if `True`) or are not (if `False`) attachments
 * **`attachments`**: Limit the view to entries which are attachments of the specified entry
 * **`attached`**: Limit the view to entries which have the specified entry attached

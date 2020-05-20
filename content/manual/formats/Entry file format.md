@@ -240,6 +240,9 @@ templates; the following headers are what Publ itself uses:
 
     Note that identities won't necessarily be an email address; they are only listed as such here for illustrative purposes. For example, a Mastodon user will appear as e.g. `https://queer.party/@fluffy`.
 
+* <span id="attach">**`Attach`**: Another entry to "attach" to this one, useful for defining arbitrary content sections or the like. This can be by file path or by entry ID.
+
+    This is to be used with the [`entry.attachments`](115#attachments) and [`entry.attached`](115#attached) template functions, as well as the related [view parameters](150#attachments)
 
 ## Entry content
 

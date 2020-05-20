@@ -220,17 +220,19 @@ The `entry` object has the following methods/properties:
 
     Also, if the header name is a valid variable name (i.e. consists of only letters, numbers, and underscores, and starts with a letter or underscore), and doesn't conflict with an API function, you can also retrieve it directly, e.g. `entry.Foobar` is equivalent to `entry.get('Foobar')`. It is recommended that if you do this, always start the name with a capital letter, to avoid conflicts with any future API functions (e.g. `entry.Next` will always be equivalent to `entry.get('Next')`).
 
+    Note that this will get the *raw* header values, rather than anything interpreted by Publ. So, for example, `entry.get('date')` will return the `Date:` header string, rather than the display date of the entry.
+
 * **`get_all`**: Get all of a header type from an entry, as a list.
 
     For example, this template fragment
-    will print out all of the `Tag` headers in an unordered list, but only
-    if there are any `Tag` headers:
+    will print out all of the `Author` headers in an unordered list, but only
+    if there are any `Author` headers:
 
     ```jinja
-    {% if entry.get('Tag') %}
-    <ul class="tags">
-        {% for tag in entry.get_all('Tag') %}
-        <li>{{ tag }}</li>
+    {% if entry.Author %}{# equivalent to entry.get('Author') #}
+    <ul class="authors">
+        {% for author in entry.get_all('Author') %}
+        <li>{{ author }}</li>
         {% endfor %}
     </ul>
     {% endif %}
@@ -238,7 +240,9 @@ The `entry` object has the following methods/properties:
 
     Header names are not case-sensitive (i.e. `'fooBar'`, `'Foobar'`, and `'FOOBAR'` are all equivalent).
 
-* **`attachments`**: Other entries which are attached to this one, using the `Attach:` header.
+    Note that this will get the *raw* header values, rather than anything interpreted by Publ. So, for example, `entry.get_all('category')` will retrieve the raw text of the `Category:` header, rather than the entry's [`category` object](170).
+
+* <span id="attachments">**`attachments`**</span>: Other entries which are attached to this one, using the `Attach:` header.
 
     This takes the standard [view arguments](150#subviews). Note that the default ordering is undefined, and if order matters you should specify it. For example:
 
