@@ -309,7 +309,7 @@ The following additional things are provided to all templates:
         (for example, the template `templates/blog/feed.xml` will search in
         `content/blog`)
 
-* **`login`**: Provide a login link
+* <span id="login_link">**`login`**</span>: Provide a login link
 
     This can be used directly, i.e. `{{login}}`, or it can be given a redirection path
     for where to redirect on successful login; for example, if you want to redirect back to the
@@ -322,6 +322,8 @@ The following additional things are provided to all templates:
     You can also pass in additional parameters to the login handler; for example, it will take a
     named `me` parameter to provide an identity to start logging in as, although this isn't
     generally useful except for test purposes (such as providing quick `test:whatever` links).
+
+    This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
 
 * <span id="logout_link">**`logout`**: Provide a logout link</span>
 
@@ -342,6 +344,16 @@ The following additional things are provided to all templates:
     ```
 
     will not.
+
+    This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
+
+* <span id="token_endpoint">**`token_endpoint`**: Get a link to the built-in IndieAuth token endpoint</span>
+
+    Adding a `<link rel="token_endpoint" href="{{token_endpoint}}"" />` to the `<head>` section of a page will allow external tools (MicroPub, AutoAuth, etc.) to generate a secure access token for the resource represented by that page.
+
+    This takes no parameters. This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
+
+* <span id="secure_url">**`secure_url`**: A version of `url_for()` which will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
 
 A note to advanced Flask users: while `url_for()` is available, it shouldn't
 ever be necessary, as all its useful functionality is exposed via the available
