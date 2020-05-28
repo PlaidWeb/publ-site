@@ -1,4 +1,7 @@
 Title: Command-Line Interface
+Date: 2020-05-27 23:34:43-07:00
+Entry-ID: 238
+UUID: 4d9a7bf8-bda2-5b5e-bd6e-a9d814471ade
 
 Commands that can be run from the CLI for various things
 

@@ -40,7 +40,7 @@ with open('.sessionkey') as file:
 This is a key-value dictionary that is sent along to Authl's `from_config` settings. See the Authl documentation for the most up-to-date configuration flags; here are some that you are likely to want to use:
 
 * SSL options:
-    * `AUTH_FORCE_HTTPS`: set to True if logins should all go over HTTPS instead of HTTP (highly recommended!)
+    * <span id="force_https">`AUTH_FORCE_HTTPS`: set to True if logins should all go over HTTPS instead of HTTP (highly recommended!)</span>
 * Email options:
     * `SMTP_HOST`: the email host (required; usually `localhost`)
     * `SMTP_PORT`: the email port (required; usually `25`)
