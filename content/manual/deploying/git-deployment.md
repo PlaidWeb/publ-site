@@ -8,13 +8,11 @@ How to use git hooks to automatically deploy site content
 
 .....
 
-This is the approach I use for managing my site content on [my main website](http://beesbuzz.biz). It requires that you can run shell scripts from your git repositories, and ideally your git repository lives on the same server as your actual Publ installation.
-
-This applies to any hosting setup where you log in to a server directly to manage your files and applications, such as [self-hosting](self-hosting.md) or using [Passenger](passenger.md). Other hosting environments (Heroku, Docker, etc.) will likely need a different build-and-deploy mechanism.
+It's pretty common to use git to host your website files. There are a few different ways that you can use git itself to automate the deployment of site updates, depending on the specifics of your git hosting situation. The below methods should cover the vast majority of git-based workflows, at least if you're [self-hosting Publ](self-hosting.md).
 
 ## Deployment script
 
-Regardless of how you manage your deployment trigger, you will need a deployment script, which does a `git pull` and updates package versions if the `Pipfile.lock` has changed. Save this file as `deploy.sh` in your website repository, and make sure it's set executable:
+Regardless of your actual git hosting situation, you will need a deployment script, which does a `git pull` and updates package versions if the `Pipfile.lock` has changed. Save this file as `deploy.sh` in your website repository, and make sure it's set executable:
 
 ```bash
 #!/bin/sh
@@ -39,30 +37,10 @@ if git diff --name-only $PREV | grep -q Pipfile.lock ; then
 fi
 
 if [ "$1" != "nokill" ] && [ ! -z "$disposition" ] ; then
-    # insert server restart command here (see note)
+    # insert server restart command here (see note), e.g.
+    # systemctl --user $disposition SERVICE-NAME.service
 fi
 ```
-
-There's a bit of wiggle room in how you actually restart the service. If you're using [a systemd user service](1278#systemd) to manage your process, you can use something like:
-
-```bash
-    systemctl --user $disposition SERVICE-NAME.service
-```
-
-Otherwise, you can put this at the bottom of your `app.py`:
-
-```python
-with open('.run.pid', 'w') as pidfile:
-    pidfile.write(os.getpid())
-```
-
-and then use this to restart the server:
-
-```bash
-    [ -f .run.pid ] && kill -HUP $(cat .run.pid) && rm .run.pid
-```
-
-This will only tell gunicorn to reload, however, and it probably won't cause the new version of gunicorn itself to start up, in case that's a concern.
 
 The remainder of the deployment process depends on how you're actually hosting your git repository.
 
@@ -70,43 +48,54 @@ The remainder of the deployment process depends on how you're actually hosting y
 
 ### Repository on same server as the website
 
-On your webserver, create a private bare git repository wherever you want it; for example, if you have your deployed website in `$HOME/example.com`, this will create a bare repository in `$HOME/sitefiles/example.com.git`:
+For this example, we will keep the main git repository in `$HOME/sitefiles/example.com.git` and the deployment directory in `$HOME/example.com`.
+
+On your webserver, create a private bare git repository wherever you want it; for example, on the server, run:
 
 ```bash
+# change this!
+SITENAME=example.com
+
+# create the bare repository
 mkdir -p $HOME/sitefiles
-cd $HOME/sitefiles
-git clone --bare $HOME/example.com example.com.git
-```
+git init --bare $HOME/sitefiles/$SITENAME.git
 
-Now you'll have a bare repository in `sitefiles/example.com.git` and an application directory in `example.com`.
-
-Back wherever you're actually developing your website, add the new bare repository as a remote, for example:
-
-```bash
-git remote add publish username@servername:sitefiles/example.com.git
-```
-
-Finally, add a `post-update` hook to the bare repository, e.g. `$HOME/sitefiles/example.com.git/hooks/post-update`:
-
-```bash
+# add the post-update hook
+cat > $HOME/sitefiles/$SITENAME.git/hooks/post-update << EOF
 #!/bin/sh
 
 echo "Deploying new site content..."
 
-cd $HOME/example.com
+cd \$HOME/$SITENAME
 unset GIT_DIR
-./deploy.sh
+if [ ! -x ./deploy.sh ] ; then
+    echo "Deployment script not available or not executable" 1>&2
+    exit 1
+fi
+./deploy.sh || echo "Deployment script failed"
+EOF
+chmod u+x $HOME/sitefiles/$SITENAME.git/hooks/post-update
+
+# set up the live/deployment workspace
+cd $HOME
+git clone $HOME/sitefiles/$SITENAME.git
+# optional: make this repository share the raw objects (to save some disk space)
+# see https://git.wiki.kernel.org/index.php/Git_FAQ#How_to_share_objects_between_existing_repositories.3F
+cd example.com
+echo "$HOME/sitefiles/$SITENAME.git/objects/" > .git/objects/info/alternates
+git gc
 ```
 
-In this situation, you might also want to [share the object store between the bare repo and the deployment](https://git.wiki.kernel.org/index.php/Git_FAQ#How_to_share_objects_between_existing_repositories.3F), to save on some disk space; for example:
+Now you'll have a bare repository in `$HOME/sitefiles/example.com.git` and a live deployment workspace in `$HOME/example.com`, and pushing to the bare repository will run the deployment script in the live workspace, if it exists.
+
+On your local repository (i.e. where you're actually working on your site) add the bare repository as your remote:
 
 ```bash
-cd $HOME/sitefiles/example.com.git
-git gc
-cd $HOME/example.com
-echo "$HOME/sitefiles/example.com.git/objects/" > .git/objects/info/alternates
-git gc
+git remote add origin user@server.example.com:sitefiles/example.com.git
+git push -u origin master
 ```
+
+This should push all of your content into the bare repository; however, since the live workspace won't yet have `deploy.sh` you'll need to do one `git pull` manually. After this, every push to the bare repository should automatically run your deployment script.
 
 ### Separate servers using an `ssh` key
 
@@ -213,3 +202,14 @@ Anyway, once you have it set up, every time you commit to GitHub, your site shou
 
 An example of this in action can be seen at the [files for this site](/github-site); in particular, see the [`app.py`](https://github.com/PlaidWeb/publ-site/blob/master/app.py) and [`deploy.sh`](https://github.com/PlaidWeb/publ-site/blob/master/deploy.sh) files.
 
+## Troubleshooting
+
+### Site doesn't update, or "updates rejected"
+
+This is usually a sign that something changed on your deployment repository that's causing a git conflict. `ssh` into your live workspace and do a `git pull` to see what's going on. Chances are there was a change on your live repository that's causing an update conflict, for example you checked in an entry which didn't yet have an assigned `Entry-ID` or the like.
+
+Generally you can fix this by going into your live repository and doing `git status` to see what's changed, and a command like `git checkout . && git pull` or `git reset --hard origin/master` will sort everything out (but be sure not to lose any changes you meant to make directly on the server).
+
+### Webhook is timing out
+
+If your packages change, the webhook will likely time out while `pipenv install` runs. This should be okay, but try `ssh`ing into your live workspace and running `./deploy.sh` manually.
