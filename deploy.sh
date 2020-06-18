@@ -8,7 +8,7 @@ PREV=$(git rev-parse --short HEAD)
 
 git pull --ff-only || exit 1
 
-if git diff --name-only $PREV | grep -qE '^(templates/|app\.py)' ; then
+if git diff --name-only $PREV | grep -qE '^(templates/|app\.py|users\.cfg)' ; then
     echo "Configuration or template change detected"
     disposition=reload-or-restart
 fi

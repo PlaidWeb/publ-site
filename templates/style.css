@@ -48,6 +48,15 @@ a.toplink {
     margin-left: 1em;
     font-weight: normal;
     font-style: italic;
+    opacity: 0.5;
+}
+
+*:hover >a.toplink {
+    opacity: 1;
+}
+
+a.toplink:after {
+    content: "back to top";
 }
 
 @media print {
