@@ -111,3 +111,4 @@ logs/
 tmp/
 index.db
 *.sublime-workspace
+cache/

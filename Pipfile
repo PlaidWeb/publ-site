@@ -9,6 +9,7 @@ publ = "*"
 flask-hookserver = "*"
 python-memcached = "*"
 psycopg2-binary = "*"
+pushl = "*"
 
 [dev-packages]
 pylint = "*"

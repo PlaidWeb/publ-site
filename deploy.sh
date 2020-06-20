@@ -22,3 +22,15 @@ fi
 if [ "$1" != "nokill" ] && [ ! -z "$disposition" ] ; then
     systemctl --user $disposition publ.beesbuzz.biz.service
 fi
+
+echo "Updating the content index..."
+pipenv run flask publ reindex
+
+count=0
+while [ $count -lt 5 ] && [ ! -S $HOME/.vhosts/publ.beesbuzz.biz ] ; do
+    count=$(($count + 1))
+    echo "Waiting for service to restart... ($count)"
+    sleep $count
+done
+
+pipenv run pushl -rvvc cache http://publ.beesbuzz.biz/feed https://publ.beesbuzz.biz/feed
