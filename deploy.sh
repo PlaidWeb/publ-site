@@ -33,4 +33,4 @@ while [ $count -lt 5 ] && [ ! -S $HOME/.vhosts/publ.beesbuzz.biz ] ; do
     sleep $count
 done
 
-pipenv run pushl -rvvc cache http://publ.beesbuzz.biz/feed https://publ.beesbuzz.biz/feed
+pipenv run pushl -rvvc $HOME/var/pushl http://publ.beesbuzz.biz/feed https://publ.beesbuzz.biz/feed
