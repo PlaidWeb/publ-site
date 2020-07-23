@@ -1,5 +1,6 @@
 @import url('{{static("pygments.default.css")}}');
 @import url('{{static("webmentions.css")}}');
+@import url('{{static("fancy-code.css")}}');
 
 html {
     padding: 0;
@@ -61,26 +62,6 @@ a.toplink:after {
 
 @media print {
     a.toplink { display: none; }
-}
-
-code,
-.highlight pre {
-    font-family: 'Andale Mono', 'Liberation Mono', 'Monaco', 'Lucida Console', monospace;
-}
-
-code {
-    background: #eee;
-    color: #300;
-    border: solid #ccc 1px;
-    border-radius: 2px;
-    padding: 0 0.2ex;
-}
-
-pre {
-    background: #eeeaec;
-    border: dotted black 1px;
-    padding: 1ex;
-    border-radius: 5px;
 }
 
 .images {

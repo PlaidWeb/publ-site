@@ -113,7 +113,7 @@ templates; the following headers are what Publ itself uses:
     migrating from a legacy site and you have a URL like
     `http://example.com/blog/0012345.php` you can set a header like:
 
-    ```
+    ```publ
     Path-Alias: /blog/0012345.php
     ```
 
@@ -128,7 +128,7 @@ templates; the following headers are what Publ itself uses:
 
     You can also optionally specify a category template to use, by writing it after the aliased path:
 
-    ```
+    ```publ
     Path-Alias: /blog/0012345.php archive
     ```
 
@@ -140,7 +140,7 @@ templates; the following headers are what Publ itself uses:
     This is similar to [`Path-Alias`](#path-alias), except that the browser will not be redirected to the canonical location; for example, if you have an
     entry like:
 
-    ```
+    ```publ
     Title: Test
     Category: blog
     Entry-ID: 12345
@@ -157,7 +157,7 @@ templates; the following headers are what Publ itself uses:
 
     For example, if there's an entry with:
 
-    ```
+    ```publ
     Title: Test
     Category: blog
     Entry-ID: 12345
@@ -210,7 +210,7 @@ templates; the following headers are what Publ itself uses:
 
     This is a list of identities or groups, separated by spaces. Identities/groups which start with a `!` means that they *cannot* access the entry. For example, this line:
 
-    ```
+    ```publ
     Auth: friends !mailto:erik@example.com
     ```
 
@@ -220,23 +220,23 @@ templates; the following headers are what Publ itself uses:
 
     There is also a special access group, `*`, which just refers to anyone who is logged in; for example:
 
-    ```
+    ```publ
     Auth: *
     ```
 
     will be visible to anyone who is logged in, and
 
-    ```
+    ```publ
     Auth: !*
     ```
 
     will only be visible to anyone who is *not* logged in. These rules can also stack; for example:
 
-    ```
+    ```publ
     Auth: * !enemies mailto:bob@example.com
     ```
 
-    will be visible to anyone who's logged in except for members of the `enemies` group, but `mailto:bob@example.com` will be allowed even if they are in `enemies`. This is one way that you can make an entry which is open to everyone *except* people who have been banned, for example.
+    will be visible to anyone who's logged in except for members of the `enemies` group, but `mailto:bob@example.com` will be allowed even if they are in `enemies`. This is one way that you can make an entry which is open to everyone *except* people who have been blocked, for example.
 
     Note that identities won't necessarily be an email address; they are only listed as such here for illustrative purposes. For example, a Mastodon user will appear as e.g. `https://queer.party/@fluffy`.
 
@@ -244,7 +244,7 @@ templates; the following headers are what Publ itself uses:
 
     This is to be used with the [`entry.attachments`](115#attachments) and [`entry.attached`](115#attached) template functions, as well as the related [view parameters](150#attachments)
 
-## Entry content
+## <span id="markdown-extensions">Entry content</span>
 
 After the headers, you can have entry content; if the file has a `.htm` or `.html`
 extension it will just render directly as HTML (with internal `href` and `src` links rewritten to local files and entries), but with a `.md` extension it will
@@ -260,12 +260,13 @@ There are also some Publ-specific extensions for things like cuts, image renditi
 
 * **`.....`**: Indicates the cut from above-the-fold to below-the-fold content (must be on a line by itself)
 
-### <span name="image-renditions"></span>Images
+### <span name="image-renditions">Images</span>
 
 Publ extends the standard Markdown image tag (`![](imageFile)`) syntax with some added features for
 generating display-resolution-independent renditions and [Lightbox](http://lokeshdhakar.com/projects/lightbox2/) galleries. The syntax is based on the standard Markdown for an image, which is:
 
 ```markdown
+
 ![alt text](image-path.jpg "title text")
 ```
 
@@ -274,6 +275,7 @@ generating display-resolution-independent renditions and [Lightbox](http://lokes
 * Multiple images can be specified in the image list, separated by `|` characters; for example:
 
     ```markdown
+
     ![](image1.jpg "title text" | image2.jpg | image3.jpg "also title text")
     ```
 
@@ -291,6 +293,7 @@ You can also specify the width and height as the first one or two unnamed argume
 for example, these two invocations are equivalent:
 
 ```markdown
+
 ![{320,240}](image1.jpg | image2.jpg | image3.jpg)
 
 ![{width=320,height=240}](image1.jpg | image2.jpg | image3.jpg)
@@ -299,6 +302,7 @@ for example, these two invocations are equivalent:
 For the shorthand notation, if you want to specify only height you can use `None` for the width, e.g.:
 
 ```markdown
+
 ![{None,240}](image1.jpg | image2.jpg | image3.jpg)
 ```
 
@@ -352,6 +356,7 @@ To support image sets, the following options can be added to the `alt text` sect
 For example, this Markdown fragment:
 
 ```markdown
+
 ![{div_class="foo"}](test.jpg | test2.jpg)
 ```
 
@@ -372,6 +377,7 @@ HTML `<img>` tags will use their `width` and `height` attributes to determine th
 is equivalent to:
 
 ```markdown
+
 ![](foo.jpg{320,200} "Custom title")
 ```
 
@@ -420,7 +426,7 @@ You want to read <a href="term paper.pdf">my paper</a>? I'm flattered!
 Any file type is supported; however, keep in mind that an HTML or Markdown file will be interpreted as an [entry](#entry-links). If you would like to
 serve one up as just their plain content, you can give it headers like:
 
-```
+```publ
 Status: HIDDEN
 Entry-Template: _plain
 ```
@@ -429,10 +435,10 @@ and create a `templates/_plain.html` file that is simply:
 
 ```jinja
 {{entry.body}}
-{% if entry.more %}
+{%- if entry.more -%}
 .....
 {{entry.more}}
-{% endif %}
+{%- endif -%}
 ```
 
 #### Static assets
@@ -482,3 +488,85 @@ As above, you can also use these in any HTML element with the `src`, `href`, or 
 <iframe src="some entry.md"></iframe> <!-- by filename -->
 <div $data-popup="12345#anchor"></div> <!-- by entry ID -->
 ```
+
+### <span id="fenced-code">Fenced code blocks</span>
+
+As is typical for Markdown, Publ supports fenced code blocks, with a syntax like:
+
+````markdown
+```language
+Text goes here
+More text
+More text
+```
+````
+
+Publ also allows you to add a title to a fenced code block, by putting it on the first line and prefixed with `!`:
+
+````markdown
+```python
+! example.py
+def foo():
+    return None
+```
+````
+
+This will render as:
+
+```python
+! example.py
+def foo():
+    return None
+```
+
+Note: If you need the first line of code to start with a literal `!` character, put a blank line before it.
+
+The overall code block structure is:
+
+```html
+<div class="blockcode">
+    <div class="caption">
+        Block caption
+    </div>
+    <pre>
+        Code goes here
+    </pre>
+</div>
+```
+
+If a language is specified, the `<pre>` contents get some additional structure:
+
+```html
+<pre><code class="highlight">
+    <span class="line" id="xxxL1">
+        <a class="line-number" href="#xxxL1"></a>
+        <span class="line-content">first line</span>
+    </span>
+    <span class="line" id="xxxL2">
+        <a class="line-number" href="#xxxL2"></a>
+        <span class="line-content">second line</span>
+    </span>
+    <span class="line" id="xxxL3">
+        <a class="line-number" href="#xxxL3"></a>
+        <span class="line-content">third line</span>
+    </span>
+   ...
+</code></pre>
+```
+
+This markup is intended to be used with [CSS counters](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters) to actually add the line numbering, which allows copy-and-paste to still function correctly. For a minimal example:
+
+```css
+.highlight {
+    counter-reset: codeline;
+}
+
+.highlight .line-number::before {
+    content: counter(codeline);
+    display: inline-block;
+    min-width: 3em;
+}
+
+```
+
+For a more thorough example of how to format fancy code, look at the [code block CSS file](@fancy-code.css) for this website.

@@ -46,7 +46,7 @@ and connecting to the URL gunicorn tells you (likely `http://127.0.0.1:8000/`).
 
 Next, you'll need a `Procfile` which tells Heroku how to launch your site:
 
-```
+```text
 web: gunicorn app:app
 ```
 

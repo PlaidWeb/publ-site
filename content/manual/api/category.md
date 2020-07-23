@@ -172,13 +172,13 @@ The headers supported by Publ itself:
 
 For example, given the file `some/category/info.cat`:
 
-```
+```publ
 Name: Random Category
 ```
 
 it will set the `name` attribute of the `some/category` category to `"Random Category"`. However, if the file contains:
 
-```
+```publ
 Name: Specific Category
 Category: other/category
 ```
@@ -187,7 +187,7 @@ then it will set the `name` attribute of the `other/category` category to `"Spec
 
 Similarly to entries, this also supports the `Path-Alias` and `Path-Mount` headers; for example:
 
-```
+```publ
 Category: /art/sketchbook
 Path-Alias: /comics/cat-sketchbook.php archive
 Path-Mount: /sketchbook
@@ -203,7 +203,7 @@ Any text after the headers will be treated as the `description` for the category
 Note that at least one header is required. If you just want to provide a description and no other configuration,
 you can simply start the file with a blank line, or you can use a bogus header, for example:
 
-```
+```publ
 Asdf: qwer
 
 Here is a description with no real configuration.

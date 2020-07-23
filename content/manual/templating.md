@@ -122,7 +122,7 @@ Template`, or [`get_template()`](#get-template)) but it will not be available to
 if you want to override your site's main page you can create a file like
 `/content/mainpage.cat`:
 
-```
+```publ
 Name: My website
 Index-Template: _main_page
 ```
@@ -315,7 +315,7 @@ The following additional things are provided to all templates:
     for where to redirect on successful login; for example, if you want to redirect back to the
     category rather than the current page, you can use:
 
-    ```
+    ```jinja
     <a href="{{login(category.link)}}">Log in and return to {{category.name}}</a>
     ```
 
@@ -333,13 +333,13 @@ The following additional things are provided to all templates:
     prevent certain issues with browsers prefetching pages). If you would like the user to not need to
     confirm the logout, use it in a `<form method="POST">`. For example:
 
-    ```
+    ```jinja
     <a href="{{logout}}">Log out</a>
     ```
 
     will show a logout confirmation dialog (using the `logout.html` template), whereas
 
-    ```
+    ```jinja
     <form method="POST" method="{{logout}}"><input type="submit" name="Log out"></form>
     ```
 

@@ -86,6 +86,8 @@ config = {
     },
 
     'auth': {
+        'AUTH_FORCE_HTTPS': not os.environ.get('FLASK_DEBUG'),
+
         'SMTP_HOST': 'localhost',
         'SMTP_PORT': 25,
         'EMAIL_FROM': 'nobody@beesbuzz.biz',

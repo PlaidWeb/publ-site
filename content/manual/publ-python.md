@@ -80,7 +80,6 @@ def favicon():
     """ Static route should work """
     return flask.send_file('favicon.ico')
 
-```python
 @app.route('/foo/<path:path>')
 def redirect_foo(path):
     """ Dynamic route will likely fail, as the 'category' route is a stronger match """
