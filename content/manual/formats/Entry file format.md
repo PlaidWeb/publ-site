@@ -501,7 +501,9 @@ More text
 ```
 ````
 
-Publ also allows you to add a title to a fenced code block, by putting it on the first line and prefixed with `!`:
+#### Syntax extensions
+
+Publ allows you to add a title to a fenced code block, by putting it on the first line and prefixed with `!`:
 
 ````markdown
 ```python
@@ -519,25 +521,67 @@ def foo():
     return None
 ```
 
-Note: If you need the first line of code to start with a literal `!` character, put a blank line before it.
+Note: If you need the first line of code to start with a literal `!` character, put a blank line before it, or prefix it with `!`.
+
+You can also provide template override arguments to the code block by putting parameters after the language declaration; for example:
+
+````markdown
+
+```{code_number_links=False}
+This block has had its line number links suppressed.
+```
+
+```bash{code_highlight=False}
+cat << EOF
+This code has had highlighting disabled.
+
+Test 1
+Test 2
+EOF
+```
+````
+
+These render as:
+
+```{code_number_links=False}
+This block has had its line number links suppressed.
+```
+
+```bash{code_highlight=False}
+cat << EOF
+This code has had highlighting disabled.
+
+Test 1
+Test 2
+EOF
+```
+
+
+#### HTML output
 
 The overall code block structure is:
 
 ```html
-<div class="blockcode">
-    <div class="caption">
+<figure class="blockcode">
+    <figcaption>
         Block caption
-    </div>
+    </figcaption>
     <pre>
-        Code goes here
+        /* code goes in here */
     </pre>
-</div>
+</figure>
 ```
 
-If a language is specified, the `<pre>` contents get some additional structure:
+If a language is specified, the `<pre>` also gets `class="highlight"` and a `data-language` attribute that is set to the language.
+
+If code highlighting is enabled, the code is also run through [Pygments](https://pygments.org/).
+
+If line number links are enabled, the `<pre>` gets an empty attribute of `data-line-numbers`.
+
+Each line is wrapped in a `<span class="line">` and a `<span class="line-content">`, to allow for additional CSS formatting. If both `code_highlight` and `code_number_links` are enabled, there will also be a `<a class="line-number"></a>` inserted before the `line-content` span, and the `line` span will have an ID that this links to. This allows for code-line permalinks:
 
 ```html
-<pre><code class="highlight">
+<pre>
     <span class="line" id="xxxL1">
         <a class="line-number" href="#xxxL1"></a>
         <span class="line-content">first line</span>
@@ -551,7 +595,7 @@ If a language is specified, the `<pre>` contents get some additional structure:
         <span class="line-content">third line</span>
     </span>
    ...
-</code></pre>
+</pre>
 ```
 
 This markup is intended to be used with [CSS counters](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters) to actually add the line numbering, which allows copy-and-paste to still function correctly. For a minimal example:

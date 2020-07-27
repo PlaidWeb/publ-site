@@ -82,6 +82,11 @@ The `entry` object has the following methods/properties:
 
         If you would not like any self-link to be produced for some reason, set `heading_template` to `{text}`.
 
+    * **`code_highlight`**: Whether to apply syntax highlighting to code blocks with a declared language (default: `True`)
+    * **`code_number_links`**: Whether to generate line-numbering links within code blocks; see the [fenced code extensions](322#fenced-code) for more information. (default: `True`)
+
+        Set this to a string value to override the base URL for the line number links.
+
 * <span id="toc">**`toc`**</span>: The table of contents for an entry.
 
     Renders a table of contents based on the headings of the entry; only applies to Markdown entries.

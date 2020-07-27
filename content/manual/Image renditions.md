@@ -54,18 +54,21 @@ render images.
     you can do:
 
     ```markdown
+
     ![](inset-image.jpg{shape="inset-mask.png",style="float:left"})
     ```
 
     It is better to make image insets' float rules part of your stylesheet, however, so that it can be responsive; for example:
 
     ```markdown
+
     ![](inset-image.jpg{shape="inset-mask.png",img_class="inset-left"})
     ```
 
     The size of the outline image will be mapped the same as the base image, wherever possible; for example:
 
     ```markdown
+
     ![{320,320}](inset-image.jpg{shape="inset-mask.png"})
     ```
 
@@ -133,6 +136,10 @@ an option to still resize it larger client-side, where the actual rendition will
 
 These options drive the behavior of image sets.
 
+* **`figure`**: Whether to wrap the image set inside a `<figure>`. If this is set to a string, the string is used as a CSS class.
+
+* **`caption`**: Adds a caption to the image set. Markdown is supported. Implies `figure=True`.
+
 * **`div_class`**: The CSS class to use for the containing `<div>`
 
 * **`div_style`**: A string or a list of strings, which provide inline CSS rules to the `<div>` element
@@ -178,12 +185,14 @@ These options drive the behavior of image sets.
     then if you have an image like this:
 
     ```markdown
+
     ![](me.jpg{crop='5,5,500,400',index_crop='20,20,400,300'})
     ```
 
     then on the page rendered via `index.html` it will be equivalent to:
 
     ```markdown
+
     ![](me.jpg{crop='20,20,400,300'})
     ```
 
@@ -236,18 +245,21 @@ of the image (making for a useful non-punchline-destroying excerpt).
 In the above example, if you have a comic that is provided at screen resolution to begin with (such as guest art) you can override the default scaling with e.g.:
 
 ```markdown
+
 ![](guest-comic.png{scale=1} "Amazing guest comic!")
 ```
 
 Or if there's one you want to force to a specific size:
 
 ```markdown
+
 ![](special-comic.jpg{width=960,height=480})
 ```
 
 which can also be written more compactly as:
 
 ```markdown
+
 ![](special-comic.jpg{960,480})
 ```
 
@@ -257,6 +269,7 @@ which can also be written more compactly as:
 With the below setup, if an entry provides an image set with a `count_offset` parameter, e.g.
 
 ```markdown
+
 ![{count_offset=2}](image1.jpg | image2.jpg | image3.jpg | image4.jpg)
 ```
 

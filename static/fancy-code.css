@@ -5,14 +5,13 @@ This reformats fenced-code blocks into tables with CSS-generated line numbers on
 */
 
 .blockcode {
-    background: #eee;
     border: solid #ccc 1px;
     border-radius: 1ex;
     margin-bottom: 1em;
     overflow: hidden;
 }
 
-.blockcode .caption {
+.blockcode figcaption {
     font-size: small;
     color: #77f;
     font-style: italic;
@@ -21,46 +20,49 @@ This reformats fenced-code blocks into tables with CSS-generated line numbers on
     background: #fff7f7;
 }
 
+/* Set the code font */
 code,
 pre {
     font-family: 'Andale Mono', 'Liberation Mono', 'Monaco', 'Lucida Console', monospace;
-    margin: 0;
-    padding: 0;
-    line-height: 1em;
+    background: #eee;
 }
 
-pre {
+/* Set up <pre> blocks to work as a table with a row per line, and put the lines in cells */
+.blockcode pre {
     overflow-x: auto;
-}
-
-.line-content {
-    padding: 0 1ex;
-    width: 100%;
-}
-
-.highlight {
     display: table;
+    width: 100%;
     counter-reset: codeline;
     border-collapse: collapse;
+    margin: 0;
+    padding: 0;
 }
 
-.highlight .line {
+.blockcode pre .line-content {
+    padding: 0 1ex;
+    width: 100%;
+    display: table-cell;
+}
+
+.blockcode pre .line {
     display: table-row;
     counter-increment: codeline;
 }
 
-pre .line:first-child .line-content {
+/* Add some inner padding to the first and last lines */
+.blockcode pre .line:first-child .line-content {
     padding-top: 0.5em;
 }
 
-pre .line:last-child .line-content {
+.blockcode pre .line:last-child .line-content {
     padding-bottom: 0.5em;
 }
 
-.highlight .line-number:hover {
+/* Configure display of the line numbers, if present */
+.blockcode pre .line-number:hover {
     background: rgba(255,255,0,0.5);
 }
-.highlight .line-number::before {
+.blockcode pre .line-number::before {
     display: table-cell;
     content: counter(codeline);
     font-size: small;
@@ -72,8 +74,7 @@ pre .line:last-child .line-content {
     vertical-align: baseline;
 }
 
-.highlight .line-content {
-    display: table-cell;
+/* If there are line numbers, add a border to the left side of the content cells */
+.blockcode pre[data-line-numbers] .line-content {
     border-left: solid #999 1px;
 }
-

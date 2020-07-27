@@ -138,7 +138,11 @@ category context.
 
 Publ provides the following custom filters for use in templates.
 
-### <span id="strip_html">`strip_html(text, allowed_tags=None, allowed_attrs=None, remove_elements=None)`</span>
+### <span id="strip_html">`strip_html`</span>
+
+```
+strip_html(text, allowed_tags=None, allowed_attrs=None, remove_elements=None)
+```
 
 This filter allows conditional stripping of HTML elements, similar to the built-in [`striptags`](https://jinja.palletsprojects.com/en/2.11.x/templates/#striptags)
 filter except with a bit more flexibility:
