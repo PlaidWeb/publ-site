@@ -46,8 +46,7 @@ templates; the following headers are what Publ itself uses:
 
 * **`Title`**: The display title of the entry
 
-    If none is given, it will try to infer the title from the filename. It will
-    probably get this wrong.
+    **Default value**: None
 
 * <span id="sort-title">**`Sort-Title`**: The sorting title of the entry</span>
 
@@ -98,7 +97,7 @@ templates; the following headers are what Publ itself uses:
 
     In some circles this is known as "SEO text."
 
-    **Default value:** the entry title; if there is no title, the entry's filename (minus extension)
+    **Default value:** the entry title
 
 * <span id="redirect-to">**`Redirect-To`**: A URL to redirect this entry to</span>
 
@@ -137,8 +136,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="path-mount">**`Path-Mount`**: An alternate path to this entry</span>
 
-    This is similar to [`Path-Alias`](#path-alias), except that the browser will not be redirected to the canonical location; for example, if you have an
-    entry like:
+    This is similar to [`Path-Alias`](#path-alias), except that the browser will not be redirected to the canonical location; for example, if you have an entry like:
 
     ```publ
     Title: Test
@@ -153,7 +151,7 @@ templates; the following headers are what Publ itself uses:
 
 * <span id="path-canonical">**`Path-Canonical`**: Specify the canonical path to this entry</span>
 
-    This is the same as [`Path-Mount`](#path-mount), except that this will be treated as the canonical location.
+    **Default value:** `/{category}/{entry id}-{slug text}` (for example, `/articles/general/1924-this-is-a-test`)
 
     For example, if there's an entry with:
 
@@ -166,7 +164,7 @@ templates; the following headers are what Publ itself uses:
     Path-Mount: /faque
     ```
 
-    then any access to `/blog/12345-test`, `/blog/12345`, `/12345`, '/faq.html', etc. will be redirected to `/faq`.  However, `Path-Mount` paths (`/faque` in the above example) will still be a non-redirecting alias.
+    then any access to `/blog/12345-test`, `/blog/12345`, `/12345`, `/faq.html`, etc. will be redirected to `/faq`.  However, `Path-Mount` paths (`/faque` in the above example) will still be a non-redirecting alias.
 
     As with `Path-Mount`, if a template is specified then this will be treated as an entry template.
 
@@ -174,51 +172,67 @@ templates; the following headers are what Publ itself uses:
 
 * **`UUID`**: A globally-unique identifier for the entry
 
-    While Publ doesn't use this for itself, having this sort of generated ID is
-    useful for Atom feeds and the like. As such, it will be automatically generated if not present.
+    While Publ doesn't use this internally, having this sort of generated ID is
+    useful for Atom feeds and the like. As such, a UUID will be automatically
+    generated if not present.
 
-    It is *highly recommended* that this be unique across all entries.
+    It is *highly recommended* (but not technically required) that this be
+    unique to every entry, including between different websites.
 
-* <span id="entry-type">**`Entry-Type`**: An arbitrary string which you can use to define an entry type</span>
+* <span id="entry-type">**`Entry-Type`**: An arbitrary string which you can use
+    to define an entry type</span>
 
-    This allows you to differentiate entry types however you
-    want; with this you can, for example, set up something similar to what
-    WordPress and Tumblr call "page"-type content, or use this to manage entries
-    within a navigation sidebar or a linkroll or the like.
+    This allows you to differentiate entry types however you want; with this you
+    can, for example, set up something similar to what WordPress and Tumblr call
+    "page"-type content, or use this to manage entries within a navigation
+    sidebar or a linkroll or the like.
 
     Note that this is intended for affecting the layout/structure of the site,
-    and each entry only has a single type. If you set more than one, only one of them will be used (and which one
-    is undefined). For making content that can be filtered on multiple criteria, use [tags](#tag) instead.
+    and each entry only has a single type. If you set more than one, only one of
+    them will be used (and which one is undefined). For making content that can
+    be filtered on multiple criteria, use [tags](#tag) instead.
 
-* <span id="template-override">**`Entry-Template`**</span>: Use the specified template instead of `entry` when rendering this entry
+* <span id="template-override">**`Entry-Template`**</span>: Use the specified
+    template instead of `entry` when rendering this entry
 
-* <span id="last-modified">**`Last-Modified`**: The date to use for the last-modified time for this entry.</span>
+* <span id="last-modified">**`Last-Modified`**: The date to use for the
+    last-modified time for this entry.</span>
 
     Like with `Date`, if you set this to a non-date value (e.g. `now`) then it
     will be replaced with the file modification time when the file is scanned.
 
     **Default value:** the entry's `Date`
 
-* <span id="tag">**`Tag`**: Add the specified tag to the entry. To add more than one tag, use separate `Tag:` headers.</span>
-* <span id="hiddentag">**`Hidden-Tag`**: Like `Tag`, but the tag will not appear in the entry's tag list. This lets you filter an entry without making its filter criteria visible.</span>
+* <span id="tag">**`Tag`**: Add the specified tag to the entry. To add more than
+    one tag, use separate `Tag:` headers.</span>
+* <span id="hiddentag">**`Hidden-Tag`**: Like `Tag`, but the tag will not appear
+    in the entry's tag list. This lets you filter an entry without making its
+    filter criteria visible.</span>
 
-* <span id="summary">**`Summary`**</span>: A plain-text summary/description of the entry.
+* <span id="summary">**`Summary`**</span>: A plain-text summary/description of
+    the entry.
 
-    **Default value:** The first paragraph of text in the entry body, with all formatting removed.
+    **Default value:** The first paragraph of text in the entry body, with all
+    markup removed.
 
-* <span id="auth">**`Auth`**: A list of permissions for who can and cannot see the entry.</span>
+* <span id="auth">**`Auth`**: A list of permissions for who can and cannot see
+    the entry.</span>
 
-    This is a list of identities or groups, separated by spaces. Identities/groups which start with a `!` means that they *cannot* access the entry. For example, this line:
+    This is a list of identities or groups, separated by spaces.
+    Identities/groups which start with a `!` means that they *cannot* access the
+    entry. For example, this line:
 
     ```publ
     Auth: friends !mailto:erik@example.com
     ```
 
-    means that members of `friends` can access the entry, but not `erik@example.com` (even if they are a member of `friends`).
+    means that members of `friends` can access the entry, but not
+    `erik@example.com` (even if they are a member of `friends`).
 
     This list can grow arbitrarily long, and the rightmost rule wins.
 
-    There is also a special access group, `*`, which just refers to anyone who is logged in; for example:
+    There is also a special access group, `*`, which just refers to anyone who
+    is logged in; for example:
 
     ```publ
     Auth: *
@@ -230,15 +244,22 @@ templates; the following headers are what Publ itself uses:
     Auth: !*
     ```
 
-    will only be visible to anyone who is *not* logged in. These rules can also stack; for example:
+    will only be visible to anyone who is *not* logged in. These rules can also
+    stack; for example:
 
     ```publ
     Auth: * !enemies mailto:bob@example.com
     ```
 
-    will be visible to anyone who's logged in except for members of the `enemies` group, but `mailto:bob@example.com` will be allowed even if they are in `enemies`. This is one way that you can make an entry which is open to everyone *except* people who have been blocked, for example.
+    will be visible to anyone who's logged in except for members of the
+    `enemies` group, but `mailto:bob@example.com` will be allowed even if they
+    are in `enemies`. This is one way that you can make an entry which is open
+    to everyone *except* people who have been blocked, for example.
 
-    Note that identities won't necessarily be an email address; they are only listed as such here for illustrative purposes. For example, a Mastodon user will appear as e.g. `https://queer.party/@fluffy`.
+    Note that identities won't necessarily be an email address; they are only
+    listed as such here for illustrative purposes. For example, a Mastodon user
+    will appear as e.g. `https://queer.party/@fluffy`. See the [user
+    configuration file](1341) and [admin guide](732) for more information.
 
 * <span id="attach">**`Attach`**: Another entry to "attach" to this one, useful for defining arbitrary content sections or the like. This can be by file path or by entry ID.
 

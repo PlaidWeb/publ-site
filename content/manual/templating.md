@@ -242,11 +242,7 @@ The following additional things are provided to all templates:
 
 * **`template`**: Information about the current [template](/api/template)
 
-* **`user`**: Information about the current user; this object has the following properties:
-
-    * **`name`**: The login identity of the user
-    * **`groups`**: A list of the groups they belong to
-    * **`is_admin`**: `True` if the user is a member of the administrative group
+* **`user`**: Information about the [current user](/api/user)
 
 * **`image`**: Load an image
 
