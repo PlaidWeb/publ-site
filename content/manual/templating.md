@@ -138,7 +138,11 @@ category context.
 
 Publ provides the following custom filters for use in templates.
 
-### <span id="strip_html">`strip_html(text, allowed_tags=None, allowed_attrs=None, remove_elements=None)`</span>
+### <span id="strip_html">`strip_html`</span>
+
+```
+strip_html(text, allowed_tags=None, allowed_attrs=None, remove_elements=None)
+```
 
 This filter allows conditional stripping of HTML elements, similar to the built-in [`striptags`](https://jinja.palletsprojects.com/en/2.11.x/templates/#striptags)
 filter except with a bit more flexibility:
@@ -238,11 +242,7 @@ The following additional things are provided to all templates:
 
 * **`template`**: Information about the current [template](/api/template)
 
-* **`user`**: Information about the current user; this object has the following properties:
-
-    * **`name`**: The login identity of the user
-    * **`groups`**: A list of the groups they belong to
-    * **`is_admin`**: `True` if the user is a member of the administrative group
+* **`user`**: Information about the [current user](/api/user)
 
 * **`image`**: Load an image
 

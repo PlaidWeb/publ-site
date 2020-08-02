@@ -100,7 +100,8 @@
             {% if entry.more %}
             <div class="entry e-content">
                 {{entry.more(gallery_id=entry.id,
-                    div_class="images",
+                    max_width=800,
+                    figure_class="images",
                     heading_link_class="permalink",
                     heading_template='{link}</a>{text} <a class="toplink" href="#top"></a>')}}
             </div>

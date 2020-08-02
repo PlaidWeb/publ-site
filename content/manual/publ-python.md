@@ -49,7 +49,7 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
 
     * **`auth`**: The configuration values for the [authentication system](authentication.md#auth).  Defaults to no configuration.
     * **`user_list`**: The filename of the configuration file that stores the user configuration. Defaults to `users.cfg`
-    * **`admin_group`**: The name of the user group that will have administrative access; defaults to `admin`
+    * <span id="admin_group">**`admin_group`**: The name of the user group that will have administrative access; defaults to `admin`</span>
     * **`auth_log_prune_interval`**: How frequently to clean out the authentication log, in seconds. Defaults to 3600 (one hour).
     * **`auth_log_prune_age`**: The maximum age of authentication log entries to keep, in seconds. Defaults to one month.
     * **`max_token_age`**: The expiry time for [AutoAuth](https://indieweb.org/AutoAuth) tokens, in seconds. Defaults to one hour.
@@ -227,9 +227,14 @@ logout_helper = publ.utils.auth_endpoint('logout')
 flask.redirect(logout_link())
 
 # log out and redirect to server root
-flast.redirect(logout_link('/'))
+flask.redirect(logout_link('/'))
 ```
 
 Also note that the redirection target *must* be a local URL; external URLs will
 not work. (This prevents your site from being used as a
 malicious URL redirector.)
+
+## Other useful API functions
+
+If you need the current [user object](/api/user), use the function `publ.user.get_active()`.
+
