@@ -10,12 +10,24 @@
 
     {% if user %}
     <ul>
+        <li>last seen: {{user.last_seen.format('YYYY-MM-DD h:mm A')}}</li>
+        {% if user.last_login %}
+        <li>last login: {{user.last_login.format('YYYY-MM-DD h:mm A')}} ({{user.last_login.humanize()}})</li>
+        {% endif %}
         <li>name: {{user.name}}</li>
         <li>auth type: {{user.auth_type}}</li>
         <li>scope: {{user.scope}}</li>
         <li>groups: {{user.groups}}</li>
         <li>auth_groups: {{user.auth_groups}}</li>
         <li>is_admin: {{user.is_admin}}</li>
+        {% if user.profile %}
+        <li>Profile:<ul>
+            {% for key,val in user.profile.items() %}
+            <li>{{key}}: {{val}}</li>
+            {% endfor %}
+        </ul></li>
+        {% endif %}
+
     </ul>
     {% else %}
     <p>No active user</p>
