@@ -347,12 +347,6 @@ The following additional things are provided to all templates:
 
     This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
 
-* <span id="token_endpoint">**`token_endpoint`**: Get a link to the built-in IndieAuth token endpoint</span>
-
-    Adding a `<link rel="token_endpoint" href="{{token_endpoint}}"" />` to the `<head>` section of a page will allow external tools (MicroPub, AutoAuth, etc.) to generate a secure access token for the resource represented by that page.
-
-    This takes no parameters. This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
-
 * <span id="secure_url">**`secure_url`**: A version of `url_for()` which will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
 
 A note to advanced Flask users: while `url_for()` is available, it shouldn't
