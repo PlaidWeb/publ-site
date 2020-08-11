@@ -36,6 +36,15 @@ The `user` object provides the following:
 
 * **`last_seen`**: The last time the user was active on the site
 
+* **`token(lifetime,scope=None)`**: A function to generate an HTTP Bearer token for preauthorization.
+
+    Arguments:
+
+    * `lifetime`: How long the token is good for, in seconds
+    * `scope`: The access scopes that should be associated with the token
+
+    See [using bearer tokens](238#token) for more information.
+
 Generally there is not much use in providing this information to end-users of the site; for the most part you should only use `user.name` to address the user, and possibly use `user.groups` to check for particular group membership if that is something you want to show them. For example, if you use user groups as a means of managing memberships or rewards or the like, you could do something like:
 
 ```jinja

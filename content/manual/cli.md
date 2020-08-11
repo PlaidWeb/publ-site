@@ -27,7 +27,7 @@ It takes two arguments:
 * `--fresh`/`-f`: Start with a fresh index (i.e. remove all the cached data); this is useful if something weird has happened and you want a fresh start (if something weird has happened, please [open an issue](/newissue)!)
 * `--quiet`/`-q`: Don't show the progress indicator
 
-## `token`
+## <span id="token">`token`</span>
 
 This command can be used to generate an IndieAuth token for scripting purposes, such as for use with [Pushl](1295), or for testing authentication automatically.
 
@@ -42,6 +42,9 @@ will fetch the `https://example.com/feed` page with a token identifying the user
 
 Note that the session key will need to match between wherever you're running this and the actual site. If they do not match (for example, because the session key hasn't been configured, or because you're running in a different configuration) this token will not be valid.
 
-This takes one argument:
+This takes the following arguments:
 
 * `--scope/-s`: Generate the token with the specified scope (defaults to none)
+* `--lifetime/-l`: How long the token should be valid for, in seconds (default: 3600)
+
+Note that token scopes are not currently used by Publ itself; this is provided largely to make it easier to extend Publ via the [Python API](865), such as implementing a mechanism to automatically post content from external sources.

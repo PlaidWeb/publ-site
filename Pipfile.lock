@@ -453,11 +453,11 @@
         },
         "publ": {
             "hashes": [
-                "sha256:723606e2d219ffacd7b33bf66db275e38ced11ae629b7a40e49c19ecaa9f01a5",
-                "sha256:c7b77bc38766a7e54eaf46d27321e66c0535d6c0d2dbe6f0a702a4517b94c93b"
+                "sha256:0dffe0aac943ace7b097e51f47744a340e64db493408679f6ffca9c559ce2aab",
+                "sha256:c9c3ee5d3163dd2af9cd0d6c2584af5fe51fe1fdaf34b19e6fda7f9750d70ef7"
             ],
             "index": "pypi",
-            "version": "==0.6.8"
+            "version": "==0.6.8.post1"
         },
         "pushl": {
             "hashes": [
