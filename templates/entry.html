@@ -36,7 +36,7 @@
         </ul>
         {% if entry.toc %}
         <h2 id="toc">Table of Contents</h2>
-        {{entry.toc}}
+        {{entry.toc(max_depth=entry.get('toc-depth',2))}}
         {% endif %}
     </nav>
     {% endblock %}

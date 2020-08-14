@@ -1,5 +1,4 @@
 Title: Frequently Asked Questions
-Path-Alias: /faq
 Path-Canonical: /faq
 Entry-Type: sidebar
 Date: 2018-04-30 17:01:50-07:00
@@ -13,29 +12,101 @@ Last-Modified: 2019-02-21 05:24:49+00:00
 
 ### What is Publ, anyway?
 
-Publ is a website **publ**ishing system, with a focus on heterogenous content and flexibility, and with simple content management principles.
+Publ is a website **publ**ishing system, with a focus on heterogenous content
+and flexibility, and with simple content management principles.
 
 For [my own personal site](http://beesbuzz.biz/) I need to be able to manage
-comics, music, art, photography, a blog, and who knows what else as in a simple, uniform manner, while also supporting [IndieWeb](http://indieweb.org) principles.
+comics, music, art, photography, a blog, and who knows what else as in a simple,
+uniform manner, while also supporting [IndieWeb](http://indieweb.org)
+principles.
 
 ### Is Publ a CMS?
 
-That depends on how you define "CMS." At the most basic, it is one -- it manages and renders content to be published to a website, after all -- but the term "CMS" has a history of implying something more complicated, with an integrated end-to-end asset management pipeline and database-driven post editor.
+That depends on how you define "CMS." At the most basic, it is one --- it
+manages and renders content to be published to a website, after all --- but the
+term "CMS" has a history of implying something more complicated, with an
+integrated end-to-end asset management pipeline and database-driven post editor.
 
-I do sometimes refer to Publ as a CMS but for the above reason I prefer to think of it as a "publishing system" or "like a static site generator, but dynamic."
+I do sometimes refer to Publ as a CMS but for the above reason I prefer to think
+of it as a "publishing system" or "like a static site generator, but dynamic."
+
+#### How is it "like a static site generator?"
+
+Most static site generators allow you to organize your content in the form of
+HTML or Markdown files organized loosely in a filesystem, and have those files
+appear as pages on the website. These files are the "ground truth" of what
+constitutes the authoritative data; content can be managed with whatever tools
+you like, and versioning and collaboration can take place using any number of
+systems such as git or cloud-based file storage like Dropbox or NextCloud.
+
+Static site generators also generally allow you to provide your original,
+full-resolution images, and then use template configuration or the like to cut
+renditions for view on the public webpage.
+
+#### But it's dynamic?
+
+Static site generators are great for performance --- they're just generating
+their files once and then being served statically, after all --- but they lack a
+lot of flexibility. You have to go out of your way to support things like
+scheduled posts, for example, and there's no safe way to share content with a
+restricted audience. Support for archive pages is generally limited to only
+date-based archives, or if there are paginated archives, the archive pages tend
+to change over time, so a snapshot of one page of the website's content archive
+might not necessarily show the same content as it would at present. It also
+becomes unwieldy to have rich support for tag filtering; generally you only
+allow browsing a single tag at a time.
+
+Publ, on the other hand, supports all of the above, and also allows for a few
+additional things that are difficult or unwieldy to support in a static site.
+For example, if you move content around on the site, accesses to an old URL will
+automatically get redirected to the current one, and you can also set up URL
+mappings for imported content, or provide easy-to-remember aliases. You can even
+completely override the way that entry URLs are generated --- such as on this
+very FAQ!
+
+Publ does have a database, but it serves only as an index to content on the
+filesystem, rather than being actual content storage. Since the filesystem is
+the ground truth of the website, there is no need to migrate or maintain the
+database. You can change hosts, revert to old versions, or heck, outright delete
+the database if something goes wrong, and it'll just get rebuilt by Publ.
+
+Basically, Publ gives you the best of both worlds, with very few drawbacks.
+
+#### What are some of the drawbacks?
+
+The big one is that you need to be able to host Python applications, which
+normally requires somewhat better web hosting than your typical shared hosting
+plan (although there are shared hosting providers which support Python
+applications).
+
+On that note, it does take a bit more technical know-how to set this up compared
+to a typical PHP or static site. However, there are [deployment
+guides](/manual/deploying/) to provide that information for a number of known
+hosting scenarios.
+
+Finally, you'll probably need at least a basic understanding of HTML and CSS to
+set up your own site, and be willing to learn
+[Jinja](https://jinja.palletsprojects.com/) templating. Hopefully there will
+eventually be a rich ecosystem of existing templates you can draw from, though!
 
 ### Why not just use one of the many existing publishing systems?
 
-Oh, gosh, yes, there *are* [a lot of publishing systems](https://en.wikipedia.org/wiki/List_of_content_management_systems) out there! Movable Type, Wordpress, Pelican, Jekyll/Octopress, Drupal, GetSimple, not to mention proprietary hosted ones like Tumblr, Facebook, SquareSpace, Wix, Remixer, as well as the old-school hand-written HTML or PHP-with-minor-templating...
+Oh, gosh, yes, there *are* [a lot of publishing
+systems](https://en.wikipedia.org/wiki/List_of_content_management_systems) out
+there! Movable Type, Wordpress, Pelican, Jekyll/Octopress, Drupal, GetSimple,
+Hugo, not to mention proprietary hosted ones like Tumblr, Facebook, SquareSpace,
+Wix, Remixer, as well as the old-school hand-written HTML or
+PHP-with-minor-templating...
 
-I actually have played around with a lot of them, and have historically mostly used
-[Movable Type](http://movabletype.org) for running my own sites. Don't get me wrong, a lot of these platforms have
-a lot going for them, and work very well for a lot of people! But none of them really fit into the niche I was looking for,
-with this particular combination of features:
+I actually have played around with a lot of them, and have historically mostly
+used [Movable Type](http://movabletype.org) for running my own sites. Don't get
+me wrong, a lot of these platforms have a lot going for them, and work very well
+for a lot of people! But none of them really fit into the niche I was looking
+for, with this particular combination of features:
 
 * Allowing multiple templates for different parts of a single site
 * Ensuring the ability to reorganize content (or import content from other systems) and have permalinks remain valid
-* Having MVC-style routing rules that allow for future expansion
+* Having flexible routing rules that allow for future expansion
 * Keeping pages and their content together
 * Providing dynamic image renditions which are:
     * CDN-friendly
@@ -43,9 +114,9 @@ with this particular combination of features:
     * Multi-resolution/high-DPI-aware
     * Not prone to denial-of-service attacks
 * Stable pagination (i.e. an archive page's link should always point to the same content regardless of when a search engine indexed it)
+* Support for protected/private/restricted entries using existing authentication systems
 
-I had ended up hacking a lot of this functionality into my Movable Type templates
-but as I mentioned on [the first blog entry](325), this got incredibly unwieldy and difficult!
+It certainly is *possible* to add all of this to some of the existing publishing systems, but building something from the ground up with these features in mind allowed for a much cleaner design and more flexibility wit t
 
 ### What does the UI look like?
 
@@ -66,40 +137,29 @@ not even be useful for a single site — republishing content would be best
 handled by other tools, like a [cron job](https://en.wikipedia.org/wiki/Cron)
 that pulls an external RSS feed, for example.
 
-My *intention* is that there will eventually be an online content editor that integrates with Publ, but this doesn't necessarily have to be written by me or work in any particular way. My vision for one is  a web-based file manager and a Publ-oriented Markdown editor, but maybe someone else would have a different (possibly better) idea.
+My *intention* is that there will eventually be an online content editor that integrates with Publ, but this doesn't necessarily have to be written by me or work in any particular way. My vision for one is a web-based file manager and a Publ-oriented Markdown editor, but maybe someone else would have a different (possibly better) idea.
 
 ### How do I use it?
 
-Right now there's a [getting started guide](328) which covers the basics of running
-it locally and setting up a basic site, and [this site's files](/github-site)
-includes all of the necessary configuration for deploying on both Heroku and Dreamhost.
-There's definitely a lot of work to be done in the documentation area, though;
-I would love if someone could write up a clear and simple way for people to
-deploy to their platform of choice!
+Right now there's a [getting started guide](328) which covers the basics of
+running it locally and setting up a basic site, and [this site's
+files](/github-site) includes all of the necessary configuration for deploying
+on both Heroku and Dreamhost. There are also the [deployment
+guides](/manual/deploying/) that cover a lot of usage scenarios. There's
+definitely a lot of work to be done in the documentation area, though; I would
+love if someone could write up a clear and simple way for people to deploy to
+their platform of choice!
 
 ## Design
 
 ### What is it written in?
 
-Publ is written in Python (I'm currently developing against 3.7 and targeting 3.5 as a minimum), using the [Flask](http://flask.pocoo.org) framework,
-and [PonyORM](https://ponyorm.com) for its content indexing. For Markdown processing
-it's using [Misaka](http://misaka.61924.nl), and for time and date handling it
-uses [Arrow](https://arrow.readthedocs.io). It also uses [watchdog](https://github.com/gorakhargosh/watchdog)
-to watch the content store for changes.
-
-### Why make it dynamic and not static?
-
-Static publishing has a lot of benefits, and I was even considering making Publ a static publishing system early on. I ended up going with a dynamic publishing model for a bunch of reasons.
-
-First and foremost, it makes for a much easier private-content access control model; with static publishing you can do a straightforward semi-private thing (by having hidden content that's not shown on the index) but having any sort of content gate contingent on a viewer's identity gets very complicated fast, and usually just ends up offloading it to the web server, badly.
-
-This also allows for much better flexibility in image renditions; with a static publishing system you need to cut all possible renditions for all possible images up-front, or rely on a dynamic image rendition service (which could be easily abused), but Publ takes a middle ground where it only generates the renditions that are actively being used by visible pages.
-
-The dynamic publishing model also *vastly* simplifies the mechanism for generating redirections from content that's moved. It also makes scheduled posts much, much easier to handle.
-
-In static systems you either have to rebuild the entire site at publication time (which can be slow) or only rebuild the parts which have changed (which can be *incredibly* tricky, especially when pages depend on each other in unexpected ways). It also limits what sorts of archive paginations are feasible to do.
-
-The main tradeoffs are that you have to be able to run it as an application (which requires somewhat better hosting than most cheap providers provide) and that there's a bit more overhead when a page is rendered; however, there are many choices of [Python hosting providers](545), and in most cases the performance overhead is largely mitigated by Publ's caching design.
+Publ is written in Python, using the [Flask](https://flask.palletsprojects.com/)
+framework, and [PonyORM](https://ponyorm.com) for its content indexing. For
+Markdown processing it's using [Misaka](http://misaka.61924.nl), and for time
+and date handling it uses [Arrow](https://arrow.readthedocs.io). It also uses
+[watchdog](https://github.com/gorakhargosh/watchdog) to watch the file-based
+content store for changes.
 
 #### Why Flask (and not web.py/pyramids/...)?
 
@@ -110,11 +170,12 @@ might be using in the future.
 #### And why PonyORM (and not SQLAlchemy/raw SQL/MongoDB/...)?
 
 Because it's easy to get started with and handles the actual use cases for the
-site pretty well. The database itself is just a disposable content index (in fact,
-the way Publ currently does a schema "upgrade" is by dropping
-all its tables and re-scanning the content files). I didn't see any need for
-anything more "proper" when the only requirements are a glorified key-value store
-with some basic ordered indexing; Publ treats the filesystem itself as the source of ground truth.
+site pretty well. The database itself is just a disposable content index (in
+fact, the way Publ currently does a schema "upgrade" is by dropping all its
+tables and re-scanning the content files). I didn't see any need for anything
+more "proper" when the only requirements are a glorified key-value store with
+some basic ordered indexing; Publ treats the filesystem itself as the source of
+ground truth.
 
 #### And Misaka?
 
@@ -134,7 +195,7 @@ irredeemably bad, there are some [pretty fundamental problems with its security
 model](246) that make it somewhat undesirable. Also, setting up a flexible
 request routing mechanism is way too varied and error-prone with the PHP
 ecosystem (`.htaccess` on Apache, fiddly `location` rules on nginx, etc.), and I
-haven't found any MVC-style routing/templating systems I'm happy with.
+haven't found any routing or templating systems I'm happy with.
 
 As far as other languages go, one of my primary concerns was making it
 deployable in as many places as possible, including various forms of shared
@@ -154,11 +215,14 @@ think that someone might make something that is "Publ-ish."
 
 ### Why Markdown and not reStructuredText?
 
-I haven't yet investigated what it will take to support RST. It is certainly within the realm of possibility, although at a glance I am not sure its concept of image handling quite fits in with Publ's design.
+I haven't yet investigated what it will take to support RST. It is certainly
+within the realm of possibility, although at a glance I am not sure its concept
+of image handling quite fits in with Publ's design.
 
 ### What about AsciiDoc?
 
-It is also on my radar, but like reStructuredText I haven't investigated its suitability for use in Publ.
+It is also on my radar, but like reStructuredText I haven't investigated its
+suitability for use in Publ.
 
 ## Performance
 
@@ -206,68 +270,73 @@ necessary, it will be fairly straightforward to implement a third option:
 sshfs, S3, etc.) which acts as the CDN origin
 
 If you are running a site which gets to this point then clearly you're making
-more money than me at this and I'd humbly suggest you consider [showing your support](https://liberapay.com/fluffy).
+more money than me at this and I'd humbly suggest you consider [showing your
+support](https://liberapay.com/fluffy).
 
 
 ## Interoperability
 
 ### Do you support ActivityPub?
 
-At some point I will write a longer piece on why ActivityPub has an impedance mismatch with Publ's design goals, but in the meantime you can read an [off-the-cuff rant about it](http://beesbuzz.biz/blog/2535-ActivityPub-hot-take).
+Not at present. While I do want to support it natively (particularly for better
+interoperability with Mastodon and the like), ActivityPub's design makes for
+some pretty major challenges when it comes to supporting it.
 
-That said, it is fairly simple to support ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295); this very site is [configured to use that](https://github.com/PlaidWeb/publ-site/blob/d4f9d990e608e5bc1d6c35572bfe37b30e20dc2c/app.py#L82), and might be followable at `@publ.beesbuzz.biz@publ.beesbuzz.biz` on your WebFinger-enabled social network of choice, although the experience isn't particularly great.
-
-I am also thinking of ways to support ActivityPub as an add-on, which would also work with the authentication system to give proper privacy granularity in the Fediverse.
+That said, it is fairly simple to add basic, non-authenticated support for
+ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295).
 
 ### What about Webmention, WebSub, ...?
 
-Publ is only one piece of a puzzle for a rich [IndieWeb](http://indieweb.org) experience. It is intended to provide the publishing and content management aspects of a site, and allow the use of other, simple tools for other parts of the ecosystem.
+Publ is only one piece of a puzzle for a rich [IndieWeb](http://indieweb.org)
+experience. It is intended to provide the publishing and content management
+aspects of a site, and allow the use of other, simple tools for other parts of
+the ecosystem.
 
-To that end, the intention is that things like outgoing Webmention and WebSub are left to external tools. One such tool is [Pushl](1295) to provide the notification conduit between Publ (or any other publishing system, static or dynamic!) and the various push infrastructure that is emerging around the IndieWeb.
+To that end, the intention is that things like outgoing Webmention and WebSub
+are left to external tools. One such tool is [Pushl](1295) to provide the
+notification conduit between Publ (or any other publishing system, static or
+dynamic!) and the various push infrastructure that is emerging around the
+IndieWeb.
 
-As far as incoming Webmentions are concerned, most of that comes down to selecting whatever endpoint you want. There is already a rich ecosystem of Webmention endpoints that are available for use now (I use [webmention.io](http://webmention.io), personally), and I haven't seen any compelling reason to integrate one into Publ directly. (That said, I do have a [Webmention endpoint wishlist](http://beesbuzz.biz/blog/6982-My-webmention-endpoint-wish-list) and it'd be nice to build it as a Flask blueprint.)
+As far as incoming Webmentions are concerned, most of that comes down to
+selecting whatever endpoint you want. There is already a rich ecosystem of
+Webmention endpoints that are available for use now (such as
+[webmention.io](https://webmention.io)), and there are a number of ways that you
+can display incoming mentions on a Publ site, such as using
+[webmention.js](https://github.com/PlaidWeb/webmention.js) or configuring your
+webmention endpoint to convert incoming webmentions into an [entry
+attachment](322#attach) or the like.
 
 ### What about adding other functionality?
 
-Being built in Flask, it is a simple matter to add additional routes to any Publ instance, by simply registering them with Publ's routing rules. Any Flask-specific plugin or blueprint should Just Work out of the box, and building API endpoints that wrap existing libraries is quite straightforward.
+Being built in Flask, it is generally a simple matter to add additional routes
+to any Publ instance, by simply registering them with Publ's routing rules. Any
+Flask-specific plugin or blueprint should Just Work out of the box, and building
+API endpoints that wrap existing libraries is quite straightforward.
 
 This is of course not anything special to Publ.
 
-Custom Flask endpoints can also make use of the Python API for querying and formatting entries.
+Custom Flask endpoints can also make use of the [internal Python API](865) for
+querying and formatting entries.
 
 ### What about having multuple Publ instances within a single running site?
 
-Unfortunately, running multiple Publ instances within a single app server (gunicorn, etc.) is not so straightforward. Currently, the ORM in use does not support segregating data across instances, and as such I also haven't put much effort into containerizing the Publ configuration (which is currently global). However, I haven't found a good use case for multiple Publ sites conmingled in a single app server anyway; if you can think of one, feel free to [open an issue](/newissue) and make your case for it!
+Unfortunately, running multiple Publ instances within a single app server
+(gunicorn, etc.) is not so straightforward. I haven't found a good use case for
+multiple Publ sites conmingled in a single app server anyway; if you can think
+of one, feel free to [open an issue](/newissue) and make your case for it!
 
-That said, it's trivial to have different Publ instances for different subdomains or mount points, with the caveat that they can't directly communicate with one another.
+That said, it's trivial to have different Publ instances for different
+subdomains or mount points, with the caveat that they can't (easily) directly
+communicate with one another.
 
 ### Do you have any importers from other blogging platforms?
 
 If you want to convert a Movable Type blog's content over, see [mt2publ](1083).
 
-There currently aren't any converters for other blogging systems, but since the [entry file format](/entry-format) is so simple, it shouldn't be too difficult to write converters from other systems either.
-
-## Troubleshooting
-
-### I get `OSError: [Errno 8] Exec format error: '/path/to/app.py'` when running in debug
-
-Werkzeug 0.15 (used by Flask) changed the way the automatic reload works, which makes it so that if `app.py` is set executable, this will
-fail. (See [an associated GitHub issue](https://github.com/pallets/werkzeug/issues/1482) for more information.)
-
-If you're on Linux or macOS, the easiest solution is to make sure that `app.py` is not set executable, with e.g.
-
-```bash
-chmod a-x app.py
-```
-
-A more general fix (which includes Windows) is to use the `flask run` script instead:
-
-```bash
-FLASK_ENV=development FLASK_DEBUG=1 pipenv run flask run
-```
-
-The scripts bundled with the [publ-site repository](https://github.com/PlaidWeb/publ-site) have been updated accordingly.
-
+There currently aren't any converters for other blogging systems, but since the
+[entry file format](/entry-format) is so simple, it shouldn't be too difficult
+to write converters from other systems either.
 
 ## How can I help out?
 
@@ -283,15 +352,14 @@ Where I could use the most help right now:
 some sort of "quick start" guide to get people going with writing/using
 templates, and explaining how the heck to use Publ in the first place!)
 
-* Improving the code quality — currently all testing is via ad-hoc smoke tests,
-and I'm still relatively inexperienced in Python so I'm sure a lot of places
-where the code could be better/cleaner/more Pythonic
+* Improving the code quality, especially where automated testing is concerned
 
-* Making the Publ site look nicer in general
+* Making the Publ site itself prettier and more informative, both in terms of
+feature demonstration and documentation quality
 
 * Writing more converters for other blog platforms
 
-I also have a [rather large list of to-do items](/issues),
-most of which are low priority for me. But if there's something you want to help
-on, please, by all means, do so!
+I also have a [rather large list of to-do items](/issues), most of which are low
+priority for me. But if there's something you want to help on, please, by all
+means, do so!
 
