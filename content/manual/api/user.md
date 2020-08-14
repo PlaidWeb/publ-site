@@ -36,7 +36,7 @@ The `user` object provides the following:
 
 * **`last_seen`**: The last time the user was active on the site
 
-* **`token(lifetime,scope=None)`**: A function to generate an HTTP Bearer token for preauthorization.
+* <span id="token">**`token(lifetime,scope=None)`**</span>: A function to generate an HTTP Bearer token for preauthorization.
 
     Arguments:
 
