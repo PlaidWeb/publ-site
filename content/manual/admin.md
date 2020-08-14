@@ -1,6 +1,7 @@
 Title: Admin dashboard
 Tag: admin
 Tag: auth
+Path-Canonical: /manual/admin
 Date: 2020-08-02 00:35:36-07:00
 Entry-ID: 732
 UUID: 9bf2d96c-e0c4-508d-91e9-991d6f96498a

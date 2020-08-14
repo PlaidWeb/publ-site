@@ -16,7 +16,7 @@ The `user` object provides the following:
 
 * **`profile`**: The user profile; see the [Authl documentation](https://authl.readthedocs.io/en/latest/authl.html#authl.disposition.Verified) for the relevant keys.
 
-    Note that this will not necessarily be available, depending on how and when the user logged in. For example, if the database has been fully reset (due to e.g. a schema upgrade or a server migration) since they last logged in, or if the user logged in from a different instance on a load-balanced configuration using a per-instance database, the profile will likely not be present.
+    Note that this will not necessarily be available, depending on how and when the user logged in. For example, if the database has been fully reset (due to e.g. a Publ upgrade or a server migration) since they last logged in, or if the user logged in from a different instance on a load-balanced configuration using a per-instance database, the profile will likely not be present.
 
 * **`groups`**: A list of the groups they belong to (not including the user's identity group)
 * **`auth_groups`**: The full list of matching authentication groups (including the user's own identity group)
@@ -45,7 +45,7 @@ The `user` object provides the following:
 
     See [using bearer tokens](238#token) for more information.
 
-Generally there is not much use in providing this information to end-users of the site; for the most part you should only use `user.name` to address the user, and possibly use `user.groups` to check for particular group membership if that is something you want to show them. For example, if you use user groups as a means of managing memberships or rewards or the like, you could do something like:
+For the most part you should only use `user.name` to address the user, and possibly use `user.groups` to check for particular group membership if that is something you want to show them. For example, if you use user groups as a means of managing memberships or rewards or the like, you could do something like:
 
 ```jinja
 
