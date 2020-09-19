@@ -116,7 +116,7 @@ for, with this particular combination of features:
 * Stable pagination (i.e. an archive page's link should always point to the same content regardless of when a search engine indexed it)
 * Support for protected/private/restricted entries using existing authentication systems
 
-It certainly is *possible* to add all of this to some of the existing publishing systems, but building something from the ground up with these features in mind allowed for a much cleaner design and more flexibility wit t
+It certainly is *possible* to add all of this to some of the existing publishing systems, but building something from the ground up with these features in mind allowed for a much cleaner design and more flexibility.
 
 ### What does the UI look like?
 
