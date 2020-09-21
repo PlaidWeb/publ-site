@@ -261,6 +261,9 @@ templates; the following headers are what Publ itself uses:
     will appear as e.g. `https://queer.party/@fluffy`. See the [user
     configuration file](1341) and [admin guide](732) for more information.
 
+    ==Note:== Only a single `Auth:` header is supported. If more than one is
+    present, only one will be used, and it is undefined as to which one that is.
+
 * <span id="attach">**`Attach`**: Another entry to "attach" to this one, useful for defining arbitrary content sections or the like. This can be by file path or by entry ID.
 
     This is to be used with the [`entry.attachments`](115#attachments) and [`entry.attached`](115#attached) template functions, as well as the related [view parameters](150#attachments)
@@ -273,7 +276,7 @@ render as [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
 Publ supports a number of extensions to Markdown, specifically via [Misaka](http://misaka.61924.nl) (which in turn uses [Hoedown](https://github.com/hoedown/hoedown "My, Earth certainly is full of things!")). The extensions are [configurable](865#markdown_extensions); by default it is configured to resemble [GitHub-flavored markdown](https://guides.github.com/features/mastering-markdown/) with the addition of [Kramdown-style math](https://kramdown.gettalong.org/syntax.html#math-blocks) (which in turn works with [MathJax or KaTeX](https://kramdown.gettalong.org/math_engine/mathjax.html)).
 
-Markdown entries can use code fences, which support syntax highlighting via [Pygments](http://pygments.org); see its [rather large list of syntaxes](http://pygments.org/docs/lexers/).
+Markdown entries can use code fences, which support syntax highlighting via [Pygments](http://pygments.org); see its [rather large list of syntaxes](http://pygments.org/docs/lexers/). There are [Publ-specific extensions](#fenced-code) to this.
 
 There are also some Publ-specific extensions for things like cuts, image renditions, and galleries.
 
@@ -542,7 +545,19 @@ def foo():
     return None
 ```
 
-Note: If you need the first line of code to start with a literal `!` character, put a blank line before it, or prefix it with `!`.
+Note: If you need the first line of code to start with a literal `!` character, put a blank line before it, or prefix it with a `\`. For example,
+
+````markdown
+```markdown
+\![alt text](image.jpg "This is an image")
+```
+````
+
+renders as:
+
+```markdown
+\![alt text](image.jpg "This is an image")
+```
 
 You can also provide template override arguments to the code block by putting parameters after the language declaration; for example:
 
