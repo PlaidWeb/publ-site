@@ -134,6 +134,15 @@ templates; the following headers are what Publ itself uses:
     which will cause the legacy URL to remap to showing this view within the category using the `archive` template.
     If you would like to just go to the category without any specific template, use `index`.
 
+    The path portion is URL-encoded; for example:
+
+    ```publ
+    Path-Alias: /entry%20with%20spaces
+    Path-Alias: %28parentheses%29
+    ```
+
+    Typically, only whitespace and percent signs must be URL-encoded.
+
 * <span id="path-mount">**`Path-Mount`**: An alternate path to this entry</span>
 
     This is similar to [`Path-Alias`](#path-alias), except that the browser will not be redirected to the canonical location; for example, if you have an entry like:
