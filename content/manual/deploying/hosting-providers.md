@@ -16,11 +16,11 @@ If you're savvy with running a Linux server, this is a pretty good choice. The a
 
 ### VPS providers
 
-A virtual private server gives you complete control over a virtual slice of hardware. Typically this provides better fault tolerance, easier migration, and simpler server management, with the downside of being slightly lower in performnace (in ways which don't matter for hosting websites most of the time).
+A virtual private server gives you complete control over a virtual slice of hardware. Typically this provides better fault tolerance, easier migration, and simpler server management, with the downside of being slightly lower in performance (in ways which don't matter for hosting websites most of the time).
 
 Some known providers:
 
-* [LiNode](https://www.linode.com/?r=3387618616c77ee52a3a617c0218697a9c36bc9b)
+* [Linode](https://www.linode.com/?r=3387618616c77ee52a3a617c0218697a9c36bc9b)
 * [Digital Ocean](https://www.digitalocean.com/)
 * [Amazon EC2](https://aws.amazon.com)
 
@@ -32,9 +32,9 @@ Colocation, either with managed hardware or with bring-your-own device. Not for 
 
 Cloud app hosting means you provide an image for an application which gets run only when it's actively being used.
 
-The advantages to this is that there's a lot less administrative overhead on your end, and it's usually easier to deploy your site and also handle scaling and so on.
+The advantages are that there's a lot less administrative overhead on your end, and it's usually easier to deploy your site and also handle scaling and so on.
 
-The disadvantages are numerous, however; usually there's a much lower limit on how much content you can host, deployments can be significantly slower, and when the site "sleeps" it can take quite some time for it to "wake up." Also, storage, CPU, and bandwidth tend to be much more expensive than dedicated hosting.
+The disadvantages are numerous, however; usually there's a much lower limit on how much content you can host within the container (and Publ is not designed to use content kept in an external object store), deployments can be significantly slower, and when the site "sleeps" it can take quite some time for it to serve the first page while it wakes up. Also, storage, CPU, and bandwidth tend to be much more expensive than dedicated hosting.
 
 Some known providers:
 
