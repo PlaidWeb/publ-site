@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 logger.info('My interpreter: %s' % sys.executable)
 
 INTERP = subprocess.check_output(
-    ['pipenv', 'run', 'which', 'python3']).strip().decode('utf-8')
+    ['poetry', 'run', 'which', 'python3']).strip().decode('utf-8')
 
 if sys.executable != INTERP:
     logger.info('Restarting with interpreter: %s', INTERP)

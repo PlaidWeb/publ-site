@@ -18,5 +18,5 @@ Publ requires the following to work:
 It also benefits from the following:
 
 * A persisting file system (i.e. not EC2/Heroku/Google AppEngine/etc.)
-* Some sort of Python package manager (`pipenv` recommended)
+* Some sort of Python environment manager (`poetry` recommended, `pipenv` also works)
 * A caching provider that's supported by [Flask-Caching](https://pythonhosted.org/Flask-Caching/), such as MemcacheD or Redis

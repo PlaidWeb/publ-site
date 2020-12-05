@@ -14,7 +14,7 @@ This guide will walk you through setting up Publ on your local computer so that 
 ## Installing system requirements
 
 You'll need [Python](https://python.org) (at least version 3.5) and
-[`pipenv`](https://pipenv.org) to be installed. If you don't know what that means, follow the directions specific to your operating system, below.
+[`poetry`](https://python-poetry.org) to be installed.
 
 ### macOS
 
@@ -22,35 +22,26 @@ On macOS this is pretty straightforward; after installing
 [Homebrew](https://brew.sh) you can install these things with:
 
 ```bash
-brew install python
-pip3 install --user pipenv
+brew install python poetry
 ```
 
-and then add the following line to your login script (usually
-`~/.bash_profile`):
-
-```bash
-export PATH=$HOME/Library/Python/3.7/bin:$PATH
-```
-
-As an alternative to homebrew you can install Python 3.5 or later from the [Python website](http://python.org), using your package manager of choice, or using [pyenv](https://github.com/pyenv/pyenv-installer).
+As an alternative to homebrew you can install Python\ from the [Python website](http://python.org), using your package manager of choice, or using [pyenv](https://github.com/pyenv/pyenv-installer).
 
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
-python 3.5 or later, and to also install `pip3` (Ubuntu
-keeps this in the `python3-pip` package; other distributions will vary).
+python 3.6 or later, and to also install `pip3`.
 
-Afterwards, you can install `pipenv` with either:
+Afterwards, you can install `p` with either:
 
 ```bash
-sudo pip3 install pipenv
+sudo python -m pip install poetry
 ```
 
 or
 
 ```bash
-pip3 install --user pipenv
+pip3 install --user poetry
 ```
 
 If you do the latter, make sure your pip user directory is on your `PATH`; this
@@ -79,7 +70,7 @@ If your distribution doesn't provide an easy recent version, consider using [pye
 4. From a command prompt (e.g. git bash, a Windows CMD prompt, or from "Run program..." from the start menu):
 
     ```bash
-    pip install pipenv
+    pip install poetry
     ```
 
 ## Making a website
@@ -90,13 +81,7 @@ If your distribution doesn't provide an easy recent version, consider using [pye
 
     You can use the command line (e.g. `git clone https://github.com/PlaidWeb/Publ-site`) or you can use your favorite git frontend for this (such as GitHub Desktop).
 
-2. Run the Publ setup script
-
-    On macOS and Linux, or on Windows using git bash, open a command prompt and `cd` into where you checked out the files, and run `./setup.sh`
-
-    On Windows, double-click the `winsetup.cmd` file (which may appear as just `winsetup`)
-
-3. Launch the website locally
+2. Launch the website locally
 
     On macOS and Linux, or on Windows using git bash, run `./run.sh` (also from the same directory).
 
@@ -117,26 +102,28 @@ will run the site at [`http://localhost:12345`](http://localhost:12345) instead.
 #### Creating the environment
 
 To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or
-`pipenv` to set up a sandbox and install the `Publ` package to it. I recommend
-`pipenv` for a number of reasons but if you're familiar with `virtualenv` or are
-using a hosting provider that requires it, feel free to do that instead.
+`poetry` to set up a sandbox and install the `Publ` package to it. I recommend
+`poetry` for a number of reasons but if you're familiar with `virtualenv` or are
+using a hosting provider that requires it, feel free to do that instead. (You
+can also use `pipenv` if you prefer for some reason.)
 
-You can copy the `setup.sh` and `run.sh` from the [main site](/github-site), and also `winsetup.cmd` and `winrun.cmd` if you would like to run it on Windows.
+You can copy the `run.sh` from the [main site](/github-site), and also `winrun.cmd` if you would like to run it on Windows.
 
-If you're using `pipenv` the command would be:
+If you're using `poetry` the command would be:
 
 ```bash
-pipenv --three install Publ
+poetry init -n
+poetry add publ
 ```
 
 and if you're doing the `virtualenv` approach it would be:
 
 ```bash
 virtualenv env
-env/bin/pip3 install Publ
+env/bin/pip3 install publ
 ```
 
-Next, you'll need a `app.py` file. Here is a pretty minimal one:
+Next, you'll need an `app.py` file. Here is a pretty minimal one:
 
 ```python
 import os
@@ -162,7 +149,7 @@ mkdir -p content templates static
 Then you can launch your (not yet very functional) site with
 
 ```bash
-pipenv run flask run
+poetry run flask run
 ```
 
 if you're using `pipenv`, or
@@ -177,11 +164,10 @@ Now you should have a site running at [`http://localhost:5000`](http://localhost
 
 #### Basic templates
 
-The following template files are available from the [publ site repository](https://github.com/PlaidWeb/publ-site/sample-site).
-
 For a fairly minimal site, create the file `templates/index.html`:
 
 ```html
+!templates/index.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,6 +194,7 @@ For a fairly minimal site, create the file `templates/index.html`:
 and `templates/entry.html`:
 
 ```html
+!templates/entry.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -230,6 +217,7 @@ and `templates/entry.html`:
 Now you can finally create a content file; for example, create a file called `first-entry.md` in the `content` directory:
 
 ```
+!content/first-entry.md
 Title: My first entry!
 
 This is my first entry on this website.
@@ -247,7 +235,7 @@ Anyway, read on for more information about how to build a bigger site!
 
 Looking at [the files for this site](/github-site), here are some key things to look at:
 
-* `Pipfile` and `Pipfile.lock`: Configures `pipenv`
+* `pyproject.toml` and `poetry.lock`: Package dependencies
 * `app.py`: Main "application" that runs the site
 * `Procfile`: Configures the site to run on [Heroku](http://heroku.com)
 * `templates/`: The site layout files (i.e. how to lay your content out). Some you can look at:
@@ -262,7 +250,7 @@ Looking at [the files for this site](/github-site), here are some key things to 
     * `lightbox`: A library used for presenting images in a gallery ([example page](/yay-cats-wooooo))
     * `pygments.default.css`: A stylesheet used by the Markdown engine when formatting code
 
-For more information about templates, see [the manual on template formats](/template-format). The only required templates are `index.html`, `entry.html`, and `error.html`.
+For more information about templates, see [the manual on template formats](/template-format). The only required template is `index.html`, but it's a good idea to also provide an `entry.html` and `error.html`.
 
 For more information about content, see [that manual page](/entry-format).
 

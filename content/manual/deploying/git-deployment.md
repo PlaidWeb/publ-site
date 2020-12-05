@@ -12,7 +12,7 @@ It's pretty common to use git to host your website files. There are a few differ
 
 ## Deployment script
 
-Regardless of your actual git hosting situation, you will need a deployment script, which does a `git pull` and updates package versions if the `Pipfile.lock` has changed. Save this file as `deploy.sh` in your website repository, and make sure it's set executable:
+Regardless of your actual git hosting situation, you will need a deployment script, which does a `git pull` and updates package versions if the `poetry.lock` has changed. Save this file as `deploy.sh` in your website repository, and make sure it's set executable:
 
 ```bash
 #!/bin/sh
@@ -30,9 +30,9 @@ if git diff --name-only $PREV | grep -qE '^(templates/|app\.py)' ; then
     disposition=reload-or-restart
 fi
 
-if git diff --name-only $PREV | grep -q Pipfile.lock ; then
-    echo "Pipfile.lock changed"
-    pipenv install || exit 1
+if git diff --name-only $PREV | grep -q poetry.lock ; then
+    echo "poetry.lock changed"
+    poetry install || exit 1
     disposition=restart
 fi
 
@@ -145,7 +145,7 @@ def deploy():
     return flask.Response(result, mimetype='text/plain')
 ```
 
-Then,  in whatever mechanism you use to run the website, set the environment variable `REDEPLOY_SECRET` to some secret string. For example, if you're using a `systemd` service, add a line like:
+Then, in whatever mechanism you use to run the website, set the environment variable `REDEPLOY_SECRET` to some secret string. For example, if you're using a `systemd` service, add a line like:
 
     Environment="REDEPLOY_SECRET=the secret password"
 
@@ -155,7 +155,7 @@ Deploy these changes to your website and restart it. Now you can configure a web
 
 If you're using GitHub (or something GitHub-compatible) to host your site files, there is a more secure way to run a webhook.
 
-First, install the [flask-hookserver](https://pypi.org/project/flask-hookserver) package with `pipenv install flask-hookserver`.
+First, install the [flask-hookserver](https://pypi.org/project/flask-hookserver) package into your environment (with e.g. `poetry install flask-hookserver`).
 
 Next, add the following to your `app.py` somewhere after the `app` object gets created:
 
@@ -212,4 +212,4 @@ Generally you can fix this by going into your live repository and doing `git sta
 
 ### Webhook is timing out
 
-If your packages change, the webhook will likely time out while `pipenv install` runs. This should be okay, but try `ssh`ing into your live workspace and running `./deploy.sh` manually.
+If your packages change, the webhook will likely time out while `poetry install` runs. This should be okay, but try `ssh`ing into your live workspace and running `./deploy.sh` manually.

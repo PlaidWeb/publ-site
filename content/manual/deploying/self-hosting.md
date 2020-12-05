@@ -18,28 +18,26 @@ This list is not exhaustive; if there is a mechanism that you'd like to see supp
 
 You will need Python 3. The most reliable way to install this is via [`pyenv`](https://github.com/pyenv/pyenv), but any system-provided Python 3 will do, as long as it meets the minimum system requirements.
 
-The easiest way to manage your package dependencies is with `pipenv`. If you're using `pyenv`, run `pip3 install pipenv`; otherwise run `pip3 install --user pipenv`. In the latter case you'll also want to add `$HOME/.local/bin` to your `$PATH`.
+The easiest way to manage your package dependencies is with [`poetry`](https://python-poetry.org); you can see [their installation instructions](https://python-poetry.org/docs/#installation) for more information. `pipenv` and `virtualenv` also work but these instructions will focus on the use of `poetry`.
 
-Your Publ environment needs to have a WSGI server available. [gunicorn](http://gunicorn.org) is a good choice for this. The ideal means of installing gunicorn is directly into your site's `pipenv`, by running the following from your site's directory:
-
-```bash
-pipenv install gunicorn
-```
-
-It will also be helpful to know the full path to the `pipenv` command. You can usually find this with
+Your Publ environment needs to have a WSGI server available. [gunicorn](http://gunicorn.org) is a good choice for this. The ideal means of installing gunicorn is directly into your site's environment. If you're using `poetry` then that's done with:
 
 ```bash
-which pipenv
+poetry add gunicorn
 ```
 
-If you installed `pipenv` with `pip install --user pipenv` then it will probably be `/home/USERNAME/.local/bin/pipenv`.
+It will also be helpful to know the full path to the `poetry` command. You can usually find this with
+
+```bash
+which poetry
+```
 
 ### Basic approach
 
 Anything that runs the application server should change into the site's working directory, and then start the gunicorn process with
 
 ```bash
-/path/to/pipenv run gunicorn -b unix:gunicorn.sock app:app
+/path/to/poetry run gunicorn -b unix:gunicorn.sock app:app
 ```
 
 which will use the `app` object declared in `app.py` (per the [getting started guide](328)) and listen on a socket file named `gunicorn.sock`. The presence of that socket file will also indicate whether the site is up and running.
@@ -47,7 +45,7 @@ which will use the `app` object declared in `app.py` (per the [getting started g
 Note that you don't have to put `gunicorn.sock` in the same directory as the application -- it can go anywhere that the web server has access. For example, it's nice to make a `$HOME/.vhosts` directory to keep your socket files, named with the site name:
 
 ```bash
-/path/to/pipenv run gunicorn -b unix:/home/USERNAME/.vhosts/example.com app:app
+/path/to/poetry run gunicorn -b unix:/home/USERNAME/.vhosts/example.com app:app
 ```
 
 This way you can also set the directory permissions on your site files with `chmod 700` which prevents other users of the server from peeking into them.
@@ -57,13 +55,14 @@ This way you can also set the directory permissions on your site files with `chm
 If you're on a UNIX that uses `systemd` (for example, recent versions of Ubuntu or CentOS), the preferred approach is to run the site as a user service. Here is an example service file:
 
 ```systemd
+! example.com.service
 [Unit]
 Description=Publ instance for example.com
 
 [Service]
 Restart=always
 WorkingDirectory=/home/USERNAME/example.com
-ExecStart=/path/to/pipenv run gunicorn -b unix:/path/to/socket app:app
+ExecStart=/path/to/poetry run gunicorn -b unix:/path/to/socket app:app
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
@@ -82,7 +81,7 @@ and the site should now be up and running on the local port; as long as it's up 
 However, this service will only run while the user is logged in; in order to make it run persistently, have an admin set your user to "linger" with e.g.:
 
 ```bash
-loginctl enable-linger USERNAME
+sudo loginctl enable-linger USERNAME
 ```
 
 Anyway, once you have this service set up, you can use `systemctl` to do a number of useful things; some example commands:
@@ -120,7 +119,7 @@ If all else fails, you can use a [cron job](https://en.wikipedia.org/wiki/Cron) 
 #!/bin/sh
 
 cd $(dirname "$0")
-flock -n .lockfile $HOME/.local/bin/pipenv run gunicorn -b unix:gunicorn.sock app:app
+flock -n .lockfile $HOME/.local/bin/poetry run gunicorn -b unix:gunicorn.sock app:app
 ```
 
 and then run `crontab -e` and add a line like:
@@ -140,7 +139,7 @@ curl --unix-socket gunicorn.sock https://example.com/
 By default, `gunicorn` only runs with a small number of render threads. You might want to increase this with the `--threads` parameter, e.g.:
 
 ```bash
-/path/to/pipenv run gunicorn --threads 32 -b unix:/path/to/socket app:app
+/path/to/poetry run gunicorn --threads 32 -b unix:/path/to/socket app:app
 ```
 
 ## <span id="routing">Routing traffic</span>

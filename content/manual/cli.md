@@ -13,7 +13,7 @@ Publ extends the default `flask` command with some additional commands, which ca
 flask publ [command] --help
 ```
 
-from within your Publ virtual environment (e.g. `pipenv run flask publ --help`).
+from within your Publ virtual environment (e.g. `poetry run flask publ --help` or `env/bin/flask publ --help`).
 
 For usage of the `flask` command itself, see the [Flask CLI documentation](https://flask.palletsprojects.com/en/1.1.x/cli/).
 
