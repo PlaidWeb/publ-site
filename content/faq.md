@@ -187,6 +187,9 @@ adding further syntax hooks for the supported tokens. The downside is that it's
 not feasible to extend it with custom tokens but so far I haven't really found
 any need for that anyway.
 
+That said, the dependency on Misaka is likely to change in the future --- but
+this is an [enormous task](https://github.com/PlaidWeb/Publ/issues/261).
+
 ### Why didn't you use PHP/Haskell/Go/Ruby/Rust/...?
 
 I tend to dislike PHP for many reasons, both with the language itself and with
@@ -194,8 +197,9 @@ its ecosystem. While I wouldn't go so far as to say that PHP-the-language is
 irredeemably bad, there are some [pretty fundamental problems with its security
 model](246) that make it somewhat undesirable. Also, setting up a flexible
 request routing mechanism is way too varied and error-prone with the PHP
-ecosystem (`.htaccess` on Apache, fiddly `location` rules on nginx, etc.), and I
-haven't found any routing or templating systems I'm happy with.
+ecosystem (`.htaccess` on Apache, fiddly admin-managed `location` rules on
+nginx, etc.), and I haven't found any routing or templating systems I'm happy
+with.
 
 As far as other languages go, one of my primary concerns was making it
 deployable in as many places as possible, including various forms of shared
@@ -250,8 +254,8 @@ image retrieval in the client.
 ### What if caching just isn't enough?
 
 If a site gets to the point that throwing a fronting cache isn't enough to get
-good performance, it should be fairly simple to scale it horizontally by deploying
-the same site to multiple servers and load-balance between them.
+good performance, it should be fairly simple to scale it horizontally by
+deploying the same site to multiple servers and load-balance between them.
 
 If this situation comes up, it will be pretty important that at least one of the
 following is true:
@@ -273,7 +277,6 @@ If you are running a site which gets to this point then clearly you're making
 more money than me at this and I'd humbly suggest you consider [showing your
 support](https://liberapay.com/fluffy).
 
-
 ## Interoperability
 
 ### Do you support ActivityPub?
@@ -282,8 +285,13 @@ Not at present. While I do want to support it natively (particularly for better
 interoperability with Mastodon and the like), ActivityPub's design makes for
 some pretty major challenges when it comes to supporting it.
 
-That said, it is fairly simple to add basic, non-authenticated support for
-ActivityPub using [Bridgy Fed](https://fed.brid.gy) together with [Pushl](1295).
+My future plans for ActivityPub support involve making a separate actor that
+Publ can interoperate with, rather than making it built-in functionality.
+
+At present, it's fairly straightforward to use [Bridgy Fed](https://fed.brid.gy)
+together with [Pushl](1295) as such an actor, although that comes with several
+limitations (such as no support for private posts, no content relocation/update
+support, and only a single global outbox for the entire site).
 
 ### What about Webmention, WebSub, ...?
 
@@ -307,6 +315,11 @@ can display incoming mentions on a Publ site, such as using
 webmention endpoint to convert incoming webmentions into an [entry
 attachment](322#attach) or the like.
 
+As with ActivityPub, my long-term plans involve building native IndieWeb support
+as an additional module that's designed to interoperate with Publ, as opposed to
+making it native built-in functionality (most likely making it part of the
+ActivityPub actor, since there is so much common functionality between them).
+
 ### What about adding other functionality?
 
 Being built in Flask, it is generally a simple matter to add additional routes
@@ -326,9 +339,8 @@ Unfortunately, running multiple Publ instances within a single app server
 multiple Publ sites conmingled in a single app server anyway; if you can think
 of one, feel free to [open an issue](/newissue) and make your case for it!
 
-That said, it's trivial to have different Publ instances for different
-subdomains or mount points, with the caveat that they can't (easily) directly
-communicate with one another.
+That said, it's straightforward to have different Publ instances for different
+subdomains or mount points (configured at the HTTP server level).
 
 ### Do you have any importers from other blogging platforms?
 
@@ -336,7 +348,26 @@ If you want to convert a Movable Type blog's content over, see [mt2publ](1083).
 
 There currently aren't any converters for other blogging systems, but since the
 [entry file format](/entry-format) is so simple, it shouldn't be too difficult
-to write converters from other systems either.
+to write converters from other systems.
+
+## Deployment
+
+### Can this be used with Docker?
+
+In principle, yes, although I haven't personally investigated how to do that.
+Publ, like most Python apps, is intended to run in a Python virtual environment
+which already provides a decent level of deployment abstraction and portability,
+and if used with SQLite, it's already pretty much self-contained. It also goes
+to great lengths to behave nicely in a shared cache, which scales far better
+(from a resource-utilization standpoint) than having a per-VM cache. As such,
+Docker support hasn't been a priority for me.
+
+However, I do understand the appeal to Docker for configuration and deployment
+management purposes, and I would not turn away an appropriate [deployment
+guide](/manual/deploying/), ideally with a sample `Dockerfile`.
+
+(If you do write one, please have a version where the `content/` directory is
+external and not a part of the build!)
 
 ## How can I help out?
 
@@ -345,8 +376,6 @@ Glad you asked!
 Where I could use the most help right now:
 
 * Building example templates/themes for people to use
-
-* Improving the deployment mechanism and documentation thereof
 
 * Improving the documentation for everything (in particular there needs to be
 some sort of "quick start" guide to get people going with writing/using

@@ -9,12 +9,16 @@ A guide to starting with Publ
 
 .....
 
-This guide will walk you through setting up Publ on your local computer so that you can build and run a site that runs locally. To learn how to run this website on a webserver, see the [deployment guides](deploying/).
+This guide will walk you through setting up Publ on your local computer so that
+you can build and run a site that runs locally. To learn how to run this website
+on a webserver, see the [deployment guides](deploying/).
 
 ## Installing system requirements
 
-You'll need [Python](https://python.org) (at least version 3.6) and
-[`poetry`](https://python-poetry.org) to be installed.
+You'll need [Python](https://python.org) (at least version 3.6), and it's a good
+idea to use a virtual environment manager as well. Any such manager
+(`virtualenv`, `pipenv`, `poetry`) is fine; the following instructions all
+assume [`poetry`](https://python-poetry.org).
 
 ### macOS
 
@@ -25,14 +29,16 @@ On macOS this is pretty straightforward; after installing
 brew install python poetry
 ```
 
-As an alternative to homebrew you can install Python\ from the [Python website](http://python.org), using your package manager of choice, or using [pyenv](https://github.com/pyenv/pyenv-installer).
+As an alternative to homebrew you can install Python from the [Python
+website](http://python.org), using your package manager of choice, or using
+[pyenv](https://github.com/pyenv/pyenv-installer).
 
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
 python 3.6 or later, and to also install `pip3`.
 
-Afterwards, you can install `p` with either:
+Afterwards, you can install `poetry` with either:
 
 ```bash
 sudo python -m pip install poetry
@@ -51,7 +57,8 @@ distribution.
 Also, if `pip3` doesn't work, try running just `pip` instead; not all
 distributions differentiate between Python 2 and 3 anymore.
 
-If your distribution doesn't provide an easy recent version, consider using [pyenv](https://github.com/pyenv/pyenv-installer).
+If your distribution doesn't provide a sufficiently recent version, consider
+using [pyenv](https://github.com/pyenv/pyenv-installer).
 
 ### Windows
 
@@ -61,13 +68,21 @@ If your distribution doesn't provide an easy recent version, consider using [pye
     PATH" and if you customize the installation, make sure it installs pip as
     well
 
-2. Install [Visual Studio](https://visualstudio.microsoft.com/downloads/), making sure to select "Visual C++ build tools" at the very least.
+2. Install [Visual Studio](https://visualstudio.microsoft.com/downloads/),
+making sure to select "Visual C++ build tools" at the very least.
 
-    This is unfortunately necessary for some of the libraries Publ depends on. You can either install the Visual Studio Community Edition, or you can install just the build tools (under the "Tools for Visual Studio" section).
+    This is unfortunately necessary for some of the libraries Publ depends on.
+    You can either install the Visual Studio Community Edition, or you can
+    install just the build tools (under the "Tools for Visual Studio" section).
 
-3. (Optional, but recommended) Install some sort of `bash` environment, such as MinGW. The "git bash" that comes with [Git for Windows](http://git-scm.com) is a pretty good choice.
+3. (Optional, but recommended) Install some sort of `bash` environment, such as
+MinGW.
 
-4. From a command prompt (e.g. git bash, a Windows CMD prompt, or from "Run program..." from the start menu):
+    The "git bash" that comes with [Git for Windows](http://git-scm.com) is a
+    pretty good choice.
+
+4. From a command prompt (e.g. git bash, a Windows CMD prompt, or from "Run
+program..." from the start menu):
 
     ```bash
     pip install poetry
@@ -87,9 +102,12 @@ If your distribution doesn't provide an easy recent version, consider using [pye
 
     On Windows, double-click the `winrun.cmd` file (which may appear as just `winrun`)
 
-Now, connecting to [`http://localhost:5000`](http://localhost:5000) should show you this website. Note that on the first page load it will take a little while before all of the content is visible -- but you can watch the site build in your terminal window to see it finish.
+After the site reindex completes, connecting to
+[`http://localhost:5000`](http://localhost:5000) should show you this website.
 
-If you need to run the site on a different port (for example, you get an error like `OSError: [Errno 48] Address already in use`), you can change this by setting the `FLASK_RUN_PORT` environment variable; for example:
+If you need to run the site on a different port (for example, you get an error
+like `OSError: [Errno 48] Address already in use`), you can change this by
+setting the `FLASK_RUN_PORT` environment variable; for example:
 
 ```bash
 FLASK_RUN_PORT=12345 ./run.sh
@@ -101,46 +119,37 @@ will run the site at [`http://localhost:12345`](http://localhost:12345) instead.
 
 #### Creating the environment
 
-To make your own Publ-based site, you'll need to use `virtualenv`+`pip` or
-`poetry` to set up a sandbox and install the `Publ` package to it. I recommend
-`poetry` for a number of reasons but if you're familiar with `virtualenv` or are
-using a hosting provider that requires it, feel free to do that instead. (You
-can also use `pipenv` if you prefer for some reason.)
+To make your own Publ-based site, you'll want to create a new virtual
+environment to hold Publ in. As above, the following instructions assume
+`poetry`, although any other manager is fine.
 
-You can copy the `run.sh` from the [main site](/github-site), and also `winrun.cmd` if you would like to run it on Windows.
-
-If you're using `poetry` the command would be:
 
 ```bash
+mkdir example.site
+cd example.site
 poetry init -n
 poetry add publ
-```
-
-and if you're doing the `virtualenv` approach it would be:
-
-```bash
-virtualenv env
-env/bin/pip3 install publ
 ```
 
 Next, you'll need an `app.py` file. Here is a pretty minimal one:
 
 ```python
+!app.py
 import os
 import publ
-
-APP_PATH = os.path.dirname(os.path.abspath(__file__))
 
 config = {
     'database_config': {
         'provider': 'sqlite',
-        'filename': os.path.join(APP_PATH, 'index.db')
+        'filename': 'index.db'
     },
 }
 app = publ.publ(__name__, config)
 ```
 
-Now, you'll need directories for your site content; create folders named `content`, `templates`, and `static` in the same directory as `app.py`. From the command line you can type:
+Now, you'll need directories for your site content; create folders named
+`content`, `templates`, and `static` in the same directory as `app.py`. From the
+command line you can type:
 
 ```bash
 mkdir -p content templates static
@@ -152,15 +161,12 @@ Then you can launch your (not yet very functional) site with
 poetry run flask run
 ```
 
-if you're using `pipenv`, or
+Now you should have a site running at
+[`http://localhost:5000`](http://localhost:5000) that does absolutely nothing!
+Congratulations!
 
-```bash
-env/bin/flask run
-```
-
-if you're using `virtualenv`. (Both must be run from the same directory as `app.py`.)
-
-Now you should have a site running at [`http://localhost:5000`](http://localhost:5000) that does absolutely nothing! Congratulations!
+Also, feel free to copy the `run.sh` and/or `winrun.cmd` from [this
+website](/github-site) which will better automate subsequent setup steps.
 
 #### Basic templates
 
@@ -214,7 +220,8 @@ and `templates/entry.html`:
 </html>
 ```
 
-Now you can finally create a content file; for example, create a file called `first-entry.md` in the `content` directory:
+Now you can finally create a content file; for example, create a file called
+`first-entry.md` in the `content` directory:
 
 ```
 !content/first-entry.md
@@ -227,13 +234,17 @@ This is my first entry on this website.
 This is the extended text.
 ```
 
-After Publ sees the content file, it should now get some extra stuff in the headers, namely a `Date`, an `Entry-ID`, and a `UUID`. These are how Publ tracks the publishing information for the entry itself. It's a good idea to leave them alone unless you know what you're doing.
+After Publ sees the content file, it should now get some extra stuff in the
+headers, namely a `Date`, an `Entry-ID`, and a `UUID`. These are how Publ tracks
+the publishing information for the entry itself. It's a good idea to leave them
+alone unless you know what you're doing.
 
 Anyway, read on for more information about how to build a bigger site!
 
 ### What does what
 
-Looking at [the files for this site](/github-site), here are some key things to look at:
+Looking at [the files for this site](/github-site), here are some key things to
+look at:
 
 * `pyproject.toml` and `poetry.lock`: Package dependencies
 * `app.py`: Main "application" that runs the site
@@ -250,13 +261,19 @@ Looking at [the files for this site](/github-site), here are some key things to 
     * `lightbox`: A library used for presenting images in a gallery ([example page](/yay-cats-wooooo))
     * `pygments.default.css`: A stylesheet used by the Markdown engine when formatting code
 
-For more information about templates, see [the manual on template formats](/template-format). The only required template is `index.html`, but it's a good idea to also provide an `entry.html` and `error.html`.
+For more information about templates, see [the manual on template
+formats](/template-format). The only absolutely required template is
+`index.html`, but it's a good idea to also provide an `entry.html`.
 
 For more information about content, see [that manual page](/entry-format).
 
-I also have made [some of my own website templates](https://github.com/PlaidWeb/Publ-templates-beesbuzz.biz) available.
+I also have made [some of my own website
+templates](https://github.com/PlaidWeb/Publ-templates-beesbuzz.biz) available.
 
 ### Putting it on the web
 
-Getting a Publ site online depends a lot on how you're going to be hosting it. If you're savvy with Flask apps you probably know what to do; otherwise, check out the [deployment guides](deployment/) to see if there's anything that covers your usage.
+Getting a Publ site online depends a lot on how you're going to be hosting it.
+If you're savvy with Flask apps you probably know what to do; otherwise, check
+out the [deployment guides](deployment/) to see if there's anything that covers
+your usage.
 
