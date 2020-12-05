@@ -13,7 +13,7 @@ This guide will walk you through setting up Publ on your local computer so that 
 
 ## Installing system requirements
 
-You'll need [Python](https://python.org) (at least version 3.5) and
+You'll need [Python](https://python.org) (at least version 3.6) and
 [`poetry`](https://python-poetry.org) to be installed.
 
 ### macOS

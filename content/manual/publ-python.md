@@ -70,7 +70,7 @@ def redirect_date(match):
     return flask.url_for('category', category='comics', date=match.group(1)), True
 ```
 
-The path alias function takes a [`re.match` object](https://docs.python.org/3.5/library/re.html#match-objects) and returns a tuple of `(url, is_permanent)`. This function can also make use of the various Flask request context things (e.g. `request.args`) and if it doesn't want to redirect after all it can return `(None,None)`.
+The path alias function takes a [`re.match` object](https://docs.python.org/3.8/library/re.html#match-objects) and returns a tuple of `(url, is_permanent)`. This function can also make use of the various Flask request context things (e.g. `request.args`) and if it doesn't want to redirect after all it can return `(None,None)`.
 
 Note that you can also use `@app.route` like any typical Flask application, but due to Flask routing rules it may not work with variadic routes. For example:
 

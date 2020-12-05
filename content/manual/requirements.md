@@ -11,7 +11,7 @@ What you need in order to run Publ
 
 Publ requires the following to work:
 
-* [Python](https://python.org/) 3.5 or later
+* [Python](https://python.org/) 3.6 or later
 * The ability to run a Python application on your web hosting provider (if you can run Django or Flask, you can run Publ!)
 * That's it!
 
