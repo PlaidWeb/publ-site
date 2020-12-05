@@ -13,9 +13,9 @@ if git diff --name-only $PREV | grep -qE '^(templates/|app\.py|users\.cfg)' ; th
     disposition=reload-or-restart
 fi
 
-if git diff --name-only $PREV | grep -q Pipfile.lock ; then
-    echo "Pipfile.lock changed"
-    pipenv install || exit 1
+if git diff --name-only $PREV | grep -q poetry.lock ; then
+    echo "poetry.lock changed"
+    poetry install || exit 1
     disposition=restart
 fi
 
@@ -24,7 +24,7 @@ if [ "$1" != "nokill" ] && [ ! -z "$disposition" ] ; then
 fi
 
 echo "Updating the content index..."
-pipenv run flask publ reindex
+poetry run flask publ reindex
 
 count=0
 while [ $count -lt 5 ] && [ ! -S $HOME/.vhosts/publ.beesbuzz.biz ] ; do
@@ -33,4 +33,4 @@ while [ $count -lt 5 ] && [ ! -S $HOME/.vhosts/publ.beesbuzz.biz ] ; do
     sleep $count
 done
 
-pipenv run pushl -rvvc $HOME/var/pushl http://publ.plaidweb.site/feed https://publ.plaidweb.site/feed
+poetry run pushl -rvvc $HOME/var/pushl http://publ.plaidweb.site/feed https://publ.plaidweb.site/feed
