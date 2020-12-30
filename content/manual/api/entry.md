@@ -22,7 +22,7 @@ The `entry` object has the following methods/properties:
 * **`private`**: Indicates whether this entry is only visible to logged-in users.
 * <span id="authorized">**`authorized`**: Indicates whether this entry is visible to the current user.</span>
 
-* **`body`**, **`more`**, and <span id="footnotes">**`footnotes`**</span>: The different content sections of an entry.
+* <span id="body">**`body`**</span>, <span id="more">**`more`**</span>, and <span id="footnotes">**`footnotes`**</span>: The different content sections of an entry.
 
     `body` is the section above the fold.
 

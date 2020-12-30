@@ -43,9 +43,28 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
 
     * <span id="cache">**`cache`**</span>: A dictionary with the page caching configuration; see the [deplyment guide](20) for more information. Defaults to `{}` (i.e. no caching).
 
-    * <span id="markdown_extensions">**`markdown_extensions`**: A list of extensions to use with the Markdown processor; see the [misaka documentation](https://misaka.61924.nl/#extensions) for a list of accepted values. Defaults to `('tables', 'fenced-code', 'footnotes', 'strikethrough', 'highlight', 'superscript', 'math')`.</span>
+    * <span id="markdown_extensions">**`markdown_extensions`**</span>: A list of extensions to use with the Markdown processor; see the [misaka documentation](https://misaka.61924.nl/#extensions) for a list of accepted values. Defaults to `('tables', 'fenced-code', 'footnotes', 'strikethrough', 'highlight', 'superscript', 'math')`.
 
         Generally you will only want to configure this globally, but you can also override these settings at the template level by passing `markdown_extensions` in as configuration to the [entry properties](115) (`entry.body`, `entry.text`, `entry.title`, etc.).
+
+    * <span id="layout">**`layout`**</span>: Default layout parameters to send to all templates on the site to use for
+        [`entry.body`](115#body), [`entry.more`](115#more), and [`entry.footnotes`](115#footnotes); for example,
+
+        ```python
+        {
+            'layout': {
+                'max_width': 1024,
+                'quality': 80,
+                'heading_link_class': 'toc'
+            }
+        }
+        ```
+
+        will make the default arguments to `entry.body` equivalent to:
+
+        ```jinja
+            {{entry.body(max_width=1024, quality=80, heading_link_class='toc')}}
+        ```
 
     * **`auth`**: The configuration values for the [authentication system](authentication.md#auth).  Defaults to no configuration.
     * **`user_list`**: The filename of the configuration file that stores the user configuration. Defaults to `users.cfg`
