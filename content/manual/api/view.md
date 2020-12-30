@@ -10,7 +10,7 @@ The template API for view objects.
 
 The `view` object has the following things on it:
 
-* <span id="entries">**`entries`**: A list of all of the entries that are visible and authorized in this view</span>
+* <span id="entries">**`entries`**</span>: A list of all of the entries that are visible and authorized in this view
 
     Optionally takes a parameter, `unauthorized`, which indicates the maximum number of unauthorized entries which will be included. If this is a number, that number of unauthorized entries will be included; if True, *all* unauthorized entries will be included. These entries will count against the `count` limit, if any. Defaults to `0`.
 
@@ -18,11 +18,15 @@ The `view` object has the following things on it:
 
 * **`deleted`**: A list of all of the entries that were deleted from this view (with `Status: GONE` or `Status: DELETED`)
 
-* <span id="unauthorized">**`unauthorized`**: A list of entries which would be included if the user were authorized.</span>
+* <span id="unauthorized">**`unauthorized`**</span>: A list of entries which would be included if the user were authorized.
 
     This is mostly so that a template can indicate whether a logged-out user should try logging in to see the protected entries, or for feeds to show placeholders.
 
-    Optionally takes a parameter, `count`, which indicates the maximum number that will be included. If not specified it will use the `count` limit, if any. If you only want to determine if there are any unauthorized entries you should set this to `1` for improved performance.
+    Optionally takes a parameter, `count`, which indicates the maximum number that will be included. If not specified it will use the `count` limit, if any.
+
+    Note that visible, authorized entries *do not* count against the limit.
+
+* <span id="has_unauthorized">**`has_unauthorized`**</span>: Indicates whether the view has any entries which could become visible if a different user were logged in.
 
 * **`count`**: The number of visible entries in the view
 
