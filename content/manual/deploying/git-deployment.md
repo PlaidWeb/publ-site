@@ -81,7 +81,7 @@ cd $HOME
 git clone $HOME/sitefiles/$SITENAME.git
 # optional: make this repository share the raw objects (to save some disk space)
 # see https://git.wiki.kernel.org/index.php/Git_FAQ#How_to_share_objects_between_existing_repositories.3F
-cd example.com
+cd $SITENAME
 echo "$HOME/sitefiles/$SITENAME.git/objects/" > .git/objects/info/alternates
 git gc
 ```
