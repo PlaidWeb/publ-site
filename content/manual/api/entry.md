@@ -195,7 +195,6 @@ The `entry` object has the following methods/properties:
 
     * `count` has no effect
     * If `category` is unspecified, it defaults to the entry's category
-    * If `category` is specified, `recurse` defaults to `True`
 
     Examples:
 
