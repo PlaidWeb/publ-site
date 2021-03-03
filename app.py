@@ -103,6 +103,8 @@ config = {
 
         'TEST_ENABLED': True,
     },
+
+    'search_index': '_index',
 }
 
 # Create the application instance
