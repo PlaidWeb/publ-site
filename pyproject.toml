@@ -8,7 +8,7 @@ authors = ["fluffy <fluffy@beesbuzz.biz>"]
 python = "^3.8"
 flask-hookserver = "^1.1.0"
 gunicorn = "^20.0.4"
-publ = "^0.7.0"
+publ = "^0.7.1"
 python-memcached = "^1.59"
 Pushl = "^0.3.0"
 
