@@ -347,7 +347,62 @@ The following additional things are provided to all templates:
 
     This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
 
-* <span id="secure_url">**`secure_url`**: A version of `url_for()` which will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
+* <span id="secure_url">**`secure_url`**: A version of `url_for()` which will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).</span>
+
+* <span id="search">**`search`**: Perform a full-text search on the site contents.</span>
+
+    If the application is [configured with full-text search](865#search_index), this function will allow querying the search index. It takes the following parameters:
+
+    * **`query`**: The query to perform. This uses the [Woosh query syntax](https://whoosh.readthedocs.io/en/latest/querylang.html), and the following fields are supported:
+
+        * `content`: The textual content of the entry body (default)
+        * `title`: The title of the entry
+        * `date`: The publication date of the entry
+        * `tag`: Visible entry tags
+
+    * **`category`**: The category to search within; defaults to all categories
+    * **`recurse`**: If `True`, will include subcategories; if `False`, only searches the current category (default)
+    * **`count`**: The maximum number of entries to retrieve, or `None` for no limit (default)
+    * **`page`**: The page of results to retrieve
+
+    This returns a search result set, which has an API similar to a [view](/api/view); notably, it provides the following properties:
+
+    * **`entries`**: The search results
+
+        This takes an optional parameter, `unauthorized`, which indicates the maximum number of unauthorized entries to include in the list (`None` will include all of them).
+
+    * **`has_unauthorized`**: Whether there are unauthorized entries
+
+    This API is experimental and subject to change.
+
+    Example usage:
+
+    ```jinja
+    <form method="GET">
+    <input type="text" name="q" value="{{request.args.q}}" placeholder="Search text">
+    <input type="submit" value="Search">
+    </form>
+
+    {%- if request.args.q -%}
+        <p>Showing search results for: <tt>{{request.args.q}}</tt></p>
+        {%- set results = search(request.args.q,category=category,recurse=True) -%}
+        {%- if not user and results.has_unauthorized -%}
+            <p>Maybe try <a href="{{login}}">logging in</a> for more results</p>
+        {%- endif -%}
+
+        {%- if results -%}
+            <ul>
+                {%- for entry in results -%}
+                    <li><a href="{{entry.link}}">{{entry.title}}</a></li>
+                {%- endfor -%}
+            </ul>
+        {%- else -%}
+            <p>No entries found</p>
+        {%- endif -%}
+    {%- endif %}
+
+    ```
+    }
 
 A note to advanced Flask users: while `url_for()` is available, it shouldn't
 ever be necessary, as all its useful functionality is exposed via the available
