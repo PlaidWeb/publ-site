@@ -17,7 +17,7 @@ decorator @ file:///home/fluffy/.cache/pypoetry/artifacts/e8/56/46/038f0f95c2eb2
 expiringdict @ file:///home/fluffy/.cache/pypoetry/artifacts/ef/e2/ab/9f143a7b71f4ac987845c1cd2d41da801c523344b478f5ceb491d346f0/expiringdict-1.2.1.tar.gz
 feedparser @ file:///home/fluffy/.cache/pypoetry/artifacts/a8/80/0b/47d68c2571d3b86e25e7cc9c72ba08830c1e2b5ef1fe625661366e33b0/feedparser-6.0.2-py3-none-any.whl
 Flask @ file:///home/fluffy/.cache/pypoetry/artifacts/0a/8b/ac/e30b4f067b6a1660b6e04691990900956f4e864868c7fa0f377389f368/Flask-1.1.2-py2.py3-none-any.whl
-Flask-Caching @ file:///home/fluffy/.cache/pypoetry/artifacts/e8/27/9f/10c4690918b922670ae6023168234bcb80a58e4f28fb35bbba771ae972/Flask_Caching-1.9.0-py2.py3-none-any.whl
+Flask-Caching @ file:///home/fluffy/.cache/pypoetry/artifacts/9f/cf/1b/6be9ea4099287cbee9a863649445cf09a9489351dfc6b08c293c8657b3/Flask_Caching-1.10.0-py3-none-any.whl
 Flask-Hookserver @ file:///home/fluffy/.cache/pypoetry/artifacts/49/eb/4f/6aa69a802badb23eefba6f5aabbf34b9d3958286dc4267d545358c8de5/Flask_Hookserver-1.1.0-py2.py3-none-any.whl
 gunicorn @ file:///home/fluffy/.cache/pypoetry/artifacts/b5/fa/14/5790a1a5da3a5144bc505c39d8003baa6f64040928b75d0e0779683287/gunicorn-20.0.4-py2.py3-none-any.whl
 html5lib @ file:///home/fluffy/.cache/pypoetry/artifacts/3a/69/75/c20902b2e250d6aa35ef06815dd1cc66f7d2bc20b64941f5f116507d8d/html5lib-1.1-py2.py3-none-any.whl
@@ -35,7 +35,7 @@ oauthlib @ file:///home/fluffy/.cache/pypoetry/artifacts/2a/c5/81/4a81a78315addb
 pathtools @ file:///home/fluffy/.cache/pypoetry/artifacts/db/27/0c/42fa00f22356328dc3bd6da21aae59384ad7f36690fe5ca5495586560f/pathtools-0.1.2.tar.gz
 Pillow @ file:///home/fluffy/.cache/pypoetry/artifacts/20/f7/9c/74cd479fb825d1b343c240941f51aaffec169a93384e2e48238c0af228/Pillow-8.1.1-cp38-cp38-manylinux1_x86_64.whl
 pony @ file:///home/fluffy/.cache/pypoetry/artifacts/84/cf/9b/9f41998bf503d8a03b25efa9ce693a4430521d896ac2a0a811d09ba28f/pony-0.7.14.tar.gz
-publ @ file:///home/fluffy/.cache/pypoetry/artifacts/a9/2c/ae/b131cde5ee80a97b141b71a9536eb54005c7f851aed72ed1f8966e6317/Publ-0.7.0-py3-none-any.whl
+publ @ file:///home/fluffy/.cache/pypoetry/artifacts/6d/6e/5b/6718ca73f9e117b0b95933121aba48bf10c13c1d789110fa12e97f508c/Publ-0.7.1-py3-none-any.whl
 pushl @ file:///home/fluffy/.cache/pypoetry/artifacts/57/f2/54/44f0b87fef66df5d1a4d14d746d5933dc73d1bcbd45cb978e1bfc457d0/pushl-0.3.1-py3-none-any.whl
 pycparser @ file:///home/fluffy/.cache/pypoetry/artifacts/f1/03/25/40eb46f7bede64f78ba073e2141b8216e611cbcde72e3117c326560101/pycparser-2.20-py2.py3-none-any.whl
 Pygments @ file:///home/fluffy/.cache/pypoetry/artifacts/d8/89/8d/dd9d739214940ed315c7a6aa2fc949a9ed6257976b13c0e7d40e684012/Pygments-2.8.0-py3-none-any.whl
@@ -57,4 +57,5 @@ validate-email @ file:///home/fluffy/.cache/pypoetry/artifacts/2f/6d/d8/9619b25f
 watchdog @ file:///home/fluffy/.cache/pypoetry/artifacts/e2/f0/af/a61e7ce5a3adbc5c1b69f39981b6ac5686de0dd0f1532a5a9264cd9f5e/watchdog-1.0.2-py3-none-manylinux2014_x86_64.whl
 webencodings @ file:///home/fluffy/.cache/pypoetry/artifacts/60/1e/b4/eff9915b6506bb01a5ad61dfae3fa4f0302be9e2ad45eaccc833925b95/webencodings-0.5.1-py2.py3-none-any.whl
 Werkzeug @ file:///home/fluffy/.cache/pypoetry/artifacts/71/cb/8f/ea556c118c51e63201517bf1ce46027e851bef2077e67f333349deacf1/Werkzeug-1.0.1-py2.py3-none-any.whl
+Whoosh @ file:///home/fluffy/.cache/pypoetry/artifacts/f7/9e/ce/c246bb6a87e0909bc6d865a1730ad18a7e6e93a78793501549e81d5e09/Whoosh-2.7.4-py2.py3-none-any.whl
 yarl @ file:///home/fluffy/.cache/pypoetry/artifacts/ba/ae/48/6e2cb824dd72016fe49814c19c62914323a44b9b9d3d10b583b013dbf3/yarl-1.6.3-cp38-cp38-manylinux2014_x86_64.whl
