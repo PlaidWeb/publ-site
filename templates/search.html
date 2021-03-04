@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div id="content">
+{% if request.args.q %}
+<p>Search results for:  <code>{{request.args.q}}</code></p>
+
+{% set content = search(request.args.q, category=category, recurse=True, count=20) %}
+{% if content %}
+    {% for entry in content %}
+    <article class="h-entry entry">
+    {% block entry scoped %}
+    <h1 class="p-name">
+        <a class="u-url" href="{{entry.link}}">{{entry.title}}</a>
+    </h1>
+
+    <section class="p-summary">
+    {{entry.summary}}
+    <a class="keep-reading" href="{{entry.link}}">more...</a>
+    </section>
+    {% endblock %}
+
+    </article>
+    {% endfor %}
+{% else %}
+    <p class="error">No results found</p>
+{% endif %}
+
+{% endif %}
+{% endblock %}

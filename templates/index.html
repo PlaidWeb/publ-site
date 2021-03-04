@@ -38,6 +38,11 @@
 
     <h2>Navigation</h2>
 
+    <form method="GET" action="search">
+        <input type="text" name="q" value="{{request.args.q}}" placeholder="Search text">
+        <input type="submit" value="Search">
+    </form>
+
     {% block navigation %}
     <ul>
     {% if category.parent %}
@@ -87,6 +92,7 @@
         {% endif %}
     </div>
 
+    {% block entries scoped %}
     <div class="entries">
 
         {% for entry in content.entries %}
@@ -109,6 +115,7 @@
         {% endfor %}
 
     </div>
+    {% endblock %}
 
     <div class="nav">
         {% if content.previous %}

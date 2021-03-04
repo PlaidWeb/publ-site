@@ -227,11 +227,11 @@ dotenv = ["python-dotenv"]
 
 [[package]]
 name = "flask-caching"
-version = "1.9.0"
+version = "1.10.0"
 description = "Adds caching support to your Flask application"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.5"
 
 [package.dependencies]
 Flask = "*"
@@ -418,7 +418,7 @@ python-versions = "*"
 
 [[package]]
 name = "publ"
-version = "0.7.0"
+version = "0.7.1"
 description = "A flexible web-based publishing framework"
 category = "main"
 optional = false
@@ -437,6 +437,7 @@ pony = ">=0.7.14,<0.8.0"
 Pygments = ">=2.7.3,<3.0.0"
 watchdog = ">=1.0.2,<2.0.0"
 Werkzeug = ">=1.0.1,<2.0.0"
+Whoosh = ">=2.7.4,<3.0.0"
 
 [[package]]
 name = "pushl"
@@ -661,6 +662,14 @@ dev = ["pytest", "pytest-timeout", "coverage", "tox", "sphinx", "pallets-sphinx-
 watchdog = ["watchdog"]
 
 [[package]]
+name = "whoosh"
+version = "2.7.4"
+description = "Fast, pure-Python full text indexing, search, and spell checking library."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "yarl"
 version = "1.6.3"
 description = "Yet another URL library"
@@ -829,8 +838,8 @@ flask = [
     {file = "Flask-1.1.2.tar.gz", hash = "sha256:4efa1ae2d7c9865af48986de8aeb8504bf32c7f3d6fdc9353d34b21f4b127060"},
 ]
 flask-caching = [
-    {file = "Flask-Caching-1.9.0.tar.gz", hash = "sha256:a0356ad868b1d8ec2d0e675a6fe891c41303128f8904d5d79e180d8b3f952aff"},
-    {file = "Flask_Caching-1.9.0-py2.py3-none-any.whl", hash = "sha256:e6ef2e2af84e13c4fd32c1839c1943a42f11b6b0fbcfdd6bf46547ea5482dbfe"},
+    {file = "Flask-Caching-1.10.0.tar.gz", hash = "sha256:f3f826790abe3b7797d42b0ad0356328d3c68651a3acb22a016728734cf43c91"},
+    {file = "Flask_Caching-1.10.0-py3-none-any.whl", hash = "sha256:27ddf54b2d160267b5fd70400359fc79dba5a87aa6e53abde89e627eb0fd4540"},
 ]
 flask-hookserver = [
     {file = "Flask-Hookserver-1.1.0.tar.gz", hash = "sha256:dcb41c3cafb053419ec60aee574d4f90c28c6fd3cab7131c7e2b86c6f87da9f2"},
@@ -1022,8 +1031,8 @@ pony = [
     {file = "pony-0.7.14.tar.gz", hash = "sha256:2f01e84e79ea7a14040225cb6c079bb266e7ba147346356c266490b18c77ce82"},
 ]
 publ = [
-    {file = "Publ-0.7.0-py3-none-any.whl", hash = "sha256:32081ca082518ae4e6878f65abf16f8a75bfbed4906e6a9e400968609594750a"},
-    {file = "Publ-0.7.0.tar.gz", hash = "sha256:0cfb9befdd81c9fddcd2a10b9d8e1654d8a949a700f6684e64ef6e37316ff829"},
+    {file = "Publ-0.7.1-py3-none-any.whl", hash = "sha256:e2436bf3254610c785ef300e8287f163b60341ab973a71041bc8f4397f56ce8f"},
+    {file = "Publ-0.7.1.tar.gz", hash = "sha256:40d66870316f2f1cb5e627fbfac2d5ff5b75349f4f663d7d2b9ddcfa931e1b38"},
 ]
 pushl = [
     {file = "pushl-0.3.1-py3-none-any.whl", hash = "sha256:55f9b1de4a6a9e88b346f5711829ab953191dab658b77fc981b1244a1dcc1636"},
@@ -1162,6 +1171,11 @@ webencodings = [
 werkzeug = [
     {file = "Werkzeug-1.0.1-py2.py3-none-any.whl", hash = "sha256:2de2a5db0baeae7b2d2664949077c2ac63fbd16d98da0ff71837f7d1dea3fd43"},
     {file = "Werkzeug-1.0.1.tar.gz", hash = "sha256:6c80b1e5ad3665290ea39320b91e1be1e0d5f60652b964a3070216de83d2e47c"},
+]
+whoosh = [
+    {file = "Whoosh-2.7.4-py2.py3-none-any.whl", hash = "sha256:aa39c3c3426e3fd107dcb4bde64ca1e276a65a889d9085a6e4b54ba82420a852"},
+    {file = "Whoosh-2.7.4.tar.gz", hash = "sha256:7ca5633dbfa9e0e0fa400d3151a8a0c4bec53bd2ecedc0a67705b17565c31a83"},
+    {file = "Whoosh-2.7.4.zip", hash = "sha256:e0857375f63e9041e03fedd5b7541f97cf78917ac1b6b06c1fcc9b45375dda69"},
 ]
 yarl = [
     {file = "yarl-1.6.3-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:0355a701b3998dcd832d0dc47cc5dedf3874f966ac7f870e0f3a6788d802d434"},

@@ -112,3 +112,4 @@ tmp/
 index.db
 *.sublime-workspace
 cache/
+_index/
