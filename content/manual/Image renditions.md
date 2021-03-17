@@ -34,6 +34,12 @@ render images.
 
 * <span id="link_class">**`link_class`**: What CSS class to apply to the image's hyperlink</span>
 
+* <span id="image_loading">**`image_loading`**</span>: What image loading mode to use. Possible values:
+
+    * `"lazy"`: Instruct the browser to only load the images when they come into view on the page (default)
+    * `"eager"`: Instruct the browser to load the image as soon as possible
+    * `False`: Use the browser default (usually `"eager"`)
+
 ### <span id="style"></span>Style options
 
 * **`img_class`**: If set, sets the `class` attribute on the image tag
