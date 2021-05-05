@@ -293,3 +293,18 @@ ul.tag-list li.tag-selected {
 *:hover >.permalink:after {
     color: rgba(0,0,0,0.75);
 }
+
+table {
+    border: solid black 2px;
+    border-collapse: collapse;
+}
+
+th {
+    background: #ccc;
+}
+
+th, td {
+    border: solid black 1px;
+    padding: 0.1ex 0.5ex;
+}
+
