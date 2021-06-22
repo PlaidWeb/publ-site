@@ -197,7 +197,7 @@ tests = ["dill", "coverage", "coveralls", "mock", "nose"]
 
 [[package]]
 name = "feedparser"
-version = "6.0.6"
+version = "6.0.8"
 description = "Universal feed parser, handles RSS 0.9x, RSS 1.0, RSS 2.0, CDF, Atom 0.3, and Atom 1.0 feeds"
 category = "main"
 optional = false
@@ -834,8 +834,8 @@ expiringdict = [
     {file = "expiringdict-1.2.1.tar.gz", hash = "sha256:fe2ba427220425c3c8a3d29f6d2e2985bcee323f8bcd4021e68ebefbd90d8250"},
 ]
 feedparser = [
-    {file = "feedparser-6.0.6-py3-none-any.whl", hash = "sha256:1c35e9ef43d8f95959cf8cfa337b68a2cb0888cab7cd982868d23850bb1e08ae"},
-    {file = "feedparser-6.0.6.tar.gz", hash = "sha256:78f62a5b872fdef451502bb96e64a8fd4180535eb749954f1ad528604809cdeb"},
+    {file = "feedparser-6.0.8-py3-none-any.whl", hash = "sha256:1b7f57841d9cf85074deb316ed2c795091a238adb79846bc46dccdaf80f9c59a"},
+    {file = "feedparser-6.0.8.tar.gz", hash = "sha256:5ce0410a05ab248c8c7cfca3a0ea2203968ee9ff4486067379af4827a59f9661"},
 ]
 flask = [
     {file = "Flask-1.1.4-py2.py3-none-any.whl", hash = "sha256:c34f04500f2cbbea882b1acb02002ad6fe6b7ffa64a6164577995657f50aed22"},
