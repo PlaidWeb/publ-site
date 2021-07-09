@@ -404,6 +404,8 @@ The following additional things are provided to all templates:
     ```
     }
 
+* <span id="token_endpoint">**`token_endpoint`**: Gets the URL of the built-in IndieAuth token endpoint.</span>
+
 A note to advanced Flask users: while `url_for()` is available, it shouldn't
 ever be necessary, as all its useful functionality is exposed via the available
 objects. If you need to use the endpoints from the Python side, please see the
