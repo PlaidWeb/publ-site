@@ -71,7 +71,9 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
     * <span id="admin_group">**`admin_group`**</span>: The name of the user group that will have administrative access; defaults to `admin`
     * **`auth_log_prune_interval`**: How frequently to clean out the authentication log, in seconds. Defaults to 3600 (one hour).
     * **`auth_log_prune_age`**: The maximum age of authentication log entries to keep, in seconds. Defaults to one month.
-    * **`max_token_age`**: The expiry time for [AutoAuth](https://indieweb.org/AutoAuth) tokens, in seconds. Defaults to one hour.
+
+    * **`ticket_lifetime`**: How long a [Ticket Auth](https://indieweb.org/IndieAuth_Ticket_Auth) ticket can stay in-flight, in seconds. Defaults to 60 (one minute).
+    * **`token_lifetime`**: How long a Ticket Auth token will remain valid, in seconds. Defaults to one month.
 
     * <span id="search_index">**`search_index`**</span>: The directory to keep the full-text search index data in; defaults to `None`, disabling full-text search.
 
@@ -224,36 +226,42 @@ Here are Publ's usable endpoints:
 * **`logout`**: Routes to the logout page; takes the `redir` option with the same
     usage as `login`.
 
-`login` and `logout` have a helper available in `publ.utils.auth_endpoint`, which
-simplifies the usage of the endpoints; it takes an endpoint name and returns a function
-which routes to that endpoint with an optional redirection parameter. If no redirection
-parameter is provided, it defaults to `flask.request.full_path`.
+    `login` and `logout` have a helper available in `publ.utils.auth_endpoint`, which
+    simplifies the usage of the endpoints; it takes an endpoint name and returns a function
+    which routes to that endpoint with an optional redirection parameter. If no redirection
+    parameter is provided, it defaults to `flask.request.full_path`.
 
-```python
-import publ.utils
+    ```python
+    import publ.utils
 
-# get the login helper
-login_helper = publ.utils.auth_endpoint('login')
+    # get the login helper
+    login_helper = publ.utils.auth_endpoint('login')
 
-# log in and redirect back to the current page
-flask.redirect(login_link())
+    # log in and redirect back to the current page
+    flask.redirect(login_link())
 
-# log in and redirect to a different page
-flask.redirect(login_link('/path/to/something'))
+    # log in and redirect to a different page
+    flask.redirect(login_link('/path/to/something'))
 
-# get the logout helper
-logout_helper = publ.utils.auth_endpoint('logout')
+    # get the logout helper
+    logout_helper = publ.utils.auth_endpoint('logout')
 
-# log out and redirect to the same page
-flask.redirect(logout_link())
+    # log out and redirect to the same page
+    flask.redirect(logout_link())
 
-# log out and redirect to server root
-flask.redirect(logout_link('/'))
-```
+    # log out and redirect to server root
+    flask.redirect(logout_link('/'))
+    ```
 
-Also note that the redirection target *must* be a local URL; external URLs will
-not work. (This prevents your site from being used as a
-malicious URL redirector.)
+    Also note that the redirection target *must* be a local URL; external URLs will
+    not work. (This prevents your site from being used as a
+    malicious URL redirector.)
+
+* **`tokens`**: Routes to the [IndieAuth](https://indieweb.org/IndieAuth) token endpoint.
+
+    Accepts a parameter, `me`, which initiates a [TicketAuth](https://indieweb.org/IndieAuth_Ticket_Auth) transaction.
+    This parameter works both via POST and via GET.
+
 
 ## Other useful API functions
 
