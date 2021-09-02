@@ -432,7 +432,7 @@ Whoosh = ">=2.7.4,<3.0.0"
 
 [[package]]
 name = "pushl"
-version = "0.3.1"
+version = "0.3.3"
 description = "A conduit for pushing changes in a feed to the rest of the IndieWeb"
 category = "main"
 optional = false
@@ -657,7 +657,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "0fff9efed6e295774253476f1238e226a4f44e4cc914322a29b62ce51a435e95"
+content-hash = "96a04604c26d966454a67132655874c8dedf0be8cfb63c10f63c333bdd2be758"
 
 [metadata.files]
 aiohttp = [
@@ -1026,8 +1026,8 @@ publ = [
     {file = "Publ-0.7.2.tar.gz", hash = "sha256:28fbc0ff9ec7c0b9eb9a2f6a2924f8c5b6a1eebe104a7ddef1ba63283b0b9542"},
 ]
 pushl = [
-    {file = "pushl-0.3.1-py3-none-any.whl", hash = "sha256:55f9b1de4a6a9e88b346f5711829ab953191dab658b77fc981b1244a1dcc1636"},
-    {file = "pushl-0.3.1.tar.gz", hash = "sha256:2e61cc9f80dceffc292548f93538ce9a38ddd769db458cbe040955bd3cc0967b"},
+    {file = "Pushl-0.3.3-py3-none-any.whl", hash = "sha256:08e5c9e41496ad62cdf8a96c71bad70258bef9b9b72b89ccf580e049b0af9926"},
+    {file = "Pushl-0.3.3.tar.gz", hash = "sha256:0930b39a3d8ab0139a40d95acbda91bb6899353ca3310139c442115036a9bb28"},
 ]
 pycparser = [
     {file = "pycparser-2.20-py2.py3-none-any.whl", hash = "sha256:7582ad22678f0fcd81102833f60ef8d0e57288b6b5fb00323d101be910e35705"},
