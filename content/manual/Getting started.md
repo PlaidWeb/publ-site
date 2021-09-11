@@ -23,42 +23,25 @@ assume [`poetry`](https://python-poetry.org).
 ### macOS
 
 On macOS this is pretty straightforward; after installing
-[Homebrew](https://brew.sh) you can install these things with:
+[Homebrew](https://brew.sh) you can install Python with:
 
 ```bash
-brew install python poetry
+brew install python
 ```
 
 As an alternative to homebrew you can install Python from the [Python
 website](http://python.org), using your package manager of choice, or using
 [pyenv](https://github.com/pyenv/pyenv-installer).
 
+Afterwards, install [Poetry](https://python-poetry.org) per the [documentation](https://python-poetry.org/docs/).
+
+
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
 python 3.6 or later, and to also install `pip3`.
 
-Afterwards, you can install `poetry` with either:
-
-```bash
-sudo python -m pip install poetry
-```
-
-or
-
-```bash
-pip3 install --user poetry
-```
-
-If you do the latter, make sure your pip user directory is on your `PATH`; this
-will probably be `$HOME/.local/bin` but it might vary based on your
-distribution.
-
-Also, if `pip3` doesn't work, try running just `pip` instead; not all
-distributions differentiate between Python 2 and 3 anymore.
-
-If your distribution doesn't provide a sufficiently recent version, consider
-using [pyenv](https://github.com/pyenv/pyenv-installer).
+Afterwards, install [Poetry](https://python-poetry.org) per the [documentation](https://python-poetry.org/docs/).
 
 ### Windows
 
@@ -81,12 +64,7 @@ MinGW.
     The "git bash" that comes with [Git for Windows](http://git-scm.com) is a
     pretty good choice.
 
-4. From a command prompt (e.g. git bash, a Windows CMD prompt, or from "Run
-program..." from the start menu):
-
-    ```bash
-    pip install poetry
-    ```
+4. Install [Poetry](https://python-poetry.org) per the [documentation](https://python-poetry.org/docs/)
 
 ## Making a website
 
