@@ -17,6 +17,12 @@ The `entry` object has the following methods/properties:
 
     * **`always_show`**: Whether to always show the title, even if the entry isn't authorized; use with caution. (default: `False`)
 
+* <span id="summary">**`summary`**</span>: The entry's [summary text](322#summary)
+
+    This property can be used directly, or it can take [HTML processing arguments](/html-processing), as well as the following:
+
+    * **`always_show`**: Whether to always show the summary text, even if the entry isn't authorized; use with caution. (default: `False`)
+
 * **`entry_type`**: The value of the entry's `Entry-Type` header, if any.
 
 * **`private`**: Indicates whether this entry is only visible to logged-in users.
@@ -117,8 +123,6 @@ The `entry` object has the following methods/properties:
     Please see the [OpenGraph documentation](http://ogp.me/) for more information.
 
     This also accepts the `markdown_extensions` argument.
-
-* <span id="summary">**`summary`**</span>: The [entry summary](322#summary). This is always treated as plain text (i.e. no HTML or Markdown).
 
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).

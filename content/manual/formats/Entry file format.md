@@ -219,10 +219,9 @@ templates; the following headers are what Publ itself uses:
     filter criteria visible.</span>
 
 * <span id="summary">**`Summary`**</span>: A plain-text summary/description of
-    the entry.
+    the entry. Markdown is supported.
 
-    **Default value:** The first paragraph of text in the entry body, with all
-    markup removed.
+    **Default value:** The first paragraph of text in the entry body.
 
 * <span id="auth">**`Auth`**: A list of permissions for who can and cannot see
     the entry.</span>
