@@ -252,6 +252,6 @@ templates](https://github.com/PlaidWeb/Publ-templates-beesbuzz.biz) available.
 
 Getting a Publ site online depends a lot on how you're going to be hosting it.
 If you're savvy with Flask apps you probably know what to do; otherwise, check
-out the [deployment guides](deployment/) to see if there's anything that covers
+out the [deployment guides](deploying/) to see if there's anything that covers
 your usage.
 
