@@ -48,3 +48,47 @@ This takes the following arguments:
 * `--lifetime/-l`: How long the token should be valid for, in seconds (default: 3600)
 
 Note that token scopes are not currently used by Publ itself; this is provided largely to make it easier to extend Publ via the [Python API](865), such as implementing a mechanism to automatically post content from external sources.
+
+## <span id="normalize">`normalize`</span>
+
+This command allows you to bulk-rename entries within one or more categories with a templatized filename. By default it gives things a name of `{date} {sid} {title}`, so e.g. names like:
+
+```
+20190204 3 Welcome to my new blog.md
+20200101 1942 Happy new year!.md
+20200704 DELETED Ugh never mind.md
+```
+
+Example usage:
+
+```sh
+### Give 'blog' entries a name like '20210101 Hello everyone.md'
+flask publ normalize -af "{date} {title}" blog
+
+### Apply the default name to published entries in 'articles' and 'recipes'
+flask publ normalize articles recipes
+
+### Apply hyper-specific naming to every entry in the site
+flask publ normalize -rf "{date}-{time}-{id}-{slug}"
+```
+
+It accepts the following arguments:
+
+*  `-r`/`--recurse`:      Include subdirectories
+*  `-a`/`--all`:  Apply to all entries, not just reachable ones (published, scheduled, hidden)
+*  `-n`/`--dry-run`:      Show, but don't apply, changes
+*  `-f`/`--format TEXT`:  Filename format to use
+*  `-v`/`--verbose`:      Show detailed actions
+
+And the following format tokens can be used in the string provided to `-f`/`--format`:
+
+*      `{date}`:    The entry's publish date, in YYYYMMDD format
+*      `{time}`:    The entry's publish time, in HHMMSS format
+*      `{id}`:      The entry's ID
+*      `{status}`:  The entry's publish status
+*      `{sid}`:     If the entry is reachable, the ID, otherwise the status
+*      `{title}`:   The entry's title, normalized to filename-safe characters
+*      `{slug}`:    The entry's slug text
+*      `{type}`:    The entry's type
+
+Note that entries in DRAFT status always get an `{id}` of `DRAFT`.

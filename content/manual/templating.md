@@ -364,6 +364,7 @@ The following additional things are provided to all templates:
     * **`recurse`**: If `True`, will include subcategories; if `False`, only searches the current category (default)
     * **`count`**: The maximum number of entries to retrieve, or `None` for no limit (default)
     * **`page`**: The page of results to retrieve
+    * **`future`**: Whether to include future scheduled entries
 
     This returns a search result set, which has an API similar to a [view](/api/view); notably, it provides the following properties:
 
