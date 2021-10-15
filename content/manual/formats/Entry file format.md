@@ -29,20 +29,42 @@ Hi, this is my first blog entry. I guess I don't have a lot to say.
 Well, maybe a *little* more.
 ```
 
-## Headers
+## <span id="headers">Headers</span>
 
-Headers are, more or less, a series of lines like:
+Headers follow the [RFC 2822](https://datatracker.ietf.org/doc/html/rfc2822)
+email message format. They are, more or less, a series of lines like:
 
 ```publ
 Header-Name: Header-Value
 Another-Header-Name: Header-Value
 ```
 
-followed by a blank line. (At present, Publ actually uses Python's [RFC 2822](https://tools.ietf.org/html/rfc2822) parser, so in theory you should be able
-to do line continuations if that's necessary for some reason.)
+followed by a blank line. Long values can also be split on multiple lines by
+using a hanging indent:
 
-You can define whatever headers you want for your
-templates; the following headers are what Publ itself uses:
+```publ
+Header-Name: Long value which continues
+    on to a second line and maybe
+    a third
+```
+
+You can define whatever headers you want for your templates, and can also have
+multiple headers of the same name. For example:
+
+```publ
+My-Header: foo
+My-Header: bar
+My-Header: baz
+```
+
+Header names are case-insensitive (so, for example, `my-header`, `My-header`,
+and `My-HEADER` all mean the same thing).
+
+When using these headers from a template, they appear as part of their [entry object](115), and can be accessed using the [`get` mechanism](115#get).
+
+### Publ-defined headers
+
+Publ defines a number of headers for its own use. They are as follows:
 
 * **`Title`**: The display title of the entry
 
@@ -266,11 +288,21 @@ templates; the following headers are what Publ itself uses:
 
     Note that identities won't necessarily be an email address; they are only
     listed as such here for illustrative purposes. For example, a Mastodon user
-    will appear as e.g. `https://queer.party/@fluffy`. See the [user
+    will appear as e.g. `https://plush.city/@fluffy`. See the [user
     configuration file](1341) and [admin guide](732) for more information.
 
     ==Note:== Only a single `Auth:` header is supported. If more than one is
     present, only one will be used, and it is undefined as to which one that is.
+    If you want nicer formatting on long per-entry access lists, you can format
+    it using hanging indents:
+
+    ```publ
+    Title: Bob's surprise birthday party
+    Auth: mailto:someone@example.com
+        mailto:someone-else@example.com
+        friends
+        !bob
+    ```
 
 * <span id="attach">**`Attach`**: Another entry to "attach" to this one, useful for defining arbitrary content sections or the like. This can be by file path or by entry ID.
 

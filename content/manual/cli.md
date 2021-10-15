@@ -91,4 +91,4 @@ And the following format tokens can be used in the string provided to `-f`/`--fo
 *      `{slug}`:    The entry's slug text
 *      `{type}`:    The entry's type
 
-Note that entries in DRAFT status always get an `{id}` of `DRAFT`.
+Note that entries in DRAFT status always get an `{id}` of `DRAFT`, even if an ID has been assigned.

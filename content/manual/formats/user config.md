@@ -39,13 +39,14 @@ Identities can also be used as a group name, to help manage those folks who have
 ```cfg
 [https://beesbuzz.biz]
 mailto:fluffy@beesbuzz.biz
-; Twitter URLs *must* include the user ID; this helps prevent spoofing.
-; You can get the full user URL from the authentication log (/_admin)
-https://twitter.com/fluffy#993171
-https://queer.party/@fluffy
+; Twitter URLs are given in /i/user/NNNNN format; this allows things to keep
+; working if a user changes their username, and prevents others from hijacking
+; their identity as well.
+https://twitter.com/i/user/993171
+https://plush.city/@fluffy
 ```
 
-This will give the identities `mailto:fluffy@beesbuzz.biz`, `https://twitter.com/fluffy#993171`, and `https://queer.party/@fluffy` membership in all groups that `https://beesbuzz.biz` is in as well.
+This will give the identities [`mailto:fluffy@beesbuzz.biz`](mailto:fluffy@beesbuzz.biz), [`https://twitter.com/i/user/993171`](https://twitter.com/i/user/993171), and [`https://plush.city/@fluffy`](https://plush.city/@fluffy) membership in all groups that [`https://beesbuzz.biz`](https://beesbuzz.biz) is in as well. However, the opposite is not true; `https://beesbuzz.biz` won't automatically have access to entries that are only allowed for `https://plush.city/@fluffy`, for example.
 
 Any identities which belong to the administrative group (which is `admin` by default but can configured differently) will have access to all entries, as well as the administrative dashboard. Otherwise, users are subject to the [permissions system](Entry file format.md#auth).
 

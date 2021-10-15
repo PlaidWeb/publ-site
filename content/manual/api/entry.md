@@ -8,6 +8,8 @@ The template API for `entry` objects.
 
 .....
 
+## Default properties
+
 The `entry` object has the following methods/properties:
 
 * **`id`**: The numerical entry ID
@@ -219,16 +221,16 @@ The `entry` object has the following methods/properties:
 
     This takes the same arguments as `next`.
 
-* **`get`**: Get a header from the [entry file](/entry-format)
+* <span id="get">**`get`**</span>: Get a header from the [entry file](/entry-format)
 
     Note that if there's more than one of a header, it's undefined which one this will retrieve.
     If you want to get more than one, use `get_all` instead.
 
     Header names are not case-sensitive (i.e. `'fooBar'`, `'Foobar'`, and `'FOOBAR'` are all equivalent).
 
-    Also, if the header name is a valid variable name (i.e. consists of only letters, numbers, and underscores, and starts with a letter or underscore), and doesn't conflict with an API function, you can also retrieve it directly, e.g. `entry.Foobar` is equivalent to `entry.get('Foobar')`. It is recommended that if you do this, always start the name with a capital letter, to avoid conflicts with any future API functions (e.g. `entry.Next` will always be equivalent to `entry.get('Next')`).
-
     Note that this will get the *raw* header values, rather than anything interpreted by Publ. So, for example, `entry.get('date')` will return the `Date:` header string, rather than the display date of the entry.
+
+    See the section on [header retrieval](#header-retrieval) for more information.
 
 * **`get_all`**: Get all of a header type from an entry, as a list.
 
@@ -296,3 +298,90 @@ The `entry` object has the following methods/properties:
         * `entry`
         * `category`
         * `template`
+
+## <span id="header-retrieval">Header retrieval</span>
+
+If you have defined [custom headers](322#headers), you can do several different things with them:
+
+* You can always use `entry.get('header-name')`, or `entry['header-name']` which is equivalent. If there are multiple headers of the same name, it is undefined which one this will get.
+
+* `entry.get_all('header-name')` will get all of the raw values of a header, as an array. For example, with an entry like:
+
+    ```publ
+    Title: My weird day
+    Noun: first noun
+    Noun: second noun
+    Noun: third noun
+    ```
+
+    then `entry.get_all('noun')` will return an array like `['first noun', 'second noun', 'third noun']` (although the order isn't guaranteed).
+
+* If the header name is a valid variable name (i.e. starts with a letter or
+    underscore, and only contains letters, numbers, and underscores), and
+    doesn't conflict with one of the [built-in properties](#builtins), you can
+    also get it using the `.` operator; for example, in an entry like:
+
+    ```publ
+    Title: This is a test
+    Verb: embiggen
+    ```
+
+    `entry.verb` will be `'embiggen'`.
+
+    However, there's always the possibility that a future Publ update might end
+    up using your custom header name as a built-in property, so you can't be
+    100% sure that this will continue to work forever.
+
+* The `in` keyword will let you know if a header exists on an entry; for
+    example, this template fragment:
+
+    ```jinja2
+
+    <h1>{{entry.title}}</h1>
+    {{entry.body}}
+
+    {% if 'cut' in entry %}
+    <details class="cut"><summary>{{entry.cut}}</summary>
+    {{entry.more}}
+    </details>
+    {% endif %}
+    ```
+
+    lets you make an entry like this:
+
+    ```publ
+    Title: An entry with a cut
+    Cut: Extreme nerdery
+
+    Want to hear a secret?
+
+    .....
+
+    I'm a gigantic nerd.
+    ```
+
+    which will render like:
+
+    ```
+    <h1>An entry with a cut</h1>
+
+    <p>Want to hear a secret?</p>
+
+    <details class="cut"><summary>Extreme nerdery</summary>
+    <p>I'm a gigantic nerd.</p>
+    </details>
+    ```
+
+    Note that this is *generally* the same as simply doing e.g.
+
+    ```jinja2
+    {% if entry.cut %}
+    ```
+
+    but it's slightly more efficient and also can simplify some template logic,
+    probably.
+
+* If the header name is a valid variable name (i.e. consists of only letters, numbers, and underscores, and starts with a letter or underscore), and doesn't conflict with an API function, you can also retrieve it directly, e.g. `entry.Foobar` is equivalent to `entry.get('Foobar')`. It is recommended that if you do this, always start the name with a capital letter, to avoid conflicts with any future API functions (e.g. `entry.Next` will always be equivalent to `entry.get('Next')`).
+
+    You can also check to see if the entry has a header
+
