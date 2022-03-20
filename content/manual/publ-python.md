@@ -73,7 +73,8 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
     * **`auth_log_prune_age`**: The maximum age of authentication log entries to keep, in seconds. Defaults to one month.
 
     * **`ticket_lifetime`**: How long a [Ticket Auth](https://indieweb.org/IndieAuth_Ticket_Auth) ticket can stay in-flight, in seconds. Defaults to 60 (one minute).
-    * **`token_lifetime`**: How long a Ticket Auth token will remain valid, in seconds. Defaults to one month.
+    * **`token_lifetime`**: How long an authorization token will remain valid, in seconds. Defaults to one month.
+    * **`refresh_token_lifetime`**: How long a refresh token will remain valid, in seconds. Defaults to three months.
 
     * <span id="search_index">**`search_index`**</span>: The directory to keep the full-text search index data in; defaults to `None`, disabling full-text search.
 
