@@ -325,6 +325,18 @@ The following additional things are provided to all templates:
 
     This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
 
+    The optional parameter `absolute` will treat the link as absolute; for example,
+
+    ```jinja
+    <a href="{{login('foo',absolute=True)}}">
+    ```
+
+    will render as e.g.
+
+    ```html
+    <a href="https://example.com/_login/foo">
+    ```
+
 * <span id="logout_link">**`logout`**: Provide a logout link</span>
 
     This can be used directly, i.e. `{{logout}}`, or it can be given a redirection path as with `login`.
@@ -346,6 +358,18 @@ The following additional things are provided to all templates:
     will not.
 
     This will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).
+
+    The optional parameter `absolute` will treat the link as absolute; for example,
+
+    ```jinja
+    <a href="{{login('foo',absolute=True)}}">
+    ```
+
+    will render as e.g.
+
+    ```html
+    <a href="https://example.com/_login/foo">
+    ```
 
 * <span id="secure_url">**`secure_url`**: A version of `url_for()` which will automatically upgrade the URL to `https:` if the site is configured with [`AUTH_FORCE_HTTPS`](706#force_https).</span>
 
