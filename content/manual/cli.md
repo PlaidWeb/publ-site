@@ -18,7 +18,7 @@ from within your Publ virtual environment (e.g. `poetry run flask publ --help` o
 For usage of the `flask` command itself, see the [Flask CLI documentation](https://flask.palletsprojects.com/en/1.1.x/cli/).
 
 
-## `reindex`
+## <span id="reindex">`reindex`</span>
 
 This command lets you force a database reindex, and will wait until the index finishes. This is useful for deployment scripts and the like.
 

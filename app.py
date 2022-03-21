@@ -49,6 +49,9 @@ config = {
     # Maximum age for image renditions, in seconds
     # 'image_cache_age': 86400 * 7,  # one week
 
+    # Only enable the content watchdog when running in test/debug mode
+    'index_enable_watchdog': bool(os.environ.get('FLASK_DEBUG')),
+
     # Where we keep our template files
     # 'template_folder': os.path.join(APP_PATH, 'templates'),
 
