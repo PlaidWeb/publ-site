@@ -223,6 +223,11 @@ The `entry` object has the following methods/properties:
 
 * <span id="get">**`get`**</span>: Get a header from the [entry file](/entry-format)
 
+    This takes the following arguments:
+
+    * **`name`**: The name of the header to retrieve
+    * **`always_allow`**: Whether to always retrieve it, even if the entry is unauthorized (default: `False`)
+
     Note that if there's more than one of a header, it's undefined which one this will retrieve.
     If you want to get more than one, use `get_all` instead.
 
@@ -232,7 +237,12 @@ The `entry` object has the following methods/properties:
 
     See the section on [header retrieval](#header-retrieval) for more information.
 
-* **`get_all`**: Get all of a header type from an entry, as a list.
+* <span id="get_all">**`get_all`**</span>: Get all of a header type from an entry, as a list.
+
+    This takes the following arguments:
+
+    * **`name`**: The name of the header to retrieve
+    * **`always_allow`**: Whether to always retrieve it, even if the entry is unauthorized (default: `False`)
 
     For example, this template fragment
     will print out all of the `Author` headers in an unordered list, but only

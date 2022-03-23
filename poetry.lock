@@ -432,7 +432,7 @@ python-versions = "*"
 
 [[package]]
 name = "publ"
-version = "0.7.7"
+version = "0.7.8"
 description = "A flexible web-based publishing framework"
 category = "main"
 optional = false
@@ -1179,8 +1179,8 @@ pony = [
     {file = "pony-0.7.16.tar.gz", hash = "sha256:5f45fc67587f4520c560a57148cc573b097d42f82f5cb200d72c957b5708198d"},
 ]
 publ = [
-    {file = "Publ-0.7.7-py3-none-any.whl", hash = "sha256:66e3c2c18cf330b3c039544bce7f0350a74333db59e91f42b20dd7ace545ed27"},
-    {file = "Publ-0.7.7.tar.gz", hash = "sha256:7f6e77bd05742ec85bb43bfc4a933fd8c9f0c4fcea0171a2ec89fe31c9b82bd1"},
+    {file = "Publ-0.7.8-py3-none-any.whl", hash = "sha256:00907a5459eb6aa4282c00af68657d18ded5cc1f495d8242617eed7d58405b51"},
+    {file = "Publ-0.7.8.tar.gz", hash = "sha256:b93d977e9d4001335c0ad9d392d44634ea39cf1898493fe9dcf478eb0887dbd2"},
 ]
 pushl = [
     {file = "Pushl-0.3.3-py3-none-any.whl", hash = "sha256:08e5c9e41496ad62cdf8a96c71bad70258bef9b9b72b89ccf580e049b0af9926"},
