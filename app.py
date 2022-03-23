@@ -12,7 +12,7 @@ import flask
 import publ
 from flask_hookserver import Hooks
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 
 LOGGER = logging.getLogger(__name__)
 LOGGER.info("Setting up")
@@ -42,6 +42,9 @@ config = {
 
     # How often to forcibly rescan the content index (0 or None to disable)
     # 'index_rescan_interval': 7200,
+
+    # Disable the content watchdog when running in production
+    'index_enable_watchdog': bool(os.environ.get('FLASK_DEBUG')),
 
     # How often to clean the rendition cache, in seconds
     # 'image_cache_interval': 3600,
