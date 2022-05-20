@@ -122,7 +122,7 @@ an option to still resize it larger client-side, where the actual rendition will
 
 * **`format`**: Select the format to display the image as (defaults to the original format)
 
-* **`background`**: The background color to use when converting transparent images (such as .png) to non-transparent formats (such as .jpg).
+* **`background`**: The background color to use when converting transparent images (such as PNG or WebP) to non-transparent formats (such as JPEG); this can also be used to force an image to be non-transparent.
 
     This parameter can be in a number of formats:
 
@@ -132,11 +132,15 @@ an option to still resize it larger client-side, where the actual rendition will
 
     If you're daring you can also use any of the other color formats supported by [PIL.ImageColor](https://pillow.readthedocs.io/en/3.1.x/reference/ImageColor.html), e.g. `"hsl(0,100%,50%)"`
 
-* **`quality`**: The JPEG quality level to use for all renditions
+* **`quality`**: The quality level to use for all renditions, if applicable
 
-* **`quality_ldpi`**: The JPEG quality level to use for low-DPI renditions
+* **`quality_ldpi`**: The quality level to use for low-DPI renditions
 
-* **`quality_hdpi`**: The JPEG quality level to use for high-DPI renditions
+* **`quality_hdpi`**: The quality level to use for high-DPI renditions
+
+* **`lossless`**: Whether to use lossless compression, if available
+
+* **`quantize`**: How many colors to use in the output color palette, if available
 
 ### Image set options
 
