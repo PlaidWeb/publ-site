@@ -67,7 +67,10 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
             {{entry.body(max_width=1024, quality=80, heading_link_class='toc')}}
         ```
 
-    * **`auth`**: The configuration values for the [authentication system](authentication.md#auth).  Defaults to no configuration.
+    * <span id="auth">**`auth`**</span>: The configuration values for the [authentication system](authentication.md#auth).  Defaults to no configuration.
+
+        Note that if this option is selected, the [authl](https://pypi.org/project/authl/) library must be installed into your environment. If you are using [poetry](https://python-poetry.org) this can be added by specifying the "auth" extra when adding the dependency on Publ with `poetry add publ -E auth`; otherwise you can add it directly with `pip install authl` or the like.
+
     * **`user_list`**: The filename of the configuration file that stores the user configuration. Defaults to `users.cfg`
     * <span id="admin_group">**`admin_group`**</span>: The name of the user group that will have administrative access; defaults to `admin`
     * **`auth_log_prune_interval`**: How frequently to clean out the authentication log, in seconds. Defaults to 3600 (one hour).
@@ -78,6 +81,8 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
     * **`refresh_token_lifetime`**: How long a refresh token will remain valid, in seconds. Defaults to three months.
 
     * <span id="search_index">**`search_index`**</span>: The directory to keep the full-text search index data in; defaults to `None`, disabling full-text search.
+
+        Note that if this option is selected, the [Whoosh](https://pypi.org/project/Whoosh/) library must be installed into your environment. If you are using [poetry](https://python-poetry.org) this can be added by specifying the "search" extra when adding the dependency on Publ with `poetry add publ -E search`; otherwise you can add it directly with `pip install whoosh` or the like.
 
 ## Application object
 
