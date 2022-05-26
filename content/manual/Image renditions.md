@@ -118,7 +118,7 @@ render images.
 an option to still resize it larger client-side, where the actual rendition will be the native size but the
 `<img>` tag gets the expanded width and height.)
 
-### File format options
+### <span id="file-formats">File format options</span>
 
 * **`format`**: Select the format to display the image as (defaults to the original format)
 
