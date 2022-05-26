@@ -204,7 +204,7 @@ tests = ["dill", "coverage", "coveralls", "mock", "nose"]
 
 [[package]]
 name = "feedparser"
-version = "6.0.9"
+version = "6.0.10"
 description = "Universal feed parser, handles RSS 0.9x, RSS 1.0, RSS 2.0, CDF, Atom 0.3, and Atom 1.0 feeds"
 category = "main"
 optional = false
@@ -306,7 +306,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "importlib-metadata"
-version = "4.11.3"
+version = "4.11.4"
 description = "Read metadata from Python packages"
 category = "main"
 optional = false
@@ -453,7 +453,7 @@ python-versions = "*"
 
 [[package]]
 name = "publ"
-version = "0.7.9"
+version = "0.7.10"
 description = "A flexible web-based publishing framework"
 category = "main"
 optional = false
@@ -462,16 +462,20 @@ python-versions = ">=3.7,<4.0"
 [package.dependencies]
 arrow = ">=0.17.0,<0.18.0"
 atomicwrites = ">=1.4.0,<2.0.0"
-authl = ">=0.6.0,<0.7.0"
+authl = {version = ">=0.6.0,<0.7.0", optional = true, markers = "extra == \"auth\""}
 awesome-slugify = ">=1.6.5,<2.0.0"
 Flask = ">=2.0.0,<3.0.0"
 Flask-Caching = ">=1.9.0,<2.0.0"
 misaka = ">=2.1.1,<3.0.0"
 Pillow = ">=9.0.0,<10.0.0"
 pony = ">=0.7.14,<0.8.0"
-Pygments = ">=2.7.3,<3.0.0"
+Pygments = ">=2.12.0,<3.0.0"
 watchdog = ">=1.0.2,<2.0.0"
-Whoosh = ">=2.7.4,<3.0.0"
+Whoosh = {version = ">=2.7.4,<3.0.0", optional = true, markers = "extra == \"search\""}
+
+[package.extras]
+auth = ["authl (>=0.6.0,<0.7.0)"]
+search = ["Whoosh (>=2.7.4,<3.0.0)"]
 
 [[package]]
 name = "pushl"
@@ -519,7 +523,7 @@ six = ">=1.5"
 
 [[package]]
 name = "python-magic"
-version = "0.4.25"
+version = "0.4.26"
 description = "File type identification using libmagic"
 category = "main"
 optional = false
@@ -895,8 +899,8 @@ expiringdict = [
     {file = "expiringdict-1.2.1.tar.gz", hash = "sha256:fe2ba427220425c3c8a3d29f6d2e2985bcee323f8bcd4021e68ebefbd90d8250"},
 ]
 feedparser = [
-    {file = "feedparser-6.0.9-py3-none-any.whl", hash = "sha256:a522b2b81f3914a74ae44161a341940f74811bd29be5b4c2a689e6e6be51cd39"},
-    {file = "feedparser-6.0.9.tar.gz", hash = "sha256:dad42e7beaec55f99c08b2b0cf7288bc7cfd24b6f72c8ef85478bcb55648cd42"},
+    {file = "feedparser-6.0.10-py3-none-any.whl", hash = "sha256:79c257d526d13b944e965f6095700587f27388e50ea16fd245babe4dfae7024f"},
+    {file = "feedparser-6.0.10.tar.gz", hash = "sha256:27da485f4637ce7163cdeab13a80312b93b7d0c1b775bef4a47629a3110bca51"},
 ]
 flask = [
     {file = "Flask-2.1.2-py3-none-any.whl", hash = "sha256:fad5b446feb0d6db6aec0c3184d16a8c1f6c3e464b511649c8918a9be100b4fe"},
@@ -984,8 +988,8 @@ idna = [
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
 importlib-metadata = [
-    {file = "importlib_metadata-4.11.3-py3-none-any.whl", hash = "sha256:1208431ca90a8cca1a6b8af391bb53c1a2db74e5d1cef6ddced95d4b2062edc6"},
-    {file = "importlib_metadata-4.11.3.tar.gz", hash = "sha256:ea4c597ebf37142f827b8f39299579e31685c31d3a438b59f469406afd0f2539"},
+    {file = "importlib_metadata-4.11.4-py3-none-any.whl", hash = "sha256:c58c8eb8a762858f49e18436ff552e83914778e50e9d2f1660535ffb364552ec"},
+    {file = "importlib_metadata-4.11.4.tar.gz", hash = "sha256:5d26852efe48c0a32b0509ffbc583fda1a2266545a78d104a6f4aff3db17d700"},
 ]
 itsdangerous = [
     {file = "itsdangerous-2.1.2-py3-none-any.whl", hash = "sha256:2c2349112351b88699d8d4b6b075022c0808887cb7ad10069318a8b0bc88db44"},
@@ -1220,8 +1224,8 @@ pony = [
     {file = "pony-0.7.16.tar.gz", hash = "sha256:5f45fc67587f4520c560a57148cc573b097d42f82f5cb200d72c957b5708198d"},
 ]
 publ = [
-    {file = "Publ-0.7.9-py3-none-any.whl", hash = "sha256:006f20be0e3b067a445ffb38fb33865446b44a397b391d7e3441f53f82b6d060"},
-    {file = "Publ-0.7.9.tar.gz", hash = "sha256:62aae3a36300e8085af7b56748a329dc67d622aed8231d29cb82d01e0e1c7b49"},
+    {file = "Publ-0.7.10-py3-none-any.whl", hash = "sha256:6dbfb489146013ca02db3a64669c1f50348e01b0122b9cb79e43cdf79d45231e"},
+    {file = "Publ-0.7.10.tar.gz", hash = "sha256:8c40c17ded5816ff27aafa8f8009fe765e0496a0b41b722236b6262cc6b4bac6"},
 ]
 pushl = [
     {file = "Pushl-0.3.3-py3-none-any.whl", hash = "sha256:08e5c9e41496ad62cdf8a96c71bad70258bef9b9b72b89ccf580e049b0af9926"},
@@ -1240,8 +1244,8 @@ python-dateutil = [
     {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
 ]
 python-magic = [
-    {file = "python-magic-0.4.25.tar.gz", hash = "sha256:21f5f542aa0330f5c8a64442528542f6215c8e18d2466b399b0d9d39356d83fc"},
-    {file = "python_magic-0.4.25-py2.py3-none-any.whl", hash = "sha256:1a2c81e8f395c744536369790bd75094665e9644110a6623bcc3bbea30f03973"},
+    {file = "python-magic-0.4.26.tar.gz", hash = "sha256:8262c13001f904ad5b724d38b5e5b5f17ec0450ae249def398a62e4e33108a50"},
+    {file = "python_magic-0.4.26-py2.py3-none-any.whl", hash = "sha256:b978c4b69a20510d133a7f488910c2f07e7796f1f31703e61c241973f2bbf5fb"},
 ]
 python-memcached = [
     {file = "python-memcached-1.59.tar.gz", hash = "sha256:a2e28637be13ee0bf1a8b6843e7490f9456fd3f2a4cb60471733c7b5d5557e4f"},
