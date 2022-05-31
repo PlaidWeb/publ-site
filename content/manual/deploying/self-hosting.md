@@ -32,6 +32,8 @@ It will also be helpful to know the full path to the `poetry` command. You can u
 which poetry
 ```
 
+It will typically be `$HOME/.poetry/bin/poetry`.
+
 ### Basic approach
 
 Anything that runs the application server should change into the site's working directory, and then start the gunicorn process with
@@ -69,7 +71,7 @@ ExecReload=/bin/kill -HUP $MAINPID
 WantedBy=default.target
 ```
 
-Install this file as e.g. `~/.config/systemd/user/example.com.service` and then you should be able to start the server with:
+Install this file as e.g. `$HOME/.config/systemd/user/example.com.service` and then you should be able to start the server with:
 
 ```bash
 systemctl --user enable example.com
@@ -111,15 +113,20 @@ systemctl --user status example.com
 
 See the [`systemctl` manual page](https://www.freedesktop.org/software/systemd/man/systemctl.html) for more infromation.
 
+### Other watchdog services
+
+Some Linux distributions provide other mechanisms for running persistent services under a watchdog, such as [daemontools](https://cr.yp.to/daemontools.html) or [upstart](https://upstart.ubuntu.com/). These mechanisms are not highly recommended.
+
 ### cron
 
-If all else fails, you can use a [cron job](https://en.wikipedia.org/wiki/Cron) as a makeshift supervisor; create a file named `cron-launcher.sh` in your site directory:
+In a pinch, you can use a [cron job](https://en.wikipedia.org/wiki/Cron) as a makeshift supervisor; create a file named `cron-launcher.sh` in your site directory:
 
 ```bash
+! cron-launcher.sh
 #!/bin/sh
 
 cd $(dirname "$0")
-flock -n .lockfile $HOME/.local/bin/poetry run gunicorn -b unix:gunicorn.sock app:app
+flock -n .lockfile /path/to/poetry run gunicorn -b unix:gunicorn.sock app:app
 ```
 
 and then run `crontab -e` and add a line like:
@@ -238,7 +245,8 @@ server {
 
 The basic premise to configuring any arbitrary httpd to work with Publ:
 
-* Reverse proxy from your vhost to the UNIX socket
+* Reverse proxy from your vhost to the UNIX socket (or `localhost` port, if UNIX sockets aren't supported)
 * On SSL, add `X-Forwarded-Protocol ssl`
 * Try to preserve the incoming `Host` and set `X-Forwarded-For` if at all possible
 
+If these are not options, you could see if there is direct support for WSGI from the server instead. However, this usually has security implications, especially with regards to how the image rendition cache works; running as a reverse proxy is almost always the preferred approach.
