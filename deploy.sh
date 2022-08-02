@@ -20,7 +20,7 @@ if git diff --name-only $PREV | grep -q poetry.lock ; then
 fi
 
 if [ "$1" != "nokill" ] && [ ! -z "$disposition" ] ; then
-    systemctl --user $disposition publ.beesbuzz.biz.service
+    systemctl --user $disposition publ.plaidweb.site.service
 fi
 
 echo "Updating the content index..."
