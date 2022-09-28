@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 import authl.flask
 import flask
 import publ
-from flask_hookserver import Hooks
+from flask_github_webhook import GithubWebhook
 
 logging.basicConfig(level=logging.WARNING)
 
@@ -120,8 +120,8 @@ app = publ.Publ(__name__, config)
 app.secret_key = os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!')
 
 # Configure the GitHub publishing webhook
-app.config['GITHUB_WEBHOOKS_KEY'] = os.environ.get('GITHUB_SECRET')
-app.config['VALIDATE_IP'] = False
+app.config['GITHUB_WEBHOOK_ENDPOINT'] = '/_gh'
+app.config['GITHUB_WEBHOOK_SECRET'] = os.environ.get('GITHUB_SECRET')
 
 
 @app.path_alias_regex(r'/\.well-known/(host-meta|webfinger).*')
@@ -136,6 +136,7 @@ def redirect_github_issue(match):
     issue on GitHub """
     return 'https://github.com/PlaidWeb/Publ/issues/' + match.group(1), True
 
+
 @app.path_alias_regex(r'/site-issue/(.*)')
 def redirect_github_site_issue(match):
     """ Custom routing rule to redirect /issue/NNN to the corresponding
@@ -143,16 +144,18 @@ def redirect_github_site_issue(match):
     return 'https://github.com/PlaidWeb/Publ-site/issues/' + match.group(1), True
 
 
-
 # Deployment hook for self-hosted instance
-hooks = Hooks(app, url='/_gh')
+hooks = GithubWebhook(app)
 
 
-@hooks.hook('push')
-def deploy(data, delivery):
-    import threading
+@hooks.hook()
+def deploy(data):
     import subprocess
+    import threading
+
     import flask
+
+    LOGGER.info("Got github hook with data: %s", data)
 
     try:
         result = subprocess.check_output(

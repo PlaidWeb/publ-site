@@ -1,14 +1,17 @@
 """ Fix filename dates """
 
-import time
 import os
 import os.path
-from app import app
-from publ import model, index
-from publ.config import config
 import re
+import time
+
 import arrow
 from pony import orm
+from publ import index, model
+from publ.config import config
+
+from app import app
+
 
 def reindex():
     with app.app_context():
