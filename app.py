@@ -12,7 +12,20 @@ import flask
 import publ
 from flask_github_webhook import GithubWebhook
 
-logging.basicConfig(level=logging.WARNING)
+if os.path.isfile('logging.conf'):
+    logging.config.fileConfig('logging.conf')
+else:
+    try:
+        os.makedirs('logs')
+    except FileExistsError:
+        pass
+    logging.basicConfig(level=logging.INFO,
+                        handlers=[
+                            logging.handlers.TimedRotatingFileHandler(
+                                'logs/publ.log', when='D'),
+                            logging.StreamHandler()
+                        ],
+                        format="%(levelname)s:%(threadName)s:%(name)s:%(message)s")
 
 LOGGER = logging.getLogger(__name__)
 LOGGER.info("Setting up")
