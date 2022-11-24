@@ -414,7 +414,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "mastodon-py"
-version = "1.6.3"
+version = "1.7.0"
 description = "Python wrapper for the Mastodon API"
 category = "main"
 optional = false
@@ -501,7 +501,7 @@ python-versions = "*"
 
 [[package]]
 name = "publ"
-version = "0.7.14"
+version = "0.7.15"
 description = "A flexible web-based publishing framework"
 category = "main"
 optional = false
@@ -512,10 +512,10 @@ arrow = ">=0.17.0,<0.18.0"
 atomicwrites = ">=1.4.0,<2.0.0"
 authl = {version = ">=0.6.0,<0.7.0", optional = true, markers = "extra == \"auth\""}
 awesome-slugify = ">=1.6.5,<2.0.0"
-Flask = ">=2.0.0,<3.0.0"
+Flask = ">=2.2.2,<3.0.0"
 Flask-Caching = ">=1.9.0,<2.0.0"
 misaka = ">=2.1.1,<3.0.0"
-Pillow = ">=9.0.0,<10.0.0"
+Pillow = ">=9.3.0,<10.0.0"
 pony = ">=0.7.14,<0.8.0"
 Pygments = ">=2.12.0,<3.0.0"
 watchdog = ">=1.0.2,<2.0.0"
@@ -544,7 +544,7 @@ mf2py = ">=1.1.2,<2.0.0"
 
 [[package]]
 name = "pycodestyle"
-version = "2.9.1"
+version = "2.10.0"
 description = "Python style guide checker"
 category = "dev"
 optional = false
@@ -650,7 +650,7 @@ rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
 
 [[package]]
 name = "setuptools"
-version = "65.6.0"
+version = "65.6.3"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 category = "main"
 optional = false
@@ -703,11 +703,11 @@ python-versions = "*"
 
 [[package]]
 name = "urllib3"
-version = "1.26.12"
+version = "1.26.13"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, <4"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
 [package.extras]
 brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)", "brotlipy (>=0.6.0)"]
@@ -1257,8 +1257,8 @@ markupsafe = [
     {file = "MarkupSafe-2.1.1.tar.gz", hash = "sha256:7f91197cc9e48f989d12e4e6fbc46495c446636dfc81b9ccf50bb0ec74b91d4b"},
 ]
 mastodon-py = [
-    {file = "Mastodon.py-1.6.3-py2.py3-none-any.whl", hash = "sha256:50df93b7011d3a3fb2861cd677a2f06bc98d3aa619847a76735052ae5a98136c"},
-    {file = "Mastodon.py-1.6.3.tar.gz", hash = "sha256:a4911cad48ece7cd14541fd66b1315fa55f1f1db8a11f8cb3ee0e5021ff43c3e"},
+    {file = "Mastodon.py-1.7.0-py2.py3-none-any.whl", hash = "sha256:ea57f16bb9c79c810c122867ecc706e1f272b4e68614b6069a86d62a911ae4e7"},
+    {file = "Mastodon.py-1.7.0.tar.gz", hash = "sha256:d97d855131fafcd9d0091b8a5d10130b3eaf673bbde45bce1d13037d1d6a9106"},
 ]
 mf2py = [
     {file = "mf2py-1.1.2.tar.gz", hash = "sha256:84f1f8f2ff3f1deb1c30be497e7ccd805452996a662fd4a77f09e0105bede2c9"},
@@ -1397,16 +1397,16 @@ pony = [
     {file = "pony-0.7.16.tar.gz", hash = "sha256:5f45fc67587f4520c560a57148cc573b097d42f82f5cb200d72c957b5708198d"},
 ]
 publ = [
-    {file = "Publ-0.7.14-py3-none-any.whl", hash = "sha256:9bf8b2e220565a216ba085b482845d80c0cfc1957eaca2f7c3491b85ffc3a66d"},
-    {file = "Publ-0.7.14.tar.gz", hash = "sha256:f8889744752a1042cdd63f74dc7993c40219e6b1e9dfbeab5ab7c682acfb3ad3"},
+    {file = "publ-0.7.15-py3-none-any.whl", hash = "sha256:21d69e91fb4920becfe7fd1a49e42d2be6e8d2646f5342d6033fb79dd6c5a364"},
+    {file = "publ-0.7.15.tar.gz", hash = "sha256:8283f2f74732b7b5ad3002bb0f84c3efbabd2102dc7f294b75034dc46ef94000"},
 ]
 pushl = [
     {file = "Pushl-0.3.4-py3-none-any.whl", hash = "sha256:8602b3b92dcbdbf739d0f3e7566bef2a8b49d5e9530411b0bd235f623c118078"},
     {file = "Pushl-0.3.4.tar.gz", hash = "sha256:d5bc21a9da3741f26a739b0db06ce7ffe1bd54f83f4f5b2be71777b315120254"},
 ]
 pycodestyle = [
-    {file = "pycodestyle-2.9.1-py2.py3-none-any.whl", hash = "sha256:d1735fc58b418fd7c5f658d28d943854f8a849b01a5d0a1e6f3f3fdd0166804b"},
-    {file = "pycodestyle-2.9.1.tar.gz", hash = "sha256:2c9607871d58c76354b697b42f5d57e1ada7d261c261efac224b664affdc5785"},
+    {file = "pycodestyle-2.10.0-py2.py3-none-any.whl", hash = "sha256:8a4eaf0d0495c7395bdab3589ac2db602797d76207242c17d470186815706610"},
+    {file = "pycodestyle-2.10.0.tar.gz", hash = "sha256:347187bdb476329d98f695c213d7295a846d1152ff4fe9bacb8a9590b8ee7053"},
 ]
 pycparser = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
@@ -1531,8 +1531,8 @@ requests-oauthlib = [
     {file = "requests_oauthlib-1.3.1-py2.py3-none-any.whl", hash = "sha256:2577c501a2fb8d05a304c09d090d6e47c306fef15809d102b327cf8364bddab5"},
 ]
 setuptools = [
-    {file = "setuptools-65.6.0-py3-none-any.whl", hash = "sha256:6211d2f5eddad8757bd0484923ca7c0a6302ebc4ab32ea5e94357176e0ca0840"},
-    {file = "setuptools-65.6.0.tar.gz", hash = "sha256:d1eebf881c6114e51df1664bc2c9133d022f78d12d5f4f665b9191f084e2862d"},
+    {file = "setuptools-65.6.3-py3-none-any.whl", hash = "sha256:57f6f22bde4e042978bcd50176fdb381d7c21a9efa4041202288d3737a0c6a54"},
+    {file = "setuptools-65.6.3.tar.gz", hash = "sha256:a7620757bf984b58deaf32fc8a4577a9bbc0850cf92c20e1ce41c38c19e5fb75"},
 ]
 sgmllib3k = [
     {file = "sgmllib3k-1.0.0.tar.gz", hash = "sha256:7868fb1c8bfa764c1ac563d3cf369c381d1325d36124933a726f29fcdaa812e9"},
@@ -1554,8 +1554,8 @@ unidecode = [
     {file = "Unidecode-0.04.21.tar.gz", hash = "sha256:280a6ab88e1f2eb5af79edff450021a0d3f0448952847cd79677e55e58bad051"},
 ]
 urllib3 = [
-    {file = "urllib3-1.26.12-py2.py3-none-any.whl", hash = "sha256:b930dd878d5a8afb066a637fbb35144fe7901e3b209d1cd4f524bd0e9deee997"},
-    {file = "urllib3-1.26.12.tar.gz", hash = "sha256:3fa96cf423e6987997fc326ae8df396db2a8b7c667747d47ddd8ecba91f4a74e"},
+    {file = "urllib3-1.26.13-py2.py3-none-any.whl", hash = "sha256:47cc05d99aaa09c9e72ed5809b60e7ba354e64b59c9c173ac3018642d8bb41fc"},
+    {file = "urllib3-1.26.13.tar.gz", hash = "sha256:c083dd0dce68dbfbe1129d5271cb90f9447dea7d52097c6e0126120c521ddea8"},
 ]
 validate-email = [
     {file = "validate_email-1.3.tar.gz", hash = "sha256:784719dc5f780be319cdd185dc85dd93afebdb6ebb943811bc4c7c5f9c72aeaf"},
