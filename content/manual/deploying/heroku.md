@@ -13,11 +13,11 @@ Heroku is probably the easiest environment to configure for Publ, especially for
 smaller websites. However, it is primarily intended for experimenting with Publ. Heroku comes with a number of limitations:
 
 * Your git deployment size must be [under 1 GB](https://devcenter.heroku.com/articles/limits#git-repos)
-* Your slug size must be [under 500MB limit on your slug size](https://devcenter.heroku.com/articles/limits#slug-size)
+* Your slug size must be [under the 500MB Heroku limit](https://devcenter.heroku.com/articles/limits#slug-size)
 * SQLite databases will not persist across site deployments, requiring a full reindex every time your site changes
 * You can use a Postgres database instead but this causes a (very) slight performance hit on page loads
 
-That said, Heroku is a great platform for trying Publ out; as of December 2019, there is a [backup instance](http://publ.herokuapp.com/) of [this website](http://publ.beesbuzz.biz) hosted on it using the free tier, including a persistent database. Additionally, on the higher tiers you get some nice features like automatic load-balancing and staged deployments. Which is probably overkill for the sites you're running Publ for, but it's still nice to have.
+That said, Heroku is a great platform for running a smaller Publ site. Additionally, on the higher tiers you get some nice features like automatic load-balancing and staged deployments. Which is probably overkill for the sites you're running Publ for, but it's still nice to have.
 
 ### Prerequisites
 
