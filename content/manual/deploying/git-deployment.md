@@ -12,7 +12,7 @@ It's pretty common to use git to host your website files. There are a few differ
 
 ## Deployment script
 
-Regardless of your actual git hosting situation, you will need a deployment script, which does a `git pull` and updates package versions if the `poetry.lock` has changed. Save this file as `deploy.sh` in your website repository, and make sure it's set executable:
+Regardless of your actual git hosting situation, you will need a deployment script, which does a `git pull` and performs different tasks depending on what's been updated. Save this file as `deploy.sh` in your website repository, and make sure it's set executable:
 
 ```bash
 #!/bin/sh
@@ -25,7 +25,7 @@ PREV=$(git rev-parse --short HEAD)
 
 git pull --ff-only || exit 1
 
-if git diff --name-only $PREV | grep -qE '^(templates/|app\.py)' ; then
+if git diff --name-only $PREV | grep -qE '^(templates/|app\.py|users\.cfg)' ; then
     echo "Configuration or template change detected"
     disposition=reload-or-restart
 fi
@@ -155,38 +155,42 @@ Deploy these changes to your website and restart it. Now you can configure a web
 
 If you're using GitHub (or something GitHub-compatible) to host your site files, there is a more secure way to run a webhook.
 
-First, install the [flask-hookserver](https://pypi.org/project/flask-hookserver) package into your environment (with e.g. `poetry install flask-hookserver`).
+First, install the [flask-github-webhook](https://pypi.org/project/flask-github-webhook) package into your environment (with e.g. `poetry add flask-github-webhook`).
 
 Next, add the following to your `app.py` somewhere after the `app` object gets created:
 
 ```python
-from flask_hookserver import Hooks
+from flask_github_webhook import GithubWebhook
 
-app.config['GITHUB_WEBHOOKS_KEY'] = os.environ.get('GITHUB_SECRET')
-app.config['VALIDATE_IP'] = False
+# Configure the GitHub publishing webhook
+app.config['GITHUB_WEBHOOK_ENDPOINT'] = '/_gh'
+app.config['GITHUB_WEBHOOK_SECRET'] = os.environ.get('GITHUB_SECRET')
 
-hooks=Hooks(app, url='/_gh')
+# Deployment hook for self-hosted instance
+hooks = GithubWebhook(app)
 
-@hooks.hook('push')
-def deploy(data, delivery):
-    import threading
-    import signal
+@hooks.hook()
+def deploy(data):
     import subprocess
+    import threading
+
     import flask
+
+    LOGGER.info("Got github hook with data: %s", data)
 
     try:
         result = subprocess.check_output(
             ['./deploy.sh', 'nokill'],
             stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as err:
-        logging.error("Deployment failed: %s", err.output)
+        LOGGER.error("Deployment failed: %s", err.output)
         return flask.Response(err.output, status_code=500, mimetype='text/plain')
 
     def restart_server(pid):
-        logging.info("Restarting")
+        LOGGER.info("Restarting")
         os.kill(pid, signal.SIGHUP)
 
-    logging.info("Restarting server in 3 seconds...")
+    LOGGER.info("Restarting server in 3 seconds...")
     threading.Timer(3, restart_server, args=[os.getpid()]).start()
 
     return flask.Response(result, mimetype='text/plain')
