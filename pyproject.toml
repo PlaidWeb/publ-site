@@ -9,7 +9,7 @@ python = "^3.8"
 gunicorn = "^20.1.0"
 python-memcached = "^1.59"
 pushl = "^0.3.3"
-publ = {version = "^0.7.9", extras = ["search","auth"]}
+publ = {version = "^0.7.17", extras = ["search","auth"]}
 flask-github-webhook = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
