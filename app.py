@@ -121,6 +121,8 @@ config = {
         'TWITTER_CLIENT_SECRET': os.environ.get('TWITTER_CLIENT_SECRET'),
 
         'TEST_ENABLED': True,
+
+        'secret_key': os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!')
     },
 
     'search_index': '_index',
@@ -128,9 +130,6 @@ config = {
 
 # Create the application instance
 app = publ.Publ(__name__, config)
-
-# Configure the session security
-app.secret_key = os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!')
 
 # Configure the GitHub publishing webhook
 app.config['GITHUB_WEBHOOK_ENDPOINT'] = '/_gh'

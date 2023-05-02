@@ -19,29 +19,39 @@ The main things to pay attention to are as follows:
 
 ### <span id="secret_key"></span>`secret_key`
 
-`app.secret_key` controls the signing of the authentication tokens. Essentially,
-it needs to be kept secret, to prevent others from gaining access that they
-shouldn't have.
+The [`secret_key` configuration value](865#secret_key) controls the signing of
+the authentication tokens. Essentially, it needs to be kept secret, to prevent
+others from gaining access that they shouldn't have.
 
-By default this is set randomly every time the application starts, which is
-secure but it means that any time the server restarts, everyone will be logged
-out. So, you'll probably want to set this to a secret value that gets set with
-an environment variable or the like; for example, after the `app` is created:
+This is to be set in the configuration dictionary passed into the Publ
+application constructor; without this value, authentication will not be enabled.
+
+A common pattern is to store this in your application environment variables; for example:
 
 ```python
-app.secret_key = os.environ['AUTH_SECRET']
+config = {
+    # ...
+    'secret_key' : os.environ['AUTH_SECRET']
+}
+
+app = publ.Publ(__name__, config)
 ```
 
 Alternately, you might want to automatically generate the secret key as a local file:
 
 ```python
+
+config = {
+    # ...
+}
+
 if not os.path.isfile('.sessionkey'):
     import uuid
     with open('.sessionkey', 'w') as file:
         file.write(str(uuid.uuid4()))
     os.chmod('.sessionkey', 0o600)
 with open('.sessionkey') as file:
-    app.secret_key = file.read()
+    config['secret_key'] = file.read()
 ```
 
 ### <span id="auth">`auth`</span>
