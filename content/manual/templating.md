@@ -173,6 +173,13 @@ Note that it preserves the `<a>` and its `href` attribute, but it strips the `<e
 
 This provides greater flexibility than passing `markup=False` to various template elements such as `entry.title` or `entry.body`.
 
+### <span id="first_pagragraph">`first_paragraph`</span>
+
+```
+first_paragraph(text, strip_tag=False)
+```
+
+This filter lets you extract the first paragraph from a chunk of text, optionally stripping the enclosing `<p>` tag, but preserving all other markup. Pass the output through `strip_html` if you need to remove more tags.
 
 ## Template API
 
