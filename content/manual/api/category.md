@@ -49,7 +49,7 @@ The `category` object provides the following:
 * **`get_all`**: Get all instances of a meta file header as a list
 
 * **`description`**: Get the category description from the [meta file](#meta-files), if it exists. This optionally
-    takes the standard [HTML processing arguments)(entry.md#html-processing).
+    takes the standard [HTML processing arguments](entry.md#html-processing).
 
 * **`sort_name`**: The name used for sorting
 
