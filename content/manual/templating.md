@@ -169,17 +169,17 @@ the template output will be similar to:
 <a href="http://example.com/">This is a test</a>
 ```
 
-Note that it preserves the `<a>` and its `href` attribute, but it strips the `<em>` tag and completely removes the `<del>` and its contents.
+Note that it preserves the `<a>` and its `href` attribute (but not its `title`), but it strips the `<em>` tag and completely removes the `<del>` and its contents.
 
 This provides greater flexibility than passing `markup=False` to various template elements such as `entry.title` or `entry.body`.
 
-### <span id="first_pagragraph">`first_paragraph`</span>
+### <span id="first_paragraph">`first_paragraph`</span>
 
 ```
 first_paragraph(text, strip_tag=False)
 ```
 
-This filter lets you extract the first paragraph from a chunk of text, optionally stripping the enclosing `<p>` tag, but preserving all other markup. Pass the output through `strip_html` if you need to remove more tags.
+This filter lets you extract the first paragraph from a chunk of text, optionally stripping the enclosing `<p>` tag, but preserving all other markup. Pass the output through [`strip_html`](#strip_html) if you need to remove more tags.
 
 ## Template API
 
