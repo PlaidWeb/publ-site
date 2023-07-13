@@ -121,9 +121,9 @@ config = {
         'TWITTER_CLIENT_SECRET': os.environ.get('TWITTER_CLIENT_SECRET'),
 
         'TEST_ENABLED': True,
-
-        'secret_key': os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!')
     },
+
+    'secret_key': os.environ.get('AUTH_SECRET', 'A totally unguessable secret key!'),
 
     'search_index': '_index',
 }
