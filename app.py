@@ -175,7 +175,7 @@ def deploy(data):
             stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as err:
         LOGGER.error("Deployment failed: %s", err.output)
-        return flask.Response(err.output, mimetype='text/plain'), 500
+        return flask.Response(err.output, status=500, mimetype='text/plain')
 
     def restart_server(pid):
         LOGGER.info("Restarting")
