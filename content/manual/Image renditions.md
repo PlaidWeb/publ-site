@@ -30,7 +30,10 @@ render images.
 
 * **`absolute`**: Whether to produce absolute URLs
 
-* **`link`**: Put a hyperlink on the image pointing to the given URL. Set this to `False` to prevent *any* links from being added, including from galleries.
+* **`link`**: Put a hyperlink on the image pointing to the given URL. Acceptable values:
+    * Any string: Treated like an ordinary Markdown link (including linking to local entries and files)
+    * `False`: Prevent any link from being added, including for a gallery
+    * `True`: Link directly to the fullsize rendition of the image, overriding gallery display
 
 * <span id="link_class">**`link_class`**: What CSS class to apply to the image's hyperlink</span>
 
@@ -154,9 +157,8 @@ These options drive the behavior of image sets.
 
 * **`div_style`**: A string or a list of strings, which provide inline CSS rules to the `<div>` element
 
-* **`gallery_id`**: An identifier for the Lightbox image set (for use with [lightbox.js](http://www.lokeshdhakar.com/projects/lightbox2/))
-    * **Note:** If this is not set, Lightbox will not be enabled, and popup renditions will not be generated
-    * **Note:** If `link` is set, this option has no effect
+* **`gallery_id`**: An identifier for the Lightbox image set (for use with [lightbox.js](http://www.lokeshdhakar.com/projects/lightbox2/) or any other lightbox implementation that uses the `data-lightbox` property to function)
+    * **Note:** If `link` is set (including to `False`), this option has no effect
 
 * **`count`**: How many images to allow in the image set (useful for feeds)
 
