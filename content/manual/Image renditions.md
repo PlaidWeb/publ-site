@@ -30,7 +30,7 @@ render images.
 
 * **`absolute`**: Whether to produce absolute URLs
 
-* **`link`**: Put a hyperlink on the image pointing to the given URL. Acceptable values:
+* <span id="link">**`link`**</span>: Put a hyperlink on the image pointing to the given URL. Acceptable values:
     * Any string: Treated like an ordinary Markdown link (including linking to local entries and files)
     * `False`: Prevent any link from being added, including for a gallery
     * `True`: Link directly to the fullsize rendition of the image, overriding gallery display
