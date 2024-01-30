@@ -20,6 +20,10 @@ comics, music, art, photography, a blog, and who knows what else as in a simple,
 uniform manner, while also supporting [IndieWeb](http://indieweb.org)
 principles.
 
+### How is it pronounced?
+
+Like "puddle," but with a B instead of a D.
+
 ### Is Publ a CMS?
 
 That depends on how you define "CMS." At the most basic, it is one --- it
