@@ -22,7 +22,7 @@ principles.
 
 ### How is it pronounced?
 
-Like "puddle," but with a B instead of a D.
+Like "puddle," but with a B instead of a D. Or, "publish" without the "ish."
 
 ### Is Publ a CMS?
 
