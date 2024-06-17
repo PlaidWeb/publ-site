@@ -23,7 +23,7 @@ if git diff --name-only $PREV | grep -q poetry.lock ; then
 fi
 
 if [ "$1" != "nokill" ] && [ ! -z "$disposition" ] ; then
-    systemctl --user $disposition publ.plaidweb.site.service
+    systemctl --user $disposition publ.beesbuzz.biz.service
 fi
 
 echo "Updating the content index..."
@@ -36,4 +36,4 @@ while [ $count -lt 5 ] && [ ! -S $HOME/.vhosts/publ.beesbuzz.biz ] ; do
     sleep $count
 done
 
-poetry run pushl -rvvc $HOME/var/pushl http://publ.plaidweb.site/feed https://publ.plaidweb.site/feed
+poetry run pushl -rvvc $HOME/var/pushl http://publ.beesbuzz.biz/feed https://publ.beesbuzz.biz/feed
