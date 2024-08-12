@@ -186,7 +186,7 @@ ground truth.
 It's a pretty good Python binding to the
 [Hoedown](https://github.com/hoedown/hoedown) Markdown parser, with enough
 flexibility for the extensions I want to add. It supports (most) GitHub-flavor
-markdown and [KaTeX](https://katex.org/) out of the box, and its design allows
+markdown and [MathJax](https://mathjax.org/)/[KaTeX](https://katex.org/) out of the box, and its design allows
 adding further syntax hooks for the supported tokens. The downside is that it's
 not feasible to extend it with custom tokens but so far I haven't really found
 any need for that anyway.
