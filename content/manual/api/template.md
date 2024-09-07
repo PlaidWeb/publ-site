@@ -13,4 +13,5 @@ The `template` object provides the following:
 * **`name`**: The name of the template
 * **`filename`**: The underlying filename of the template
 * **`last_modified`**: When the file was most recently modified
+* <span id="func-image">**`image`**</span>: Resolves an image relative to this template's context, by path. This is a context-specific version of the [global `image` function](324#func-image).
 

@@ -284,6 +284,8 @@ The `entry` object has the following methods/properties:
 
 * **`attached`**: Like `attachments`, but it shows the entries that this entry is attached to.
 
+* <span id="func-image">**`image`**</span>: Resolves an image relative to this entry, by path. This is a context-specific version of the [global `image` function](324#func-image).
+
 * The following properties are also available but probably aren't of use to template authors, and are only listed for the sake of completion. You should not rely on them for anything as they might change without warning.
 
     * `file_path`: The file path of the entry's content file

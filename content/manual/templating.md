@@ -215,6 +215,13 @@ The following additional things are provided to all templates:
         * `False`: Use a relative link if possible (default)
         * `True`: Use an absolute link
 
+* <span id="get-entry">**`get_entry`**</span>: A function that retrieves an `entry` object with the given ID. This is a much more efficient way of achieving something like:
+
+    ```
+    {% set entry = get_view(start=id).entries[0] %}
+    ```
+
+
 * <span id="get-template">**`get_template`**</span>: A function that finds a template file for a given category or entry. The first argument is the
     name of the template to find or a list of template names; the second argument is what to find the template relative to (entry, category, or a file path).
 
@@ -251,7 +258,7 @@ The following additional things are provided to all templates:
 
 * **`user`**: Information about the [current user](/api/user)
 
-* **`image`**: Load an image
+* <span id="func-image">**`image`**</span>: Load an image
 
     The resulting image works as a URL directly, or you can pass in arguments in
     the format `(output_scale, [arguments])`, which gets a URL rendered with the
