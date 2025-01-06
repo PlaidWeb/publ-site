@@ -146,8 +146,10 @@ curl --unix-socket gunicorn.sock https://example.com/
 By default, `gunicorn` only runs with a small number of render threads. You might want to increase this with the `--threads` parameter, e.g.:
 
 ```bash
-/path/to/poetry run gunicorn --threads 32 -b unix:/path/to/socket app:app
+/path/to/poetry run gunicorn --threads 8 -b unix:/path/to/socket app:app
 ```
+
+The number of threads to use varies greatly. You almost certainly want more than 1 thread (especially if you're planning on using authentication), but overallocating on threads can cause other problems to happen in some circumstances. I find that even for larger sites, a thread count of 8-12 is more than sufficient.
 
 ## <span id="routing">Routing traffic</span>
 

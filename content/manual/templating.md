@@ -58,6 +58,17 @@ matches. (If no templates match, it shows an error page.)
 Note that the default names of `entry` and `index` can be overridden on a [per-entry](/entry-format#template-override) or
 [per-category](/category-format#template-override) basis.
 
+If there are multiple templates with the same basename, then Publ will prioritize the match based on the client's `Accept:` header. For example, if a client sends a request with e.g.:
+
+```
+GET /feed HTTP/1.1
+Accept: text/html, */*;q=0.1
+```
+
+and you have templates named `feed.html`, `feed.rss`, and `feed.txt`, it will select `feed.html`. However, if it sends `Accept: application/atom+xml, application/rss+xml, application/xml;q=0.8, text/html;q=0.5; */*;q=0.1`, then the top match will be for `feed.rss`.
+
+If the client would like to get a specific template regardless of content negotiation rules, they can also simply request `feed.rss` specifically.
+
 #### Error templates
 
 A note on error templates: Error pages *generally* get handled by whatever
