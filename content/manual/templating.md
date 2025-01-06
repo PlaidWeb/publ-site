@@ -100,8 +100,10 @@ and then your HTML templates need only refer to the stylesheet using, for
 example:
 
 ```html
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="{{category.link(template='style.css')}}" />
 ```
+
+(In this context, `category.link` is preferable as using a standard relative link will not work from an entry where the page URL has been modified via `Path-Canonical` or the like.)
 
 ## Special templates
 
