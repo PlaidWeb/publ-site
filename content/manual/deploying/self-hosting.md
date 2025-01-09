@@ -20,10 +20,10 @@ You will need Python 3. The most reliable way to install this is via [`pyenv`](h
 
 The easiest way to manage your package dependencies is with [`poetry`](https://python-poetry.org); you can see [their installation instructions](https://python-poetry.org/docs/#installation) for more information. `pipenv` and `virtualenv` also work but these instructions will focus on the use of `poetry`.
 
-Your Publ environment needs to have a WSGI server available. [gunicorn](http://gunicorn.org) is a good choice for this. The ideal means of installing gunicorn is directly into your site's environment. If you're using `poetry` then that's done with:
+Your Publ environment needs to have a WSGI server available. [hypercorn](https://hypercorn.readthedocs.io/) is a good choice for this. The ideal means of installing hypercorn is directly into your site's environment. If you're using `poetry` then that's done with:
 
 ```bash
-poetry add gunicorn
+poetry add hypercorn
 ```
 
 It will also be helpful to know the full path to the `poetry` command. You can usually find this with
@@ -36,18 +36,18 @@ It will typically be `$HOME/.poetry/bin/poetry`.
 
 ### Basic approach
 
-Anything that runs the application server should change into the site's working directory, and then start the gunicorn process with
+Anything that runs the application server should change into the site's working directory, and then start the hypercorn process with
 
 ```bash
-/path/to/poetry run gunicorn -b unix:gunicorn.sock app:app
+/path/to/poetry run hypercorn -b unix:website.sock -m 0 app:app
 ```
 
-which will use the `app` object declared in `app.py` (per the [getting started guide](328)) and listen on a socket file named `gunicorn.sock`. The presence of that socket file will also indicate whether the site is up and running.
+which will use the `app` object declared in `app.py` (per the [getting started guide](328)) and listen on a socket file named `website.sock`. The presence of that socket file will also indicate whether the site is up and running.
 
-Note that you don't have to put `gunicorn.sock` in the same directory as the application -- it can go anywhere that the web server has access. For example, it's nice to make a `$HOME/.vhosts` directory to keep your socket files, named with the site name:
+Note that you don't have to put `website.sock` in the same directory as the application -- it can go anywhere that the web server has access. For example, it's nice to make a `$HOME/.vhosts` directory to keep your socket files, named with the site name:
 
 ```bash
-/path/to/poetry run gunicorn -b unix:/home/USERNAME/.vhosts/example.com app:app
+/path/to/poetry run hypercorn -m 0 -b unix:/home/USERNAME/.vhosts/example.com app:app
 ```
 
 This way you can also set the directory permissions on your site files with `chmod 700` which prevents other users of the server from peeking into them.
@@ -64,7 +64,7 @@ Description=Publ instance for example.com
 [Service]
 Restart=always
 WorkingDirectory=/home/USERNAME/example.com
-ExecStart=/path/to/poetry run gunicorn -b unix:/path/to/socket app:app
+ExecStart=/path/to/poetry run hypercorn -m 0 -b unix:/path/to/socket app:app
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
@@ -78,7 +78,7 @@ systemctl --user enable example.com
 systemctl --user start example.com
 ```
 
-and the site should now be up and running on the local port; as long as it's up there should be a socket file named `gunicorn.sock` in the site's directory.
+and the site should now be up and running on the local port; as long as it's up there should be a socket file in the configured location.
 
 However, this service will only run while the user is logged in; in order to make it run persistently, have an admin set your user to "linger" with e.g.:
 
@@ -98,7 +98,7 @@ systemctl --user stop example.com
 # Reload the website (if e.g. templates changed)
 systemctl --user reload-or-restart example.com
 
-# Restart the website (if e.g. Publ or gunicorn gets updated)
+# Restart the website (if e.g. Publ or hypercorn gets updated)
 systemctl --user restart example.com
 
 # Disable the website from starting up automatically
@@ -126,7 +126,7 @@ In a pinch, you can use a [cron job](https://en.wikipedia.org/wiki/Cron) as a ma
 #!/bin/sh
 
 cd $(dirname "$0")
-flock -n .lockfile /path/to/poetry run gunicorn -b unix:gunicorn.sock app:app
+flock -n .lockfile /path/to/poetry run hypercorn -m 0 -b unix:hypercorn.sock app:app
 ```
 
 and then run `crontab -e` and add a line like:
@@ -140,16 +140,8 @@ and then run `crontab -e` and add a line like:
 You can verify that the site is working with `curl`; for example:
 
 ```bash
-curl --unix-socket gunicorn.sock https://example.com/
+curl --unix-socket hypercorn.sock https://example.com/
 ```
-
-By default, `gunicorn` only runs with a small number of render threads. You might want to increase this with the `--threads` parameter, e.g.:
-
-```bash
-/path/to/poetry run gunicorn --threads 8 -b unix:/path/to/socket app:app
-```
-
-The number of threads to use varies greatly. You almost certainly want more than 1 thread (especially if you're planning on using authentication), but overallocating on threads can cause other problems to happen in some circumstances. I find that even for larger sites, a thread count of 8-12 is more than sufficient.
 
 ## <span id="routing">Routing traffic</span>
 
@@ -159,7 +151,7 @@ Configuring Publ to work with your web server is a matter of configuring the fro
 
 To use this with Apache, you'll need `mod_proxy` installed and enabled.
 
-Next, you'll need to configure a vhost to forward your domain's traffic to the gunicorn socket. Here is a basic Apache configuration (e.g. `/etc/apache2/sites-enabled/100-example.com.conf`), showing how to configure both `http` and `https`:
+Next, you'll need to configure a vhost to forward your domain's traffic to the hypercorn socket. Here is a basic Apache configuration (e.g. `/etc/apache2/sites-enabled/100-example.com.conf`), showing how to configure both `http` and `https`:
 
 ```apache
 # http
@@ -176,7 +168,7 @@ Next, you'll need to configure a vhost to forward your domain's traffic to the g
     </Proxy>
 
     ProxyPreserveHost On
-    ProxyPass / unix:/user/USERNAME/example.com/gunicorn.sock|http://localhost/
+    ProxyPass / unix:/user/USERNAME/example.com/hypercorn.sock|http://localhost/
 </VirtualHost>
 
 # https
@@ -194,9 +186,9 @@ Next, you'll need to configure a vhost to forward your domain's traffic to the g
     </Proxy>
 
     ProxyPreserveHost On
-    ProxyPass / unix:/user/USERNAME/example.com/gunicorn.sock|http://localhost/
+    ProxyPass / unix:/user/USERNAME/example.com/hypercorn.sock|http://localhost/
 
-    # tell gunicorn that this is https instead of http
+    # tell hypercorn that this is https instead of http
     RequestHeader set X-Forwarded-Protocol ssl
     SSLCertificateFile /path/to/fullchain.pem
     SSLCertificateKeyFile /path/to/privkey.pem
@@ -220,7 +212,7 @@ server {
     access_log  /var/log/nginx/example.log;
 
     location / {
-        proxy_pass http://unix:/path/to/gunicorn.sock:/;
+        proxy_pass http://unix:/path/to/hypercorn.sock:/;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
@@ -235,7 +227,7 @@ server {
     ssl_certificate_key /path/to/privkey.pem;
 
     location / {
-        proxy_pass http://unix:/path/to/gunicorn.sock:/;
+        proxy_pass http://unix:/path/to/hypercorn.sock:/;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Protocol ssl;

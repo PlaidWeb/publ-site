@@ -339,7 +339,7 @@ querying and formatting entries.
 ### What about having multuple Publ instances within a single running site?
 
 Unfortunately, running multiple Publ instances within a single app server
-(gunicorn, etc.) is not so straightforward. I haven't found a good use case for
+is not so straightforward. I haven't found a good use case for
 multiple Publ sites conmingled in a single app server anyway; if you can think
 of one, feel free to [open an issue](/newissue) and make your case for it!
 
