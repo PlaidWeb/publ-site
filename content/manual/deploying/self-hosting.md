@@ -197,7 +197,7 @@ Next, you'll need to configure a vhost to forward your domain's traffic to the g
     ProxyPass / unix:/user/USERNAME/example.com/gunicorn.sock|http://localhost/
 
     # tell gunicorn that this is https instead of http
-    RequestHeader set X-Forwarded-Protocol ssl
+    RequestHeader set X-Forwarded-Proto https
     SSLCertificateFile /path/to/fullchain.pem
     SSLCertificateKeyFile /path/to/privkey.pem
 </VirtualHost>
@@ -223,6 +223,7 @@ server {
         proxy_pass http://unix:/path/to/gunicorn.sock:/;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 
@@ -238,7 +239,7 @@ server {
         proxy_pass http://unix:/path/to/gunicorn.sock:/;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Protocol ssl;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
@@ -248,7 +249,7 @@ server {
 The basic premise to configuring any arbitrary httpd to work with Publ:
 
 * Reverse proxy from your vhost to the UNIX socket (or `localhost` port, if UNIX sockets aren't supported)
-* On SSL, add `X-Forwarded-Protocol ssl`
+* On SSL, add `X-Forwarded-Proto $scheme`
 * Try to preserve the incoming `Host` and set `X-Forwarded-For` if at all possible
 
 If these are not options, you could see if there is direct support for WSGI from the server instead. However, this usually has security implications, especially with regards to how the image rendition cache works; running as a reverse proxy is almost always the preferred approach.
