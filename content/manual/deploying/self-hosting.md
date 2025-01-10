@@ -253,3 +253,27 @@ The basic premise to configuring any arbitrary httpd to work with Publ:
 * Try to preserve the incoming `Host` and set `X-Forwarded-For` if at all possible
 
 If these are not options, you could see if there is direct support for WSGI from the server instead. However, this usually has security implications, especially with regards to how the image rendition cache works; running as a reverse proxy is almost always the preferred approach.
+
+## Alternatives to gunicorn
+
+### [hypercorn](https://hypercorn.readthedocs.io/)
+
+In some situations, hypercorn has better scaling characteristics than gunicorn. However, it isn't quite as turnkey as gunicorn, as it defaults to tighter security regarding proxies. So, in order to use it with hypercorn, the following changes must be made to your deployment:
+
+1. In order to set the correct socket permissions, either launch it with `-m 0` (giving it the same wide permissions as gunicorn), or ensure that your user shares a group with the webserver process and set that as the parameter to `-g`. My recommendation is to just use `-m 0`, e.g.
+
+    ```
+    poetry run gunicorn -b unix:/path/to/socket -m 0 app:app
+    ```
+
+2. In order to correctly handle the `X-Forwarded-*` headers, add these lines to the bottom of your `app.py`:
+
+    ```
+    from werkzeug.middleware.proxy_fix import ProxyFix
+
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
+    ```
+
+    This should *only* be done if Publ is running behind a fronting proxy; while this is the most common deployment scenario, it is not universal, so Publ does not ship with this enabled by default.
+
+    Additionally, the numbers may need to be adjusted if Publ is running behind multiple forwarding proxies; see [the Flask documentation](https://flask.palletsprojects.com/en/stable/deploying/proxy_fix/) for more information.
