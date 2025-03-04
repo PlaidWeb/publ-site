@@ -101,16 +101,23 @@ Publ defines a number of headers for its own use. They are as follows:
 
     **Default value:** the entry file's directory
 
-* **`Status`**: The publish status of the entry
+* <span id="status">**`Status`**: The publish status of the entry</span>
 
     Allowed values:
 
     * `DRAFT`: This entry is not visible at all
+
     * `HIDDEN`: This entry is visible when accessed directly, but will not be included in entry listings or in previous/next links
     * `UNLISTED`: A synonym for `HIDDEN`
+
+    * `ATTACHMENT`: Similar to `HIDDEN`, except it will also be included in an entry's attachment list
+    * `ATTACH`: A synonym for `ATTACHMENT`
+
     * `PUBLISHED`: This entry is visible at all times
+
     * `SCHEDULED`: Until the publication date, this acts as `HIDDEN`; afterwards, it acts as `PUBLISHED`
-    * `GONE`: The entry has been deleted and will not be coming back; attempts to access this entry will result in an HTTP 410 GONE error.
+
+    * `GONE`: The entry has been deleted and will not be coming back; attempts to access this entry will result in an HTTP 410 GONE error
     * `DELETED`: A synonym for `GONE`
 
     **Default value:** `SCHEDULED`
