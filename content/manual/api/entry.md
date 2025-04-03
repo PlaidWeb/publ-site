@@ -123,6 +123,8 @@ The `entry` object has the following methods/properties:
         {{ entry.card(width=640,height=640,image=entry['card-image'] or 'default-card.png') }}
         ```
 
+        A value of `False` indicates that no image should be rendered at all.
+
     If you use this, you should also provide your own `og:type` tag, e.g.
 
     ```html
