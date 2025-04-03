@@ -107,7 +107,7 @@ The `entry` object has the following methods/properties:
 
 
 
-* **`card`**: `<meta>` tags for an OpenGraph card
+* <span id="card">**`card`**</span>: `<meta>` tags for an OpenGraph card
 
     Like `body` and `more`, this takes arguments that affect the image renditions;
     you will almost certainly want to set `width`, `height`, and `count`.
@@ -115,10 +115,18 @@ The `entry` object has the following methods/properties:
     This will generate an appropriate `og:title`, `og:url`, `og:image`, and `og:description`
     tags based on the entry's permalink and text. `og:description` contains the [entry summary](322#summary), and there will be `og:image` tags for up to the first `count` images.
 
+    It also takes the following additional arguments:
+
+    * **`image`**: A path or URL to an image that should be used as the card image; this can be used to provide a custom property or fallback logic in your template, such as:
+
+        ```html
+        {{ entry.card(width=640,height=640,image=entry['card-image'] or 'default-card.png') }}
+        ```
+
     If you use this, you should also provide your own `og:type` tag, e.g.
 
     ```html
-    {{ entry.card(width=640,height=350,resize="fill",count=4) }}
+    {{ entry.card(width=640,height=350,resize="fill") }}
     <meta property="og:type" content="website" />
     ```
 
