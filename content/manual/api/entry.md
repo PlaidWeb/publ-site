@@ -125,7 +125,11 @@ The `entry` object has the following methods/properties:
 
         A value of `False` indicates that no image should be rendered at all.
 
-    If you use this, you should also provide your own `og:type` tag, e.g.
+    * **`image_fallback`**: A path or URL to an image that should be used as a fallback in the event that no image was found in the entry.
+
+        This is overridden by any value provided in the `image` parameter.
+
+    If you use this, your template should also provide your own `og:type` tag, e.g.
 
     ```html
     {{ entry.card(width=640,height=350,resize="fill") }}
