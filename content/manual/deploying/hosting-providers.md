@@ -19,7 +19,7 @@ Shared hosting providers typically offer very inexpensive bandwidth and storage,
 Additionally, shared hosting providers typically limit you to PHP and/or CGI. However, there are a few known shared hosting providers which do support Flask (and therefore Publ) to some extent:
 
 * [Nearly Free Speech](https://nearlyfreespeech.net/) claims [direct support for Flask](https://www.nearlyfreespeech.net/about/faq#WorkingApps)
-* [Dreamhost](https://dreamhost.com/) ostensibly supports Flask via their [Passenger WSGI wrapper](https://help.dreamhost.com/hc/en-us/articles/215769548-Passenger-and-Python-WSGI) (although I've had [issues with them in the past](358))
+* ~~[Dreamhost](https://dreamhost.com/) ostensibly supports Flask via their [Passenger WSGI wrapper](https://help.dreamhost.com/hc/en-us/articles/215769548-Passenger-and-Python-WSGI) (although I've had [issues with them in the past](358))~~ This is no longer the case.
 
 When considering a shared hosting provider, look specifically to see if they support Flask, or a bit more broadly, WSGI. If they support Django (which is another common WSGI-based framework) it is very likely to support Flask.
 
