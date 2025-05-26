@@ -109,25 +109,11 @@ The `entry` object has the following methods/properties:
 
 * <span id="card">**`card`**</span>: `<meta>` tags for an OpenGraph card
 
-    Like `body` and `more`, this takes arguments that affect the image renditions;
+    Like `body` and `more`, this takes [arguments that affect the image renditions](335);
     you will almost certainly want to set `width`, `height`, and `count`.
 
     This will generate an appropriate `og:title`, `og:url`, `og:image`, and `og:description`
     tags based on the entry's permalink and text. `og:description` contains the [entry summary](322#summary), and there will be `og:image` tags for up to the first `count` images.
-
-    It also takes the following additional arguments:
-
-    * **`image`**: A path or URL to an image that should be used as the card image; this can be used to provide a custom property or fallback logic in your template, such as:
-
-        ```html
-        {{ entry.card(width=640,height=640,image=entry['card-image'] or 'default-card.png') }}
-        ```
-
-        A value of `False` indicates that no image should be rendered at all.
-
-    * **`image_fallback`**: A path or URL to an image that should be used as a fallback in the event that no image was found in the entry.
-
-        This is overridden by any value provided in the `image` parameter.
 
     If you use this, your template should also provide your own `og:type` tag, e.g.
 
@@ -138,7 +124,18 @@ The `entry` object has the following methods/properties:
 
     Please see the [OpenGraph documentation](http://ogp.me/) for more information.
 
-    This also accepts the `markdown_extensions` argument.
+    This also accepts the `markdown_extensions` argument, as well as the following additional arguments:
+
+    * **`image`**: A path or URL to an image that should be used as the card image; this can be used to provide a custom property or fallback logic in your template, such as:
+
+        ```html
+        {{ entry.card(width=640,height=640,image=entry.get('card-image'), image_fallback='default-card.png') }}
+        ```
+
+        * `None` indicates that it should use the first image found in the entry itself (the default) or the value of `image_fallback` if there's no image in the entry body
+        * `False` indicates that there should be no image at all
+
+    * **`image_fallback`**: A path or URL to an image to use if there's no image specified in the entry
 
 * **`category`**: The category that this entry belongs to; this is provided as a
     [category object](/api/category).
