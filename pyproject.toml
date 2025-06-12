@@ -13,7 +13,7 @@ publ = {version = "^0.7.22", extras = ["auth", "search"]}
 flask-github-webhook = "^0.2.0"
 hypercorn = "^0.17.3"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"
 autopep8 = "^2.0.1"
 
