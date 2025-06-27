@@ -9,7 +9,7 @@ package-mode = false
 python = ">=3.10,<3.13"
 python-memcached = "^1.59"
 pushl = "^0.3.3"
-publ = {version = "^0.7.22", extras = ["auth", "search"]}
+publ = {version = "*", extras = ["auth", "search"]}
 flask-github-webhook = "^0.2.0"
 hypercorn = "^0.17.3"
 
