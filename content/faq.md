@@ -147,12 +147,13 @@ My *intention* is that there will eventually be an online content editor that in
 
 Right now there's a [getting started guide](328) which covers the basics of
 running it locally and setting up a basic site, and [this site's
-files](/github-site) includes all of the necessary configuration for deploying
-on both Heroku and Dreamhost. There are also the [deployment
-guides](/manual/deploying/) that cover a lot of usage scenarios. There's
-definitely a lot of work to be done in the documentation area, though; I would
-love if someone could write up a clear and simple way for people to deploy to
-their platform of choice!
+files](/github-site) should be fairly straightforward to get running on any
+compatible hosting platform.
+
+There are also some [deployment guides](/manual/deploying/) that cover a few common usage scenarios.
+
+Documenting more deployment methods is an area that I would definitely appreciate
+contributions on!
 
 ## Design
 
@@ -183,7 +184,7 @@ ground truth.
 
 #### And Misaka?
 
-It's a pretty good Python binding to the
+Misaka is a pretty good Python binding to the
 [Hoedown](https://github.com/hoedown/hoedown) Markdown parser, with enough
 flexibility for the extensions I want to add. It supports (most) GitHub-flavor
 markdown and [MathJax](https://mathjax.org/)/[KaTeX](https://katex.org/) out of the box, and its design allows
@@ -191,8 +192,7 @@ adding further syntax hooks for the supported tokens. The downside is that it's
 not feasible to extend it with custom tokens but so far I haven't really found
 any need for that anyway.
 
-That said, the dependency on Misaka is likely to change in the future --- but
-this is an [enormous task](https://github.com/PlaidWeb/Publ/issues/261).
+That said, Misaka needs to be replaced, but that's an [enormous task](https://github.com/PlaidWeb/Publ/issues/261).
 
 ### Why didn't you use PHP/Haskell/Go/Ruby/Rust/...?
 
@@ -240,7 +240,6 @@ Publ's scaling story is basically:
 
 * Limit the complexity of request routing
 * Make everything cache-friendly
-* Defer as much to background tasks as possible
 
 Request routing is limited to just a handful of routes which can do all of their
 decisions based on what's in the index database, and the index database is kept
@@ -251,9 +250,7 @@ Cache-friendliness goes hand-in-hand with stable pagination and template-driven
 image renditions (which in turn rely on the content hashes of the images to
 determine if a rendition needs to be regenerated).
 
-And, the content indexer and image renditions all use decoupled background
-workers to do their heavy lifting, with some simple tricks to fake asynchronous
-image retrieval in the client.
+And, the content indexer uses a decoupled background worker to do the heavy lifting.
 
 ### What if caching just isn't enough?
 
@@ -279,7 +276,7 @@ sshfs, S3, etc.) which acts as the CDN origin
 
 If you are running a site which gets to this point then clearly you're making
 more money than me at this and I'd humbly suggest you consider [showing your
-support](https://liberapay.com/fluffy).
+support](https://github.com/sponsors/fluffy-critter).
 
 ## Interoperability
 
