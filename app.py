@@ -1,6 +1,7 @@
 """ Main Publ application """
 
 
+from werkzeug.middleware.proxy_fix import ProxyFix
 import logging
 import logging.handlers
 import os
@@ -187,5 +188,4 @@ def deploy(data):
     return flask.Response(result, mimetype='text/plain')
 
 
-from werkzeug.middleware.proxy_fix import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)

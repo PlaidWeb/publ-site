@@ -86,6 +86,29 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
 
         Note that if this option is selected, the [Whoosh](https://pypi.org/project/Whoosh/) library must be installed into your environment. If you are using [poetry](https://python-poetry.org) this can be added by specifying the "search" extra when adding the dependency on Publ with `poetry add publ -E search`; otherwise you can add it directly with `pip install whoosh` or the like.
 
+    * <span id="template_mimetypes">**`template_mimetypes`**</span>: A dictionary that defines custom MIME types for your templates. The keys can be any of:
+
+        * A file basename (e.g. `test.xml`)
+        * A full path (e.g. `api/test.json`)
+        * A file extension (e.g. `.yaml`)
+
+        Some simple examples:
+
+        ```python
+        {
+            'rss.xml': 'application/rss+xml',
+            'atom.xml': 'application/atom+xml',
+            '.yaml': 'application/yaml',
+            'api/fish.ix': 'application/x-fish-face'
+        }
+        ```
+
+        Some notes:
+
+        * Path globbing is not supported
+        * The extension follows Python's `os.path.splitext` rules, typically just the portion starting at the last `.` character
+        * There is no way to override an extension just for a single subdirectory or directory hierarchy; for example, `some_dir/.xml` will not work.
+
 ## Application object
 
 A `Publ` application object is an extension of a [Flask application object](http://flask.pocoo.org/docs/1.0/api/#application-object);
