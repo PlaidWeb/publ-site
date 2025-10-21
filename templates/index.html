@@ -79,7 +79,8 @@
     <li class="tag-clear"><a href="{{view(tag=None).link}}">Clear tags</a></li>
     {% endif %}
 
-    {% for name,count in category.tags(**view.spec)|sort(attribute='count',reverse=True) %}
+    {% for name,count in category.tags(tag=view.spec.tag if view.spec.tag else None,
+                              tag_filter='ALL')|sort(attribute='count',reverse=True) %}
     <li class="{{name in view.tags and 'tag-selected' or ''}}"><a rel="nofollow" href="{{view.tag_toggle(name)}}">{{name}}</a> ({{count}})</a></li>
     {% endfor %}
     </ul>
