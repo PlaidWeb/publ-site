@@ -20,7 +20,7 @@ else:
         os.makedirs('logs')
     except FileExistsError:
         pass
-    logging.basicConfig(level=logging.INFO,
+    logging.basicConfig(level=logging.DEBUG,
                         handlers=[
                             logging.handlers.TimedRotatingFileHandler(
                                 'logs/publ.log', when='D'),
