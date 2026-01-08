@@ -73,6 +73,8 @@ The `publ` library provides the `publ.Publ` class. Its constructor is called as 
 
         Note that if this option is selected, the [authl](https://pypi.org/project/authl/) library must be installed into your environment. If you are using [poetry](https://python-poetry.org) this can be added by specifying the "auth" extra when adding the dependency on Publ with `poetry add publ -E auth`; otherwise you can add it directly with `pip install authl` or the like.
 
+        This can also take an additional parameter, `AUTH_TOKEN_STORAGE`, which specifies an [Authl token store](https://authl.readthedocs.io/en/stable/authl.html#authl.tokens.TokenStore) to use. By default, Publ will store authentication tokens in its local database. This should work as long as all requests are served by the same backing database (e.g. you're only running on a single physical server, even in a multi-process configuration), but in some load-balanced configurations you may need to provide your own `TokenStore` object backed by whatever semi-durable distributed data store you prefer (e.g. Redis or a shared database).
+
     * **`user_list`**: The filename of the configuration file that stores the user configuration. Defaults to `users.cfg`
     * <span id="admin_group">**`admin_group`**</span>: The name of the user group that will have administrative access; defaults to `admin`
     * **`auth_log_prune_interval`**: How frequently to clean out the authentication log, in seconds. Defaults to 3600 (one hour).
