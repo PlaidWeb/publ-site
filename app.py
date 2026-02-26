@@ -1,7 +1,6 @@
 """ Main Publ application """
 
 
-from werkzeug.middleware.proxy_fix import ProxyFix
 import logging
 import logging.handlers
 import os
@@ -12,6 +11,7 @@ import authl.flask
 import flask
 import publ
 from flask_github_webhook import GithubWebhook
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 if os.path.isfile('logging.conf'):
     logging.config.fileConfig('logging.conf')
@@ -155,6 +155,50 @@ def redirect_github_site_issue(match):
     """ Custom routing rule to redirect /issue/NNN to the corresponding
     issue on GitHub """
     return 'https://github.com/PlaidWeb/Publ-site/issues/' + match.group(1), True
+
+
+@app.before_request
+def antiscraper():
+    """ If something looks like a scraper, give it a sentience check """
+    import flask
+    import user_agents
+    import werkzeug.exceptions
+
+    # Flag bots to remove page elements
+    if user_agents.parse(flask.request.headers.get('User-Agent', '')).is_bot:
+        flask.g.is_bot = True
+
+    # Logged-in users have passed the test already
+    if publ.user.get_active():
+        return
+
+    # Users with an 'sid' cookie have passed the test already
+    if flask.session.get('sid'):
+        return
+
+    # Send possible crawlers to the login page
+    # Initial score: number of items in the GET arguments
+    score = len(list(flask.request.args.items(True)))
+
+    # add any other custom signals to the score
+
+    if score > 2:
+        raise werkzeug.exceptions.TooManyRequests("Sentience test")
+
+    return
+
+
+@app.route('/_zuul', methods=['POST'])
+def gatekeeper():
+    """ Sentience check callback """
+    import datetime
+
+    import flask
+
+    redir = flask.request.form['redir']
+    LOGGER.info(f"redirecting to {redir}")
+    flask.session['sid'] = datetime.datetime.now()
+    return flask.redirect(f'{redir}', code=303)
 
 
 # Deployment hook for self-hosted instance

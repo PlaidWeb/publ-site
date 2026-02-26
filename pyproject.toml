@@ -12,6 +12,7 @@ pushl = "^0.3.3"
 publ = {version = "*", extras = ["auth", "search"]}
 flask-github-webhook = "^0.2.0"
 hypercorn = "^0.17.3"
+user-agents = "^2.2.0"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"
