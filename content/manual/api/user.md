@@ -36,6 +36,8 @@ The `user` object provides the following:
 
 * **`last_seen`**: The last time the user was active on the site
 
+* <span id="is_bot">**`is_bot`**</span>: Whether the page is currently being viewed by a declared bot
+
 * <span id="token">**`token(lifetime,scope=None)`**</span>: A function to generate an HTTP Bearer token for preauthorization.
 
     Arguments:
@@ -62,5 +64,17 @@ When extending Publ using additional Python functions, the current user can be r
 ```python
 import publ.user
 user = publ.user.get_active()
+```
+
+In all contexts you can check the truthiness of the `user` object to see if someone is logged in; bots do not count as logged-in users. For example, in a template:
+
+```html+jinja
+{% if user %}
+    <p>Hello user {{user.name}}!</p>
+{% elif user.is_bot %}
+    <p>Hello bot {{user.name}}!</p>
+{% else %}
+    <P>Howdy, stranger!</p>
+{% endif %}
 ```
 

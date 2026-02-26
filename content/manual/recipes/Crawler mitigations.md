@@ -28,10 +28,6 @@ This recipe is a starting point for implementing a simple "sentience check" into
         import user_agents
         import werkzeug.exceptions
 
-        # Flag bots to remove page elements
-        if user_agents.parse(flask.request.headers.get('User-Agent', '')).is_bot:
-            flask.g.is_bot = True
-
         # Logged-in users have passed the test already
         if publ.user.get_active():
             return
@@ -40,7 +36,7 @@ This recipe is a starting point for implementing a simple "sentience check" into
         if flask.session.get('sid'):
             return
 
-        # Send possible crawlers to the login page
+        # Send possible crawlers to the sentience test
         # Initial score: number of items in the GET arguments
         score = len(list(flask.request.args.items(True)))
 
@@ -87,21 +83,3 @@ This recipe is a starting point for implementing a simple "sentience check" into
     ```
 
 Out of the box, this will present a sentience check to anyone who is exhibiting basic bad-crawler behavior, which will be skipped for anything that has a cookie indicating that the test has previously been passed. For folks running browsers with JavaScript the test should automatically pass, as well.
-
-This recipe also adds a `g.is_bot` flag to all page views, which can be used to suppress page elements for properly-disclosed webcrawlers. For example, you may want to not show email links, comment forms, or tag browsers to bots, as even good bots will now try to traverse tag browsers, and spammers will historically look for specific page features to try to find sites to spam. For example:
-
-```jinja
-{% if not g.is_bot %}
-{{render_tagcloud(entry)}}
-{% endif %}
-```
-
-You can also use this functionality to present different content entirely to crawlers; for example:
-
-```jinja
-{% if g.is_bot %}
-Hello bot!
-{% else %}
-Hello user!
-{% endif %}
-```

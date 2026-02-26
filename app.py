@@ -164,10 +164,6 @@ def antiscraper():
     import user_agents
     import werkzeug.exceptions
 
-    # Flag bots to remove page elements
-    if user_agents.parse(flask.request.headers.get('User-Agent', '')).is_bot:
-        flask.g.is_bot = True
-
     # Logged-in users have passed the test already
     if publ.user.get_active():
         return

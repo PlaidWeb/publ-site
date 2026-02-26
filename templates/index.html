@@ -71,7 +71,11 @@
     </ul>
     {% endblock %}
 
-{% if not g.is_bot and (category.tags or 'tag' in view.spec) %}
+{% if user.is_bot %}
+<h2>Hello, Robo</h2>
+<ul><li>Name: {{user.name}}</li>
+<li>URL: <a href="{{user.profile.homepage}}">{{user.humanize}}</a></ul>
+{% elif category.tags or 'tag' in view.spec %}
     <h2>Tags</h2>
 
     <ul class="tag-list">
