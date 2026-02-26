@@ -65,7 +65,7 @@ The `category` object provides the following:
 
     There are multiple ways to access the tag information, depending on preference; for example, you can separate them in the loop:
 
-    ```jinja
+    ```html+jinja
     <ul>
     {% for name,count in category.tags %}
     <li><a href="{{view(tag=name)}}">{{name}}</a> ({{count}} entries)</a></li>
@@ -75,7 +75,7 @@ The `category` object provides the following:
 
     or you can get at them directly:
 
-    ```jinja
+    ```html+jinja
     <ul>
     {% for tag in category.tags %}
     <li><a href="{{view(tag=tag.name)}}">{{name}}</a> ({{tag.count}} entries)</a></li>
@@ -85,7 +85,7 @@ The `category` object provides the following:
 
     This does not provide any built-in sorting; you can use [Jinja's `sort` filter](http://jinja.pocoo.org/docs/2.10/templates/#sort) for that:
 
-    ```jinja
+    ```html+jinja
     <ul>
     {% for name,count in category.tags|sort(attribute='count',reverse=True) %}
     <li><a href="{{view(tag=name)}}">{{name}}</a> ({{count}} entries)</a></li>
@@ -97,7 +97,7 @@ The `category` object provides the following:
     list; for example, this snippet will override the page's view to require all tags to be present,
     and print a refinement list of tags:
 
-    ```jinja
+    ```html+jinja
     {% set view = view(tag_filter='ALL') %}  {# modify view to require all
                                                 selected tags to be present #}
 
@@ -119,7 +119,7 @@ The `category` object provides the following:
 
 Example template code for printing out an entire directory structure (flattened):
 
-```jinja
+```html+jinja
 <ul>
 {% for subcat in category.subcats(recurse=True) %}
 <li>{{subcat.path}}: {{subcat.name}}</li>
@@ -129,7 +129,7 @@ Example template code for printing out an entire directory structure (flattened)
 
 Example template code for printing out the directory structure in a nice recursive manner:
 
-```jinja
+```html+jinja
 <ul>
 {% for subcat in category.subcats recursive %}
     <li>{{ subcat.basename }}: {{ subcat.name }}
@@ -142,7 +142,7 @@ Example template code for printing out the directory structure in a nice recursi
 
 Categories can also be compared to other categories, which is useful for determining if a subcategory is the same as this one. This snippet will show all of the categories on the website, with the currently-visible one getting a class of `here` and any parent categories getting a class of `parent`:
 
-```jinja
+```html+jinja
 <ul>
 {% for subcat in category.root.subcats(recurse=True) %}
 {% if subcat == category %}

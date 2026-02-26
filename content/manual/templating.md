@@ -302,7 +302,7 @@ The following additional things are provided to all templates:
 
     Example usage in HTML templates:
 
-    ```jinja
+    ```html+jinja
     <div style="{{ image('/layout/bg.png').get_css_background(width=320) }}"> ... </div>
 
     {{ image('http://example.com/external-image.jpg').get_img_tag(link='http://example.com') }}
@@ -310,7 +310,7 @@ The following additional things are provided to all templates:
 
     and in a CSS template:
 
-    ```jinja
+    ```css+jinja
     body {
         /* {{image("/background.jpg").get_css_background(width=320,height=320,uncomment=True)}} */
         background-color: white;
@@ -342,7 +342,7 @@ The following additional things are provided to all templates:
     for where to redirect on successful login; for example, if you want to redirect back to the
     category rather than the current page, you can use:
 
-    ```jinja
+    ```html+jinja
     <a href="{{login(category.link)}}">Log in and return to {{category.name}}</a>
     ```
 
@@ -354,7 +354,7 @@ The following additional things are provided to all templates:
 
     The optional parameter `absolute` will treat the link as absolute; for example,
 
-    ```jinja
+    ```html+jinja
     <a href="{{login('foo',absolute=True)}}">
     ```
 
@@ -372,13 +372,13 @@ The following additional things are provided to all templates:
     prevent certain issues with browsers prefetching pages). If you would like the user to not need to
     confirm the logout, use it in a `<form method="POST">`. For example:
 
-    ```jinja
+    ```html+jinja
     <a href="{{logout}}">Log out</a>
     ```
 
     will show a logout confirmation dialog (using the `logout.html` template), whereas
 
-    ```jinja
+    ```html+jinja
     <form method="POST" method="{{logout}}"><input type="submit" name="Log out"></form>
     ```
 
@@ -388,7 +388,7 @@ The following additional things are provided to all templates:
 
     The optional parameter `absolute` will treat the link as absolute; for example,
 
-    ```jinja
+    ```html+jinja
     <a href="{{login('foo',absolute=True)}}">
     ```
 
@@ -429,7 +429,7 @@ The following additional things are provided to all templates:
 
     Example usage:
 
-    ```jinja
+    ```html+jinja
     <form method="GET">
     <input type="text" name="q" value="{{request.args.q}}" placeholder="Search text">
     <input type="submit" value="Search">
@@ -490,7 +490,7 @@ objects:
     a basis for another more specific view; for example, this example will show
     10 entries at a time and get `previous` and `next` as appropriate:
 
-    ```jinja
+    ```html+jinja
     {% set paged_view = view(count=10) %}
     {% for entry in paged_view.entries %}
         <!-- render entry -->
@@ -535,7 +535,7 @@ Each of the configured handlers has the following that is useful in a template:
 
 A simple `login.html` might look like this:
 
-```jinja
+```html+jinja
 <!DOCTYPE html>
 <html>
 <head>

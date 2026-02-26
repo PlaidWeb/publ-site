@@ -119,7 +119,7 @@ The `view` object has the following things on it:
 
     This is useful for a tag browser where you want to be able to toggle tags on and off; for example:
 
-    ```jinja
+    ```html+jinja
     <ul>
     {% for name,count in category.tags %}
     <li><a href="{{view.tag_toggle(name)}}">{{name}}</a> ({{count}} entries)</li>
@@ -198,7 +198,7 @@ the first 10 entries in the view, including subcategories:
 
 If you want to use the same view refinement multiple times, you can use `{% set %}`:
 
-```jinja
+```html+jinja
 {% set content = view(count=10,recurse=True,entry_type_not='sidebar') %}
 {% if content.entries %}
 <ul>

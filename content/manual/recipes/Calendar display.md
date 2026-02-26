@@ -9,7 +9,7 @@ How to render a calendar widget
 
 Here is a template snippet for rendering out a calendar for a particular view.
 
-```jinja
+```html+jinja
 {%- macro render_calendar(view, week_start=7) -%}
 
 {%- if not view.is_current and view.newest -%}

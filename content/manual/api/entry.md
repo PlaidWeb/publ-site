@@ -153,7 +153,7 @@ The `entry` object has the following methods/properties:
 
     For example, this snippet will collate the visible entries by month:
 
-    ```jinja
+    ```html+jinja
     <ul>{% for month,entries in view.entries|groupby('date_month') %}
         <li>{{month}}
             <ul>{% for entry in entries %}
@@ -215,7 +215,7 @@ The `entry` object has the following methods/properties:
 
     Examples:
 
-    ```jinja
+    ```html+jinja
     <!-- link to the next entry in its category -->
     {% if entry.next %}
     <a href="{{ entry.next.link }}">{{ entry.next.title }}</a>
@@ -259,7 +259,7 @@ The `entry` object has the following methods/properties:
     will print out all of the `Author` headers in an unordered list, but only
     if there are any `Author` headers:
 
-    ```jinja
+    ```html+jinja
     {% if entry.Author %}{# equivalent to entry.get('Author') #}
     <ul class="authors">
         {% for author in entry.get_all('Author') %}
@@ -358,7 +358,7 @@ If you have defined [custom headers](322#headers), you can do several different 
 * The `in` keyword will let you know if a header exists on an entry; for
     example, this template fragment:
 
-    ```jinja2
+    ```html+jinja2
 
     <h1>{{entry.title}}</h1>
     {{entry.body}}
