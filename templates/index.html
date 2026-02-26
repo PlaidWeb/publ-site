@@ -71,7 +71,7 @@
     </ul>
     {% endblock %}
 
-{% if category.tags or 'tag' in view.spec %}
+{% if not g.is_bot and (category.tags or 'tag' in view.spec) %}
     <h2>Tags</h2>
 
     <ul class="tag-list">
