@@ -54,7 +54,6 @@ This recipe is a starting point for implementing a simple "sentience check" into
         import flask
 
         redir = flask.request.form['redir']
-        LOGGER.info(f"redirecting to {redir}")
         flask.session['sid'] = datetime.datetime.now()
         return flask.redirect(f'{redir}', code=303)
     ```
