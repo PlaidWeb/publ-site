@@ -15,9 +15,7 @@ In this day and age it's necessary to have mitigations in place to prevent badly
 
 This recipe is a starting point for implementing a simple "sentience check" into Publ websites, which has shown itself to be just as effective as more heavyweight options such as Anubis or Cloudflare's "managed challenge" CAPTCHA. Setting it up is pretty simple:
 
-1. Add the [`user-agents`](https://pypi.org/project/user-agents) package to your environment (typically with `poetry add user-agents`)
-
-2. Add the following functions to your `app.py`:
+1. Add the following functions to your `app.py`:
 
     ```python
     !app.py
@@ -58,7 +56,7 @@ This recipe is a starting point for implementing a simple "sentience check" into
         return flask.redirect(f'{redir}', code=303)
     ```
 
-3. Add the following template as `templates/429.html`:
+2. Add the following template as `templates/429.html`:
 
     ```html+jinja
     !templates/429.html
