@@ -8,7 +8,8 @@ This reformats fenced-code blocks into tables with CSS-generated line numbers on
     border: solid #ccc 1px;
     border-radius: 1ex;
     margin-bottom: 1em;
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .blockcode figcaption {
@@ -42,6 +43,7 @@ pre {
     padding: 0 1ex;
     width: 100%;
     display: table-cell;
+    white-space: pre-wrap;
 }
 
 .blockcode pre .line {
