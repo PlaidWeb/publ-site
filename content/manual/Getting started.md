@@ -15,7 +15,7 @@ on a webserver, see the [deployment guides](deploying/).
 
 ## Installing system requirements
 
-You'll need [Python](https://python.org) (at least version 3.6), and it's a good
+You'll need [Python](https://python.org), and it's a good
 idea to use a virtual environment manager as well. Any such manager
 (`virtualenv`, `pipenv`, `poetry`) is fine; the following instructions all
 assume [`poetry`](https://python-poetry.org).
@@ -39,7 +39,7 @@ Afterwards, install [Poetry](https://python-poetry.org) per the [documentation](
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
-python 3.6 or later, and to also install `pip3`.
+python 3.10 or later, and to also install `pip3`.
 
 Afterwards, install [Poetry](https://python-poetry.org) per the [documentation](https://python-poetry.org/docs/).
 
