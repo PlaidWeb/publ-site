@@ -39,9 +39,11 @@ Afterwards, install [Poetry](https://python-poetry.org) per the [documentation](
 ### Linux/FreeBSD/etc.
 
 Your distribution probably provides packages for python3; make sure to get
-python 3.10 or later, and to also install `pip3`.
+python 3.10 or later (3.12 recommended), and to also install `pip3`.
 
 Afterwards, install [Poetry](https://python-poetry.org) per the [documentation](https://python-poetry.org/docs/).
+
+If your distribution does not provide a compatible version of Python, you can use [`pyenv`](https://github.com/pyenv/pyenv) to manage your versions.
 
 ### Windows
 
