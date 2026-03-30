@@ -22,17 +22,22 @@ This recipe is a starting point for implementing a simple "sentience check" into
     @app.before_request
     def antiscraper():
         """ If something looks like a scraper, give it a sentience check """
+        import arrow
         import flask
-        import user_agents
         import werkzeug.exceptions
 
         # Logged-in users have passed the test already
         if publ.user.get_active():
             return
 
-        # Users with an 'sid' cookie have passed the test already
-        if flask.session.get('sid'):
-            return
+        try:
+            # Check to see if the session data matches the user's data
+            if (flask.session['addr'] == flask.request.remote_addr and
+                arrow.get(flask.session['sid']) > arrow.now().shift(days=-3) and
+                flask.session['ua'] == flask.request.headers.get('User-Agent')):
+                return
+        except (KeyError, arrow.ParserError):
+            pass
 
         # Send possible crawlers to the sentience test
         # Initial score: number of items in the GET arguments
@@ -48,11 +53,13 @@ This recipe is a starting point for implementing a simple "sentience check" into
     @app.route('/_zuul', methods=['POST'])
     def gatekeeper():
         """ Sentience check callback """
-        import datetime
+        import arrow
         import flask
 
         redir = flask.request.form['redir']
-        flask.session['sid'] = datetime.datetime.now()
+        flask.session['sid'] = flask.request.form['sid']
+        flask.session['addr'] = flask.request.remote_addr
+        flask.session['ua'] = flask.request.headers.get('User-Agent')
         return flask.redirect(f'{redir}', code=303)
     ```
 
@@ -71,8 +78,9 @@ This recipe is a starting point for implementing a simple "sentience check" into
     <body>
     <h1>Sentience check</h1>
 
-    <form method="POST" id="proxy" action="{{url_for('gatekeeper')}}">
+    <form method="POST" id='proxy' action="{{url_for('gatekeeper')}}">
         <input type="hidden" name="redir" value="{{request.full_path}}">
+        <input type="hidden" name="sid" value="{{arrow.now()}}">
         <input type="submit" value="I'm actually here">
     </form>
     </body>
@@ -80,3 +88,5 @@ This recipe is a starting point for implementing a simple "sentience check" into
     ```
 
 Out of the box, this will present a sentience check to anyone who is exhibiting basic bad-crawler behavior, which will be skipped for anything that has a cookie indicating that the test has previously been passed. For folks running browsers with JavaScript the test should automatically pass, as well.
+
+The test is very simple; it just indicates that the form has been submitted within the past three days and that the agent submitting the form still has the same IP address and browser user agent, as those values will be stable during a particular browsing session and tend to be randomized by the AI crawlers. Keep in mind that there may be some situations in which the IP address for a legitimate user is randomized on a per-request basis, though (such as certain VPN or caching proxy configurations, or particularly dysfunctional CGNAT deployments).
