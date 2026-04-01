@@ -1,2 +1,7 @@
+Sitemap: https://publ.beesbuzz.biz/sitemap.xml
+
 User-Agent: *
 Disallow: /_login/
+
+User-Agent: meta-externalagent
+Disallow: /
