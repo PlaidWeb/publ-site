@@ -9,8 +9,9 @@ window.addEventListener("load", () => {
 <body>
 <h1>Sentience check</h1>
 
-<form method="POST" id="proxy" action="{{url_for('gatekeeper')}}">
+<form method="POST" id='proxy' action="{{url_for('gatekeeper')}}">
     <input type="hidden" name="redir" value="{{request.full_path}}">
+    <input type="hidden" name="sid" value="{{arrow.now()}}">
     <input type="submit" value="I'm actually here">
 </form>
 </body>

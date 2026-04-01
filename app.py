@@ -7,9 +7,11 @@ import os
 import signal
 from urllib.parse import urlparse
 
+import arrow
 import authl.flask
 import flask
 import publ
+import werkzeug.exceptions
 from flask_github_webhook import GithubWebhook
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -159,26 +161,26 @@ def redirect_github_site_issue(match):
 
 @app.before_request
 def antiscraper():
-    """ If something looks like a scraper, give it a sentience check """
-    import flask
-    import user_agents
-    import werkzeug.exceptions
-
     # Logged-in users have passed the test already
     if publ.user.get_active():
         return
 
-    # Users with an 'sid' cookie have passed the test already
-    if flask.session.get('sid'):
-        return
-
     # Send possible crawlers to the login page
-    # Initial score: number of items in the GET arguments
     score = len(list(flask.request.args.items(True)))
+    if 'sid' in flask.request.args:
+        # definitely a URL that didn't come from here
+        raise werkzeug.exceptions.Unauthorized("y'all")
 
-    # add any other custom signals to the score
+    # Check the thing
+    try:
+        if (flask.session['addr'] == flask.request.remote_addr and
+            arrow.get(flask.session['sid']) > arrow.now().shift(days=-3) and
+                flask.session['ua'] == flask.request.headers.get('User-Agent')):
+            return
+    except (KeyError, arrow.ParserError):
+        pass
 
-    if score > 2:
+    if score > 1:
         raise werkzeug.exceptions.TooManyRequests("Sentience test")
 
     return
@@ -192,8 +194,9 @@ def gatekeeper():
     import flask
 
     redir = flask.request.form['redir']
-    LOGGER.info(f"redirecting to {redir}")
-    flask.session['sid'] = datetime.datetime.now()
+    flask.session['sid'] = flask.request.form['sid']
+    flask.session['addr'] = flask.request.remote_addr
+    flask.session['ua'] = flask.request.headers.get('User-Agent')
     return flask.redirect(f'{redir}', code=303)
 
 
