@@ -11,7 +11,7 @@ window.addEventListener("load", () => {
 
 <form method="POST" id='proxy' action="{{url_for('gatekeeper')}}">
     <input type="hidden" name="redir" value="{{request.full_path}}">
-    <input type="hidden" name="sid" value="{{arrow.now()}}">
+    <input type="hidden" name="sid" value="{{arrow.now().format('X')}}">
     <input type="submit" value="I'm actually here">
 </form>
 </body>

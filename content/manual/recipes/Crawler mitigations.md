@@ -19,47 +19,64 @@ This recipe is a starting point for implementing a simple "sentience check" into
 
     ```python
     !app.py
+    import arrow
+    import flask
+    import werkzeug.exceptions
+
+    def keymaster(sid):
+        """ Generates a salted token for the browser """
+        import hashlib
+
+        parts = [
+            str(sid),
+            flask.request.remote_addr,
+            flask.request.headers.get('User-Agent')
+        ]
+        token = hashlib.md5('|'.join(parts).encode('utf-8'))
+        return token.digest()
+
+
     @app.before_request
     def antiscraper():
-        """ If something looks like a scraper, give it a sentience check """
-        import arrow
-        import flask
-        import werkzeug.exceptions
+        """ Dissuade aggressive bots from pummeling the site """
 
         # Logged-in users have passed the test already
         if publ.user.get_active():
             return
 
-        try:
-            # Check to see if the session data matches the user's data
-            if (flask.session['addr'] == flask.request.remote_addr and
-                arrow.get(flask.session['sid']) > arrow.now().shift(days=-3) and
-                flask.session['ua'] == flask.request.headers.get('User-Agent')):
-                return
-        except (KeyError, arrow.ParserError):
-            pass
-
-        # Send possible crawlers to the sentience test
-        # Initial score: number of items in the GET arguments
+        # Send possible crawlers to the login page
         score = len(list(flask.request.args.items(True)))
+        if score > 1:
+            # Check for an existing sentience token
+            try:
+                sid, token = flask.session['vinz']
+                if (arrow.now().shift(hours=-1) < arrow.get(float(sid)) < arrow.now() and
+                        keymaster(sid) == token):
+                    return
+            except (KeyError, ValueError, arrow.ParserError):
+                pass
 
-        # add any other custom signals to the score
-
-        if score > 2:
             raise werkzeug.exceptions.TooManyRequests("Sentience test")
 
         return
 
+
     @app.route('/_zuul', methods=['POST'])
     def gatekeeper():
-        """ Sentience check callback """
-        import arrow
-        import flask
+        """ Check the test response and set the salted token upon passing """
+        try:
+            sid = float(flask.request.form['sid'])
+            if arrow.get(sid) > arrow.now():
+                # Someone's trying to set a token that'll last longer
+                raise werkzeug.exceptions.BadRequest("Hello time traveler")
+            if arrow.get(sid) < arrow.now().shift(minutes=-5):
+                # Someone took a while to respond to the form
+                raise werkzeug.exceptions.TooManyRequests("Try again")
+        except ValueError:
+            raise werkzeug.exceptions.BadRequest("Nice try")
 
         redir = flask.request.form['redir']
-        flask.session['sid'] = flask.request.form['sid']
-        flask.session['addr'] = flask.request.remote_addr
-        flask.session['ua'] = flask.request.headers.get('User-Agent')
+        flask.session['vinz'] = sid, keymaster(sid)
         return flask.redirect(f'{redir}', code=303)
     ```
 
@@ -80,7 +97,7 @@ This recipe is a starting point for implementing a simple "sentience check" into
 
     <form method="POST" id='proxy' action="{{url_for('gatekeeper')}}">
         <input type="hidden" name="redir" value="{{request.full_path}}">
-        <input type="hidden" name="sid" value="{{arrow.now()}}">
+        <input type="hidden" name="sid" value="{{arrow.now().format('X')}}">
         <input type="submit" value="I'm actually here">
     </form>
     </body>
@@ -89,4 +106,4 @@ This recipe is a starting point for implementing a simple "sentience check" into
 
 Out of the box, this will present a sentience check to anyone who is exhibiting basic bad-crawler behavior, which will be skipped for anything that has a cookie indicating that the test has previously been passed. For folks running browsers with JavaScript the test should automatically pass, as well.
 
-The test is very simple; it just indicates that the form has been submitted within the past three days and that the agent submitting the form still has the same IP address and browser user agent, as those values will be stable during a particular browsing session and tend to be randomized by the AI crawlers. Keep in mind that there may be some situations in which the IP address for a legitimate user is randomized on a per-request basis, though (such as certain VPN or caching proxy configurations, or particularly dysfunctional CGNAT deployments).
+The test is very simple; it just indicates that the form has been submitted within the past hour and that the agent submitting the form still has the same IP address and browser user agent, as those values will be stable during a particular browsing session and tend to be randomized by the AI crawlers. Keep in mind that there may be some situations in which the IP address for a legitimate user is randomized on a per-request basis, though (such as certain VPN or caching proxy configurations, or particularly dysfunctional CGNAT deployments).
