@@ -7,11 +7,10 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
-python-memcached = "^1.59"
+python-memcached = "^1.62"
 publ = {version = "*", extras = ["auth", "search"]}
 flask-github-webhook = "^0.2.0"
-hypercorn = "^0.17.3"
-user-agents = "^2.2.0"
+hypercorn = "^0.18.0"
 pushl = "^0.4.1"
 
 [tool.poetry.group.dev.dependencies]
