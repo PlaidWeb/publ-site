@@ -10,8 +10,8 @@ python = ">=3.11,<3.13"
 python-memcached = "^1.62"
 publ = {version = "*", extras = ["auth", "search"]}
 flask-github-webhook = "^0.2.0"
-hypercorn = "^0.18.0"
 pushl = "^0.4.1"
+gunicorn = "^26.0.0"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"
