@@ -333,7 +333,7 @@ This is of course not anything special to Publ.
 Custom Flask endpoints can also make use of the [internal Python API](865) for
 querying and formatting entries.
 
-### What about having multuple Publ instances within a single running site?
+### What about having multiple Publ instances within a single running site?
 
 Unfortunately, running multiple Publ instances within a single app server
 is not so straightforward. I haven't found a good use case for
@@ -392,4 +392,3 @@ feature demonstration and documentation quality
 I also have a [rather large list of to-do items](/issues), most of which are low
 priority for me. But if there's something you want to help on, please, by all
 means, do so!
-
