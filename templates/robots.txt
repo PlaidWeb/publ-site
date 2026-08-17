@@ -2,6 +2,7 @@ Sitemap: https://publ.beesbuzz.biz/sitemap.xml
 
 User-Agent: *
 Disallow: /_login/
+Disallow: /_zuul
 
 User-Agent: meta-externalagent
 Disallow: /
