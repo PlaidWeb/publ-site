@@ -150,3 +150,5 @@ findtime = 10m
 bantime = 2h
 backend = auto
 ```
+
+Note that this configuration may also possibly trap people who are legitimately using the site and opening a lot of parallel tag-browsing tabs with JavaScript and/or cookies disabled, but normal users will not run afoul of it.
