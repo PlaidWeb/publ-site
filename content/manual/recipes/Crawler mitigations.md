@@ -107,3 +107,46 @@ This recipe is a starting point for implementing a simple "sentience check" into
 Out of the box, this will present a sentience check to anyone who is exhibiting basic bad-crawler behavior, which will be skipped for anything that has a cookie indicating that the test has previously been passed. For folks running browsers with JavaScript the test should automatically pass, as well.
 
 The test is very simple; it just indicates that the form has been submitted within the past hour and that the agent submitting the form still has the same IP address and browser user agent, as those values will be stable during a particular browsing session and tend to be randomized by the AI crawlers. Keep in mind that there may be some situations in which the IP address for a legitimate user is randomized on a per-request basis, though (such as certain VPN or caching proxy configurations, or particularly dysfunctional CGNAT deployments).
+
+### Bonus points: `fail2ban` configuration
+
+Especially persistent bots need to be taught a lesson. If you install [fail2ban](https://fail2ban.org/) you can add the following recipes to block the crawlers outright:
+
+```ini
+!/etc/fail2ban/filter.d/nginx-gatekeeper-throttle
+# Matches loglines for bots hitting the bot detection
+[Definition]
+failregex = ^<HOST> -.* "GET\b[^"]*" 429\b
+ignoreregex =
+```
+
+```ini
+!/etc/fail2ban/filter.d/nginx-gatekeeper-post
+# Matches loglines for bots that are submitting the sentience check form
+[Definition]
+failregex = ^<HOST> -.* "POST /_zuul\b[^"]*" 303\b
+ignoreregex =
+```
+
+```ini
+!/etc/fail2ban/jail.local
+[nginx-gatekeeper-post]
+enabled = true
+filter = nginx-gatekeeper-post
+logpath = /var/log/nginx/access.log
+# If something POSTs the gatekeeper script 3 times in 15 minutes it's probably a bot
+maxretry = 3
+findtime = 15m
+bantime = 2h
+backend = auto
+
+[nginx-gatekeeper-throttle]
+enabled = true
+filter = nginx-gatekeeper-throttle
+logpath = /var/log/nginx/access.log
+# If something triggers the gatekeeper 3 times in 10 minutes it's probably a bot
+maxretry = 3
+findtime = 10m
+bantime = 2h
+backend = auto
+```
