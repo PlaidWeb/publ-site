@@ -62,7 +62,7 @@ Setting this mitigation up is pretty simple:
             except (KeyError, ValueError, arrow.ParserError):
                 pass
 
-            raise werkzeug.exceptions.TooManyRequests("Sentience test")
+            raise werkzeug.exceptions.BadGateway("Sentience test")
 
         return
 
@@ -80,7 +80,7 @@ Setting this mitigation up is pretty simple:
                 raise werkzeug.exceptions.BadRequest("Hello time traveler")
             if arrow.get(sid) < arrow.now().shift(minutes=-5):
                 # Someone took a while to respond to the form
-                raise werkzeug.exceptions.TooManyRequests("Try again")
+                raise werkzeug.exceptions.Forbidden("Try again")
         except ValueError:
             raise werkzeug.exceptions.BadRequest("Nice try")
 
