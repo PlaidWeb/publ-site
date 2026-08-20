@@ -13,7 +13,13 @@ Reducing server load caused by badly-behaved web crawlers.
 
 In this day and age it's necessary to have mitigations in place to prevent badly-behaving web crawlers from taking down every single website. Both legitimate search bots *and* things like AI/LLM crawlers do a bunch of nasty tricks to try to extract as much detail as possible from a website, even when signals are present to indicate which pages are worth crawling.
 
-This recipe is a starting point for implementing a simple "sentience check" into Publ websites, which has shown itself to be just as effective as more heavyweight options such as Anubis or Cloudflare's "managed challenge" CAPTCHA. Setting it up is pretty simple:
+This recipe is a starting point for implementing a simple "sentience check" into Publ websites, which has shown itself to be just as effective as more heavyweight options such as Anubis or Cloudflare's "managed challenge" CAPTCHA. It takes advantage of the following facts:
+
+* Crawler bots do not reliably store and send cookies
+* They often randomize IP addresses and their `User-Agent` strings
+* Many crawler networks will see an [HTTP 502 error](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/502) to indicate that a website has gone down and it should back off for a bit
+
+Setting this mitigation up is pretty simple:
 
 1. Add the following functions to your `app.py`:
 
@@ -65,6 +71,9 @@ This recipe is a starting point for implementing a simple "sentience check" into
     def gatekeeper():
         """ Check the test response and set the salted token upon passing """
         try:
+            if flask.request.form['check'] != '9':
+                raise werkzeug.exceptions.Forbidden("Wrong answer")
+
             sid = float(flask.request.form['sid'])
             if arrow.get(sid) > arrow.now():
                 # Someone's trying to set a token that'll last longer
@@ -80,22 +89,20 @@ This recipe is a starting point for implementing a simple "sentience check" into
         return flask.redirect(f'{redir}', code=303)
     ```
 
-2. Add the following template as `templates/429.html`:
+2. Add the following template as `templates/502.html`:
 
     ```html+jinja
-    !templates/429.html
+    !templates/502.html
     <!DOCTYPE html>
     <html><head><title>Sentience test</title>
-    <script>
-    window.addEventListener("load", () => {
-        document.forms['proxy'].submit();
-    });
-    </script>
     </head>
     <body>
     <h1>Sentience check</h1>
 
+    <p>Please enter the length of the word "seventeen," as a number.</p>
+
     <form method="POST" id='proxy' action="{{url_for('gatekeeper')}}">
+        <input type="text" name="check" placeholder="The answer is nine">
         <input type="hidden" name="redir" value="{{request.full_path}}">
         <input type="hidden" name="sid" value="{{arrow.now().format('X')}}">
         <input type="submit" value="I'm actually here">
@@ -141,7 +148,8 @@ bantime = 2h
 backend = auto
 
 [nginx-gatekeeper-throttle]
-enabled = true
+# Careful with this one; many bot networks will respond to an IP block with an escalation
+enabled = false
 filter = nginx-gatekeeper-throttle
 logpath = /var/log/nginx/access.log
 # If something triggers the gatekeeper 3 times in 10 minutes it's probably a bot
