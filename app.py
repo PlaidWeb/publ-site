@@ -192,7 +192,7 @@ def antiscraper():
         except (KeyError, ValueError, arrow.ParserError):
             pass
 
-        raise werkzeug.exceptions.TooManyRequests("Sentience test")
+        raise werkzeug.exceptions.TooManyRequests("Sentience test", retry_after=3600)
 
     return
 
@@ -207,7 +207,7 @@ def gatekeeper():
             raise werkzeug.exceptions.BadRequest("Hello time traveler")
         if arrow.get(sid) < arrow.now().shift(minutes=-5):
             # Someone took a while to respond to the form
-            raise werkzeug.exceptions.TooManyRequests("Try again")
+            raise werkzeug.exceptions.TooManyRequests("Try again", retry_after=3600)
     except ValueError:
         raise werkzeug.exceptions.BadRequest("Nice try")
 
