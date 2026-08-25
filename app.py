@@ -99,7 +99,7 @@ config = {
     # Caching configuration; see https://pythonhosted.org/Flask-Cache for
     # more information
     'cache': {
-        'CACHE_TYPE': 'memcached',
+        'CACHE_TYPE': 'MemcachedCache',
         'CACHE_DEFAULT_TIMEOUT': 3659,
         'CACHE_THRESHOLD': 500,
         'CACHE_KEY_PREFIX': 'publ.beesbuzz.biz',
