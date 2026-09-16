@@ -192,6 +192,10 @@ def antiscraper():
         except (KeyError, ValueError, arrow.ParserError):
             pass
 
+        if publ.user.get_active().is_bot:
+            # bots shouldn't be here but...
+            return flask.redirect(flask.request.path, code=302)
+
         raise werkzeug.exceptions.TooManyRequests("Sentience test", retry_after=3600)
 
     return
