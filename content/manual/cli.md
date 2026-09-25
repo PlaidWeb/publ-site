@@ -74,11 +74,14 @@ flask publ normalize -rf "{date}-{time}-{id}-{slug}"
 
 It accepts the following arguments:
 
-*  `-r`/`--recurse`:      Include subdirectories
-*  `-a`/`--all`:  Apply to all entries, not just reachable ones (published, scheduled, hidden)
-*  `-n`/`--dry-run`:      Show, but don't apply, changes
-*  `-f`/`--format TEXT`:  Filename format to use
-*  `-v`/`--verbose`:      Show detailed actions
+* `-r`/`--recurse`:      Include subdirectories
+* `-a`/`--all`:  Apply to all entries, not just reachable ones (published, scheduled, hidden)
+* `-n`/`--dry-run`:      Show, but don't apply, changes
+* `-f`/`--format FORMAT_STRING`:  Filename format to use by default
+* `-v`/`--verbose`:      Show detailed actions
+* `-F`/`--type-format TYPE FORMAT_STRING`: Override the filename format for entries of a given `Entry-Type`
+* `-g`/`--type-ignore TYPE`: Don't normalize filenames for entries of a given `Entry-Type`
+* `--max-length`/`-m INT`: Limit the length of a filename
 
 And the following format tokens can be used in the string provided to `-f`/`--format`:
 
